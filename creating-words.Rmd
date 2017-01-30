@@ -28,6 +28,7 @@ opts_chunk$set(
   warning=FALSE,
   results="hide",
   fig.path="figs/",
+  out.width="8.7cm",
   dpi=144,
   cache=TRUE,
   cache.path=".cache/"
