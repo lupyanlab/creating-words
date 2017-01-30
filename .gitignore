@@ -1,0 +1,11 @@
+*.pdf
+*.docx
+
+*.tex
+*.md
+*.bbl
+*.dvi
+*.xwm
+
+figs/
+.cache/
