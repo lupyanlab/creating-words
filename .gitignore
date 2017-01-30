@@ -11,12 +11,20 @@ figs/
 *.tex
 !templates/*.tex
 *.md
+*.aux
 *.bbl
+*.blg
 *.dvi
 *.xwm
+*.fdb_latexmk
+*.fls
+*.log
 
 # R/RStudio
 .Rhistory
 
 # OS
 .DS_Store
+
+# editor
+*.swp
