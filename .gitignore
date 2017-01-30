@@ -1,11 +1,20 @@
 *.pdf
 *.docx
+!submissions/
 
+# reproducible
+figs/
+.cache/
+
+# latex
 *.tex
 *.md
 *.bbl
 *.dvi
 *.xwm
 
-figs/
-.cache/
+# R/RStudio
+.Rhistory
+
+# OS
+.DS_Store

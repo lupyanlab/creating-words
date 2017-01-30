@@ -1,9 +1,7 @@
 ---
 title: "Creating words from iterated vocal imitation"
 bibliography: telephone.bib
-csl: style/pnas.csl
 output:
-  word_document: default
   pdf_document:
     citation_package: natbib
     template: style/pnas.tex
