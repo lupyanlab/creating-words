@@ -2,9 +2,8 @@
 title: "Creating words from iterated vocal imitation"
 bibliography: telephone.bib
 output:
-  pdf_document:
-    citation_package: natbib
-    template: style/pnas.tex
+  word_document:
+    keep_md: true
 abstract: |
   New words are constantly being invented, yet we have never witnessed the emergence of spoken words in the absence of prior convention. We report the results of a large-scale (_N_ = 1402) experiment designed to investigate whether spoken words can emerge solely from the process of repeated imitation. Participants played a version of the children’s game “Telephone” where a message is passed from person to person with the goal of keeping it unchanged. The first generation of players heard recognizable environmental sounds (e.g., glass breaking, water splashing) and had to imitate the sounds. The next generation imitated the imitations, and so on for a maximum of 8 generations (_N_ = 365 imitations). We subsequently assessed whether the imitations (1) became more stable and word-like, (2) retained an iconic resemblance to the original sound relative to the other seed sounds, and (3) the extent to which the imitations from different generations were suitable as verbal category labels. The results showed that vocal imitations became progressively more word-like as measured by acoustic similarity and agreement of orthographic transcriptions, that even after 8 generations they could be matched above chance to the environmental sound that motivated them, and that imitations from later generations were more effective as learned category labels. These results show how repeated imitation, even in the absence of an explicit intention to communicate, can create progressively more word-like forms while retaining a semblance of iconicity.
 ---
@@ -28,8 +27,6 @@ opts_chunk$set(
   warning=FALSE,
   results="hide",
   fig.path="figs/",
-  out.width="8cm",  # 8.7 is max
-  # out.height="5cm",
   dpi=144,
   cache=TRUE,
   cache.path=".cache/"
