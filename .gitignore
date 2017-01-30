@@ -1,6 +1,7 @@
 *.pdf
 *.docx
-!submissions/
+!submissions/**/*.pdf
+!submissions/**/*.docx
 
 # reproducible
 figs/
