@@ -17,7 +17,21 @@ add_chance <- function(frame) {
     )
 }
 
+count_imitations <- . %>% .$message_id %>% unique() %>% length()
+count_subjects <- . %>% .$subj_id %>% na.omit() %>% unique() %>% length()
+
+
 data("imitations")
+
+n_all_imitations <- count_imitations(imitations)
+n_removed <- imitations %>%
+  filter(rejected == "True") %>%
+  count_imitations()
+n_final_imitations <- imitations %>%
+  filter(rejected == "False") %>%
+  count_imitations()
+n_branches <- imitations$first_gen_id %>% unique() %>% na.omit() %>% length()
+
 
 data("acoustic_similarity_judgments")
 acoustic_similarity_judgments %<>%
@@ -33,8 +47,23 @@ imitation_matches %<>%
   recode_survey_type() %>%
   add_chance()
 
+n_matching_imitations <- count_subjects(imitation_matches)
+
+data("transcriptions")
+
+n_transcribers <- count_subjects(transcriptions)
+n_imitations_transcribed <- count_imitations(transcriptions)
+n_transcriptions_per_imitation <- transcriptions %>%
+  count(message_id) %>%
+  .$n %>%
+  mean() %>%
+  round(0)
+n_transcriptions <- nrow(transcriptions)
+
 data("transcription_distances")
 data("transcription_matches")
+
+n_transcription_match_subjs <- count_subjects(transcription_matches)
 
 message_id_map <- select(imitations, message_id, chain_name, seed_id, generation)
 
@@ -64,6 +93,8 @@ recode_word_type <- . %>%
  recode_message_type()
 
 data("learning_sound_names")
+n_lsn_subjs <- count_subjects(learning_sound_names)
+
 learning_sound_names %<>%
  mutate(rt = ifelse(is_correct == 1, rt, NA),
         is_error = 1 - is_correct) %>%
@@ -103,10 +134,6 @@ lsn_transition %<>%
 
 outliers <- c("LSN102", "LSN148", "LSN104", "LSN147")
 learning_sound_names %<>% filter(!(subj_id %in% outliers))
-
-# helper functions -------------------------------------------------------------
-count_imitations <- . %>% .$message_id %>% unique() %>% length()
-count_subjects <- . %>% .$subj_id %>% na.omit() %>% unique() %>% length()
 
 # ggplot theme, colors, and scales ---------------------------------------------
 base_theme <- theme_minimal(base_size=11)
@@ -150,15 +177,6 @@ scale_y_gts_accuracy <- scale_y_continuous("Accuracy", breaks = c(0.25, seq(0, 1
                                            labels = scales::percent)
 
 # ---- collecting-imitations ---------------------------------------------------
-n_all_imitations <- count_imitations(imitations)
-n_removed <- imitations %>%
-  filter(rejected == "True") %>%
-  count_imitations()
-n_final_imitations <- imitations %>%
-  filter(rejected == "False") %>%
-  count_imitations()
-n_branches <- imitations$first_gen_id %>% unique() %>% na.omit() %>% length()
-
 similarity_judgments_mod <- lmer(
   similarity_z ~ edge_generation_n + (edge_generation_n|name) + (edge_generation_n|category),
   data = acoustic_similarity_judgments
@@ -189,8 +207,6 @@ gg_similarity_judgments <- ggplot(similarity_judgments_means) +
   theme(legend.position = "top")
 
 # ---- matching-imitations -----------------------------------------------------
-n_matching_imitations <- count_subjects(imitation_matches)
-
 imitation_matches_overall_mod <- glmer(
   is_correct ~ offset(chance_log) + generation_1 + (generation_1|chain_name/seed_id),
   family = "binomial", data = imitation_matches
@@ -233,18 +249,6 @@ gg_match_to_seed <- ggplot(imitation_matches) +
   theme(legend.position = c(0.8, 0.85))
 
 # ---- transcriptions
-n_transcribers <- count_subjects(transcriptions)
-n_imitations_transcribed <- count_imitations(transcriptions)
-n_transcriptions_per_imitation <- transcriptions %>%
-  count(message_id) %>%
-  .$n %>%
-  mean() %>%
-  round(0)
-n_transcriptions <- nrow(transcriptions)
-
-n_transcribers <- count_subjects(transcriptions)
-n_transcription_match_subjs <- count_subjects(transcription_matches)
-
 orthographic_distance_mod <- lmer(distance ~ message_c + (message_c|chain_name/seed_id),
                                   data = transcription_distances)
 
@@ -319,8 +323,6 @@ gg_match_transcriptions <- ggplot(preds) +
   theme(legend.position = "none", axis.text.x = element_text(angle = 45, hjust = 1))
 
 # ---- category-learning
-n_lsn_subjs <- count_subjects(learning_sound_names)
-
 first_last_gen <- filter(learning_sound_names, message_type != "sound_effect") %>%
   mutate(block_ix_sqr = block_ix^2)
 
