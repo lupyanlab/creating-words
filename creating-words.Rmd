@@ -90,7 +90,54 @@ allowed to continue for a maximum of 8 generations. We removed all low quality
 recordings and recordings where the speaker violated the rules of the
 experiment, e.g., by recording something in English, resulting in a final sample
 of `r n_final_imitations` imitations along `r n_branches` contiguous
-transmission chains.
+transmission chains. The remaining experiments (see Table 1) assessed the stability of these imitations in both acoustic and orthographic forms as well as measuring the extent to which imitations and transcriptions could be matched back to the original seed sounds.
+
+```{r table1, results="asis"}
+subjects_table <- subjects %>%
+  group_by(experiment) %>%
+  summarize(n = length(unique(subj_id)))
+
+lsn_subjs <- data_frame(
+  experiment = "learning_sound_names",
+  n = length(unique(learning_sound_names$subj_id))
+)
+
+seed_selection <- data_frame(
+  experiment = "seed_selection",
+  n = length(unique(bind_rows(sound_similarity_4, sound_similarity_6)$workerId))
+)
+
+subjects_table %<>%
+  bind_rows(lsn_subjs, seed_selection)
+
+experiment_levels <- c(
+  "seed_selection",
+  "imitations",
+  "imitation_matches",
+  "transcriptions",
+  "transcription_matches",
+  "learning_sound_names"
+)
+experiment_labels <- c(
+  "Seed selection",
+  "Imitations",
+  "Matching imitations to seeds",
+  "Transcriptions",
+  "Matching transcriptions to seeds",
+  "Category learning"
+)
+experiment_map <- data_frame(
+  experiment = experiment_levels,
+  experiment_label = factor(experiment_levels, levels = experiment_levels, labels = experiment_labels)
+)
+
+subjects_table %<>% left_join(experiment_map)
+
+subjects_table %>%
+  arrange(experiment_label) %>%
+  select(Experiment = experiment_label, N = n) %>%
+  kable(format = "latex", booktabs = TRUE, caption = "Participants by experiment. Participants for experiments other than the category learning experiment were recruited online via Amazon Mechanical Turk and received payment for participation. Participants in the category learning experiment were University of Wisconsin-Madison undergraduates who received course credit for participation.")
+```
 
 ```{r fig1, fig.width=4, out.width="4.0cm", fig.align="center", fig.cap="The design of the transmission chain experiment. 16 seed sounds were used, 4 in each category of nonverbal environmental sounds. Each seed sound was imitated by 4 different participants, resulting in 4 branches off of each seed sound. Subsequent participants imitated the imitations and so on for a maximum of 8 generations."}
 draw_graphviz("definitions", "wordsintransition")
