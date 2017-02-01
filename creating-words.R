@@ -353,3 +353,31 @@ rt_plot <- ggplot(first_last_gen) +
   scale_color_message_label_2 +
   base_theme +
   theme(legend.position = c(0.8, 0.7))
+
+transition_mod <- lmer(
+  rt ~ block_transition_c * message_c + block_ix + (block_ix|subj_id),
+  data = lsn_transition
+)
+
+transition_preds <- expand.grid(block_transition_c = c(-0.5, 0.5),
+                                message_c = c(-0.5, 0.5),
+                                block_ix = 3) %>%
+  cbind(., predictSE(transition_mod, ., se = TRUE)) %>%
+  rename(rt = fit, se = se.fit) %>%
+  recode_block_transition() %>%
+  recode_message_type()
+
+dodger <- position_dodge(width = 0.1)
+
+gg_transition <- ggplot(lsn_transition) +
+  aes(block_transition_label, rt, color = message_type) +
+  geom_linerange(aes(ymin = rt - se, ymax = rt + se),
+                 data = transition_preds,
+                 position = dodger, show.legend = FALSE) +
+  geom_line(aes(group = message_type), data = transition_preds,
+            position = dodger) +
+  scale_x_discrete("Block transition", labels = c("Before", "After")) +
+  scale_y_rt +
+  scale_color_message_label_2 +
+  base_theme +
+  theme(legend.position = c(0.85, 0.5))
