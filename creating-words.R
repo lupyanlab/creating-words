@@ -136,7 +136,7 @@ outliers <- c("LSN102", "LSN148", "LSN104", "LSN147")
 learning_sound_names %<>% filter(!(subj_id %in% outliers))
 
 # ggplot theme, colors, and scales ---------------------------------------------
-base_theme <- theme_minimal(base_size=11)
+base_theme <- theme_minimal(base_size=12)
 
 colors <- RColorBrewer::brewer.pal(4, "Set2")
 names(colors) <- c("blue", "orange", "green", "pink")
@@ -172,8 +172,10 @@ scale_color_message_label_2 <- scale_color_manual(
 )
 
 chance_line <- geom_hline(yintercept = 0.25, lty = 2, alpha = 0.4, size = 1)
+chance_label <- annotate("text", x = 1, y = 0.26, label = "chance",
+                         size = 7, vjust = -0.1, fontface = "italic")
 ylim_gts <- c(0.15, 0.75)
-scale_y_gts_accuracy <- scale_y_continuous("Accuracy", breaks = c(0.25, seq(0, 1, by = 0.1)),
+scale_y_gts_accuracy <- scale_y_continuous("Accuracy", breaks = seq(0, 1, by = 0.1),
                                            labels = scales::percent)
 
 # ---- collecting-imitations ---------------------------------------------------
@@ -195,14 +197,15 @@ similarity_judgments_means <- acoustic_similarity_judgments %>%
 set.seed(949)
 gg_similarity_judgments <- ggplot(similarity_judgments_means) +
   aes(x = edge_generations, y = similarity_z) +
-  geom_point(aes(color = category), position = position_jitter(0.6, 0.0),
-             size = 2, alpha = 0.8) +
+  geom_point(aes(color = category), position = position_jitter(0.2, 0.0),
+             size = 2.5, alpha = 0.8) +
   geom_smooth(aes(group = 1, ymin = similarity_z - se, ymax = similarity_z + se),
               data = similarity_judgments_preds, stat = "identity",
               alpha = 0.2, color = "gray") +
   scale_x_discrete("Generation") +
   scale_y_continuous("Acoustic similarity") +
   scale_color_brewer("Category", palette = "Set2") +
+  coord_cartesian(ylim = c(-0.6, 0.8)) +
   base_theme +
   theme(legend.position = "top")
 
@@ -242,8 +245,7 @@ gg_match_to_seed <- ggplot(imitation_matches) +
   scale_y_gts_accuracy +
   scale_color_distractors +
   chance_line +
-  annotate("text", x = 10, y = 0.26, label = "chance",
-                         size = 7, vjust = -0.1, fontface = "italic", alpha = 0.4) +
+  chance_label +
   coord_cartesian(xlim = c(-0.2, 7.2), ylim = ylim_gts) +
   base_theme +
   theme(legend.position = c(0.8, 0.85))
@@ -268,9 +270,10 @@ gg_distance <- ggplot(transcription_distances) +
                 size = 1.4, width = 0.1) +
   scale_x_discrete("Generation",
                    labels = c("First", "Last")) +
-  scale_y_continuous("Distance between transcriptions") +
+  scale_y_continuous("Distance between transcriptions", breaks = seq(0, 1, by = 0.2)) +
   scale_color_manual(values = imitation_gen_colors) +
   scale_fill_manual(values = imitation_gen_colors) +
+  coord_cartesian(ylim = c(0.0, 0.8)) +
   base_theme +
   theme(legend.position = "none")
 
@@ -310,17 +313,24 @@ preds <- cbind(x_preds, y_preds) %>%
   left_join(message_labels)
 
 gg_match_transcriptions <- ggplot(preds) +
-  aes(question_c, is_correct, question_type, fill=question_type) +
-  geom_bar(stat = "identity", width = 0.95, alpha = 0.6) +
-  geom_linerange(aes(ymin = is_correct - se, ymax = is_correct + se)) +
+  aes(question_c, is_correct) +
+  geom_bar(aes(fill = question_type), stat = "identity", width = 0.95, alpha = 0.6) +
+  geom_linerange(aes(group = question_type, ymin = is_correct - se, ymax = is_correct + se)) +
   scale_x_continuous("Question type", breaks = c(-0.5, 0.5), labels = c("True seed", "Category match")) +
   scale_y_gts_accuracy +
   scale_fill_manual("", values = unname(colors[c("blue", "green")])) +
   chance_line +
+  geom_text(aes(label = label),
+            data = data.frame(message_label_2 = "First generation", question_c = -0.7,
+                              is_correct = 0.26, label = "chance"),
+            fontface = "italic") +
   coord_cartesian(ylim = ylim_gts) +
   facet_wrap("message_label_2") +
   base_theme +
-  theme(legend.position = "none", axis.text.x = element_text(angle = 45, hjust = 1))
+  theme(legend.position = "none",
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank())
+gg_match_transcriptions
 
 # ---- category-learning
 first_last_gen <- filter(learning_sound_names, message_type != "sound_effect") %>%
@@ -351,6 +361,7 @@ rt_plot <- ggplot(first_last_gen) +
   scale_x_block_ix +
   scale_y_rt +
   scale_color_message_label_2 +
+  coord_cartesian(ylim = c(600, 1200)) +
   base_theme +
   theme(legend.position = c(0.8, 0.7))
 
@@ -373,11 +384,13 @@ gg_transition <- ggplot(lsn_transition) +
   aes(block_transition_label, rt, color = message_type) +
   geom_linerange(aes(ymin = rt - se, ymax = rt + se),
                  data = transition_preds,
-                 position = dodger, show.legend = FALSE) +
+                 position = dodger, show.legend = FALSE,
+                 size = 2) +
   geom_line(aes(group = message_type), data = transition_preds,
-            position = dodger) +
+            position = dodger, size = 2) +
   scale_x_discrete("Block transition", labels = c("Before", "After")) +
   scale_y_rt +
   scale_color_message_label_2 +
+  coord_cartesian(ylim = c(600, 1200)) +
   base_theme +
-  theme(legend.position = c(0.85, 0.5))
+  theme(legend.position = c(0.85, 0.8))
