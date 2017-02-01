@@ -178,10 +178,65 @@ ylim_gts <- c(0.15, 0.75)
 scale_y_gts_accuracy <- scale_y_continuous("Accuracy", breaks = seq(0, 1, by = 0.1),
                                            labels = scales::percent)
 
+# reporting statistical results ------------------------------------------------
+lmer_mod_results <- function(lmertest_mod, param) {
+  results <- broom::tidy(lmertest_mod, effects = "fixed") %>%
+    filter(term == param) %>%
+    as.list()
+  
+  lmertest_summary <- lmerTest::summary(lmertest_mod) %>%
+    .$coefficients %>%
+    as.data.frame()
+  lmertest_summary$term <- rownames(lmertest_summary)
+  lmertest_results <- lmertest_summary %>%
+    filter(term == param) %>%
+    as.list()
+  
+  results$df <- lmertest_results[["df"]]
+  results$p_value <- lmertest_results[["Pr(>|t|)"]]
+  
+  if (results$p_value < 0.001) {
+    results$p_value_str <- "_p_ < 0.001"
+  } else {
+    results$p_value_str <- paste("_p_ = ", round(results$p_value, 3))
+  }
+  
+  sprintf("_b_ = %.2f (%.2f), _t_(%.1f) = %.2f, %s",
+          results$estimate, results$std.error, results$statistic, results$df, results$p_value_str)
+}
+
+
+glmer_mod_results <- function(glmer_mod, param, odds = FALSE) {
+  results <- broom::tidy(glmer_mod, effects = "fixed") %>%
+    filter(term == param) %>%
+    as.list()
+  
+  if (results$p.value < 0.001) {
+    results$p_value_str <- "_p_ < 0.001"
+  } else {
+    results$p_value_str <- paste("_p_ = ", round(results$p.value, 3))
+  }
+  
+  if (odds == TRUE) {
+    results["odds"] <- log(results$estimate)
+    formatted = sprintf("_b_ = %.2f (%.2f) log-odds, odds = %.2f, _z_ = %.2f, %s",
+                        results$estimate, results$std.error, results$odds, results$statistic, results$p_value_str)
+  } else {
+    formatted = sprintf("_b_ = %.2f (%.2f) log-odds, _z_ = %.2f, %s",
+                        results$estimate, results$std.error, results$statistic, results$p_value_str)
+  }
+  formatted
+}
+
+
 # ---- collecting-imitations ---------------------------------------------------
 similarity_judgments_mod <- lmer(
   similarity_z ~ edge_generation_n + (edge_generation_n|name) + (edge_generation_n|category),
   data = acoustic_similarity_judgments
+)
+
+similarity_judgments_lmertest_mod <- lmerTest::lmer(
+  formula(similarity_judgments_mod), data = similarity_judgments_mod@frame
 )
 
 similarity_judgments_preds <- data_frame(edge_generation_n = 1:7) %>%
@@ -253,6 +308,10 @@ gg_match_to_seed <- ggplot(imitation_matches) +
 # ---- transcriptions
 orthographic_distance_mod <- lmer(distance ~ message_c + (message_c|chain_name/seed_id),
                                   data = transcription_distances)
+
+orthographic_distance_lmertest_mod <- lmerTest::lmer(
+  formula(orthographic_distance_mod), data = orthographic_distance_mod@frame
+)
 
 orthographic_distance_preds <- data_frame(message_c = c(-0.5, 0.5)) %>%
   cbind(., predictSE(orthographic_distance_mod, newdata = ., se = TRUE)) %>%
@@ -341,6 +400,10 @@ lsn_after_first_block_mod <- lmer(
   rt ~ message_c + block_ix + (1 + block_ix|subj_id),
   data = after_first_block)
 
+lsn_after_first_block_lmertest_mod <- lmerTest::lmer(
+  formula(lsn_after_first_block_mod), data = lsn_after_first_block_mod@frame
+)
+
 lsn_quad_mod <- lmer(
   rt ~ message_c * (block_ix + block_ix_sqr) + (block_ix + block_ix_sqr|subj_id),
   data = first_last_gen
@@ -368,6 +431,10 @@ rt_plot <- ggplot(first_last_gen) +
 transition_mod <- lmer(
   rt ~ block_transition_c * message_c + block_ix + (block_ix|subj_id),
   data = lsn_transition
+)
+
+transition_lmertest_mod <- lmerTest::lmer(
+  formula(transition_mod), data = transition_mod@frame
 )
 
 transition_preds <- expand.grid(block_transition_c = c(-0.5, 0.5),
