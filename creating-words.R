@@ -136,7 +136,7 @@ outliers <- c("LSN102", "LSN148", "LSN104", "LSN147")
 learning_sound_names %<>% filter(!(subj_id %in% outliers))
 
 # ggplot theme, colors, and scales ---------------------------------------------
-base_theme <- theme_minimal(base_size=12)
+base_theme <- theme_minimal(base_size=14)
 
 colors <- RColorBrewer::brewer.pal(4, "Set2")
 names(colors) <- c("blue", "orange", "green", "pink")
@@ -258,7 +258,7 @@ gg_similarity_judgments <- ggplot(similarity_judgments_means) +
               data = similarity_judgments_preds, stat = "identity",
               alpha = 0.2, color = "gray") +
   scale_x_discrete("Generation") +
-  scale_y_continuous("Acoustic similarity") +
+  scale_y_continuous("Acoustic similarity (z-score)") +
   scale_color_brewer("Category", palette = "Set2") +
   coord_cartesian(ylim = c(-0.6, 0.8)) +
   base_theme +
