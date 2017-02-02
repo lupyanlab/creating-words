@@ -10,6 +10,7 @@ figs/
 
 # latex
 *.tex
+!creating-words.tex
 !templates/*.tex
 *.md
 *.aux
