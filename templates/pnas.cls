@@ -55,7 +55,7 @@
 \RequirePackage[framemethod=tikz]{mdframed}
 
 %% For single column equations and balancing the columns on final page
-\RequirePackage{style/widetext}
+\RequirePackage{templates/widetext}
 
 %% Hyperlinking
 \RequirePackage[colorlinks=true, allcolors=blue]{hyperref}
@@ -154,8 +154,8 @@
 %% unsrtnat
 \RequirePackage[numbers,sort&compress,merge,round]{natbib}
 \setlength{\bibsep}{0.0pt}
-\IfFileExists{style/pnas.bst}{
-  \bibliographystyle{style/pnas}
+\IfFileExists{templates/pnas.bst}{
+  \bibliographystyle{templates/pnas}
 }{
   \IfFileExists{pnas2011.bst}{
     \bibliographystyle{pnas2011}

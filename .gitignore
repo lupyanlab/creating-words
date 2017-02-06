@@ -9,6 +9,7 @@ figs/
 
 # latex
 *.tex
+!templates/*.tex
 *.md
 *.bbl
 *.dvi
