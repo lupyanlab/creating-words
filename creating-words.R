@@ -202,7 +202,7 @@ lmer_mod_results <- function(lmertest_mod, param) {
   }
   
   sprintf("_b_ = %.2f (%.2f), _t_(%.1f) = %.2f, %s",
-          results$estimate, results$std.error, results$statistic, results$df, results$p_value_str)
+          results$estimate, results$std.error, results$df, results$statistic, results$p_value_str)
 }
 
 
