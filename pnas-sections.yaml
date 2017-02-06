@@ -14,19 +14,4 @@ authorcontributions: P.E., M.P., and G.L. designed the research. P.E. conducted 
 authordeclarations: The authors declare no conflicts of interest.
 acknowledgements: |
     The authors acknowledge Jesse Reid, Hailey Schiedermayer, Zoe Hansen, Maggie Parker, and Yacong Wu for conducting the acoustic similarity analysis.
-methods: |
-  \subsection*{Selecting seed sounds}
-
-  We initially selected a set of 36 sounds in 6 different categories of
-  environmental sounds. Inanimate categories of sounds were selected because
-  they were less likely to have lexicalized onomatopoeic forms already in
-  English, and they were assumed to be less familiar and harder to imitate. We
-  reduced this initial set to the final sample of 16 seeds using an odd-one-out
-  norming procedure (N = 105 MTurk participants) designed to remove any sounds
-  that were outliers within each category. The results of this norming
-  procedure and selection criteria are provided in the Supplemental Materials.
-
-  \subsection*{Collecting imitations}
-
-  We collected the imitations online.
 ---

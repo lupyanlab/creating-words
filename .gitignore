@@ -6,6 +6,7 @@
 # reproducible
 figs/
 .cache/
+methods.yaml
 
 # latex
 *.tex
