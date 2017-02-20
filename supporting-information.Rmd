@@ -1,0 +1,41 @@
+---
+title: "Creating words from iterated vocal imitation"
+bibliography: telephone.bib
+output:
+  pdf_document:
+    citation_package: natbib
+    template: templates/pnas-supporting-information.tex
+    keep_tex: true
+---
+
+```{r config, include=FALSE}
+library(knitr)
+library(tidyverse)
+library(lme4)
+
+opts_chunk$set(
+  echo=FALSE,
+  message=FALSE,
+  warning=FALSE,
+  results="hide",
+  fig.path="figs/",
+  fig.width=6,
+  fig.height=6,
+  out.width="7.2cm",  # 8.7 is max
+  dpi=144,
+  cache=TRUE,
+  cache.path=".cache/"
+)
+```
+
+# Selecting seed sounds
+
+# Collecting vocal imitations
+
+# Matching imitations to seeds
+
+# Collecting transcriptions of imitations
+
+# Matching transcriptions to seeds
+
+# Learning transcriptions as category labels

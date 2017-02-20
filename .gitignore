@@ -22,3 +22,4 @@ methods.yaml
 
 # OS
 .DS_Store
+.Rproj.user
