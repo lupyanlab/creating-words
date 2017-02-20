@@ -183,7 +183,7 @@ lmer_mod_results <- function(lmertest_mod, param) {
   results <- broom::tidy(lmertest_mod, effects = "fixed") %>%
     filter(term == param) %>%
     as.list()
-  
+
   lmertest_summary <- lmerTest::summary(lmertest_mod) %>%
     .$coefficients %>%
     as.data.frame()
@@ -191,16 +191,16 @@ lmer_mod_results <- function(lmertest_mod, param) {
   lmertest_results <- lmertest_summary %>%
     filter(term == param) %>%
     as.list()
-  
+
   results$df <- lmertest_results[["df"]]
   results$p_value <- lmertest_results[["Pr(>|t|)"]]
-  
+
   if (results$p_value < 0.001) {
     results$p_value_str <- "_p_ < 0.001"
   } else {
     results$p_value_str <- paste("_p_ = ", round(results$p_value, 3))
   }
-  
+
   sprintf("_b_ = %.2f (%.2f), _t_(%.1f) = %.2f, %s",
           results$estimate, results$std.error, results$df, results$statistic, results$p_value_str)
 }
@@ -210,13 +210,13 @@ glmer_mod_results <- function(glmer_mod, param, odds = FALSE) {
   results <- broom::tidy(glmer_mod, effects = "fixed") %>%
     filter(term == param) %>%
     as.list()
-  
+
   if (results$p.value < 0.001) {
     results$p_value_str <- "_p_ < 0.001"
   } else {
     results$p_value_str <- paste("_p_ = ", round(results$p.value, 3))
   }
-  
+
   if (odds == TRUE) {
     results["odds"] <- log(results$estimate)
     formatted = sprintf("_b_ = %.2f (%.2f) log-odds, odds = %.2f, _z_ = %.2f, %s",
@@ -265,6 +265,10 @@ gg_similarity_judgments <- ggplot(similarity_judgments_means) +
   theme(legend.position = "top")
 
 # ---- matching-imitations -----------------------------------------------------
+q_true_seed <- read_graphviz("true-seed", "wordsintransition")
+q_category_match <- read_graphviz("category-match", "wordsintransition")
+q_specific_match <- read_graphviz("specific-match", "wordsintransition")
+
 imitation_matches_overall_mod <- glmer(
   is_correct ~ offset(chance_log) + generation_1 + (generation_1|chain_name/seed_id),
   family = "binomial", data = imitation_matches
@@ -305,7 +309,7 @@ gg_match_to_seed <- ggplot(imitation_matches) +
   base_theme +
   theme(legend.position = c(0.8, 0.85))
 
-# ---- transcriptions
+# ---- transcriptions ------------------------------------------------------------
 orthographic_distance_mod <- lmer(distance ~ message_c + (message_c|chain_name/seed_id),
                                   data = transcription_distances)
 
@@ -336,6 +340,7 @@ gg_distance <- ggplot(transcription_distances) +
   base_theme +
   theme(legend.position = "none")
 
+# ---- matching-transcriptions ---------------------------------------------------
 transcription_matches_last_gen_mod <- glmer(
   is_correct ~ offset(chance_log) + (1|word_category/seed_id),
   family = "binomial", data = transcription_matches
@@ -389,7 +394,6 @@ gg_match_transcriptions <- ggplot(preds) +
   theme(legend.position = "none",
         panel.grid.major.x = element_blank(),
         panel.grid.minor.x = element_blank())
-gg_match_transcriptions
 
 # ---- category-learning
 first_last_gen <- filter(learning_sound_names, message_type != "sound_effect") %>%

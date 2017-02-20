@@ -16,10 +16,19 @@ methods.yaml
 *.bbl
 *.dvi
 *.xwm
+*.aux
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
 
 # R/RStudio
 .Rhistory
-
-# OS
-.DS_Store
 .Rproj.user
+
+# os
+.DS_Store
+
+# editor
+*.swp

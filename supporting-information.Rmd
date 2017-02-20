@@ -27,6 +27,55 @@ opts_chunk$set(
   cache.path=".cache/"
 )
 ```
+```{r, include=FALSE}
+library(tidyverse)
+library(magrittr)
+library(knitr)
+library(wordsintransition)
+data("subjects")
+```
+
+```{r table1, results="asis"}
+subjects_table <- subjects %>%
+  group_by(experiment) %>%
+  summarize(n = length(unique(subj_id)))
+
+lsn_subjs <- data_frame(
+  experiment = "learning_sound_names",
+  n = length(unique(learning_sound_names$subj_id))
+)
+
+subjects_table %<>%
+  bind_rows(lsn_subjs)
+
+experiment_levels <- c(
+  "imitations",
+  "imitation_matches",
+  "transcriptions",
+  "transcription_matches",
+  "learning_sound_names"
+)
+experiment_labels <- c(
+  "Collecting imitations",
+  "Matching imitations to seeds",
+  "Collecting transcriptions",
+  "Matching transcriptions to seeds",
+  "Category learning"
+)
+experiment_map <- data_frame(
+  experiment = experiment_levels,
+  experiment_label = factor(experiment_levels, levels = experiment_levels, labels = experiment_labels)
+)
+
+subjects_table %<>%
+  left_join(experiment_map) %>%
+  arrange(experiment_label) %>%
+  mutate(`#` = 1:n())
+
+subjects_table %>%
+  select(`#`, Experiment = experiment_label, N = n) %>%
+  kable(format = "latex", booktabs = TRUE, caption = "Experiment sample sizes. Participants in Experiments 1-4 were recruited via Amazon Mechanical Turk and paid to participate in an online study. Participants in Experiment 5 were University of Wisconsin-Madison undergraduates who received course credit in exchange for participation.")
+```
 
 # Selecting seed sounds
 
@@ -39,3 +88,9 @@ opts_chunk$set(
 # Matching transcriptions to seeds
 
 # Learning transcriptions as category labels
+
+To determine which transcriptions to test as category labels, we first selected only those transcriptions which had above chance matching performance when matching back to the original seeds. Then we excluded transcriptions that had less than two unique characters or were over 10 characters long, and sampled from both first and last generation imitations to reach a final set that controlled for overall matching accuracy.
+
+Participants learned, through trial-and-error, the names for four different categories of sounds. On each trial participants listened to one of the 16 environmental sounds used as seeds and then saw a novel word--a transcription of one of the imitations. Participants responded by pressing a green button if the label was the correct label and a red button otherwise. They received accuracy feedback after each trial.
+
+The experiment was divided into blocks so that participants had repeated exposure to each sound and the novel labels multiple times within a block. At the start of a new block, participants received four new sounds from the same four categories (e.g., a new zipping sound, a new water-splash sound, etc.) that they had not heard before, and had to associate these sounds with the same novel labels from the previous blocks. The extent to which their performance declined at the start of each block serves as a measure of how well the label they associated with the sound worked as a label for the category.

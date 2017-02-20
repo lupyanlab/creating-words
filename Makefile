@@ -4,7 +4,6 @@ DIR := submissions/$(NAME)
 all : creating-words.pdf supporting-information.pdf
 creating-words.pdf : creating-words.tex
 	latexmk -pdf -pdflatex=/Library/TeX/texbin/pdflatex creating-words.tex
-	latexmk -c
 creating-words.tex : creating-words.utf.md methods.yaml
 	pandoc creating-words.utf8.md pnas-sections.yaml methods.yaml --to latex --output creating-words.tex --template templates/pnas.tex --natbib
 creating-words.docx : creating-words.Rmd
@@ -28,4 +27,5 @@ submit : creating-words.pdf creating-words.docx supporting-information.pdf suppo
 reset :
 	rm -rf .cache/ figs/
 clean :
-	rm -f *.bbl *.xwm *.md *.tex
+	latexmk -c || true
+	rm -f *.bbl *.xwm *.md *.tex *.aux *.fdb_latexmk *.fls *.log *.out
