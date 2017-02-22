@@ -22,4 +22,6 @@ Participants were instructed to write down what they heard as a word so that the
 
 ## Matching transcriptions to seeds
 
+Instead of listening to imitations, participants now read a transcription of an imitation, which they were told was an invented word. They were instructed that the word was invented to describe one of four presented sounds, and they had to guess which one.
+
 ## Learning transcriptions as category labels
