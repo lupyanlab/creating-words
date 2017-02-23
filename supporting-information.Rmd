@@ -11,7 +11,6 @@ output:
 ```{r config, include=FALSE}
 library(knitr)
 library(tidyverse)
-library(lme4)
 
 opts_chunk$set(
   echo=FALSE,
@@ -26,66 +25,86 @@ opts_chunk$set(
   cache=TRUE,
   cache.path=".cache/"
 )
-```
-```{r, include=FALSE}
-library(tidyverse)
-library(magrittr)
-library(knitr)
-library(wordsintransition)
-data("subjects")
+
+# Read all *.R files in the R/ directory in as knitr chunks
+list.files("R", "*.R", full.names = TRUE) %>% sapply(read_chunk)
 ```
 
-```{r table1, results="asis"}
-subjects_table <- subjects %>%
-  group_by(experiment) %>%
-  summarize(n = length(unique(subj_id)))
-
-lsn_subjs <- data_frame(
-  experiment = "learning_sound_names",
-  n = length(unique(learning_sound_names$subj_id))
-)
-
-subjects_table %<>%
-  bind_rows(lsn_subjs)
-
-experiment_levels <- c(
-  "imitations",
-  "imitation_matches",
-  "transcriptions",
-  "transcription_matches",
-  "learning_sound_names"
-)
-experiment_labels <- c(
-  "Collecting imitations",
-  "Matching imitations to seeds",
-  "Collecting transcriptions",
-  "Matching transcriptions to seeds",
-  "Category learning"
-)
-experiment_map <- data_frame(
-  experiment = experiment_levels,
-  experiment_label = factor(experiment_levels, levels = experiment_levels, labels = experiment_labels)
-)
-
-subjects_table %<>%
-  left_join(experiment_map) %>%
-  arrange(experiment_label) %>%
-  mutate(`#` = 1:n())
-
-subjects_table %>%
-  select(`#`, Experiment = experiment_label, N = n) %>%
-  kable(format = "latex", booktabs = TRUE, caption = "Experiment sample sizes. Participants in Experiments 1-4 were recruited via Amazon Mechanical Turk and paid to participate in an online study. Participants in Experiment 5 were University of Wisconsin-Madison undergraduates who received course credit in exchange for participation.")
+```{r 0-setup, include=FALSE}
 ```
 
 # Selecting seed sounds
 
+```{r 1-selecting-seed-sounds, include=FALSE}
+```
+
+Our goal in selecting sounds to serve as seeds in the transmission chains was to
+pick multiple sounds within a few different categories such that each category 
+member was approximately equally distinguishable from the other sounds within 
+the same category. To do this, we started with an initial set of 6 categories 
+and 6 sounds in each category and conducted 2 rounds of "odd one out" norming to
+reduce the initial set to a final set of 16 seed sounds: 4 sounds in each of 4
+categories.
+
+Participants in the odd one out norming procedure listened to the sounds in each
+category and picked the one that they thought was **the most different** from
+the others. In the first round of norming, participants listened to 6 sounds on
+a given trial. We removed the sounds in each category that were the most
+different from the others, and repeated the norming process again with 5 sounds
+in each category. The resulting sounds that were selected in each category are
+considered to be a set of equally distinguishable category members.
+
+```{r 1-odd-one-out-round-1, echo=FALSE, fig.height=10, fig.cap="Results of the first round of seed norming. After collecting these data, two sounds were removed from each category and the norming procedure was conducted again."}
+gg_seed_selection_round_1
+```
+
+```{r 1-odd-one-out-round-2, echo=FALSE, fig.height=10, fig.cap="Results of the second round of seed norming. After collecting these data, four categories of sounds were selected to use in the main experiment."}
+gg_seed_selection_round_2
+```
+
+## Final seed sounds
+
+```{r 1-final-seeds, echo=FALSE, results="asis"}
+# The audio only works with html obviously but whatever goes between
+# the audio tags will be rendered in pdf/word outputs.
+player <- '<audio src="%s" controls>%s</audio>'
+caption <- "Environmental sounds used as \"seed messages\" in the experiment."
+
+final_seeds %>%
+  mutate(
+    url = paste0('http://sapir.psych.wisc.edu/telephone/seeds/', filename),
+    # A markdown link is required in order to render properly in pdf/word.
+    link = sprintf('[%s](%s)', filename, url),
+    play = sprintf(player, url, link)
+  ) %>%
+  select(Category = category, Exemplar = url) %>%
+  arrange(Category) %>%
+  kable(format = "latex", booktabs = TRUE, caption = caption)
+```
+
 # Collecting vocal imitations
+
+```{r 2-collect-imitations-gui, fig.width=3, fig.height=3, fig.cap="The interface for the telephone game. Initially the only action open to players is to hear the message by clicking the top sound icon. After listening to the message once, they could then initiate a recording of their imitation by clicking the bottom sound icon. Turning the recorder off submitted their response, and a new message was loaded."}
+img("collect-imitations-gui")
+```
 
 # Matching imitations to seeds
 
+```{r 3-match-imitations-gui, fig.width=3, fig.height=3}
+img("match-imitations-gui")
+```
+
 # Collecting transcriptions of imitations
 
+```{r 4-transcribe-imitations-gui, fig.width=3, fig.height=3}
+img("match-imitations-gui")
+```
+
 # Matching transcriptions to seeds
+
+```{r 4-match-transcriptions-gui, fig.width=3, fig.height=3}
+img("match-imitations-gui")
+```
 
 # Learning transcriptions as category labels
 

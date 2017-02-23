@@ -20,6 +20,10 @@ We selected inanimate categories of sounds because they were less likely to have
 
 Participants (_N_ = `r n_imitators`) were paid to participate in an online version of the children's game of "Telephone". The instructions informed participants that they would hear some sound and their task is to reproduce it as accurately as possible using their computer microphone. Full instructions are provided in the Supporting Information. Participants listened to and imitated 4 sounds. Participants received one sound from each of the four categories of sounds drawn at random such that participants were unlikely to hear the same person more than once. Recordings that were too quiet (less than `-30` dBFS) were not allowed. Imitations were monitored by an experimenter to catch any gross errors in recording before they were heard by the next generation of imitators. The experimenter also blocked sounds that violated the rules of the experiment, e.g., by saying something in English. A total of `r n_removed` imitations were removed.
 
+## Measuring acoustic similarity
+
+Acoustic similarity was measured by having trained research assistants listen to pairs of sounds and rate their subjective similarity. On each trial, raters heard two sounds played in succession. Then they rated the similarity between the sounds on a 7-point scale. They were instructed that a 7 on this scale meant the sounds were nearly identical, whereas a 1 meant the sounds were entirely different and would never be confused. Raters were encouraged to use as much of the scale as they could while maximizing the likelihood that, if they did this procedure again, they would reach the same judgments.
+
 ## Matching imitations to seeds
 
 Participants (_N_ = `r n_matching_imitations`) listened to imitations and guessed which seeds they came from. 

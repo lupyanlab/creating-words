@@ -24,8 +24,6 @@ abstract: |
 
 ```{r config, include=FALSE}
 library(knitr)
-library(tidyverse)
-library(lme4)
 
 opts_chunk$set(
   echo=FALSE,
@@ -33,15 +31,14 @@ opts_chunk$set(
   warning=FALSE,
   results="hide",
   fig.path="figs/",
-  fig.width=7.2,
+  fig.width=8.7,
   fig.height=6,
-  out.width="7.2cm",  # 8.7 is max
+  fig.align="center",
+  out.width="8.7cm",  # max is 8.7cm
   dpi=144,
   cache=TRUE,
   cache.path=".cache/"
 )
-
-library(wordsintransition)
 
 read_chunk("creating-words.R")
 ```
@@ -127,14 +124,14 @@ draw_graphviz("definitions", "wordsintransition")
 
 # Results {-}
 
-A summary of our results is as follows. Measuring the acoustic similarity of subsequent imitations revealed that imitations collected in the transmission chain experiment became more similar to one another over generations of repetition. As imitations were repeated, they were harder to match back to the original sounds, but within-category information was lost more readily than between-category information. Similar results are found when analyzing transcriptions of the imitations. Transcription agreement increases over generations, and transcriptions of even last generation imitations can also be matched above chance back to the category of environmental sounds. When transcriptions are learned as novel category labels, transcriptions of later generation imitations were easier to learn than transcriptions from first generation imitations. These results describe a process by which an imitation of an environmental event may transition to a more word-like and categorical form through unguided repetition.
+A summary of our results is as follows. Measuring the acoustic similarity of subsequent imitations revealed that imitations became more similar to one another over generations of repetition. The more times imitations were repeated, the harder they were to match back to the original sounds, and within-category information was lost more readily than between-category information. Similar results are found when analyzing transcriptions of the imitations. Transcription agreement increases over generations of imitation, and transcriptions of even last generation imitations can be matched back to the category of environmental sounds. When transcriptions of first and last generation imitations are learned as novel category labels, last generation transcriptions were easier to learn than first generation transcriptions. These results describe a process by which an imitation of an environmental sound may transition to a more word-like and categorical form through unguided repetition.
 
 ## Imitations stabilized over generations
 
 ```{r collecting-imitations, include=FALSE}
 ```
 
-We collected a total of `r n_all_imitations` imitations from `r n_imitators` in an online study. `r n_removed` imitations were removed for bad quality or violating the rules of the experiment (e.g., saying something in English), leaving `r n_final_imitations` imitations along `r n_branches` contiguous transmission chains for analysis. Trained research assistants coded these imitations for acoustic similarity using a blinded, pairwise comparison procedure (see Methods; `intercode reliability`). Imitations from later generations were rated as being more similar to one another than imitations from earlier generations, `r lmer_mod_results(similarity_judgments_lmertest_mod, "edge_generation_n")` (Fig. 2).
+We collected a total of `r n_all_imitations` imitations from `r n_imitators` in an online study. `r n_removed` imitations were removed for bad audio quality or violating the rules of the experiment (e.g., saying something in English), leaving `r n_final_imitations` imitations along `r n_branches` contiguous transmission chains for analysis. Trained research assistants coded these imitations for acoustic similarity using a blinded, pairwise comparison procedure (see Methods; `intercode reliability`). Imitations from later generations were rated as being more similar to one another than imitations from earlier generations, `r lmer_mod_results(similarity_judgments_lmertest_mod, "edge_generation_n")` (Fig. 2).
 
 ```{r fig2, fig.cap="Increase in acoustic similarity over generations. Points depict mean acoustic similarity ratings for imitations in each category of environmental sounds. The predictions of the linear mixed effects model with random effects for rater and category are shown, with error bands denoting +/- 1 standard error of the model predictions."}
 gg_similarity_judgments

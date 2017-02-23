@@ -32,6 +32,7 @@ n_norming_subjects <- count_unique(sound_similarity_4, "workerId") +
 
 data("imitations")
 n_all_imitations <- count_imitations(imitations)
+n_imitators <- count_subjects(imitations)
 n_removed <- imitations %>%
   filter(rejected == "True") %>%
   count_imitations()
