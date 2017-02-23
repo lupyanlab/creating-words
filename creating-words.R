@@ -17,12 +17,20 @@ add_chance <- function(frame) {
     )
 }
 
-count_imitations <- . %>% .$message_id %>% unique() %>% length()
-count_subjects <- . %>% .$subj_id %>% na.omit() %>% unique() %>% length()
+count_unique <- function(frame, id_col) {
+  frame[[id_col]] %>% na.omit() %>% unique() %>% length()
+}
+count_subjects   <- . %>% count_unique("subj_id")
+count_imitations <- . %>% count_unique("message_id")
+
+# Selecting seed sounds
+data("sound_similarity_4")
+data("sound_similarity_6")
+n_norming_subjects <- count_unique(sound_similarity_4, "workerId") +
+                      count_unique(sound_similarity_6, "workerId")
 
 
 data("imitations")
-
 n_all_imitations <- count_imitations(imitations)
 n_removed <- imitations %>%
   filter(rejected == "True") %>%
