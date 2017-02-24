@@ -1,5 +1,6 @@
 # ---- setup
 library(tidyverse)
+library(stringr)
 library(grid)
 library(magrittr)
 library(lme4)
@@ -9,17 +10,6 @@ library(crotchet)
 
 library(wordsintransition)
 
-add_chance <- function(frame) {
-  frame %>%
-    mutate(
-      chance = 0.25,
-      chance_log = log(chance)
-    )
-}
-
-count_unique <- function(frame, id_col) {
-  frame[[id_col]] %>% na.omit() %>% unique() %>% length()
-}
 count_subjects   <- . %>% count_unique("subj_id")
 count_imitations <- . %>% count_unique("message_id")
 
@@ -49,88 +39,116 @@ acoustic_similarity_judgments %<>%
   recode_edge_generations() %>%
   determine_trial_id()
 
+
 data("imitation_matches")
+n_all_matching_imitations <- count_subjects(imitation_matches)
+failed_matching_imitations_catch_trial <- imitation_matches %>%
+  filter(question_type == "catch_trial",
+         is_correct == 0) %>%
+  .$subj_id %>%
+  unique()
+n_imitation_matches_failed_catch_trial <- length(failed_matching_imitations_catch_trial)
 imitation_matches %<>%
-  filter(question_type != "catch_trial") %>%
+  filter(
+    question_type != "catch_trial",
+    !(subj_id %in% failed_matching_imitations_catch_trial)
+  ) %>%
   recode_generation() %>%
   recode_survey_type() %>%
   add_chance()
-
 n_matching_imitations <- count_subjects(imitation_matches)
 
-data("transcriptions")
 
+data("transcriptions")
+transcription_catch_trials <- transcriptions %>%
+  filter(is_catch_trial == 1) %>%
+  select(subj_id, chain_name, text)
+unique(transcription_catch_trials[,c("chain_name")]) %>%
+  arrange(chain_name) %>%
+  mutate(answer = c("alligator", "camel", "elephant")) %>%
+  left_join(transcription_catch_trials, .) %>%
+  mutate(
+    text = str_to_lower(text),
+    is_correct = str_detect(text, answer)
+  ) %>%
+  filter(is_correct == FALSE)
+
+n_all_transcribers <- count_subjects(transcriptions)
+transcription_bad_subjs <- c("A3A8P4UR9A0DWQ", "AAMLJUUYM484")
+transcriptions %<>% filter(!(subj_id %in% transcription_bad_subjs))
+n_bad_transcribers <- length(transcription_bad_subjs)
 n_transcribers <- count_subjects(transcriptions)
+n_transcriptions <- nrow(transcriptions)
+n_english_transcriptions <- transcription_frequencies %>%
+  filter(is_english == 1) %>%
+  select(text) %>%
+  nrow()
+
 n_imitations_transcribed <- count_imitations(transcriptions)
 n_transcriptions_per_imitation <- transcriptions %>%
   count(message_id) %>%
   .$n %>%
   mean() %>%
   round(0)
-n_transcriptions <- nrow(transcriptions)
+
+
+data("transcription_frequencies")
+n_created_words <- transcription_frequencies %>%
+  filter(is_english == 0) %>%
+  nrow()
+
 
 data("transcription_distances")
-data("transcription_matches")
-
-n_transcription_match_subjs <- count_subjects(transcription_matches)
-
 message_id_map <- select(imitations, message_id, chain_name, seed_id, generation)
-
 transcription_distances %<>%
   left_join(message_id_map) %>%
   recode_transcription_frequency() %>%
   recode_message_type() %>%
   filter(message_type != "sound_effect")
 
+data("transcription_matches")
+n_all_transcription_match_subjs <- count_subjects(transcription_matches)
+transcription_match_failed_catch_trial <- transcription_matches %>%
+  filter(question_type == "catch_trial", is_correct == 0) %>%
+  .$subj_id %>%
+  unique()
+n_transcription_match_subjs_failed_catch_trial <- length(transcription_match_failed_catch_trial)
+
 transcription_matches %<>%
   recode_question_type() %>%
   recode_message_type() %>%
   recode_version() %>%
-  add_chance()
+  add_chance() %>%
+  filter(
+    message_type != "sound_effect",
+    !(subj_id %in% transcription_match_failed_catch_trial)
+  )
 
-bad_subj_ids <- transcription_matches %>%
-  filter(question_type == "catch_trial", is_correct == 0) %>%
-  .$subj_id %>% unique
-
-transcription_matches %<>%
-  filter(question_type != "catch_trial",
-         !(subj_id %in% bad_subj_ids),
-         message_type != "sound_effect")
-
-recode_word_type <- . %>%
- rename(message_type = word_type) %>%
- recode_message_type()
+n_transcription_match_subjs <- count_subjects(transcription_matches)
 
 data("learning_sound_names")
-n_lsn_subjs <- count_subjects(learning_sound_names)
+n_all_lsn_subjs <- count_subjects(learning_sound_names)
+n_lsn_words <- count_unique(learning_sound_names, "word")
 
 learning_sound_names %<>%
  mutate(rt = ifelse(is_correct == 1, rt, NA),
         is_error = 1 - is_correct) %>%
  mutate(word_category_by_block_ix = paste(word_category, block_ix, sep = ":")) %>%
- recode_word_type() %>%
+ recode_lsn_word_type() %>%
  mutate(
    block_ix_sqr = block_ix^2
  )
 
-lsn_transition <- learning_sound_names %>%
- label_trial_in_block()
+lsn_outliers <- c("LSN102", "LSN148", "LSN104", "LSN147")
+n_lsn_outliers <- lsn_outliers
+learning_sound_names %<>% filter(!(subj_id %in% lsn_outliers))
+n_lsn_subjs <- count_subjects(learning_sound_names)
 
-trials_per_block <- max(lsn_transition$trial_in_block)
+trials_per_block <- 24
 n_trials <- 6
 
-recode_block_transition <- function(frame) {
- block_transition_levels <- c("before", "after")
- block_transition_map <- data_frame(
-   block_transition = block_transition_levels,
-   block_transition_label = factor(block_transition_levels,
-                                   levels = block_transition_levels),
-   block_transition_c = c(-0.5, 0.5)
- )
- left_join(frame, block_transition_map)
-}
-
-lsn_transition %<>%
+lsn_transition <- learning_sound_names %>%
+ label_trial_in_block() %>%
  bin_trials("block_transition", "trial_in_block",
             before = (trials_per_block-n_trials):trials_per_block,
             after = 1:n_trials) %>%
@@ -140,9 +158,6 @@ lsn_transition %<>%
    message_type != "sound_effect"
  ) %>%
  recode_block_transition()
-
-outliers <- c("LSN102", "LSN148", "LSN104", "LSN147")
-learning_sound_names %<>% filter(!(subj_id %in% outliers))
 
 # ggplot theme, colors, and scales ---------------------------------------------
 base_theme <- theme_minimal(base_size=14)

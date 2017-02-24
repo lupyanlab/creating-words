@@ -26,14 +26,22 @@ Acoustic similarity was measured by having trained research assistants listen to
 
 ## Matching imitations to seeds
 
-Participants (_N_ = `r n_matching_imitations`) listened to imitations and guessed which seeds they came from. 
+Participants (_N_ = `r n_all_matching_imitations`) listened to imitations and guessed which seeds they came from. Specifically they were instructed to select which of four possible sounds they thought the person was trying to imitate. No feedback was provided. `r n_imitation_matches_failed_catch_trial` participants failed a catch trial and were removed from the final analyses, leaving `r n_matching_imitations` participants in the final sample.
+
+Different participants were assigned different seed sounds corresponding to the three question types depicted in Fig. 3. Participants in the True seed and Category match conditions were provided four seeds from different categories. Participants in the Specific match condition were provided four seeds from the same category. All `r n_final_imitations` were tested in each of the three conditions.
 
 ## Collecting transcriptions of imitations
 
-Participants were instructed to write down what they heard as a word so that the written word would sound as much like the message as possible.
+Participants (_N_ = `r n_transcribers`) listened to imitations and were instructed to write down what they heard as a single word so that the written word would sound as much like the message as possible. Imitations were drawn at random from the first and last three generations of all imitations collected in the Telephone game. As a control, we also had participants "transcribe" words directly from listening to the environmental seed sounds. Transcriptions from participants who failed a catch trial were excluded (_N_ = `r n_bad_transcribers`), leaving `r n_transcriptions` for analysis. Of these, `r n_english_transcriptions` were removed because they contained English words, which was a violation of the instructions of the experiment.
 
 ## Matching transcriptions to seeds
 
-Instead of listening to imitations, participants now read a transcription of an imitation, which they were told was an invented word. They were instructed that the word was invented to describe one of four presented sounds, and they had to guess which one.
+Participants (_N_ = `r n_all_transcription_match_subjs`) completed a modified version of the "Guess the seed" game. Instead of listening to imitations, participants now read a transcription of an imitation, which they were told was an invented word. They were instructed that the word was invented to describe one of four presented sounds, and they had to guess which one. Of all the unique transcriptions that were collected for each sound (imitations and seed sounds), only the top 4 most frequent transcriptions were used in this experiment. `r n_transcription_match_subjs_failed_catch_trial` participants failed a catch trial and were excluded, leaving `r n_transcription_match_subjs` participants in the final sample.
 
 ## Learning transcriptions as category labels
+
+Our transmission chain design and subsequent transcription procedure created `r n_created_words` novel words. From these, we sampled words transcribed from first and last generation imitations as well as from seed sounds that were equated in length and overall matching accuracy. Specifically, we removed transcriptions that contained less than 3 unique characters and transcriptions that were over 10 characters long. Of the remaining transcriptions, a sample of `r n_lsn_words` were selected to have approximately equal means and variances of overall matching accuracy.
+
+Participants (_N_ = `r n_all_lsn_subjs`) were randomly assigned four novel names for four categories of environmental sounds. They learned the referents for these names in a trial-and-error category learning experiment. On each trial, participants heard one of the 16 seed sounds and then saw a word--one of the transcriptions of the imitations. They responded yes or no using a gamepad as to whether the sound and the word went together. Initially they were forced to guess, but because they received feedback on their performance, over trials they learned the names of the categories. `r n_lsn_subjs` outlier participants were excluded from the final sample due to high error rates and slow reaction times.
+
+Participants categorized all 16 seed sounds over the course of the experiment, but they learned them in blocks of 4 sounds at a time. Within each block, participants heard the same four sounds and the same four words multiple times, with a 50% probability of the sound matching the word. At the start of a new block of trials, participants heard four new sounds they hadn't heard before, and had to learn to associate these new sounds with the words they had learned in the previous blocks.
