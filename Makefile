@@ -11,8 +11,9 @@ creating-words.docx : creating-words-with-methods.Rmd
 creating-words-with-methods.Rmd : creating-words.Rmd methods.utf8.md
 	sed '1,5d' methods.utf8.md > methods.md
 	sed 's/References/Methods/' creating-words.Rmd > creating-words-with-methods.Rmd
-	sed -i bk '/# Methods/r methods.md' creating-words-with-methods.Rmd
+	sed -i .bk '/# Methods/r methods.md' creating-words-with-methods.Rmd
 	echo "\n# References {-}" >> creating-words-with-methods.Rmd
+	rm creating-words-with-methods.Rmd.bk
 creating-words.utf.md : creating-words.Rmd
 	Rscript -e "rmarkdown::render('creating-words.Rmd', clean = FALSE, run_pandoc = FALSE)"
 methods.yaml : methods.utf8.md
