@@ -364,6 +364,32 @@ gg_distance <- ggplot(transcription_distances) +
   base_theme +
   theme(legend.position = "none")
 
+transcription_examples <- transcription_matches %>%
+  filter(!str_detect(word, "[\ *-]")) %>%
+  mutate(word = str_to_lower(word)) %>%
+  group_by(word_category, seed_id, message_id, word, message_type) %>%
+  summarize(match_accuracy = mean(is_correct)) %>%
+  ungroup() %>%
+  group_by(word_category, seed_id, message_type) %>%
+  arrange(desc(match_accuracy), seed_id, message_type) %>%
+  mutate(rank = 1:n()) %>%
+  filter(rank == 1) %>%
+  arrange(word_category, message_type) %>%
+  select(-message_id, -match_accuracy) %>%
+  spread(message_type, word) %>%
+  ungroup() %>%
+  select(-rank) %>%
+  group_by(word_category) %>%
+  mutate(seed_id = 1:n()) %>%
+  ungroup() %>%
+  select(
+    Category = word_category,
+    Seed = seed_id,
+    `First generation` = first_gen_imitation,
+    `Last generation` = last_gen_imitation
+  )
+  
+
 # ---- matching-transcriptions ---------------------------------------------------
 transcription_matches_last_gen_mod <- glmer(
   is_correct ~ offset(chance_log) + (1|word_category/seed_id),
