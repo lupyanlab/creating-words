@@ -7,19 +7,7 @@ output:
     template: templates/pnas.tex
     keep_tex: true
 abstract: |
-  We report the results of a large-scale (_N_ = 1571) experiment to investigate
-  whether spoken words can emerge from the process of repeated imitation.
-  Participants played a version of the children’s game “Telephone”. The first
-  generation was asked to imitate recognizable environmental sounds (e.g., glass
-  breaking, water splashing); subsequent generations imitated the imitators for
-  a total of 8 generations. We then examined whether the vocal imitations became
-  more stable and word-like, retained a resemblance to the original sound, and
-  became more suitable as learned category labels. The results showed (1) the
-  imitations became progressively more word-like, (2) even after 8 generations,
-  they could be matched above chance to the category of environmental sound that motivated
-  them, and (3) imitations from later generations were more effective as learned
-  category labels. These results show how repeated imitation can create
-  progressively more word-like forms while retaining a semblance of iconicity.
+  We report the results of a large-scale (_N_ = 1571) experiment to investigate whether spoken words can emerge from the process of repeated imitation. Participants played a version of the children’s game “Telephone”. The first generation was asked to imitate recognizable environmental sounds (e.g., glass breaking, water splashing); subsequent generations imitated the imitators for a total of 8 generations. We then examined whether the vocal imitations became more stable and word-like, retained a resemblance to the original sound, and became more suitable as learned category labels. The results showed (1) the imitations became progressively more word-like, (2) even after 8 generations, they could be matched above chance to the category of environmental sound that motivated them, and (3) imitations from later generations were more effective as learned category labels. These results show how repeated imitation can create progressively more word-like forms while retaining a semblance of iconicity.
 ---
 
 ```{r config, include=FALSE}
@@ -46,77 +34,17 @@ read_chunk("creating-words.R")
 ```{r setup, include=FALSE}
 ```
 
-People have long pondered the origins of languages, especially the
-words that compose them. For example, both Plato in his _Cratylus_ dialogue
-[@Plato:1999uk] and John Locke in his _Essay Concerning Human Understanding_
-[@Locke:1948eu] examined the "naturalness" of words--whether they are somehow
-imitative of their meaning. Some theories of language evolution have
-hypothesized that vocal imitation played an important role in generating the
-first words of spoken languages [e.g., @Brown:1955wy; @Donald:2016kd;
-@Imai:2014dea; @Perlman:2015ip]; early humans may originally
-have referred to a predatory cat by imitating its roar, or to the discovery of a
-stream by imitating the sound of rushing water. Such vocal imitation might have
-served to clarify the referent of a vocalization and eventually establish a
-mutually understood word. In this study, we investigate the formation of
-onomatopoeic words--imitative words that resemble the sounds to which they
-refer. We ask whether onomatopoeic words can be formed gradually and without
-instruction simply from repeating the same imitation over generations of
-speakers.
+People have long pondered the origins of languages, especially the words that compose them. For example, both Plato in his _Cratylus_ dialogue [@Plato:1999uk] and John Locke in his _Essay Concerning Human Understanding_ [@Locke:1948eu] examined the "naturalness" of words--whether they are somehow imitative of their meaning. Some theories of language evolution have hypothesized that vocal imitation played an important role in generating the first words of spoken languages [e.g., @Brown:1955wy; @Donald:2016kd; @Imai:2014dea; @Perlman:2015ip]; early humans may originally have referred to a predatory cat by imitating its roar, or to the discovery of a stream by imitating the sound of rushing water. Such vocal imitation might have served to clarify the referent of a vocalization and eventually establish a mutually understood word. In this study, we investigate the formation of onomatopoeic words--imitative words that resemble the sounds to which they refer. We ask whether onomatopoeic words can be formed gradually and without instruction simply from repeating the same imitation over generations of speakers.
 
-Onomatopoeic words appear to be a universal lexical category found across the
-world's languages [@Dingemanse:2012fc]. Languages all have conventional words
-for animal vocalizations and various environmental sounds. [@Rhodes:1994au], for
-example, documented a repertoire of over 100 onomatopoeic words in English,
-which he notes exist along a continuum from "wild" to "tame". People often use
-more wild vocal imitations and other sound effects during demonstrative
-discourse, especially when producing quotations [@Blackwell:2015ix;
-@Clark:1990cl]. Wild words have a more imitative phonology whereas tame words
-take on more standard phonology of other English words. In some cases, words
-that begin as wild imitations of sounds become fully lexicalized and integrated
-into the broader linguistic system, when they behave like more "ordinary" words
-that can undergo typical morphological processes. Examples are English words
-like "crack" or the recently adapted "ping".
+Onomatopoeic words appear to be a universal lexical category found across the world's languages [@Dingemanse:2012fc]. Languages all have conventional words for animal vocalizations and various environmental sounds. [@Rhodes:1994au], for example, documented a repertoire of over 100 onomatopoeic words in English, which he notes exist along a continuum from "wild" to "tame". People often use more wild vocal imitations and other sound effects during demonstrative discourse, especially when producing quotations [@Blackwell:2015ix; @Clark:1990cl]. Wild words have a more imitative phonology whereas tame words take on more standard phonology of other English words. In some cases, words that begin as wild imitations of sounds become fully lexicalized and integrated into the broader linguistic system, when they behave like more "ordinary" words that can undergo typical morphological processes. Examples are English words like "crack" or the recently adapted "ping".
 
-However, not all researchers agree that vocal imitation has any significant
-role in language. For instance, [@Pinker:2005cv] suggested that, “Humans are
-not notably talented at vocal imitation in general, only at imitating speech
-sounds (and perhaps melodies). For example, most humans lack the ability (found
-in some birds) to convincingly reproduce environmental sounds … Thus ‘capacity
-for vocal imitation’ in humans might be better described as a capacity to learn
-to produce speech.” Nevertheless, experiments show that people can actually be
-quite effective at using vocal imitation. For example, [@Lemaitre:2014kr]
-collected imitations and verbal descriptions of various mechanical and
-synthesized sounds. When participants listened to these and were asked to
-identify the source, they were more accurate with imitations than descriptions.
-A subsequent study found that vocal imitations tend to focus on a few salient
-features of the sound rather than a high fidelity representation, which aids
-identification of the source [@Lemaitre:2016kz].
+However, not all researchers agree that vocal imitation has any significant role in language. For instance, [@Pinker:2005cv] suggested that, “Humans are not notably talented at vocal imitation in general, only at imitating speech sounds (and perhaps melodies). For example, most humans lack the ability (found in some birds) to convincingly reproduce environmental sounds … Thus ‘capacity for vocal imitation’ in humans might be better described as a capacity to learn to produce speech.” Nevertheless, experiments show that people can actually be quite effective at using vocal imitation. For example, [@Lemaitre:2014kr] collected imitations and verbal descriptions of various mechanical and synthesized sounds. When participants listened to these and were asked to identify the source, they were more accurate with imitations than descriptions. A subsequent study found that vocal imitations tend to focus on a few salient features of the sound rather than a high fidelity representation, which aids identification of the source [@Lemaitre:2016kz].
 
-Thus humans can be effective at communicating with vocal imitation, it can play
-an important role in narration and discourse, and it appears to be the basis for
-substantial inventories of sound-imitative vocabulary across languages. But the
-process by which onomatopoeic words like "meow", "ping" and "buzz" emerge from
-vocal imitations has yet to be observed. Here we examine whether simple repeated
-imitations of environmental sounds become more word-like even in the absence of
-explicit communication intent or the intent to create a word-like token.
-Alternatively, repeating imitations might never stabilize on a particular
-word form, or the limited fidelity of human vocal imitation may simply restrict
-the formation of stable words through iterated imitations.
+Thus humans can be effective at communicating with vocal imitation, it can play an important role in narration and discourse, and it appears to be the basis for substantial inventories of sound-imitative vocabulary across languages. But the process by which onomatopoeic words like "meow", "ping" and "buzz" emerge from vocal imitations has yet to be observed. Here we examine whether simple repeated imitations of environmental sounds become more word-like even in the absence of explicit communication intent or the intent to create a word-like token. Alternatively, repeating imitations might never stabilize on a particular word form, or the limited fidelity of human vocal imitation may simply restrict the formation of stable words through iterated imitations.
 
-To test this, we recruited participants to engage in a large scale online
-version of the children's game of "Telephone" in which an acoustic message is
-passed from one person to the next. After obtaining these imitations, we
-investigated how the imitations changed over generations to determine whether
-they became more word-like. We investigated the acoustic properties of the
-imitations as well as the orthographic properties once transcribed into English
-words. We find that by both measures the imitations become more stable through
-repetition. In addition to stability, we also find that the imitations can still
-be matched back to the original sounds at above chance levels for many
-generations. Finally, we measured how quickly the invented words are learned as
-category labels in a category learning experiment, and find that later
-generation imitations are easier to learn as category labels.
+To test this, we recruited participants to engage in a large scale online version of the children's game of "Telephone" in which an acoustic message is passed from one person to the next. After obtaining these imitations, we investigated how the imitations changed over generations to determine whether they became more word-like. We investigated the acoustic properties of the imitations as well as the orthographic properties once transcribed into English words. We find that by both measures the imitations become more stable through repetition. In addition to stability, we also find that the imitations can still be matched back to the original sounds at above chance levels for many generations. Finally, we measured how quickly the invented words are learned as category labels in a category learning experiment, and find that later generation imitations are easier to learn as category labels.
 
-In Experiment 1 we collected iterated vocal imitations using the transmission chain design depicted in Fig. 1. In the remaining experiments we assessed changes in these imitations over generations. The extent to which each imitation could be matched back to its originating sound was measured in Experiment 2. Experiment 3 involved collecting transcriptions of imitations, and in Experiment 4 these transcriptions were matched back to the original sounds. In Experiment 5 we used transcriptions taken from first and last generation imitations as novel category labels in a simple category learning experiment.
+In Experiment 1 we collected iterated vocal imitations using the transmission chain design depicted in Fig. 1. In the remaining experiments we assessed changes in these imitations over generations. The extent to which each imitation could be matched back to its originating sound was measured in Experiment 2. Experiment 3 involved collecting transcriptions of imitations, and in Experiment 4 these transcriptions were matched back to the original sounds. In Experiment 5 we used transcriptions taken from first and last generation imitations as novel category labels in a simple category learning experiment. 
 
 ```{r fig1, fig.width=4.6, out.width="4.6cm", fig.align="center", fig.cap="The design of the transmission chain experiment. 16 seed sounds were selected, four in each category of environmental sound. Participants imitated each seed sound, and then the next generation of participants imitated the imitations and so on for 8 generations."}
 draw_graphviz("definitions", "wordsintransition")
