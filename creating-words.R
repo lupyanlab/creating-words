@@ -42,16 +42,9 @@ acoustic_similarity_judgments %<>%
 
 data("imitation_matches")
 n_all_matching_imitations <- count_subjects(imitation_matches)
-failed_matching_imitations_catch_trial <- imitation_matches %>%
-  filter(question_type == "catch_trial",
-         is_correct == 0) %>%
-  .$subj_id %>%
-  unique()
-n_imitation_matches_failed_catch_trial <- length(failed_matching_imitations_catch_trial)
 imitation_matches %<>%
   filter(
-    question_type != "catch_trial",
-    !(subj_id %in% failed_matching_imitations_catch_trial)
+    question_type != "catch_trial"
   ) %>%
   recode_generation() %>%
   recode_survey_type() %>%
@@ -299,7 +292,8 @@ imitation_matches_overall_mod <- glmer(
 )
 
 imitation_matches_mod <- glmer(
-  is_correct ~ offset(chance_log) + generation_1 * (same_v_between + same_v_within) + (generation_1|chain_name/seed_id),
+  is_correct ~ offset(chance_log) + generation_1 * (same_v_between + same_v_within) +
+    (generation_1|chain_name/seed_id) + (1|subj_id),
   family = "binomial", data = imitation_matches
 )
 
@@ -388,7 +382,6 @@ transcription_examples <- transcription_matches %>%
     `First generation` = first_gen_imitation,
     `Last generation` = last_gen_imitation
   )
-  
 
 # ---- matching-transcriptions ---------------------------------------------------
 transcription_matches_last_gen_mod <- glmer(
