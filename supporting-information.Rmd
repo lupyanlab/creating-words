@@ -22,6 +22,7 @@ opts_chunk$set(
   fig.height=6,
   out.width="7.2cm",  # 8.7 is max
   dpi=144,
+  dev=c("pdf", "png"),
   cache=TRUE,
   cache.path=".cache/"
 )
@@ -86,6 +87,17 @@ final_seeds %>%
 
 ```{r 2-collect-imitations-gui, fig.width=3, fig.height=3, fig.cap="The interface for the telephone game. Initially the only action open to players is to hear the message by clicking the top sound icon. After listening to the message once, they could then initiate a recording of their imitation by clicking the bottom sound icon. Turning the recorder off submitted their response, and a new message was loaded."}
 img("collect-imitations-gui")
+```
+
+## Measuring acoustic similarity
+
+```{r 2-measuring-acoustic-similarity}
+```
+
+### Comparing human and algorithmic similarities
+
+```{r}
+gg_comparing_similarities
 ```
 
 # Matching imitations to seeds

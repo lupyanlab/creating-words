@@ -1,5 +1,6 @@
 # ---- 0-setup
 library(tidyverse)
+library(broom)
 library(lme4)
 library(grid)
 library(png)
