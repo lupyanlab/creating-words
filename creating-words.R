@@ -430,7 +430,8 @@ y_preds <- predictSE(acc_mod, x_preds, se = TRUE)
 
 message_labels <- data_frame(
   message_type = c("first_gen_imitation", "last_gen_imitation"),
-  message_label_2 = c("First generation", "Last generation")
+  message_label_2 = c("Transcription of first generation imitation",
+                      "Transcription of last generation imitation")
 )
 
 preds <- cbind(x_preds, y_preds) %>%
@@ -448,8 +449,8 @@ gg_match_transcriptions <- ggplot(preds) +
   scale_fill_manual("", values = unname(colors[c("blue", "green")])) +
   chance_line +
   geom_text(aes(label = label),
-            data = data.frame(message_label_2 = "First generation", question_c = -0.7,
-                              is_correct = 0.26, label = "chance"),
+            data = data.frame(message_label_2 = "Transcription of first generation imitation",
+                              question_c = -0.7, is_correct = 0.28, label = "chance"),
             fontface = "italic") +
   coord_cartesian(ylim = ylim_gts) +
   facet_wrap("message_label_2") +
@@ -457,6 +458,7 @@ gg_match_transcriptions <- ggplot(preds) +
   theme(legend.position = "none",
         panel.grid.major.x = element_blank(),
         panel.grid.minor.x = element_blank())
+gg_match_transcriptions
 
 # ---- category-learning
 first_last_gen <- filter(learning_sound_names, message_type != "sound_effect") %>%
