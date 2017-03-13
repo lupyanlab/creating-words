@@ -519,7 +519,7 @@ transition_preds <- expand.grid(block_transition_c = c(-0.5, 0.5),
 dodger <- position_dodge(width = 0.1)
 
 gg_transition <- ggplot(lsn_transition) +
-  aes(block_transition_label, rt, color = message_type) +
+  aes(block_transition_label, rt, color = message_type, linetype = message_type) +
   geom_linerange(aes(ymin = rt - se, ymax = rt + se),
                  data = transition_preds,
                  position = dodger, show.legend = FALSE,
@@ -529,6 +529,10 @@ gg_transition <- ggplot(lsn_transition) +
   scale_x_discrete("Block transition", labels = c("Before", "After")) +
   scale_y_rt +
   scale_color_message_label_2 +
+  scale_linetype_message_label_2 +
   coord_cartesian(ylim = c(600, 1200)) +
   base_theme +
-  theme(legend.position = c(0.85, 0.8))
+  theme(
+    legend.position = c(0.85, 0.8),
+    legend.key.width = unit(5, "lines")
+  )
