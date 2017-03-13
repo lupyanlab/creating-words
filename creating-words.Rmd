@@ -64,7 +64,7 @@ We collected a total of `r n_all_imitations` imitations from `r n_imitators` in 
 
 Trained research assistants coded these imitations for acoustic similarity using a blinded, pairwise comparison procedure (see Methods; `intercoder reliability`). Imitations from later generations were rated as being more similar to one another than imitations from earlier generations, `r lmer_mod_results(similarity_judgments_lmertest_mod, "edge_generation_n")` (Fig. 2). This result suggests that imitations may be stabilizing on particular acoustic forms through repetition.
 
-```{r fig2, fig.cap="Change in acoustic similarity over generations of repetition. Points show mean acoustic similarity ratings for imitations in each category of environmental sounds. The line shows the linear predictions of a hierarchical model with random effects for rater and category, with error bands designating +/- 1 standard error of the model predictions. The results show that acoustic similarity increases over generations, indicating that subsequent imitations become more similar to one another through repetition."}
+```{r fig2, fig.height=8.7, fig.cap="Change in acoustic similarity over generations of repetition. Points show mean acoustic similarity ratings for imitations in each category of environmental sounds. The line shows the linear predictions of a hierarchical model with random effects for rater and category, with error bands designating +/- 1 standard error of the model predictions. The results show that acoustic similarity increases over generations, indicating that subsequent imitations become more similar to one another through repetition."}
 gg_similarity_judgments
 ```
 

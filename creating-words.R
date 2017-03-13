@@ -269,17 +269,20 @@ similarity_judgments_means <- acoustic_similarity_judgments %>%
 set.seed(949)
 gg_similarity_judgments <- ggplot(similarity_judgments_means) +
   aes(x = edge_generations, y = similarity_z) +
-  geom_point(aes(color = category), position = position_jitter(0.2, 0.0),
-             size = 2.5, alpha = 0.8) +
+  geom_point(aes(color = category, shape = category),
+             position = position_jitter(0.1, 0.0),
+             size = 2.5) +
   geom_smooth(aes(group = 1, ymin = similarity_z - se, ymax = similarity_z + se),
               data = similarity_judgments_preds, stat = "identity",
               alpha = 0.2, color = "gray") +
   scale_x_discrete("Generation") +
   scale_y_continuous("Acoustic similarity (z-score)") +
   scale_color_brewer("Category", palette = "Set2") +
+  scale_shape_discrete("Category") +
   coord_cartesian(ylim = c(-0.6, 0.8)) +
   base_theme +
-  theme(legend.position = "top")
+  theme(legend.position = c(0.1, 0.85))
+gg_similarity_judgments
 
 # ---- matching-imitations -----------------------------------------------------
 q_true_seed <- read_graphviz("true-seed", "wordsintransition")
