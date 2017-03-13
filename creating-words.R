@@ -180,13 +180,18 @@ scale_x_block_ix <- scale_x_continuous("Block number (24 trials per block)",
 scale_y_rt <- scale_y_continuous("Reaction time (msec)")
 scale_color_message_label <- scale_color_manual(
   "Transcription of",
-  labels = c("Sound effect", "First generation", "Last generation"),
+  labels = c("Sound effect", "First generation imitation", "Last generation imitation"),
   values = unname(colors[c("orange", "green", "blue")])
 )
 scale_color_message_label_2 <- scale_color_manual(
   "Transcription of",
-  labels = c("First generation", "Last generation"),
+  labels = c("First generation imitation", "Last generation imitation"),
   values = unname(colors[c("green", "blue")])
+)
+scale_linetype_message_label_2 <- scale_linetype_manual(
+  "Transcription of",
+  labels = c("First generation imitation", "Last generation imitation"),
+  values = c("solid", "longdash")
 )
 
 chance_line <- geom_hline(yintercept = 0.25, lty = 2, alpha = 0.4, size = 1)
@@ -480,15 +485,19 @@ lsn_quad_preds <- expand.grid(message_c = c(-0.5, 0.5),
 
 rt_plot <- ggplot(first_last_gen) +
   aes(block_ix, rt) +
-  geom_smooth(aes(ymin = rt - se, ymax = rt + se, color = message_label),
+  geom_smooth(aes(ymin = rt - se, ymax = rt + se, color = message_label,
+                  linetype = message_label),
               fill = "gray", alpha = 0.4,
               stat = "identity", data = lsn_quad_preds) +
   scale_x_block_ix +
   scale_y_rt +
   scale_color_message_label_2 +
+  scale_linetype_message_label_2 +
   coord_cartesian(ylim = c(600, 1200)) +
   base_theme +
-  theme(legend.position = c(0.8, 0.7))
+  theme(legend.position = c(0.8, 0.7),
+        legend.key.width = unit(5, "lines"))
+rt_plot
 
 transition_mod <- lmer(
   rt ~ block_transition_c * message_c + block_ix + (block_ix|subj_id),
