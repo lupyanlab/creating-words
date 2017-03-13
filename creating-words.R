@@ -365,8 +365,7 @@ gg_distance <- ggplot(transcription_distances) +
   geom_errorbar(aes(ymin = distance - se, ymax = distance + se),
                 data = orthographic_distance_preds,
                 size = 1.4, width = 0.1) +
-  scale_x_discrete("Generation",
-                   labels = c("First", "Last")) +
+  scale_x_discrete("", labels = c("First generation imitations", "Last generation imitations")) +
   scale_y_continuous("Distance between transcriptions", breaks = seq(0, 1, by = 0.2)) +
   scale_color_manual(values = imitation_gen_colors) +
   scale_fill_manual(values = imitation_gen_colors) +
