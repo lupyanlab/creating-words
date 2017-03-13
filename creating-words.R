@@ -172,6 +172,7 @@ scale_color_distractors <- scale_color_manual(
   values = distractor_colors,
   labels = distractor_labels
 )
+# scale_linetype_distractors <- 
 scale_x_trial_ix <- scale_x_continuous("Trial number (24 trials per block)",
                                        breaks = seq(1, 96, by = 24))
 scale_x_block_ix <- scale_x_continuous("Block number (24 trials per block)",
@@ -189,8 +190,6 @@ scale_color_message_label_2 <- scale_color_manual(
 )
 
 chance_line <- geom_hline(yintercept = 0.25, lty = 2, alpha = 0.4, size = 1)
-chance_label <- annotate("text", x = 1, y = 0.26, label = "chance",
-                         size = 7, vjust = -0.1, fontface = "italic")
 ylim_gts <- c(0.15, 0.75)
 scale_y_gts_accuracy <- scale_y_continuous("Accuracy", breaks = seq(0, 1, by = 0.1),
                                            labels = scales::percent)
@@ -282,7 +281,6 @@ gg_similarity_judgments <- ggplot(similarity_judgments_means) +
   coord_cartesian(ylim = c(-0.6, 0.8)) +
   base_theme +
   theme(legend.position = c(0.1, 0.85))
-gg_similarity_judgments
 
 # ---- matching-imitations -----------------------------------------------------
 q_true_seed <- read_graphviz("true-seed", "wordsintransition")
@@ -316,19 +314,34 @@ transition_preds <- predictSE(imitation_matches_mod, x_preds, se = TRUE) %>%
   cbind(x_preds, .) %>%
   rename(is_correct = fit, se = se.fit)
 
+scale_linetype_distractors <- scale_linetype_manual(
+  "",
+  values = c("longdash", "dotdash", "solid"),
+  labels = distractor_labels
+)
+
 gg_match_to_seed <- ggplot(imitation_matches) +
   aes(x = generation_1, y = is_correct) +
-  geom_smooth(aes(ymin = is_correct - se, ymax = is_correct + se, color = survey_type),
+  geom_smooth(aes(ymin = is_correct - se, ymax = is_correct + se,
+                  color = survey_type, linetype = survey_type),
               stat = "identity", data = transition_preds,
               size = 1.0) +
   scale_x_generation_1 +
   scale_y_gts_accuracy +
   scale_color_distractors +
+  scale_linetype_distractors +
   chance_line +
-  chance_label +
+  annotate("text", x = 0.5, y = 0.26, label = "chance",
+           size = 4, vjust = -0.1, fontface = "italic",
+           alpha = 0.6) +
   coord_cartesian(xlim = c(-0.2, 7.2), ylim = ylim_gts) +
   base_theme +
-  theme(legend.position = c(0.8, 0.85))
+  theme(
+    legend.position = c(0.8, 0.85),
+    legend.key.width = unit(5, "lines"),
+    panel.grid.minor.x = element_blank()
+  )
+gg_match_to_seed
 
 # ---- transcriptions ------------------------------------------------------------
 orthographic_distance_mod <- lmer(distance ~ message_c + (message_c|chain_name/seed_id),
