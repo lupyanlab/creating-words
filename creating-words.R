@@ -281,8 +281,8 @@ gg_similarity_judgments <- ggplot(similarity_judgments_means) +
               alpha = 0.2, color = "gray") +
   scale_x_discrete("Generation") +
   scale_y_continuous("Acoustic similarity (z-score)") +
-  scale_color_brewer("Category", palette = "Set2") +
-  scale_shape_discrete("Category") +
+  scale_color_brewer("", palette = "Set2") +
+  scale_shape_discrete("") +
   coord_cartesian(ylim = c(-0.6, 0.8)) +
   base_theme +
   theme(legend.position = c(0.1, 0.85))
@@ -450,7 +450,7 @@ gg_match_transcriptions <- ggplot(preds) +
   chance_line +
   geom_text(aes(label = label),
             data = data.frame(message_label_2 = "Transcription of first generation imitation",
-                              question_c = -0.7, is_correct = 0.28, label = "chance"),
+                              question_c = -0.7, is_correct = 0.27, label = "chance"),
             fontface = "italic") +
   coord_cartesian(ylim = ylim_gts) +
   facet_wrap("message_label_2") +
@@ -521,12 +521,13 @@ transition_preds <- expand.grid(block_transition_c = c(-0.5, 0.5),
 dodger <- position_dodge(width = 0.1)
 
 gg_transition <- ggplot(lsn_transition) +
-  aes(block_transition_label, rt, color = message_type, linetype = message_type) +
+  aes(block_transition_label, rt, color = message_type) +
   geom_linerange(aes(ymin = rt - se, ymax = rt + se),
                  data = transition_preds,
                  position = dodger, show.legend = FALSE,
                  size = 2) +
-  geom_line(aes(group = message_type), data = transition_preds,
+  geom_line(aes(group = message_type, linetype = message_type),
+            data = transition_preds,
             position = dodger, size = 2) +
   scale_x_discrete("Block transition", labels = c("Before", "After")) +
   scale_y_rt +
@@ -535,6 +536,6 @@ gg_transition <- ggplot(lsn_transition) +
   coord_cartesian(ylim = c(600, 1200)) +
   base_theme +
   theme(
-    legend.position = c(0.85, 0.8),
+    legend.position = c(0.7, 0.8),
     legend.key.width = unit(5, "lines")
   )
