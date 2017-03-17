@@ -6,6 +6,7 @@ library(magrittr)
 library(lme4)
 library(AICcmodavg)
 library(gridExtra)
+library(irr)
 library(crotchet)
 
 library(wordsintransition)
@@ -286,6 +287,30 @@ gg_similarity_judgments <- ggplot(similarity_judgments_means) +
   coord_cartesian(ylim = c(-0.6, 0.8)) +
   base_theme +
   theme(legend.position = c(0.1, 0.85))
+
+# Inter-rater reliability
+irr_ratings <- acoustic_similarity_judgments %>%
+  group_by(name, trial_id) %>%
+  summarize(similarity_z = mean(similarity_z)) %>%
+  ungroup() %>%
+  spread(name, similarity_z) %>%
+  drop_na() %>%
+  select(-trial_id)
+irr_results <- icc(irr_ratings, model = "twoway", type = "consistency")
+
+report_icc_results <- function(irr_results) {
+  if (irr_results$p.value < 0.001) {
+    p_value_str = "_p_ < 0.001"
+  } else {
+    p_value_str = sprintf("_p_ = %.3f", irr_results$p.value)
+  }
+  sprintf("ICC = %.2f, 95%% CI [%.2f, %.2f], F(%d, %d) = %.2f, %s",
+          irr_results$value,
+          irr_results$lbound, irr_results$ubound,
+          irr_results$df1, irr_results$df2, irr_results$Fvalue,
+          p_value_str)
+}
+
 
 # ---- matching-imitations -----------------------------------------------------
 q_true_seed <- read_graphviz("true-seed", "wordsintransition")
