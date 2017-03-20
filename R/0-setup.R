@@ -16,3 +16,5 @@ img <- function(png_stem, ...) {
     rasterGrob(...) %T>%
     grid.draw()
 }
+
+global_theme <- theme_minimal()
