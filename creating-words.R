@@ -311,6 +311,23 @@ report_icc_results <- function(irr_results) {
           p_value_str)
 }
 
+# Correlation between subjective and objective measures
+data("algo_linear")
+
+similarity_cor <- left_join(
+  select(acoustic_similarity_judgments, sound_x, sound_y, similarity_z),
+  select(algo_linear, sound_x, sound_y, similarity)
+)
+
+similarity_cor_test <- cor.test(
+  similarity_cor$similarity_z, similarity_cor$similarity,
+  use = "pairwise.complete.obs")
+
+report_cor_test <- function(cor_test) {
+  results <- broom::tidy(cor_test) %>% as.list()
+  sprintf("r = %.2f, 95%% CI [%.2f, %.2f]",
+          results$estimate, results$conf.low, results$conf.high)
+}
 
 # ---- matching-imitations -----------------------------------------------------
 q_true_seed <- read_graphviz("true-seed", "wordsintransition")
@@ -374,6 +391,19 @@ gg_match_to_seed <- ggplot(imitation_matches) +
 gg_match_to_seed
 
 # ---- transcriptions ------------------------------------------------------------
+# Percentage of imitations will all unique transcriptions
+messages_with_all_unique_transcriptions <- transcription_frequencies %>%
+  group_by(message_id) %>%
+  summarize(all_unique_transcriptions = (max(n) == 1))
+
+messages_with_duplicated_transcriptions <- messages_with_all_unique_transcriptions %>%
+  filter(all_unique_transcriptions == FALSE) %>%
+  .$message_id
+
+pct_of_messages_with_all_unique_transcriptions <- paste0(
+  round(47/(64 + 47) * 100), "%"
+)
+
 orthographic_distance_mod <- lmer(distance ~ message_c + (message_c|chain_name/seed_id),
                                   data = transcription_distances)
 
@@ -427,6 +457,8 @@ transcription_examples <- transcription_matches %>%
     `First generation` = first_gen_imitation,
     `Last generation` = last_gen_imitation
   )
+
+
 
 # ---- matching-transcriptions ---------------------------------------------------
 transcription_matches_last_gen_mod <- glmer(
