@@ -31,7 +31,7 @@ submit : creating-words.pdf creating-words.docx supporting-information.pdf suppo
 	mv supporting-information.pdf $(DIR)/
 	mv supporting-information.docx $(DIR)/
 reset :
-	rm -rf .cache/ figs/
+	rm -rf .cache/ figs/ .supporting-information-cache/ supporting-information-figs/
 clean :
 	latexmk -c || true
 	rm -f *.bbl *.xwm *.md *.tex *.aux *.fdb_latexmk *.fls *.log *.out *-with-methods*

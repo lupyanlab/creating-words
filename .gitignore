@@ -4,8 +4,8 @@
 !submissions/**/*.docx
 
 # reproducible
-figs/
-.cache/
+*figs/
+*cache/
 methods.yaml
 !templates/methods.yaml
 
