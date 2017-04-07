@@ -370,9 +370,11 @@ scale_linetype_distractors <- scale_linetype_manual(
 gg_match_to_seed <- ggplot(imitation_matches) +
   aes(x = generation_1, y = is_correct) +
   geom_smooth(aes(ymin = is_correct - se, ymax = is_correct + se,
-                  color = survey_type, linetype = survey_type),
+                  color = survey_type),
               stat = "identity", data = transition_preds,
               size = 1.0) +
+  geom_smooth(aes(group = seed_id, color = survey_type),
+              method = "lm", se = FALSE) +
   scale_x_generation_1 +
   scale_y_gts_accuracy +
   scale_color_distractors +
@@ -390,17 +392,30 @@ gg_match_to_seed <- ggplot(imitation_matches) +
   )
 gg_match_to_seed
 
+# Find chains that made it 7 or more generations
+long_chain_seeds <- imitation_matches %>%
+  filter(generation >= 6) %>%
+  .$seed_id %>%
+  unique()
+
+imitation_matches %<>%
+  mutate(long_chain = seed_id %in% long_chain_seeds)
+
 means_by_generation <- imitation_matches %>%
-  group_by(survey_type, generation) %>%
+  group_by(survey_type, generation, long_chain) %>%
   summarize(is_correct = mean(is_correct),
             n = n()) %>%
   recode_generation()
 
 # Show plot with means overlayed
-gg_match_to_seed +
-  aes(group = survey_type, color = survey_type) +
-  geom_point(aes(size = n), data = means_by_generation) +
-  geom_smooth(data = means_by_generation, method = "loess", se = FALSE)
+ggplot(imitation_matches) +
+  aes(x = generation_1, y = is_correct) +
+  geom_smooth(aes(ymin = is_correct - se, ymax = is_correct + se,
+                  color = survey_type),
+              stat = "identity", data = transition_preds,
+              size = 1.0) +
+  geom_point(aes(size = n, color = survey_type), data = means_by_generation)
+
 
 # ---- transcriptions ----------------------------------------------------------
 # Percentage of imitations will all unique transcriptions
