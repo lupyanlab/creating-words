@@ -390,7 +390,19 @@ gg_match_to_seed <- ggplot(imitation_matches) +
   )
 gg_match_to_seed
 
-# ---- transcriptions ------------------------------------------------------------
+means_by_generation <- imitation_matches %>%
+  group_by(survey_type, generation) %>%
+  summarize(is_correct = mean(is_correct),
+            n = n()) %>%
+  recode_generation()
+
+# Show plot with means overlayed
+gg_match_to_seed +
+  aes(group = survey_type, color = survey_type) +
+  geom_point(aes(size = n), data = means_by_generation) +
+  geom_smooth(data = means_by_generation, method = "loess", se = FALSE)
+
+# ---- transcriptions ----------------------------------------------------------
 # Percentage of imitations will all unique transcriptions
 messages_with_all_unique_transcriptions <- transcription_frequencies %>%
   group_by(message_id) %>%
