@@ -349,7 +349,7 @@ imitation_matches_overall_mod <- glmer(
 )
 
 imitation_matches_mod <- glmer(
-  is_correct ~ offset(chance_log) + generation_1 * (same_v_between + same_v_within) +
+  is_correct ~ generation_1 * (same_v_between + same_v_within) +
     (generation_1|chain_name/seed_id) + (1|subj_id),
   family = "binomial", data = imitation_matches
 )
