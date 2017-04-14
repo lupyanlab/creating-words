@@ -42,10 +42,19 @@ acoustic_similarity_judgments %<>%
 
 
 data("imitation_matches")
+
+bad_question_ids <- imitation_matches %>%
+  filter(question_type != "catch_trial") %>%
+  group_by(question_pk) %>%
+  summarize(accuracy = mean(is_correct)) %>%
+  filter(accuracy == 0) %>%
+  .$question_pk
+
 n_all_matching_imitations <- count_subjects(imitation_matches)
 imitation_matches %<>%
   filter(
-    question_type != "catch_trial"
+    question_type != "catch_trial",
+    !(question_pk %in% bad_question_ids)
   ) %>%
   recode_generation() %>%
   recode_survey_type() %>%
