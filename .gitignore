@@ -9,6 +9,7 @@ figs/
 .cache/
 
 # latex
+creating-words.out
 *.tex
 !templates/*.tex
 *.md
@@ -23,6 +24,7 @@ figs/
 
 # R/RStudio
 .Rhistory
+.Rproj.user/
 
 # OS
 .DS_Store
