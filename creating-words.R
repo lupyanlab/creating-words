@@ -339,14 +339,31 @@ imitation_matches_overall_mod <- glmer(
   family = "binomial", data = imitation_matches
 )
 
+remove_perfect_questions <- function(matches) {
+  perfect_questions <- matches %>%
+    group_by(question_pk) %>%
+    summarize(is_perfect = (mean(is_correct) == 0 | mean(is_correct) == 1)) %>%
+    filter(is_perfect == TRUE) %>%
+    .$question_pk
+  
+  matches %>%
+    filter(!(question_pk %in% perfect_questions))
+}
+
 imitation_matches_mod <- glmer(
   is_correct ~ offset(chance_log) + generation_1 * (same_v_between + same_v_within) +
     (generation_1|chain_name/seed_id) + (1|subj_id),
   family = "binomial", data = imitation_matches
 )
 
+imitation_matches_noperfect_mod <- glmer(
+  is_correct ~ generation_1 * (same_v_between + same_v_within) +
+    (generation_1|seed_id),
+  family = "binomial", data = remove_perfect_questions(imitation_matches)
+)
+
 x_preds <- expand.grid(
-    generation_1 = unique(imitation_matches$generation_1) %>% na.omit(),
+    generation_1 = 0:7,
     survey_type = c("between", "same", "within"),
     stringsAsFactors = FALSE
   ) %>%
@@ -357,7 +374,7 @@ x_preds <- expand.grid(
   ) %>%
   add_chance()
 
-transition_preds <- predictSE(imitation_matches_mod, x_preds, se = TRUE) %>%
+imitation_matches_preds <- predictSE(imitation_matches_noperfect_mod, x_preds, se = TRUE) %>%
   cbind(x_preds, .) %>%
   rename(is_correct = fit, se = se.fit)
 
@@ -371,10 +388,8 @@ gg_match_to_seed <- ggplot(imitation_matches) +
   aes(x = generation_1, y = is_correct) +
   geom_smooth(aes(ymin = is_correct - se, ymax = is_correct + se,
                   color = survey_type),
-              stat = "identity", data = transition_preds,
+              stat = "identity", data = imitation_matches_preds,
               size = 1.0) +
-  geom_smooth(aes(group = seed_id, color = survey_type),
-              method = "lm", se = FALSE) +
   scale_x_generation_1 +
   scale_y_gts_accuracy +
   scale_color_distractors +
@@ -391,31 +406,6 @@ gg_match_to_seed <- ggplot(imitation_matches) +
     panel.grid.minor.x = element_blank()
   )
 gg_match_to_seed
-
-# Find chains that made it 7 or more generations
-long_chain_seeds <- imitation_matches %>%
-  filter(generation >= 6) %>%
-  .$seed_id %>%
-  unique()
-
-imitation_matches %<>%
-  mutate(long_chain = seed_id %in% long_chain_seeds)
-
-means_by_generation <- imitation_matches %>%
-  group_by(survey_type, generation, long_chain) %>%
-  summarize(is_correct = mean(is_correct),
-            n = n()) %>%
-  recode_generation()
-
-# Show plot with means overlayed
-ggplot(imitation_matches) +
-  aes(x = generation_1, y = is_correct) +
-  geom_smooth(aes(ymin = is_correct - se, ymax = is_correct + se,
-                  color = survey_type),
-              stat = "identity", data = transition_preds,
-              size = 1.0) +
-  geom_point(aes(size = n, color = survey_type), data = means_by_generation)
-
 
 # ---- transcriptions ----------------------------------------------------------
 # Percentage of imitations will all unique transcriptions
