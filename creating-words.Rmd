@@ -48,7 +48,7 @@ To test this, we recruited participants to engage in a large scale online versio
 
 In Experiment 1 we collected iterated vocal imitations using the transmission chain design depicted in Fig. 1. In the remaining experiments we assessed changes in these imitations over generations. The extent to which each imitation could be matched back to its originating sound was measured in Experiment 2. Experiment 3 involved collecting transcriptions of imitations, and in Experiment 4 these transcriptions were matched back to the original sounds. In Experiment 5 we used transcriptions taken from first and last generation imitations as novel category labels in a simple category learning experiment.
 
-```{r dendrogram, fig.width=11.4, fig.out="11.4cm", fig.align="center", fig.cap="The design of the transmission chain experiment. 16 seed sounds were selected, four in each category of environmental sound. Participants imitated each seed sound, and then the next generation of participants imitated the imitations and so on for 8 generations."}
+```{r dendrogram, fig.width=8.7, fig.out="8.7cm", fig.align="center", fig.cap="The design of the transmission chain experiment. 16 seed sounds were selected, four in each category of environmental sound. Participants imitated each seed sound, and then the next generation of participants imitated the imitations and so on for a maximum of 8 generations."}
 ```
 
 

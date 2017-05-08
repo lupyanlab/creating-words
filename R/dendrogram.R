@@ -1,8 +1,9 @@
+source("R/0-setup.R")
+
 # ---- dendrogram
 library(ggraph)
 library(igraph)
 
-library(wordsintransition)
 data("edges")
 
 # Create a data frame of unique nodes from all edges
@@ -39,15 +40,13 @@ gg_dendrogram <- ggraph(layout) +
   scale_y_continuous("Generation", breaks = 0:8, labels = c(8:1, "seeds")) +
   scale_shape_manual(values = c(32, 32, 16, 32)) +
   scale_edge_linetype_manual(values = c("blank", "blank", "solid", "blank")) +
+  ggtitle("Imitations collected in the transmission chain experiment") +
   theme_minimal() +
   theme(
     legend.position = "none",
-    panel.grid.minor.y = element_blank()
+    panel.grid.minor.y = element_blank(),
+    plot.title = element_text(hjust = 0.5)
   )
+gg_dendrogram
 
-gridExtra::grid.arrange(
-  crotchet::read_graphviz("definitions", "wordsintransition"),
-  gg_dendrogram,
-  nrow = 1,
-  widths = c(0.3, 0.7)
-)
+# ggsave("~/Desktop/dendrogram.png", gg_dendrogram, height = 4, width = 6)
