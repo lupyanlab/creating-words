@@ -1,0 +1,79 @@
+# ---- learning
+first_last_gen <- filter(learning_sound_names, message_type != "sound_effect") %>%
+  mutate(block_ix_sqr = block_ix^2)
+
+after_first_block <- filter(first_last_gen, block_ix > 1)
+lsn_after_first_block_mod <- lmer(
+  rt ~ message_c + block_ix + (1 + block_ix|subj_id),
+  data = after_first_block)
+
+lsn_after_first_block_lmertest_mod <- lmerTest::lmer(
+  formula(lsn_after_first_block_mod), data = lsn_after_first_block_mod@frame
+)
+
+lsn_quad_mod <- lmer(
+  rt ~ message_c * (block_ix + block_ix_sqr) + (block_ix + block_ix_sqr|subj_id),
+  data = first_last_gen
+)
+
+lsn_quad_preds <- expand.grid(message_c = c(-0.5, 0.5),
+                              block_ix = 1:4) %>%
+  mutate(block_ix_sqr = block_ix^2) %>%
+  cbind(., predictSE(lsn_quad_mod, newdata = ., se = TRUE)) %>%
+  rename(rt = fit, se = se.fit) %>%
+  recode_message_type()
+
+rt_plot <- ggplot(first_last_gen) +
+  aes(block_ix, rt) +
+  geom_smooth(aes(ymin = rt - se, ymax = rt + se, color = message_label,
+                  linetype = message_label),
+              fill = "gray", alpha = 0.4,
+              stat = "identity", data = lsn_quad_preds) +
+  scale_x_block_ix +
+  scale_y_rt +
+  scale_color_message_label_2 +
+  scale_linetype_message_label_2 +
+  coord_cartesian(ylim = c(600, 1200)) +
+  base_theme +
+  theme(legend.position = c(0.8, 0.7),
+        legend.key.width = unit(5, "lines"))
+rt_plot
+
+transition_mod <- lmer(
+  rt ~ block_transition_c * message_c + block_ix + (block_ix|subj_id),
+  data = lsn_transition
+)
+
+transition_lmertest_mod <- lmerTest::lmer(
+  formula(transition_mod), data = transition_mod@frame
+)
+
+transition_preds <- expand.grid(block_transition_c = c(-0.5, 0.5),
+                                message_c = c(-0.5, 0.5),
+                                block_ix = 3) %>%
+  cbind(., predictSE(transition_mod, ., se = TRUE)) %>%
+  rename(rt = fit, se = se.fit) %>%
+  recode_block_transition() %>%
+  recode_message_type()
+
+dodger <- position_dodge(width = 0.1)
+
+gg_transition <- ggplot(lsn_transition) +
+  aes(block_transition_label, rt, color = message_type) +
+  geom_linerange(aes(ymin = rt - se, ymax = rt + se),
+                 data = transition_preds,
+                 position = dodger, show.legend = FALSE,
+                 size = 2) +
+  geom_line(aes(group = message_type, linetype = message_type),
+            data = transition_preds,
+            position = dodger, size = 2) +
+  scale_x_discrete("Block transition", labels = c("Before", "After")) +
+  scale_y_rt +
+  scale_color_message_label_2 +
+  scale_linetype_message_label_2 +
+  coord_cartesian(ylim = c(600, 1200)) +
+  base_theme +
+  theme(
+    legend.position = c(0.7, 0.8),
+    legend.key.width = unit(5, "lines")
+  )

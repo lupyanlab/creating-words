@@ -47,6 +47,5 @@ gg_dendrogram <- ggraph(layout) +
     panel.grid.minor.y = element_blank(),
     plot.title = element_text(hjust = 0.5)
   )
-gg_dendrogram
 
 # ggsave("~/Desktop/dendrogram.png", gg_dendrogram, height = 4, width = 6)
