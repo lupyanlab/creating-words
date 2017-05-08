@@ -30,6 +30,7 @@ opts_chunk$set(
 )
 
 read_chunk("creating-words.R")
+read_chunk("R/dendrogram.R")
 ```
 
 ```{r setup, include=FALSE, cache=FALSE}
@@ -45,9 +46,10 @@ Thus, research shows that people can use vocal imitation as an effective means t
 
 In a series of subsequent studies, we systematically answered the following questions. First, does iterated imitation drive the vocalizations to stabilize in form and become more word-like? Second, do the imitations become more suitable as labels for the category of sounds that motivated them? For example, does the imitation of a particular water-splashing sound become, over time, a better label for the more general category of water-splashing sounds? Third, do the imitations retain resemblance to the original environmental sounds that inspired them? If so, it should be possible for naïve participants to match the emergent imitative words back to the original sounds that motivated them.
 
-```{r fig1, fig.width=4.6, out.width="4.6cm", fig.align="center", fig.cap="The design of the transmission chain experiment. 16 seed sounds were selected, four in each category of environmental sound. Participants imitated each seed sound, and then the next generation of participants imitated the imitations and so on for 8 generations."}
-draw_graphviz("definitions", "wordsintransition")
+```{r dendrogram, fig.width=11.4, fig.out="11.4cm", fig.align="center", fig.cap="The design of the transmission chain experiment. 16 seed sounds were selected, four in each category of environmental sound. Participants imitated each seed sound, and then the next generation of participants imitated the imitations and so on for 8 generations."}
 ```
+
+
 
 # Results {-}
 
