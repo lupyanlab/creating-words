@@ -35,7 +35,8 @@ rt_plot <- ggplot(first_last_gen) +
   scale_linetype_message_label_2 +
   coord_cartesian(ylim = c(600, 1200)) +
   base_theme +
-  theme(legend.position = c(0.8, 0.7),
+  ggtitle("Iterated imitations were easier to learn")
+  theme(legend.position = c(0.7, 0.75),
         legend.key.width = unit(5, "lines"))
 rt_plot
 
@@ -67,13 +68,13 @@ gg_transition <- ggplot(lsn_transition) +
   geom_line(aes(group = message_type, linetype = message_type),
             data = transition_preds,
             position = dodger, size = 2) +
-  scale_x_discrete("Block transition", labels = c("Before", "After")) +
+  scale_x_discrete("Block transition (±6 trials)", labels = c("Before", "After")) +
   scale_y_rt +
   scale_color_message_label_2 +
   scale_linetype_message_label_2 +
   coord_cartesian(ylim = c(600, 1200)) +
   base_theme +
   theme(
-    legend.position = c(0.7, 0.8),
+    legend.position = "none",
     legend.key.width = unit(5, "lines")
   )

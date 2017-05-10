@@ -52,7 +52,7 @@ gg_algo_similarity <- ggplot(algo_similarity) +
   geom_point(position = position_jitter(0.4, 0.0), alpha = 0.1) +
   geom_line(stat = "summary", fun.y = "mean") +
   geom_smooth(method = "lm", se = FALSE) +
-  global_theme
+  base_theme
 
 # Compare human and machine similarity
 edge_similarities <- 

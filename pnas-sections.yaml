@@ -1,17 +1,18 @@
 ---
 csl: style/pnas.csl
 significancestatement: |
-  Although many words spoken today appear to have imitative origins, the
-  process by which nonverbal imitations might give rise to wordlike forms has
-  not been documented. Here we report evidence of imitations gradually becoming
-  more wordlike through a process of unguided repetition across different
-  individuals. In addition to becoming more stable both in terms of acoustic
-  and orthographic properties, the novel words created through this process
-  retain an iconic resemblence to the originating sound. These results
-  demonstrate a pervasive tendency for establishing convention in human vocal
-  communication.
+  Although many words spoken today appear to have imitative origins (e.g.,
+  onomatopoeia), the process by which nonverbal imitations might give rise to
+  wordlike forms has not been documented. Here we demonstrate the propensity of
+  human vocal imitation to form more stable and repeatable utterances through
+  unguided repetition. We also
+  demonstrate potential cognitive benefits of forming more stable utterances:
+  they are easier to learn and promote category inference. While becoming more
+  conventional and wordlike, these invented words still retain a resemblance to
+  the category of motivating sound, demonstrating how and why imitative words
+  might pervade languages spoken today.
 authorcontributions: P.E., M.P., and G.L. designed the research. P.E. conducted the research and analyzed the results. P.E., M.P., and G.L. wrote the manuscript.
 authordeclarations: The authors declare no conflicts of interest.
-acknowledgements: |
+acknowledgments: |
   The authors acknowledge Jesse Reid, Hailey Schiedermayer, Zoe Hansen, Maggie Parker, and Yacong Wu for conducting the acoustic similarity analysis.
 ---

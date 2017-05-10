@@ -1,3 +1,5 @@
+source("R/setup.R")
+
 # ---- stability
 
 ## Imitations ##
@@ -31,10 +33,11 @@ gg_similarity_judgments <- ggplot(similarity_judgments_means) +
               data = similarity_judgments_preds, stat = "identity",
               alpha = 0.2, color = "gray") +
   scale_x_discrete("Generation") +
-  scale_y_continuous("Acoustic similarity (z-score)") +
+  scale_y_continuous("Acoustic similarity judgments (z-score)") +
   scale_color_brewer("", palette = "Set2") +
   scale_shape_discrete("") +
   coord_cartesian(ylim = c(-0.6, 0.8)) +
+  ggtitle("Repeating imitations makes them more repeatable")
   base_theme +
   theme(legend.position = c(0.1, 0.85))
 
@@ -62,7 +65,6 @@ report_icc_results <- function(irr_results) {
 }
 
 # Correlation between subjective and objective measures
-data("algo_linear")
 
 similarity_cor <- left_join(
   select(acoustic_similarity_judgments, sound_x, sound_y, similarity_z),
@@ -79,6 +81,57 @@ report_cor_test <- function(cor_test) {
           results$estimate, results$conf.low, results$conf.high)
 }
 
+# Automated analyses of acoustic similarity
+similarity_algo_mod <- lmer(
+  similarity_z ~ edge_generation_n + (edge_generation_n|sound_x_category),
+  data = algo_linear
+)
+
+similarity_algo_lmertest_mod <- lmerTest::lmer(
+  formula(similarity_algo_mod), data = similarity_algo_mod@frame
+)
+
+data("algo_within_chain")
+data("algo_within_seed")
+data("algo_within_category")
+data("algo_between_fixed")
+data("algo_between_consecutive")
+
+algo_between_consecutive %<>%
+  recode_edge_generations()
+
+acoustic_similarity_comparison <- bind_rows(
+  linear = algo_linear,
+  within_chain = algo_within_chain,
+  within_seed = algo_within_seed,
+  within_category = algo_within_category,
+  between_fixed = algo_between_fixed,
+  between_consecutive = algo_between_consecutive,
+  .id = "edge_type"
+) %>%
+  mutate(
+    edge_type_label = factor(edge_type, levels = c("linear", "within_chain", "within_seed", "within_category", "between_fixed", "between_consecutive"))
+  )
+
+gg_algo_compare <- ggplot(acoustic_similarity_comparison) +
+  aes(edge_type_label, similarity) +
+  geom_point(position = position_jitter(width = 0.2), alpha = 0.1) +
+  geom_bar(stat = "summary", fun.y = "mean", alpha = 0.4)
+
+algo_similarity <- bind_rows(
+  within = algo_linear,
+  between = algo_between_consecutive,
+  .id = "edge_type"
+)
+
+set.seed(603)
+gg_algo_similarity <- ggplot(algo_similarity) +
+  aes(edge_generations, similarity, color = edge_type, group = edge_type) +
+  geom_point(position = position_jitter(0.4, 0.0), alpha = 0.1) +
+  geom_line(stat = "summary", fun.y = "mean") +
+  geom_smooth(method = "lm", se = FALSE) +
+  base_theme
+
 ## Transcriptions ##
 
 # Percentage of imitations will all unique transcriptions
@@ -93,8 +146,6 @@ messages_with_duplicated_transcriptions <- messages_with_all_unique_transcriptio
 pct_of_messages_with_all_unique_transcriptions <- paste0(
   round(47/(64 + 47) * 100), "%"
 )
-
-n
 
 orthographic_distance_mod <- lmer(distance ~ message_c + (message_c|chain_name/seed_id),
                                   data = transcription_distances)
@@ -122,6 +173,7 @@ gg_distance <- ggplot(transcription_distances) +
   scale_color_manual(values = imitation_gen_colors) +
   scale_fill_manual(values = imitation_gen_colors) +
   coord_cartesian(ylim = c(0.0, 0.8)) +
+  ggtitle("Iterated imitations were easier to spell")
   base_theme +
   theme(legend.position = "none")
 

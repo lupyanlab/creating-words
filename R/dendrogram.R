@@ -1,4 +1,4 @@
-source("R/0-setup.R")
+source("R/setup.R")
 
 # ---- dendrogram
 library(ggraph)
@@ -41,7 +41,7 @@ gg_dendrogram <- ggraph(layout) +
   scale_shape_manual(values = c(32, 32, 16, 32)) +
   scale_edge_linetype_manual(values = c("blank", "blank", "solid", "blank")) +
   ggtitle("Imitations collected in the transmission chain experiment") +
-  theme_minimal() +
+  base_theme +
   theme(
     legend.position = "none",
     panel.grid.minor.y = element_blank(),

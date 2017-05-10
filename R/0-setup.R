@@ -17,4 +17,4 @@ img <- function(png_stem, ...) {
     grid.draw()
 }
 
-global_theme <- theme_minimal()
+base_theme <- theme_minimal()

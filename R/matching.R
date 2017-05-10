@@ -45,8 +45,6 @@ gg_match_to_seed <- ggplot(imitation_matches) +
                   color = survey_type),
               stat = "identity", data = transition_preds,
               size = 1.0) +
-  geom_smooth(aes(group = seed_id, color = survey_type),
-              method = "lm", se = FALSE) +
   scale_x_generation_1 +
   scale_y_gts_accuracy +
   scale_color_distractors +
@@ -57,6 +55,7 @@ gg_match_to_seed <- ggplot(imitation_matches) +
            alpha = 0.6) +
   coord_cartesian(xlim = c(-0.2, 7.2), ylim = ylim_gts) +
   base_theme +
+  ggtitle("Iterated imitations retain category information")
   theme(
     legend.position = c(0.8, 0.85),
     legend.key.width = unit(5, "lines"),
