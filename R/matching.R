@@ -55,36 +55,13 @@ gg_match_to_seed <- ggplot(imitation_matches) +
            alpha = 0.6) +
   coord_cartesian(xlim = c(-0.2, 7.2), ylim = ylim_gts) +
   base_theme +
-  ggtitle("Iterated imitations retain category information")
+  ggtitle("B. Iterated imitations retain category information") +
   theme(
     legend.position = c(0.8, 0.85),
     legend.key.width = unit(5, "lines"),
-    panel.grid.minor.x = element_blank()
+    panel.grid.minor.x = element_blank(),
+    panel.grid.minor.y = element_blank()
   )
-
-# Find chains that made it 7 or more generations
-long_chain_seeds <- imitation_matches %>%
-  filter(generation >= 6) %>%
-  .$seed_id %>%
-  unique()
-
-imitation_matches %<>%
-  mutate(long_chain = seed_id %in% long_chain_seeds)
-
-means_by_generation <- imitation_matches %>%
-  group_by(survey_type, generation, long_chain) %>%
-  summarize(is_correct = mean(is_correct),
-            n = n()) %>%
-  recode_generation()
-
-# Show plot with means overlayed
-ggplot(imitation_matches) +
-  aes(x = generation_1, y = is_correct) +
-  geom_smooth(aes(ymin = is_correct - se, ymax = is_correct + se,
-                  color = survey_type),
-              stat = "identity", data = transition_preds,
-              size = 1.0) +
-  geom_point(aes(size = n, color = survey_type), data = means_by_generation)
 
 ## Transcriptions ##
 
@@ -114,8 +91,8 @@ y_preds <- predictSE(acc_mod, x_preds, se = TRUE)
 
 message_labels <- data_frame(
   message_type = c("first_gen_imitation", "last_gen_imitation"),
-  message_label_2 = c("Transcription of first generation imitation",
-                      "Transcription of last generation imitation")
+  message_label_2 = c("First generation transcription",
+                      "Last generation transcription")
 )
 
 preds <- cbind(x_preds, y_preds) %>%
@@ -128,17 +105,19 @@ gg_match_transcriptions <- ggplot(preds) +
   aes(question_c, is_correct) +
   geom_bar(aes(fill = question_type), stat = "identity", width = 0.95, alpha = 0.6) +
   geom_linerange(aes(group = question_type, ymin = is_correct - se, ymax = is_correct + se)) +
-  scale_x_continuous("Question type", breaks = c(-0.5, 0.5), labels = c("True seed", "Category match")) +
+  scale_x_continuous("", breaks = c(-0.5, 0.5), labels = c("True seed", "Category match")) +
   scale_y_gts_accuracy +
   scale_fill_manual("", values = unname(colors[c("blue", "green")])) +
   chance_line +
   geom_text(aes(label = label),
-            data = data.frame(message_label_2 = "Transcription of first generation imitation",
+            data = data.frame(message_label_2 = "First generation transcription",
                               question_c = -0.7, is_correct = 0.27, label = "chance"),
             fontface = "italic") +
-  coord_cartesian(ylim = ylim_gts) +
-  facet_wrap("message_label_2") +
+  coord_cartesian(ylim = c(0.18, 0.51)) +
+  facet_wrap("message_label_2", strip.position = "bottom") +
+  ggtitle("C. Transcriptions can be matched to seed categories") +
   base_theme +
   theme(legend.position = "none",
         panel.grid.major.x = element_blank(),
-        panel.grid.minor.x = element_blank())
+        panel.grid.minor.x = element_blank(),
+        panel.grid.minor.y = element_blank())
