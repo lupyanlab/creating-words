@@ -115,7 +115,7 @@ gg_match_transcriptions <- ggplot(preds) +
             fontface = "italic") +
   coord_cartesian(ylim = c(0.18, 0.51)) +
   facet_wrap("message_label_2", strip.position = "bottom") +
-  ggtitle("C. Transcriptions can be matched to seed categories") +
+  ggtitle("C. Transcriptions are accurately matched to seed categories") +
   base_theme +
   theme(legend.position = "none",
         panel.grid.major.x = element_blank(),
