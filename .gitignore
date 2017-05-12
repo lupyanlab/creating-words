@@ -1,5 +1,6 @@
 *.pdf
 *.docx
+creating-words-with-methods.Rmd
 !submissions/**/*.pdf
 !submissions/**/*.docx
 
