@@ -1,32 +1,34 @@
 *.pdf
 *.docx
+creating-words-with-methods.Rmd
 !submissions/**/*.pdf
 !submissions/**/*.docx
-!comments/*.docx
 
 # reproducible
-figs/
-.cache/
+*figs/
+*cache/
+methods.yaml
+!templates/methods.yaml
 
 # latex
-creating-words.out
 *.tex
 !templates/*.tex
 *.md
-*.aux
 *.bbl
-*.blg
 *.dvi
 *.xwm
+*.aux
+*.blg
 *.fdb_latexmk
 *.fls
 *.log
+*.out
 
 # R/RStudio
 .Rhistory
-.Rproj.user/
+.Rproj.user
 
-# OS
+# os
 .DS_Store
 
 # editor
