@@ -1,5 +1,5 @@
 all : creating-words.pdf creating-words.docx
-creating-words.pdf : creating-words.Rmd
+creating-words.pdf : creating-words.Rmd templates/cogsci.tex
 	Rscript -e "rmarkdown::render('creating-words.Rmd')"
 creating-words.docx : creating-words.Rmd
 	Rscript -e "rmarkdown::render('creating-words.Rmd', output_format = 'word_document')"

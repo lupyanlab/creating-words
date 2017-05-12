@@ -7,7 +7,7 @@ output:
     template: templates/cogsci.tex
     keep_tex: true
 abstract: |
-  We report the results of a large-scale (_N_ = 1571) experiment to investigate whether spoken words can emerge from the process of repeated imitation. Participants played a version of the children’s game “Telephone”. The first generation was asked to imitate recognizable environmental sounds (e.g., glass breaking, water splashing); subsequent generations imitated the imitators for a total of 8 generations. We then examined whether the vocal imitations became more stable and word-like, retained a resemblance to the original sound, and became more suitable as learned category labels. The results showed (1) the imitations became progressively more word-like, (2) even after 8 generations, they could be matched above chance to the environmental sound that motivated them, and (3) imitations from later generations were more effective as learned category labels. These results show how repeated imitation can create progressively more word-like forms while retaining a semblance of iconicity.
+  We report the results of a large-scale (_N_=1571) experiment to investigate whether spoken words can emerge from the process of repeated imitation. Participants played a version of the children’s game “Telephone”. The first generation was asked to imitate recognizable environmental sounds (e.g., glass breaking, water splashing); subsequent generations imitated the imitators for a total of 8 generations. We then examined whether the vocal imitations became more stable and word-like, retained a resemblance to the original sound, and became more suitable as learned category labels. The results showed (1) the imitations became progressively more word-like, (2) even after 8 generations, they could be matched above chance to the environmental sound that motivated them, and (3) imitations from later generations were more effective as learned category labels. These results show how repeated imitation can create progressively more word-like forms while retaining a semblance of iconicity.
 ---
 
 ```{r config, include=FALSE}
@@ -23,6 +23,7 @@ opts_chunk$set(
   fig.path="figs/",
   fig.width=6,
   fig.height=6,
+  fig.align="center",
   out.width="7.2cm",  # 8.7 is max
   dpi=144,
   cache=TRUE,
@@ -51,8 +52,7 @@ served to clarify the referent of a vocalization and eventually establish a
 mutually understood word. In this study, we investigate the formation of
 onomatopoeic words--imitative words that resemble the sounds to which they
 refer. We ask whether onomatopoeic words can be formed gradually and without
-instruction simply from repeating the same imitation over generations of
-speakers.
+instruction through repeated imitation.
 
 Onomatopoeic words appear to be a universal lexical category found across the
 world's languages [@Dingemanse:2012fc]. Languages all have conventional words
@@ -68,7 +68,7 @@ into the broader linguistic system, when they behave like more "ordinary" words
 that can undergo typical morphological processes. Examples are English words
 like "crack" or the recently adapted "ping".
 
-```{r fig1, fig.width=4.6, out.width="4.6cm", fig.align="center", fig.cap="The design of the transmission chain experiment. 16 seed sounds were selected, four in each category of environmental sounds. Participants imitated each seed sound, and then the next generation of participants imitated the imitations and so on for 8 generations."}
+```{r fig1, fig.width=4, out.width="4cm", fig.align="center", fig.cap="The design of the transmission chain experiment. 16 seed sounds were selected, four in each category of environmental sounds. Participants imitated each seed sound, and then the next generation of participants imitated the imitations and so on for 8 generations."}
 draw_graphviz("definitions", "wordsintransition")
 ```
 
@@ -78,9 +78,9 @@ talented at vocal imitation in general, only at imitating speech sounds (and
 perhaps melodies). For example, most humans lack the ability (found in some
 birds) to convincingly reproduce environmental sounds … Thus ‘capacity for vocal
 imitation’ in humans might be better described as a capacity to learn to produce
-speech.” Nevertheless, experiments show that people can actually be quite
+speech.” Nevertheless, experiments show that people can be quite
 effective at using vocal imitation. For example, @Lemaitre:2014kr collected
-imitations and verbal descriptions of various mechanical and synthesized sounds.
+imitations and verbal descriptions of mechanical and synthesized sounds.
 When participants listened to these and were asked to identify the source, they
 were more accurate with imitations than descriptions. A subsequent study found
 that vocal imitations tend to focus on a few salient features of the sound
@@ -163,9 +163,9 @@ In Experiment 1 we collected the iterated vocal imitations that served as the ba
 
 ## Methods
 
-We selected inanimate categories of sounds because they were less likely to have lexicalized onomatopoeic forms already in English, and they were assumed to be less familiar and more difficult to imitate. Nonetheless, it remains possible that lexical knowledge still influenced imitation fidelity--a possibility that must be explored in future work. The sounds used here were selected using an odd-one-out norming procedure (_N_ = 105 participants) to reduce an initial set of 36 sounds in 6 categories to a final set of 16 "seed" sounds: 4 sounds in each of 4 categories. The four final categories included: water, glass, tear, zipper.
+We selected inanimate categories of sounds because they were less likely to have lexicalized onomatopoeic forms already in English, and they were less familiar and more difficult to imitate. Nonetheless, it is possible that lexical knowledge still influenced imitation fidelity--a possibility to be explored in future work. The sounds used here were selected using an odd-one-out norming procedure (_N_=105 participants) to reduce an initial set of 36 sounds in 6 categories to a final set of 16 "seed" sounds: 4 sounds in each of 4 categories. The four final categories included: water, glass, tear, zipper.
 
-Participants were paid to participate in an online version of the children's game of "Telephone". The instructions informed participants that they would hear some sound and their task is to reproduce it as accurately as possible using their computer microphone. Participants listened to and imitated 4 sounds. Participants received one sound from each of the four categories of sounds drawn at random such that participants were unlikely to hear the same person more than once. Imitations were monitored by an experimenter to catch any gross errors in recording before they were passed on to the next generation of imitators. The experimenter also blocked sounds that violated the rules of the experiment, e.g., by saying something in English.
+Participants were paid to participate in an online version of the children's game of "Telephone". The instructions informed participants that they would hear some sound and their task is to reproduce it as accurately as possible using their computer microphone. Participants listened to and imitated 4 sounds. Participants received one sound from each of the four categories of sounds drawn at random such that participants were unlikely to hear the same person more than once. Imitations were monitored by an experimenter to catch any gross errors in recording before they were passed on to the next generation of imitators, including blocking sounds that violated the rules of the experiment, e.g., by saying something in English.
 
 Given large differences in recording quality resulting from conducting the
 experiment online, we were unable to use previously published techniques for
@@ -174,8 +174,7 @@ similarity using a controlled, randomized norming procedure completed by
 research assistants. Five RAs listened to pairs of imitations while blind to
 generation and rated their similarity on a 7-point scale where a 1 meant the
 sounds could never be confused with one another and a 7 meant the sounds were
-nearly identical. Prior to analysis, the similarity ratings were converted to
-z-scores for each rater.
+nearly identical.
 
 ## Results
 
@@ -199,7 +198,7 @@ Experiment 2 was conducted to determine if the imitations retained some resembla
 
 All `r n_final_imitations` imitations collected in Experiment 1 were tested in each condition depicted in Fig. 3. On each trial participants listened to an imitation and selected among four possible options as to which option sounded the most like the imitation. They did not receive any feedback on their performance. We tested three types of matching questions that differed according to the relationship between the imitation and the four seed sounds serving as the options in the 4AFC task (Fig. 3).
 
-```{r fig3, fig.width=8, out.width="8.0cm", fig.align="center", fig.cap='Types of matching questions depicted in relation to the 16 seed sounds. For each question, participants listened to an imitation (dashed, orange circle) and had to guess which of 4 sound choices (solid, green circles) they thought the person was trying to imitate. (Top) True seed questions contained the actual seed that generated the imitation in the choices, and the distractor seeds were sampled from different categories. (Middle) Category match questions also used distractor sounds from different categories but the correct seed was not the actual seed, but a different sound within the same category. (Bottom) Specific match questions pitted the actual seed against the other seeds within the same category.'}
+```{r fig3, fig.width=8, out.width="8.0cm", fig.align="center", fig.cap='Types of matching questions depicted in relation to the 16 seed sounds. For each question, participants listened to an imitation (dashed circles) and had to guess which of 4 sound choices (solid circles) they thought the person was trying to imitate. (Top) True seed questions contained the actual seed that generated the imitation in the choices, and the distractor seeds were sampled from different categories. (Middle) Category match questions also used distractor sounds from different categories but the correct seed was not the actual seed, but a different sound within the same category. (Bottom) Specific match questions pitted the actual seed against the other seeds within the same category.'}
 q_true_seed <- read_graphviz("true-seed", "wordsintransition")
 q_category_match <- read_graphviz("category-match", "wordsintransition")
 q_specific_match <- read_graphviz("specific-match", "wordsintransition")
@@ -231,7 +230,7 @@ In addition to assessing stability in the acoustic properties of the imitations,
 
 ## Methods
 
-We selected the first and final three imitations in each transmission chain to be transcribed into English orthography. Participants were instructed to write down what they heard as a word so that the written word would sound as much like the message as possible.
+We selected the first and final three imitations in each transmission chain to be transcribed into English orthography. Participants were instructed to write down what they heard as a word so that the written word would sound like the message.
 
 ## Results
 
@@ -261,7 +260,7 @@ presented sounds, and they had to guess which one. Specific match questions (see
 
 Participants were able to guess the correct meaning of the transcribed word above chance even after 8 generations of repetition, `r glmer_mod_results(transcription_matches_last_gen_mod, "(Intercept)", odds = TRUE)` (Fig. 6). This was true both for true seed questions, `r glmer_mod_results(transcription_matches_last_gen_mod_category, "(Intercept)", odds = TRUE)`, and for category match questions, `r glmer_mod_results(transcription_matches_last_gen_mod_exact, "(Intercept)", odds = TRUE)`. The effect of generation did not vary across these question types, `r glmer_mod_results(acc_mod, "question_c:message_c")`.
 
-```{r fig6, fig.cap="Matching accuracy for transcriptions of imitations taken from first and last generations. True seed questions contained transcriptions of the actual seed generating the transcribed word. Category match questions contained transcriptions of imitations of other seeds from the same category."}
+```{r fig6, fig.height=4, fig.cap="Matching accuracy for transcriptions of imitations taken from first and last generations. True seed questions contained transcriptions of the actual seed generating the transcribed word. Category match questions contained transcriptions of imitations of other seeds from the same category."}
 gg_match_transcriptions
 ```
 
@@ -271,7 +270,7 @@ In Experiment 5 we examined whether there was a learning advantage to the more w
 
 ## Methods
 
-To determine which transcriptions to test as category labels, we first selected only those transcriptions which had above chance matching performance when matching back to the original seeds. Then we excluded transcriptions that had fewer than two unique characters or were over 10 characters long, and sampled from both first and last generation imitations to reach a final set that controlled for overall matching accuracy.
+To determine which transcriptions to test as category labels, we selected transcriptions which were matched above chance in Exp. 2. Of these, transcriptions with fewer than two unique characters or more than 10 characters in length were excluded. The final set comprised first and last generation imitations sampled to control for overall matching accuracy.
 
 Participants learned, through trial-and-error, the names for four different categories of sounds. On each trial participants listened to one of the 16 environmental sounds used as seeds and then saw a novel word--a transcription of one of the imitations. Participants responded by pressing a green button if the label was the correct label and a red button otherwise. They received accuracy feedback after each trial.
 
@@ -292,10 +291,10 @@ grid.arrange(rt_plot, gg_transition, ncol = 1)
 
 We show that repeated imitation of an originally imitative vocalization gradually becomes more word-like as it is transmitted along the chain of a “Telephone” game. The first evidence provided showed that imitations became more stable over generations of repetition, both in terms of acoustic similarity as well as in orthographic agreement. But more than just becoming more stable over generations, the imitations also become more word-like in that they served as more effective category labels. Category information was more resilient to transmission decay than specific information identifying a particular exemplar within a category. This category information remained even when the imitations were transcribed into lexical forms, as participants were able to guess the categorical meaning of the word at above chance levels even after 8 generations of repetition. One such consequence of having words is that they make categorization easier. In support of this conclusion, we found that participants were faster and not less accurate in learning category labels that had emerged through repeated imitation than those who learned from transcriptions of direct imitations of the environmental sounds, completing the transition from nonverbal imitation to a fully lexicalized word form and demonstrating the impact of this transition on communication.
 
-One result that did not fit squarely with imitations becoming more word-like is that with transcriptions, there was no difference over generations between question types. If the results of matching transcriptions back to seed sounds would have perfectly mirrored the results of matching imitations back to seed sounds we would have expected the difference between True seed questions and Category match questions to decrease over generations. Instead we found a main effect of question type. Although participants were able to match transcriptions to categories of sounds even after 8 generations of repetition, it was still easier for them to match a transcription to the actual seed that generated the transcription. [insert explanation here]
+One result that did not fit squarely with imitations becoming more word-like is that with transcriptions, there was no difference over generations between question types. If the results of matching transcriptions back to seed sounds would have mirrored the results of matching imitations we would have expected the difference between True seed questions and Category match questions to decrease over generations, but it did not. Although participants were able to match transcriptions to categories of sounds after 8 generations of repetition, it was easier for them to match a transcription to the actual seed that generated the transcription, meaning that individuating information was retained over and above category information. One possible explanation for this is that by converting the imitations into orthographic representations of phonemes, idiosyncratic features of the sound could become rendered as categorical phonological features. This process could exaggerate the features and facilitate identification of the source. To test this we need to collect match accuracy for transcriptions on Specific match questions to see if transcriptions are able to be matched within-category even when the imitations that generated those transcriptions are not.
 
 Our study focused on the formation of onomatopoeia--sound-imitative words--but in addition to onomatopoeia, many languages have semantically rich systems of ideophones. These words comprise a grammatically and phonologically distinct class of words that are used to express a variety of sensory-rich meanings [@Dingemanse:2012fc; @Voeltz:2001vv]. Notably, these words are often recognized by native speakers to be somehow imitative of their meaning. For example, in Japanese, the word ‘koron’ – with a voiceless [k] refers to a light object rolling once, the reduplicated ‘korokoro’ to a light object rolling repeatedly, and ‘gorogoro’ – with a voiced [g] – to a heavy object rolling repeatedly [@Imai:2014dea]. The iconicity of ideophones was verified by an experiment that tested the ability of naïve listeners to guess the meanings of words sampled from five different languages [@Dingemanse:2016vd]. Although words for sounds were guessed more accurately than the rest, listeners were better than chance at guessing the synonyms of ideophones that expressed meanings from all five semantic categories tested -- color/visual, motion, shape, sound, and texture.  In addition, laboratory experiments show that people are able to generate imitative vocalizations for a variety of non-sound concepts, and that these are also understandable to naïve listeners [@Perlman:2015ip]. Thus vocal imitation has the potential to play a role in word formation that extends beyond just the imitation of sounds.
 
-Our findings from an online game of Telephone suggest that the formation of words from vocal imitation can be a simple process. The results show how repeated imitation can create progressively more word-like forms while retaining a resemblance to the original sound that motivated it. This raises the possibility that onomatopoeic words can be created from the repetition of one-shot vocal imitations of an original sound.
+Our findings from an online game of Telephone suggest that the formation of words from vocal imitation can be a simple process. The results show how repeated imitation can create progressively more word-like forms while retaining a resemblance to the original sound that motivated it. This raises the possibility that onomatopoeic words can be created simply through repeated imitation.
 
 # References

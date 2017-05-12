@@ -183,7 +183,7 @@ lmer_mod_results <- function(lmertest_mod, param) {
   results <- broom::tidy(lmertest_mod, effects = "fixed") %>%
     filter(term == param) %>%
     as.list()
-  
+
   lmertest_summary <- lmerTest::summary(lmertest_mod) %>%
     .$coefficients %>%
     as.data.frame()
@@ -191,16 +191,16 @@ lmer_mod_results <- function(lmertest_mod, param) {
   lmertest_results <- lmertest_summary %>%
     filter(term == param) %>%
     as.list()
-  
+
   results$df <- lmertest_results[["df"]]
   results$p_value <- lmertest_results[["Pr(>|t|)"]]
-  
+
   if (results$p_value < 0.001) {
     results$p_value_str <- "_p_ < 0.001"
   } else {
     results$p_value_str <- paste("_p_ = ", round(results$p_value, 3))
   }
-  
+
   sprintf("_b_ = %.2f (%.2f), _t_(%.1f) = %.2f, %s",
           results$estimate, results$std.error, results$df, results$statistic, results$p_value_str)
 }
@@ -210,13 +210,13 @@ glmer_mod_results <- function(glmer_mod, param, odds = FALSE) {
   results <- broom::tidy(glmer_mod, effects = "fixed") %>%
     filter(term == param) %>%
     as.list()
-  
+
   if (results$p.value < 0.001) {
     results$p_value_str <- "_p_ < 0.001"
   } else {
     results$p_value_str <- paste("_p_ = ", round(results$p.value, 3))
   }
-  
+
   if (odds == TRUE) {
     results["odds"] <- log(results$estimate)
     formatted = sprintf("_b_ = %.2f (%.2f) log-odds, odds = %.2f, _z_ = %.2f, %s",
@@ -252,7 +252,7 @@ similarity_judgments_means <- acoustic_similarity_judgments %>%
 set.seed(949)
 gg_similarity_judgments <- ggplot(similarity_judgments_means) +
   aes(x = edge_generations, y = similarity_z) +
-  geom_point(aes(color = category), position = position_jitter(0.2, 0.0),
+  geom_point(aes(color = category, shape = category), position = position_jitter(0.2, 0.0),
              size = 2.5, alpha = 0.8) +
   geom_smooth(aes(group = 1, ymin = similarity_z - se, ymax = similarity_z + se),
               data = similarity_judgments_preds, stat = "identity",
@@ -260,6 +260,7 @@ gg_similarity_judgments <- ggplot(similarity_judgments_means) +
   scale_x_discrete("Generation") +
   scale_y_continuous("Acoustic similarity (z-score)") +
   scale_color_brewer("Category", palette = "Set2") +
+  scale_shape_discrete("Category") +
   coord_cartesian(ylim = c(-0.6, 0.8)) +
   base_theme +
   theme(legend.position = "top")
@@ -381,9 +382,9 @@ gg_match_transcriptions <- ggplot(preds) +
   chance_line +
   geom_text(aes(label = label),
             data = data.frame(message_label_2 = "First generation", question_c = -0.7,
-                              is_correct = 0.26, label = "chance"),
+                              is_correct = 0.27, label = "chance"),
             fontface = "italic") +
-  coord_cartesian(ylim = ylim_gts) +
+  coord_cartesian(ylim = c(0.16, 0.54)) +
   facet_wrap("message_label_2") +
   base_theme +
   theme(legend.position = "none",
@@ -458,6 +459,6 @@ gg_transition <- ggplot(lsn_transition) +
   scale_x_discrete("Block transition", labels = c("Before", "After")) +
   scale_y_rt +
   scale_color_message_label_2 +
-  coord_cartesian(ylim = c(600, 1200)) +
+  coord_cartesian(ylim = c(600, 1000)) +
   base_theme +
-  theme(legend.position = c(0.85, 0.8))
+  theme(legend.position = "none")
