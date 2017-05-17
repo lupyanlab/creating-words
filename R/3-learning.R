@@ -1,3 +1,5 @@
+source("R/0-setup.R")
+
 # ---- learning
 first_last_gen <- filter(learning_sound_names, message_type != "sound_effect") %>%
   mutate(block_ix_sqr = block_ix^2)
@@ -35,7 +37,7 @@ rt_plot <- ggplot(first_last_gen) +
   scale_linetype_message_label_2 +
   coord_cartesian(ylim = c(600, 1200)) +
   base_theme +
-  ggtitle("A. Iterated imitations were easier to learn as category labels") +
+  ggtitle("A. Iterated imitations were learned faster") +
   theme(legend.position = c(0.7, 0.75),
         legend.key.width = unit(5, "lines"))
 rt_plot
@@ -72,7 +74,7 @@ gg_transition <- ggplot(lsn_transition) +
   scale_y_rt +
   scale_color_message_label_2 +
   scale_linetype_message_label_2 +
-  coord_cartesian(ylim = c(600, 1200)) +
+  coord_cartesian(ylim = c(600, 1000)) +
   ggtitle("B. Iterated imitations were easier to generalize") +
   base_theme +
   theme(

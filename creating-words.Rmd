@@ -12,7 +12,7 @@ abstract: |
 
 People have long pondered the origins of languages, especially the words that compose them. For example, both Plato in his _Cratylus_ dialogue [@Plato:1999uk] and John Locke in his _Essay Concerning Human Understanding_ [@Locke:1948eu] examined the "naturalness" of words--whether they are somehow imitative of their meaning. Here, we investigated whether new words can be formed from the repetition of non-verbal imitations. Does the repetition of imitations over generations of speakers gradually give rise to novel word forms? In what ways do these words resemble the original sounds that motivated them? We report a large-scale experiment investigating how new words can form--gradually and without instruction--simply by repeating imitations of environmental sounds.
 
-The importance of imitation and depiction in the origin of signs is clearly observable in signed languages [@Klima:1980si], but in considering the idea that vocal imitation may be key to understanding the origin of spoken words, many have argued that the human capacity for vocal imitation is far too limited [@Arbib:2012htb; @Tomasello:2010or; @Armstrong:2007go; @Corballis:2003ha; @Hockett:1978se; Hewes:1973vr]. For example, Pinker and Jackendoff [@Pinker:2005cv] argued that, “most humans lack the ability (found in some birds) to convincingly reproduce environmental sounds … Thus ‘capacity for vocal imitation’ in humans might be better described as a capacity to learn to produce speech” (p. 209). Consequently, it is still widely assumed that vocal imitation--or more broadly, the use of any sort of resemblance between form and meaning--cannot be important to understanding the origin of spoken words [@GoldinMeadow:2016bw; @Kendon:2014eg].
+The importance of imitation and depiction in the origin of signs is clearly observable in signed languages [@Klima:1980si], but in considering the idea that vocal imitation may be key to understanding the origin of spoken words, many have argued that the human capacity for vocal imitation is far too limited [@Arbib:2012htb; @Tomasello:2010or; @Armstrong:2007go; @Corballis:2003ha; @Hockett:1978se; @Hewes:1973vr]. For example, Pinker and Jackendoff [@Pinker:2005cv] argued that, “most humans lack the ability (found in some birds) to convincingly reproduce environmental sounds … Thus ‘capacity for vocal imitation’ in humans might be better described as a capacity to learn to produce speech” (p. 209). Consequently, it is still widely assumed that vocal imitation--or more broadly, the use of any sort of resemblance between form and meaning--cannot be important to understanding the origin of spoken words [@GoldinMeadow:2016bw; @Kendon:2014eg].
 
 But although most words of contemporary spoken languages are not clearly imitative in origin, there has been a growing recognition of the preponderance of imitative words in spoken language [@Dingemanse:2015cu; @Perniss:2010fb] and the frequent use of vocal imitation and depiction in spoken discourse [@Clark:1990cl; @Lewis:2009wz], leading some to argue for the importance of imitation for understanding the origin of spoken words [e.g., @Brown:1955wy; @Donald:2016kd; @Imai:2014dea; @Perlman:2015ip; @Dingemanse:2014gj]. In addition, experiments show that people can, in fact, be highly effective at using vocal imitations to refer to different kinds of sounds--in some cases, even more effective than with the use of words [@Lemaitre:2014kr]. The effectiveness of these imitations arises not because people are able to mimic environmental sounds with high fidelity, but because they are able to represent the salient features of sounds in ways that are understandable to listeners [@Lemaitre:2016kz]. Similarly, the features of onomatopoeic words might highlight distinctive aspects of the sounds they represent. For example, the initial voiced, plosive /b/ in “boom” represents an abrupt, loud onset, the back vowel /u/ a low pitch, and the nasalized /m/ a slow, muffled decay [@Rhodes:1994au]. Recent work has also shown that people are able to create novel imitative vocalizations for more abstract meanings (e.g. ‘slow’, ‘rough’, ‘good’, ‘many’) that are understandable to naïve listeners [@Perlman:2015ip].
 
@@ -40,11 +40,11 @@ opts_chunk$set(
   autodep=TRUE
 )
 
-read_chunk("R/setup.R")
-read_chunk("R/dendrogram.R")
-read_chunk("R/stability.R")
-read_chunk("R/learning.R")
-read_chunk("R/matching.R")
+read_chunk("R/0-setup.R")
+read_chunk("R/1-telephone-game.R")
+read_chunk("R/2-stability.R")
+read_chunk("R/3-learning.R")
+read_chunk("R/4-matching.R")
 ```
 
 ```{r setup, include=FALSE, cache=FALSE}
@@ -104,7 +104,7 @@ Our hypothesis was that repetition of imitations would result in increasingly wo
 
 When participants learned novel labels for categories of environmental sounds, they were faster when learning a label from a last generation imitation than from a first generation imitation, `r lmer_mod_results(lsn_after_first_block_lmertest_mod, "message_c")` (Fig. 3A). Thus, in addition to becoming more stable both in terms of acoustic and orthographic properties, imitations that have been more repeated were also easier to learn as category labels. The effect can be further localized within each block. Comparing RTs on the trials leading up to a block transition where new category members were introduced, and the trials immediately after the transition, revealed a reliable interaction between block transition and the generation of the transcribed label, `r lmer_mod_results(transition_lmertest_mod, "block_transition_c:message_c")` (Fig. 3B). The same result is not found when all trials in the block are considered. This result suggests that learning transcriptions from later generation imitations were easier to initially generalize to new category members, although further investigation with a more difficult category learning experiment is required.
 
-```{r fig3, fig.height=10, out.height="10cm", fig.cap="A. RTs on correct trials by block, showing faster responses when learning category labels transcribed from last generation imitations. B. RTs on trials leading up to and immediately following the block transition where new category members are introduced."}
+```{r fig3, fig.height=10, out.height="10cm", fig.cap="Learning words created through iterated imitation. A. RTs on correct trials by block, showing faster responses when learning category labels transcribed from last generation imitations. B. RTs on trials leading up to and immediately following the block transition where new category members are introduced."}
 grid.arrange(rt_plot, gg_transition, ncol = 1)
 ```
 
@@ -123,7 +123,7 @@ q_specific_match <- read_graphviz("specific-match", "wordsintransition")
 grid.arrange(
   arrangeGrob(q_true_seed, q_category_match, q_specific_match, ncol = 1,
               top = textGrob('A. Types of "Guess the seed" matching questions',
-                             hjust = 1, gp = gpar(fontsize = 16))),
+                             hjust = 0.7, gp = gpar(fontsize = 16))),
   gg_match_to_seed,
   gg_match_transcriptions,
   ncol = 1,
@@ -143,7 +143,7 @@ Interestingly, the effect of generation did not vary across these question types
 
 # Discussion {-}
 
-People are surprisingly effective at using vocal imitation to represent and communicate about the sounds in their environment [@Lemaitre:2016kz] and more abstract meanings [@Perlman:2015ip]. Moreover, imitative (or “iconic”) words are found across the spoken languages of the world [@Dingemanse:2015cu; Imai:2014dea; @Perniss:2010fb]. In this study, we examined how vocal imitations develop into standardized words. Must new words be deliberately invented as such, or can words form simply by repeating an imitation of a sound--even when there is no intention to communicate. To investigate this question, we conducted a large-scale, online, iterated vocal imitation experiment.
+People are surprisingly effective at using vocal imitation to represent and communicate about the sounds in their environment [@Lemaitre:2016kz] and more abstract meanings [@Perlman:2015ip]. Moreover, imitative (or “iconic”) words are found across the spoken languages of the world [@Dingemanse:2015cu; @Imai:2014dea; @Perniss:2010fb]. In this study, we examined how vocal imitations develop into standardized words. Must new words be deliberately invented as such, or can words form simply by repeating an imitation of a sound--even when there is no intention to communicate. To investigate this question, we conducted a large-scale, online, iterated vocal imitation experiment.
 
 Our results show that through simple repetition, imitative vocalizations became more word-like both in form and function. In form, the vocalizations gradually stabilized over generations, becoming more similar from imitation to imitation. They also became increasingly standardized according to the phonology of English, as later generations were more consistently transcribed into English orthography. In function, the increasingly word-like forms became more effective as category labels. In a category learning experiment, naïve participants were faster to learn category labels derived from transcriptions of later-generation imitations than those derived from direct imitations of the environmental sound. This fits with previous research showing that the relatively arbitrary forms that are typical of words (e.g. “dog”) makes them better suited to function as category labels compared to direct auditory cues [e.g. the sound of a dog bark; @Lupyan:2012cp; @Edmiston:2015he; @Boutonnet:2015fz].
 

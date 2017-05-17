@@ -1,4 +1,4 @@
-source("R/setup.R")
+source("R/0-setup.R")
 
 # ---- stability
 
@@ -37,7 +37,7 @@ gg_similarity_judgments <- ggplot(similarity_judgments_means) +
   scale_color_brewer("", palette = "Set2") +
   scale_shape_discrete("") +
   coord_cartesian(ylim = c(-0.6, 0.8)) +
-  ggtitle("A. Repeating imitations makes them more repeatable") +
+  ggtitle("A. Iterated imitations become more repeatable") +
   base_theme +
   theme(legend.position = c(0.1, 0.85))
 
@@ -77,7 +77,7 @@ similarity_cor_test <- cor.test(
 
 report_cor_test <- function(cor_test) {
   results <- broom::tidy(cor_test) %>% as.list()
-  sprintf("r = %.2f, 95%% CI [%.2f, %.2f]",
+  sprintf("_r_ = %.2f, 95%% CI [%.2f, %.2f]",
           results$estimate, results$conf.low, results$conf.high)
 }
 

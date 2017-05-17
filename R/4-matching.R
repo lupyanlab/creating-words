@@ -1,3 +1,5 @@
+source("R/0-setup.R")
+
 # ---- matching
 
 ## Imitations ##
@@ -42,7 +44,7 @@ scale_linetype_distractors <- scale_linetype_manual(
 gg_match_to_seed <- ggplot(imitation_matches) +
   aes(x = generation_1, y = is_correct) +
   geom_smooth(aes(ymin = is_correct - se, ymax = is_correct + se,
-                  color = survey_type),
+                  color = survey_type, linetype = survey_type),
               stat = "identity", data = transition_preds,
               size = 1.0) +
   scale_x_generation_1 +
@@ -111,7 +113,7 @@ gg_match_transcriptions <- ggplot(preds) +
   chance_line +
   geom_text(aes(label = label),
             data = data.frame(message_label_2 = "First generation transcription",
-                              question_c = -0.7, is_correct = 0.27, label = "chance"),
+                              question_c = -0.7, is_correct = 0.265, label = "chance"),
             fontface = "italic") +
   coord_cartesian(ylim = c(0.18, 0.51)) +
   facet_wrap("message_label_2", strip.position = "bottom") +

@@ -6,7 +6,7 @@ output_format:
 
 ```{r config, include=FALSE}
 library(knitr)
-read_chunk("R/setup.R")
+read_chunk("R/0-setup.R")
 ```
 
 ```{r setup, include=FALSE}
