@@ -1,6 +1,6 @@
 source("R/0-setup.R")
 
-# ---- 4-proportion-imitations-transcribed
+# ---- 4-transcribing-imitations
 gen_labels <- imitations %>%
   select(message_id, generation)
 
@@ -31,12 +31,12 @@ transcribed_imitations <- imitations %>%
 hist_no_labels <- hist
 hist_no_labels$layers[[2]] <- NULL
 
-(hist_no_labels %+% transcribed_imitations) +
+gg_proportion_transcriptions <- (hist_no_labels %+% transcribed_imitations) +
   geom_histogram(aes(x = generation), data = imitations,
                  binwidth = 1, fill = "black", alpha = 0.2) +
   ggtitle("Proportion of imitations transcribed")
 
-# ---- 4-alternative-transcription-measures
+
 transcription_frequencies %<>%
   recode_message_type %>%
   filter(message_type != "sound_effect")
@@ -66,7 +66,8 @@ gg_exact_matches <- ggplot(transcription_uniqueness) +
   scale_y_continuous("Transcription agreement", labels = scales::percent) +
   scale_color_brewer("", palette = "Set2") +
   base_theme +
-  theme(legend.position = "top")
+  theme(legend.position = "top") +
+  ggtitle("A. Exact string matches")
 
 
 message_id_map <- select(imitations, message_id, seed_id, generation)
@@ -85,31 +86,25 @@ gg_string_distance <- distance_plot +
   geom_bar(aes(fill = frequency_type, width = 0.96), stat = "summary", fun.y = "mean",
            alpha = 0.6) +
   geom_point(aes(color = frequency_type, group = message_id), stat = "summary", fun.y = "mean",
-             shape = 1, position = position_jitter(0.3, 0.01)) +
+             position = position_jitter(0.3, 0.01)) +
   scale_x_discrete("") +
-  scale_y_continuous("String distance") +
+  scale_y_continuous("Distance between transcriptions") +
+  scale_color_brewer(palette = "Set2") +
+  scale_fill_brewer(palette = "Set2") +
   facet_wrap("frequency_type") +
-  guides(color = "none", fill = "none")
+  guides(color = "none", fill = "none") +
+  ggtitle("B. Transcription distance by agreement")
 
 gg_length_plot <- ggplot(transcription_distances) +
   aes(message_label, length) +
   geom_point(aes(group = message_id, color = frequency_type), stat = "summary", fun.y = "mean",
-             shape = 1, position = position_jitter(0.3, 0.1)) +
+             position = position_jitter(0.3, 0.1)) +
   geom_line(aes(group = frequency_type, color = frequency_type), stat = "summary", fun.y = "mean") +
-  labs(x = "", y = "Average longest substr match length",
-       title = "Matches get longer") + 
-  base_theme
-
-grid.arrange(
-  gg_exact_matches,
-  gg_string_distance,
-  gg_length_plot,
-  ncol = 1
-)
-
-# ---- 4-transcribing-imitations
-data("transcription_frequencies")
-data("imitations")
+  scale_color_brewer("", palette = "Set2") +
+  labs(x = "", y = "Longest substring match (characters)",
+       title = "C. Substring match length") + 
+  base_theme +
+  theme(legend.position = "top")
 
 labels <- imitations %>%
   select(message_id, seed_id, first_gen_id, generation)
@@ -129,5 +124,3 @@ sample_first_last_transcriptions <- transcription_frequencies %>%
   ungroup() %>%
   select(chain_name, seed_id, first_gen_id, message_type, text) %>%
   spread(message_type, text)
-
-# write.csv(sample_first_last_transcriptions, "sample_first_last_transcriptions.csv", row.names = FALSE)

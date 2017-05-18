@@ -39,7 +39,7 @@ list.files("R", "*.R", full.names = TRUE) %>% sapply(read_chunk)
 
 # Open data and materials {-}
 
-We are committed to making the results of this research open and reproducible. The R code used to generate the main manuscript as well as all analyses reported in this Supporting Information document is available on GitHub at [github.com/lupyanlab/creating-words](https://github.com/lupyanlab/creating-words). All analyses and figures were created in R. The data are available in an R package, which can be downloaded and installed with the following R commands.
+We are committed to making the results of this research open and reproducible. The R code used to generate all stats and figures reported in the main manuscript as well as in this Supporting Information document is available on GitHub at [github.com/lupyanlab/creating-words](https://github.com/lupyanlab/creating-words). All analyses and figures were created in R. The data are available in an R package, which can be downloaded and installed with the following R commands.
 
 ```
 # Install the R package from GitHub
@@ -57,14 +57,14 @@ data(package = "wordsintransition")
 data("acoustic_similarity_judgments")
 ```
 
-The materials used to run the experiments are also available in GitHub repositories. The web app used to collect vocal imitations, transcriptions of imitations, and matches of imitations and transcriptions to the original seed sounds is available at [github.com/lupyanlab/telephone-app](https://github.com/lupyanlab/telephone-app). Analyses of acoustic similarity including both algorithmic analyses as well as the procedure for gathering subjective judgments of similarity are provided at [github.com/lupyanlab/acoustic-similarity](https://github.com/lupyanlab/acoustic-similarity). The word learning experiment is available at [github.com/lupyanlab/learning-sound-names](https://github.com/lupyanlab/learning-sound-names).
+The materials used to run the experiments are also available in GitHub repositories. The web app used to collect vocal imitations, transcriptions of imitations, and matches of imitations and transcriptions to the original seed sounds is available at [github.com/lupyanlab/telephone-app](https://github.com/lupyanlab/telephone-app). Analyses of acoustic similarity including both algorithmic analyses as well as the procedure for gathering subjective judgments of similarity are provided at [github.com/lupyanlab/acoustic-similarity](https://github.com/lupyanlab/acoustic-similarity). The category learning experiment is available at [github.com/lupyanlab/learning-sound-names](https://github.com/lupyanlab/learning-sound-names).
 
 # Selecting seed sounds {-}
 
 ```{r 1-selecting-seed-sounds, include=FALSE}
 ```
 
-Our goal in selecting sounds to serve as seeds in the transmission chains was to
+Our goal in selecting sounds to serve as seeds for the transmission chains was to
 pick multiple sounds within a few different categories such that each category 
 member was approximately equally distinguishable from the other sounds within 
 the same category. To do this, we started with an initial set of 6 categories 
@@ -73,36 +73,39 @@ reduce the initial set to a final set of 16 seed sounds: 4 sounds in each of 4
 categories. Having 4 sounds in 4 categories was the minimum necessary in order to generate 4AFC questions with both between-category and within-category distractors with the appropriate level of counterbalancing across all conditions.
 
 Participants in the odd one out norming procedure listened to the sounds in each
-category and picked the one that they thought was **the most different** from
-the others. In the first round of norming, participants listened to 6 sounds on
-a given trial. We removed the 2 sounds in each category that were the most
-different from the others, and repeated the norming process again with 4 sounds
-in each category. The resulting sounds that were selected in each category are
-considered to be a set of equally distinguishable category members.
+category and picked the one that they thought was **the most different** from 
+the others. In the first round of norming, participants listened to 6 sounds on 
+a given trial. We removed the 2 sounds in each category that were the most 
+different from the others (Fig. S1), and repeated the norming process again with
+4 sounds in each category (Fig. S2). The resulting sounds that were selected in
+each category are considered to be a set of equally distinguishable category
+members.
 
-The final 16 seed sounds used in the transmission chain experiment can be downloaded from [sapir.psych.wisc.edu/telephone/seeds/all-seeds.zip](http://sapir.psych.wisc.edu/telephone/seeds/all-seeds.zip).
+The final 16 seed sounds used in the transmission chain experiment can be
+downloaded from
+[sapir.psych.wisc.edu/telephone/seeds/all-seeds.zip](http://sapir.psych.wisc.edu/telephone/seeds/all-seeds.zip).
 
-```{r 1-odd-one-out-round-1, fig.height=10, fig.cap="Results of the first round of seed norming. After collecting these data, two sounds were removed from each category and the norming procedure was conducted again."}
+```{r figS1, fig.height=10, fig.cap="Results of the first round of seed norming. After collecting these data, two sounds were removed from each category and the norming procedure was conducted again."}
 gg_seed_selection_round_1
 ```
 
-```{r 1-odd-one-out-round-2, fig.height=10, fig.cap="Results of the second round of seed norming. After collecting these data, four categories of sounds were selected to use in the main experiment."}
+```{r figS2, fig.height=10, fig.cap="Results of the second round of seed norming. After collecting these data, four categories of sounds were selected to use in the main experiment."}
 gg_seed_selection_round_2
 ```
 
 # Collecting vocal imitations {-}
 
-Participants played a version of the children's game of Telephone via a web-based interface (Fig. S3). Initially the only action open to players is to hear the message by clicking the top sound icon. After listening to the message once, they could then initiate a recording of their imitation by clicking the bottom sound icon to turn the recorder on. Turning the recorder off submitted their response. If the recording was too quiet (less than -30 dBFS), participants were asked to repeat their imitation. In response, they could repeat the initial message again. After a successful recording was submitted a new message was loaded. Participants made 4 recordings each.
+Participants played a version of the children's game of Telephone via a web-based interface (Fig. S3). Initially the only action open to players is to hear the message by clicking the top sound icon. After listening to the message once, they could then initiate a recording of their imitation by clicking the bottom sound icon to turn the recorder on. Turning the recorder off submitted their response. If the recording was too quiet (less than -30 dBFS), participants were asked to repeat their imitation. In response, they could repeat the initial message again. After a successful recording was submitted, a new message was loaded. Participants made 4 recordings each.
 
-```{r 2-collect-imitations-gui, fig.width=3, fig.height=3, fig.cap="The interface for the telephone game. Participants clicked the top sound icon to hear the message and the bottom sound icon to record their response. After ending their recording a new message was presented."}
+```{r figS3, fig.width=3, fig.height=3, fig.cap="The interface for the telephone game. Participants clicked the top sound icon to hear the message and the bottom sound icon to record their response. After ending their recording a new message was presented."}
 img("collect-imitations-gui")
 ```
 
 ## Monitoring incoming imitations
 
-Since the experiment was conducted online, it was likely that at least some of the imitations would be invalid, either due to low recording quality or due to a violation of the instructions of the experiment (e.g., saying something in English). We needed a way to monitor the imitations as they came in to prevent downstream corruption of transmission chains, and so designed an interactive data visualization (Fig. S4) to check the recordings and exclude ones where necessary. The monitoring also helped catch gross errors in the timing of the recording, the most common of which was recordings that were too long relative to the imitation. Via this interface, recordings were listened to, trimmed, and, in some cases, rejected, preventing downstream data corruption. Due to the random nature of the rejections, all transmissions chains did not reach to 8 generations.
+Since the imitations were collected online, it was likely that at least some of the imitations would be invalid, either due to low recording quality or due to a violation of the instructions of the experiment (e.g., saying something in English). We monitored the imitations as they were received to verify the integrity of the recordings and exclude ones where necessary. The monitoring helped catch gross errors in the timing of the recording, the most common of which was recordings that were too long relative to the imitation. Via this interface (Fig. S4), recordings were heard, trimmed, and, in some cases, rejected. Due to the irregular nature of the rejections, all transmissions chains did not reach to the full 8 generations.
 
-```{r 2-monitor-imitations, fig.width=4, fig.height=4, fig.cap="The interface for monitoring incoming imitations. All imitations were listened to by an experimenter and trimmed to remove extraneous noise. Imitations eligible for the next generation appear in green. Bad quality imitations were rejected (in gray)."}
+```{r figS4, fig.width=4, fig.height=4, fig.cap="The interface for monitoring incoming imitations. All imitations were listened to by an experimenter and trimmed to remove extraneous noise. Imitations eligible for the next generation appear in green. Bad quality imitations were rejected (in gray)."}
 img("monitor-imitations")
 ```
 
@@ -111,23 +114,27 @@ img("monitor-imitations")
 ```{r 2-measuring-acoustic-similarity}
 ```
 
-After collecting the imitations in the transmission chain design, the imitations were submitted to an analysis of acoustic similarity. The primary measure of acoustic similarity was obtained from research assistants who participated in a randomized rating procedure. We also measured algorthmic acoustic distance.
+After collecting the imitations in the transmission chain design, the imitations were submitted to analyses of acoustic similarity. The primary measure of acoustic similarity was obtained from research assistants who participated in a randomized rating procedure. We also measured algorthmic acoustic distance.
 
 ## Acoustic similarity judgments
 
-Five research assistants rated the similarity between 324 different pairs of imitations. These imitation pairs were sampled from contiguous imitations in the transmission chain design. For example, every message was compared to it's response. Message order was randomized on each trial so that participants did not know which message was the original and which message was the imitation. Participants were also blind to the overall generation of the imitations by randomizing generation from trial to trial. To facilitate consistency in rating, pairs of sounds were blocked by category. E.g., participants rated all tearing sounds before moving on to other categories of sounds. The actual instructions given to participants are stated below.
+Five research assistants rated the similarity between 324 different pairs of imitations. These pairs comprised consecutive imitations in the transmission chain design, e.g., each message was compared to its response. Message order was randomized on each trial so that participants did not know which message was the original and which message was the imitation. Participants were also blind to the overall generation of the imitations by randomizing generation from trial to trial. To facilitate consistency in rating, pairs of sounds were blocked by category, e.g., participants rated all tearing sounds before moving on to other categories of sounds. The instructions given to participants are stated below.
 
 > On each trial, you will hear two sounds played in succession. To help you distinguish them, during the first you will see the number 1, and during the second a number 2. After hearing the second sound, you will be asked to rate how similar the two sounds are on a 7-point scale.  
 
 > A 7 means the sounds are nearly identical. That is, if you were to hear these two sounds played again, you would likely be unable to tell whether they were in the same or different order as the first time you heard them. A 1 on the scale means the sounds are entirely different and you would never confuse them. Each sound in the pair will come from a different speaker, so try to ignore differences due to just people having different voices. For example, a man and a woman saying the same word should get a high rating.  
 
-> Please try to use as much of the scale as you can while maximizing the likelihood that if you did this again, you would reach the same judgments. If you need to hear the sounds again, you can press 'r' to repeat the trial. If one of the sounds is a non-verbal sound (like someone tapping on the mic), or if you only hear a single sound, or if you are otherwise unable to judge the similarity between the sounds, press the 'e' key to report the error. Pressing 'q' will quit the experiment. Your progress will be saved and you can continue later. Press the SPACEBAR to begin the experiment.
+> Please try to use as much of the scale as you can while maximizing the likelihood that if you did this again, you would reach the same judgments. [...]
 
-## Algorithimic measures of acoustic distance
+## Algorithimic measures of acoustic similarity
 
-To obtain algorithmic measures of acoustic distance, we used the acoustic distance functions included in the Phonological Corpus Tools program [@PCT:1.1]. Using this program, we computed MFCC similarities between pairs of sounds using 12 coefficients in order to obtain speaker-independent estimates.
+To obtain algorithmic measures of acoustic similarity, we used the acoustic distance functions included in the Phonological Corpus Tools program [@PCT:1.1]. Using this program, we computed MFCC similarities between pairs of sounds using 12 coefficients in order to obtain speaker-independent estimates.
 
-```{r, fig.height=16, fig.cap="Algorithmic measures of acoustic distance. A. Average acoustic distance between pairs of sounds grouped by type of comparison. B. Change in algorithmic acoustic distance over generations of imitations. C. Correlation between similarity judgments and algorithmic measures."}
+We calculated average acoustic similarity in six kinds of comparisons (Fig. S5A). The first four kinds compared imitations within the same category of environmental sound (glass, tear, water, zipper). The most similar were imitations along consecutive transmissions chains (Within chain, consecutive). Next were all pairwise comparisons of imitations from the same chain (Within chain), followed by all pairwise comparisons leading from the same seed sound (Within seed), and finally all pairwise comparisons for imitations from all seeds within the same category (Within category). As expected, all four kinds of within category comparisons resulted in higher similarity scores than the between category comparisons. The between category comparisons included imitations from the same generation across different chains (Between category, same), and imitations from consecutive generations from different chains (Between category, consecutive).
+
+In parallel with the judgments of acoustic similarity, we also investigated how automated measures of acoustic similarity change over generation of imitation. In contrast to the judgments of acoustic similarity, for the automated analyses we did not find a reliable relationship between imitation generation and automated analysis of acoustic similarity (Fig. S5B). In Fig. S5C, the correlation between the two measures of acoustic similarity is shown.
+
+```{r figS5, fig.height=16, fig.cap="Algorithmic measures of acoustic distance. A. Average acoustic distance between pairs of sounds grouped by type of comparison. B. Change in algorithmic acoustic distance over generations of imitations. C. Correlation between similarity judgments and algorithmic measures."}
 grid.arrange(
   gg_algo_compare,
   gg_algo_similarity,
@@ -135,48 +142,80 @@ grid.arrange(
 )
 ```
 
-# Matching imitations to seeds
+# Matching imitations to seeds {-}
 
-To measure the extent to which imitations resembled their seed sound source, we tasked participants with matching the imitation to it's source relative to other seed sounds used in the experiment. Participants were assigned 4 seed sounds to serve as options in the 4AFC task. Mousing over the options played the sounds, which became active after the participant listened to the imitation one time completely. They were allowed to listen to the imitation as many times as they wanted. On each trial they were presented a different imitation and asked to match it to the seed sound they thought the imitator was trying to imitate.
+To measure the extent to which imitations resembled their seed sound source, we tasked participants with matching the imitation to its source relative to other seed sounds used in the experiment (Fig. S6). Participants were assigned 4 seed sounds (between-subject) to serve as options in the 4AFC task. Mousing over the options played the sounds, which became active after the participant listened to the imitation one time completely. They were allowed to listen to the imitation as many times as they wanted. On each trial they were presented a different imitation and asked to match it to the seed sound they thought the imitator was trying to imitate.
 
-```{r 3-match-imitations-gui, fig.width=3, fig.height=3}
+```{r figS6, fig.width=3, fig.height=3}
 img("match-imitations-gui")
 ```
 
 # Collecting transcriptions of imitations {-}
 
-For transcriptions, participants were instructed to turn the sound they heard into a word that, when read, would sound much like the imitation.
+```{r 4-transcribing-imitations, include=FALSE}
+```
 
-```{r 4-transcribe-imitations-gui, fig.width=3, fig.height=3, fig.cap="Interface for collecting transcriptions. Participants listened to an imitation and were instructed to create novel English words corresponding to the sound they heard."}
+For transcriptions, participants were instructed to turn the sound they heard into a word that, when read, would sound much like the imitation. The interface for collecting transcriptions as well as the exact wording of the instructions is shown in Fig. S7.
+
+```{r figS7, fig.width=3, fig.height=3, fig.cap="Interface for collecting transcriptions. Participants listened to an imitation and were instructed to create novel words corresponding to the sound they heard."}
 img("transcribe-imitations-gui")
 ```
 
-Not all imitations were transcribed.
+We only obtained transcriptions of a sample of the imitations collected in the telephone game. Specifically, we obtained transcriptions of the first generation of imitations as well as the last 3 generations.
 
-```{r 4-proportion-imitations-transcribed, fig.cap="Proportion of imitations that were transcribed. The first generation imitation and the last three generations of imitations were transcribed."}
+```{r figS8, fig.cap="Proportion of imitations that were transcribed. Gray region indicates the number of imitations collected at each generation. Outlined regions denote the number of imitations that were transcribed. First generation imitations and the last three generations of imitations were transcribed."}
+gg_proportion_transcriptions
+```
+
+## Transcriptions of seed sounds
+
+We also had participants "transcribe" the seed sounds directly.
+
+```{r}
+# 
 ```
 
 ## Alternative measures of orthographic distance
 
-```{r 4-alternative-transcription-measures, fig.height=16}
+Our primary measure of transcription difference was provided by the `SequenceMatcher` functions in the `difflib` package of the python standard library. These functions implement Ratcliff and Obershelp's "gestalt pattern matching" algorithm, with the additional feature of taking into account repeated characters when finding longest contiguous substring matches. Here we report alternative measures of orthographic distance, such as the number of exact spelling matches (Fig. S9A).
+
+As can be seen in Fig. S9A, some of the imitations did not yield any exact string matches, indicating that all transcriptions for these imitations were unique. This potentially invalidates our metric for measuring average distance since it involved comparing the most frequent transcription to all other transcriptions of a given imitation. For imitations with all unique transcriptions, the "most frequent" transcription was selected at random. In Fig. S9B, we show the results of our orthographic distance metric separately for imitations with and without any agreement.
+
+Fig. S9C shows an alternative measure corresponding exactly to the length of the substring match among transcriptions, again separating the results by whether or not there was any agreement on the transcription of the imitation.
+
+```{r figS9, fig.height=16, fig.cap="Alternative measures of orthographic distance. A. Percentage of exact string matches per imitation. B. Orthographic distance separated by whether there was any agreement among the transcriptions of a given imitation. C. Change in the average length of the substring match."}
+grid.arrange(
+  gg_exact_matches,
+  gg_string_distance,
+  gg_length_plot,
+  ncol = 1
+)
 ```
 
 # Matching transcriptions to seeds {-}
 
-In this experiment, rather than matching imitations back to seed sounds, participants read a word formed from a transcription of an imitation back to the seed sound. They were instructed the that word was "invented" to correspond to one of the sounds in their options. As before, participants were assigned 4 seed sounds between-subject to use throughout their experimental session.
+In this experiment, rather than matching imitations back to seed sounds, participants read a word formed from a transcription of an imitation back to the seed sound. They were instructed the that word was "invented" to correspond to one of the sounds in their options. As before, participants were assigned 4 seed sounds between-subject to use throughout their experimental session. The interface and instructions are shown in Fig. S10.
 
-```{r 4-match-transcriptions-gui, fig.width=3, fig.height=3, fig.cap="Interface for matching transcriptions back to original seed sounds. Mousing over the four options (different seed sounds) played the sound."}
+```{r figS10, fig.width=3, fig.height=3, fig.cap="Interface for matching transcriptions back to original seed sounds. Mousing over the four options (different seed sounds) played the sound."}
 img("match-transcriptions-gui")
 ```
 
 ## Matching transcriptions of seed sounds
 
+```{r}
+# accuracy in matching transcriptions of seed sounds
+```
+
 # Learning transcriptions as category labels {-}
 
-To determine which transcriptions to test as category labels, we first selected only those transcriptions which had above chance matching performance when matching back to the original seeds. Then we excluded transcriptions that had less than two unique characters or were over 10 characters long, and sampled from both first and last generation imitations to reach a final set that controlled for overall matching accuracy.
+To determine which transcriptions to test as category labels, we first selected only those transcriptions which had above chance matching performance when matching back to the original seeds. (The category learning experiment was conducted after the matching experiments). Then we excluded transcriptions that had less than two unique characters or were over 10 characters long, and sampled from both first and last generation imitations to reach a final set that controlled for overall matching accuracy. The R script that performed the automated sampling procedure is available on GitHub at [github.com/lupyanlab/learning-sound-names/blob/master/R/select_messages.R](https://github.com/lupyanlab/learning-sound-names/blob/master/R/select_messages.R).
 
-Participants learned, through trial-and-error, the names for four different categories of sounds. On each trial participants listened to one of the 16 environmental sounds used as seeds and then saw a novel word--a transcription of one of the imitations. Participants responded by pressing a green button if the label was the correct label and a red button otherwise. They received accuracy feedback after each trial.
+In the experiment, participants learned, through trial-and-error, the names for four different categories of sounds. On each trial participants listened to one of the 16 environmental sounds used as seeds and then saw a novel word--a transcription of one of the imitations. Participants responded by pressing a green button if the label was the correct label and a red button otherwise. They received accuracy feedback after each trial.
 
 The experiment was divided into blocks so that participants had repeated exposure to each sound and the novel labels multiple times within a block. At the start of a new block, participants received four new sounds from the same four categories (e.g., a new zipping sound, a new water-splash sound, etc.) that they had not heard before, and had to associate these sounds with the same novel labels from the previous blocks. The extent to which their performance declined at the start of each block serves as a measure of how well the label they associated with the sound worked as a label for the category.
 
 ## Learning transcriptions of seed sounds
+
+```{r}
+# performance for learning transcriptions of seed sounds
+```
