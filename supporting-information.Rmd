@@ -167,14 +167,6 @@ We only obtained transcriptions of a sample of the imitations collected in the t
 gg_proportion_transcriptions
 ```
 
-## Transcriptions of seed sounds
-
-We also had participants "transcribe" the seed sounds directly.
-
-```{r}
-# 
-```
-
 ## Alternative measures of orthographic distance
 
 Our primary measure of transcription difference was provided by the `SequenceMatcher` functions in the `difflib` package of the python standard library. These functions implement Ratcliff and Obershelp's "gestalt pattern matching" algorithm, with the additional feature of taking into account repeated characters when finding longest contiguous substring matches. Here we report alternative measures of orthographic distance, such as the number of exact spelling matches (Fig. S9A).
@@ -200,12 +192,6 @@ In this experiment, rather than matching imitations back to seed sounds, partici
 img("match-transcriptions-gui")
 ```
 
-## Matching transcriptions of seed sounds
-
-```{r}
-# accuracy in matching transcriptions of seed sounds
-```
-
 # Learning transcriptions as category labels {-}
 
 To determine which transcriptions to test as category labels, we first selected only those transcriptions which had above chance matching performance when matching back to the original seeds. (The category learning experiment was conducted after the matching experiments). Then we excluded transcriptions that had less than two unique characters or were over 10 characters long, and sampled from both first and last generation imitations to reach a final set that controlled for overall matching accuracy. The R script that performed the automated sampling procedure is available on GitHub at [github.com/lupyanlab/learning-sound-names/blob/master/R/select_messages.R](https://github.com/lupyanlab/learning-sound-names/blob/master/R/select_messages.R).
@@ -214,8 +200,18 @@ In the experiment, participants learned, through trial-and-error, the names for 
 
 The experiment was divided into blocks so that participants had repeated exposure to each sound and the novel labels multiple times within a block. At the start of a new block, participants received four new sounds from the same four categories (e.g., a new zipping sound, a new water-splash sound, etc.) that they had not heard before, and had to associate these sounds with the same novel labels from the previous blocks. The extent to which their performance declined at the start of each block serves as a measure of how well the label they associated with the sound worked as a label for the category.
 
-## Learning transcriptions of seed sounds
+# Transcriptions of seed sounds {-}
 
-```{r}
-# performance for learning transcriptions of seed sounds
+```{r seed-sound-control, include=FALSE}
+```
+
+As a control, we also had participants generate "transcriptions" directly from the seed sounds. These transcriptions were the most variable in terms of spelling (Fig. S11A), but the most frequent of them were the easiest to match back to the original seeds (Fig. S11C). When learning these transcriptions as category labels, participants were the fastest to learn them in the first block (Fig. S11B), but they did not generalize to new category members as fast as transcriptions taken from last generation imitations.
+
+```{r figS11, fig.height=16}
+grid.arrange(
+  gg_seed_distance,
+  gg_seed_rt_plot,
+  gg_seed_matching,
+  ncol = 1
+)
 ```

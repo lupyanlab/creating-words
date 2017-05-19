@@ -95,4 +95,3 @@ gg_comparing_similarities <- ggplot(edge_similarities) +
   scale_y_continuous("Algorithmic similarity") +
   base_theme +
   ggtitle("C. Correlation between similarity measures")
-gg_comparing_similarities

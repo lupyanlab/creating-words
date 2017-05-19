@@ -67,6 +67,7 @@ data("transcriptions")
 transcription_catch_trials <- transcriptions %>%
   filter(is_catch_trial == 1) %>%
   select(subj_id, chain_name, text)
+
 unique(transcription_catch_trials[,c("chain_name")]) %>%
   arrange(chain_name) %>%
   mutate(answer = c("alligator", "camel", "elephant")) %>%
