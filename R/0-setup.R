@@ -1,16 +1,19 @@
 # ---- setup
 library(tidyverse)
 library(stringr)
-library(grid)
-library(png)
 library(magrittr)
+
+library(grid)
+library(gridExtra)
+library(png)
+
 library(lme4)
 library(AICcmodavg)
-library(gridExtra)
-library(irr)
-library(crotchet)
 library(broom)
 
+library(irr)
+
+library(crotchet)
 library(wordsintransition)
 
 count_subjects   <- . %>% count_unique("subj_id")
@@ -234,7 +237,7 @@ lmer_mod_results <- function(lmertest_mod, param) {
     results$p_value_str <- paste("_p_ = ", round(results$p_value, 3))
   }
   
-  sprintf("_b_ = %.2f (%.2f), _t_(%.1f) = %.2f, %s",
+  sprintf("_b_ = %.2f (SE = %.2f), _t_(%.1f) = %.2f, %s",
           results$estimate, results$std.error, results$df, results$statistic, results$p_value_str)
 }
 

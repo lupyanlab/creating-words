@@ -147,7 +147,7 @@ pct_of_messages_with_all_unique_transcriptions <- paste0(
   round(47/(64 + 47) * 100), "%"
 )
 
-orthographic_distance_mod <- lmer(distance ~ message_c + (message_c|chain_name/seed_id),
+orthographic_distance_mod <- lmer(distance ~ message_c + (message_c|seed_id),
                                   data = transcription_distances)
 
 orthographic_distance_lmertest_mod <- lmerTest::lmer(

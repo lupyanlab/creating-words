@@ -4,6 +4,12 @@ source("R/0-setup.R")
 first_last_gen <- filter(learning_sound_names, message_type != "sound_effect") %>%
   mutate(block_ix_sqr = block_ix^2)
 
+lsn_error_mod <- glmer(
+  is_correct ~ message_c * (block_ix + block_ix_sqr) + (1|subj_id),
+  data = first_last_gen, family = "binomial"
+)
+
+
 after_first_block <- filter(first_last_gen, block_ix > 1)
 lsn_after_first_block_mod <- lmer(
   rt ~ message_c + block_ix + (1 + block_ix|subj_id),
@@ -70,7 +76,7 @@ gg_transition <- ggplot(lsn_transition) +
   geom_line(aes(group = message_type, linetype = message_type),
             data = transition_preds,
             position = dodger, size = 2) +
-  scale_x_discrete("Block transition (±6 trials)", labels = c("Before", "After")) +
+  scale_x_discrete("Introduction of new category members (±6 trials)", labels = c("Initial trials", "Generalization trials")) +
   scale_y_rt +
   scale_color_message_label_2 +
   scale_linetype_message_label_2 +

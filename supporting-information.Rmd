@@ -120,7 +120,7 @@ After collecting the imitations in the transmission chain design, the imitations
 
 Five research assistants rated the similarity between 324 different pairs of imitations. These pairs comprised consecutive imitations in the transmission chain design, e.g., each message was compared to its response. Message order was randomized on each trial so that participants did not know which message was the original and which message was the imitation. Participants were also blind to the overall generation of the imitations by randomizing generation from trial to trial. To facilitate consistency in rating, pairs of sounds were blocked by category, e.g., participants rated all tearing sounds before moving on to other categories of sounds. The instructions given to participants are stated below.
 
-> On each trial, you will hear two sounds played in succession. To help you distinguish them, during the first you will see the number 1, and during the second a number 2. After hearing the second sound, you will be asked to rate how similar the two sounds are on a 7-point scale.  
+> On each trial, you will hear two sounds played in succession. To help you distinguish them, during the first you will see the number 1, and during the second a number 2. After hearing the second sound, you will be asked to rate how similar the two sounds are on a 7-point scale.
 
 > A 7 means the sounds are nearly identical. That is, if you were to hear these two sounds played again, you would likely be unable to tell whether they were in the same or different order as the first time you heard them. A 1 on the scale means the sounds are entirely different and you would never confuse them. Each sound in the pair will come from a different speaker, so try to ignore differences due to just people having different voices. For example, a man and a woman saying the same word should get a high rating.  
 
@@ -132,7 +132,7 @@ To obtain algorithmic measures of acoustic similarity, we used the acoustic dist
 
 We calculated average acoustic similarity in six kinds of comparisons (Fig. S5A). The first four kinds compared imitations within the same category of environmental sound (glass, tear, water, zipper). The most similar were imitations along consecutive transmissions chains (Within chain, consecutive). Next were all pairwise comparisons of imitations from the same chain (Within chain), followed by all pairwise comparisons leading from the same seed sound (Within seed), and finally all pairwise comparisons for imitations from all seeds within the same category (Within category). As expected, all four kinds of within category comparisons resulted in higher similarity scores than the between category comparisons. The between category comparisons included imitations from the same generation across different chains (Between category, same), and imitations from consecutive generations from different chains (Between category, consecutive).
 
-In parallel with the judgments of acoustic similarity, we also investigated how automated measures of acoustic similarity change over generation of imitation. In contrast to the judgments of acoustic similarity, for the automated analyses we did not find a reliable relationship between imitation generation and automated analysis of acoustic similarity (Fig. S5B). In Fig. S5C, the correlation between the two measures of acoustic similarity is shown.
+In parallel with the judgments of acoustic similarity, we also investigated how automated measures of acoustic similarity change over generation of imitation. For the automated analyses we did not find a reliable relationship between imitation generation and automated analysis of acoustic similarity, `r lmer_mod_results(similarity_algo_lmertest_mod, "edge_generation_n")` (Fig. S5B). For our stimuli the correlation between automated analyses of acoustic similarity and rater judgments was low, `r report_cor_test(similarity_cor_test)` (Fig. S5C), suggesting that the automated analyses may not capture the acoustic features driving the perception of acoustic similarity of these stimuli. This is possibly due to the non-verbal nature of the imitations as well as variation in recording quality between participants in the online study.
 
 ```{r figS5, fig.height=16, fig.cap="Algorithmic measures of acoustic distance. A. Average acoustic distance between pairs of sounds grouped by type of comparison. B. Change in algorithmic acoustic distance over generations of imitations. C. Correlation between similarity judgments and algorithmic measures."}
 grid.arrange(
@@ -140,14 +140,6 @@ grid.arrange(
   gg_algo_similarity,
   gg_comparing_similarities
 )
-```
-
-# Matching imitations to seeds {-}
-
-To measure the extent to which imitations resembled their seed sound source, we tasked participants with matching the imitation to its source relative to other seed sounds used in the experiment (Fig. S6). Participants were assigned 4 seed sounds (between-subject) to serve as options in the 4AFC task. Mousing over the options played the sounds, which became active after the participant listened to the imitation one time completely. They were allowed to listen to the imitation as many times as they wanted. On each trial they were presented a different imitation and asked to match it to the seed sound they thought the imitator was trying to imitate.
-
-```{r figS6, fig.width=3, fig.height=3}
-img("match-imitations-gui")
 ```
 
 # Collecting transcriptions of imitations {-}
@@ -184,13 +176,23 @@ grid.arrange(
 )
 ```
 
-# Matching transcriptions to seeds {-}
+# Matching imitations and transcriptions to seeds {-}
+
+To measure the extent to which imitations resembled their seed sound source, we tasked participants with matching the imitation to its source relative to other seed sounds used in the experiment (Fig. S6). Participants were assigned 4 seed sounds (between-subject) to serve as options in the 4AFC task. Mousing over the options played the sounds, which became active after the participant listened to the imitation one time completely. They were allowed to listen to the imitation as many times as they wanted. On each trial they were presented a different imitation and asked to match it to the seed sound they thought the imitator was trying to imitate.
+
+```{r figS6, fig.width=3, fig.height=3}
+img("match-imitations-gui")
+```
 
 In this experiment, rather than matching imitations back to seed sounds, participants read a word formed from a transcription of an imitation back to the seed sound. They were instructed the that word was "invented" to correspond to one of the sounds in their options. As before, participants were assigned 4 seed sounds between-subject to use throughout their experimental session. The interface and instructions are shown in Fig. S10.
 
 ```{r figS10, fig.width=3, fig.height=3, fig.cap="Interface for matching transcriptions back to original seed sounds. Mousing over the four options (different seed sounds) played the sound."}
 img("match-transcriptions-gui")
 ```
+
+In the Supporting Information we report the results of the matching experiments prior to the category learning experiment. The matching experiments, which were conducted online, were conducted chronologically prior to the category learning experiment, which was conducted in the lab. The results of these matching experiments were used to select otherwise-equal transcriptions to use in the category learning experiments, as detailed below.
+
+Our theory predicts that later generation transcriptions should be less likely to be distinguished from other sounds within the same category. However, the True seed advantage persisted, indicating that transcriptions of imitations may capture idiosyncratic elements of specific category members more than the acoustic imitations themselves. An alternative reason for not observing a decrease in the True seed advantage for transcriptions is that the sample of transcriptions tested in the Guess the seed game was too small to adequately model changes happening on a per-chain level. Futher reasons for this discrepancy are explored in the Discussion.
 
 # Learning transcriptions as category labels {-}
 
@@ -199,6 +201,10 @@ To determine which transcriptions to test as category labels, we first selected 
 In the experiment, participants learned, through trial-and-error, the names for four different categories of sounds. On each trial participants listened to one of the 16 environmental sounds used as seeds and then saw a novel word--a transcription of one of the imitations. Participants responded by pressing a green button if the label was the correct label and a red button otherwise. They received accuracy feedback after each trial.
 
 The experiment was divided into blocks so that participants had repeated exposure to each sound and the novel labels multiple times within a block. At the start of a new block, participants received four new sounds from the same four categories (e.g., a new zipping sound, a new water-splash sound, etc.) that they had not heard before, and had to associate these sounds with the same novel labels from the previous blocks. The extent to which their performance declined at the start of each block serves as a measure of how well the label they associated with the sound worked as a label for the category.
+
+```{r figS11}
+gg_lsn_performance_ceiling
+```
 
 # Transcriptions of seed sounds {-}
 
