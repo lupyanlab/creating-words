@@ -104,7 +104,9 @@ n_transcriptions_per_imitation <- transcriptions %>%
 data("transcription_frequencies")
 n_created_words <- transcription_frequencies %>%
   filter(is_english == 0) %>%
-  nrow()
+  .$text %>%
+  unique() %>%
+  length()
 
 
 data("transcription_distances")
@@ -216,7 +218,7 @@ scale_y_gts_accuracy <- scale_y_continuous("Accuracy", breaks = seq(0, 1, by = 0
                                            labels = scales::percent)
 
 # reporting statistical results ------------------------------------------------
-lmer_mod_results <- function(lmertest_mod, param) {
+lmer_mod_results <- function(lmertest_mod, param, p_value_only = FALSE) {
   results <- broom::tidy(lmertest_mod, effects = "fixed") %>%
     filter(term == param) %>%
     as.list()
@@ -238,12 +240,16 @@ lmer_mod_results <- function(lmertest_mod, param) {
     results$p_value_str <- paste("_p_ = ", round(results$p_value, 3))
   }
   
+  if (p_value_only == TRUE) {
+    return(results$p_value_str)
+  }
+  
   sprintf("_b_ = %.2f (SE = %.2f), _t_(%.1f) = %.2f, %s",
           results$estimate, results$std.error, results$df, results$statistic, results$p_value_str)
 }
 
 
-glmer_mod_results <- function(glmer_mod, param, odds = FALSE) {
+glmer_mod_results <- function(glmer_mod, param, odds = FALSE, p_value_only = FALSE) {
   results <- broom::tidy(glmer_mod, effects = "fixed") %>%
     filter(term == param) %>%
     as.list()
@@ -256,12 +262,17 @@ glmer_mod_results <- function(glmer_mod, param, odds = FALSE) {
   
   if (odds == TRUE) {
     results["odds"] <- log(results$estimate)
-    formatted = sprintf("_b_ = %.2f (%.2f) log-odds, odds = %.2f, _z_ = %.2f, %s",
+    formatted = sprintf("_b_ = %.2f (SE = %.2f) log-odds, odds = %.2f, _z_ = %.2f, %s",
                         results$estimate, results$std.error, results$odds, results$statistic, results$p_value_str)
   } else {
-    formatted = sprintf("_b_ = %.2f (%.2f) log-odds, _z_ = %.2f, %s",
+    formatted = sprintf("_b_ = %.2f (SE = %.2f) log-odds, _z_ = %.2f, %s",
                         results$estimate, results$std.error, results$statistic, results$p_value_str)
   }
+  
+  if (p_value_only == TRUE) {
+    return(results$p_value_str)
+  }
+
   formatted
 }
 

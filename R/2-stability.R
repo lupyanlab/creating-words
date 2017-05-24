@@ -37,7 +37,7 @@ gg_similarity_judgments <- ggplot(similarity_judgments_means) +
   scale_color_brewer("", palette = "Set2") +
   scale_shape_discrete("") +
   coord_cartesian(ylim = c(-0.6, 0.8)) +
-  ggtitle("A. Iterated imitations became more repeatable") +
+  ggtitle("A. Acoustic similarity increased through repeated imitation") +
   base_theme +
   theme(legend.position = c(0.1, 0.85))
 
@@ -164,7 +164,7 @@ gg_distance <- ggplot(transcription_distances) +
   geom_point(aes(group = message_id),
              stat = "summary", fun.y = "mean",
              position = position_jitter(0.1, 0.01),
-             alpha = 0.8, size = 2) +
+             size = 2) +
   geom_errorbar(aes(ymin = distance - se, ymax = distance + se),
                 data = orthographic_distance_preds,
                 size = 1.4, width = 0.1) +

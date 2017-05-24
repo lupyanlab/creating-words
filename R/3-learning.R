@@ -61,7 +61,7 @@ rt_plot <- ggplot(first_last_gen) +
 rt_plot
 
 transition_mod <- lmer(
-  rt ~ block_transition_c * message_c + block_ix + (block_ix|subj_id),
+  rt ~ block_transition_c * message_c + block_ix + (block_transition_c + block_ix|subj_id),
   data = lsn_transition
 )
 
@@ -88,7 +88,7 @@ gg_transition <- ggplot(lsn_transition) +
   geom_line(aes(group = message_type, linetype = message_type),
             data = transition_preds,
             position = dodger, size = 2) +
-  scale_x_discrete("Introduction of new category members (±6 trials)", labels = c("Initial trials", "Generalization trials")) +
+  scale_x_discrete("Introduction of new category members (±6 trials)", labels = c("Before", "After")) +
   scale_y_rt +
   scale_color_message_label_2 +
   scale_linetype_message_label_2 +
