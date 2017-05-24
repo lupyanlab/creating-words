@@ -117,9 +117,43 @@ gg_match_transcriptions <- ggplot(preds) +
             fontface = "italic") +
   coord_cartesian(ylim = c(0.18, 0.51)) +
   facet_wrap("message_label_2", strip.position = "bottom") +
-  ggtitle("C. Transcriptions were accurately matched to sound categories") +
+  ggtitle("C. Transcriptions were accurately matched to categories of sounds") +
   base_theme +
   theme(legend.position = "none",
         panel.grid.major.x = element_blank(),
         panel.grid.minor.x = element_blank(),
         panel.grid.minor.y = element_blank())
+
+
+# Overlay imitation match accuracy means
+imitation_accuracies <- imitation_matches %>%
+  filter(
+    survey_type != "within",
+    message_id %in% unique(transcription_matches$message_id)
+  ) %>%
+  mutate(
+    question_type = ifelse(question_type == "true_seed", "exact", "category"),
+    message_type = ifelse(generation == 1, "first_gen_imitation", "last_gen_imitation")
+  ) %>%
+  group_by(question_type, message_type) %>%
+  summarize(
+    error = sd(is_correct)/sqrt(n()),
+    is_correct = mean(is_correct)
+  ) %>%
+  ungroup() %>%
+  recode_question_type() %>%
+  recode_message_type() %>%
+  left_join(message_labels)
+
+gg_match_transcriptions <- gg_match_transcriptions +
+  geom_point(aes(shape = "imitations"),
+             data = imitation_accuracies, size = 2) +
+  geom_linerange(
+    aes(ymin = is_correct - error, ymax = is_correct + error),
+    data = imitation_accuracies,
+    size = 0.3
+  ) +
+  coord_cartesian(ylim = c(0.18, 0.62)) +
+  scale_shape_manual("", labels = "= Match accuracy of imitations", values = 1) +
+  guides(fill = "none") +
+  theme(legend.position = c(0.8, 0.99))
