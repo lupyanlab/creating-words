@@ -4,13 +4,25 @@ source("R/0-setup.R")
 first_last_gen <- filter(learning_sound_names, message_type != "sound_effect") %>%
   mutate(block_ix_sqr = block_ix^2)
 
-lsn_error_mod <- glmer(
-  is_correct ~ message_c * (block_ix + block_ix_sqr) + (1|subj_id),
-  data = first_last_gen, family = "binomial"
+first_block <- first_last_gen %>% filter(block_ix == 1)
+
+lsn_first_block_error_mod <- glmer(
+  is_correct ~ message_c + (1|subj_id),
+  data = first_block, family = "binomial"
 )
 
+lsn_first_block_rt_mod <- lmerTest::lmer(
+  rt ~ message_c + (1|subj_id),
+  data = first_block
+)
 
 after_first_block <- filter(first_last_gen, block_ix > 1)
+
+lsn_after_first_block_error_mod <- glmer(
+  is_correct ~ message_c + (1|subj_id),
+  data = after_first_block, family = "binomial"
+)
+
 lsn_after_first_block_mod <- lmer(
   rt ~ message_c + block_ix + (1 + block_ix|subj_id),
   data = after_first_block)
