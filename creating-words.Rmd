@@ -1,5 +1,5 @@
 ---
-title: "Creating words from iterated vocal imitation"
+title: "The emergence of words from vocal imitations"
 bibliography: telephone.bib
 output:
   pdf_document:

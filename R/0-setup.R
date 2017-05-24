@@ -32,6 +32,7 @@ n_imitators <- count_subjects(imitations)
 n_removed <- imitations %>%
   filter(rejected == "True") %>%
   count_imitations()
+n_removed_pct <- round(n_removed/count_imitations(imitations) * 100)
 n_final_imitations <- imitations %>%
   filter(rejected == "False") %>%
   count_imitations()
