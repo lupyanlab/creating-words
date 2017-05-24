@@ -57,7 +57,7 @@ gg_match_to_seed <- ggplot(imitation_matches) +
            alpha = 0.6) +
   coord_cartesian(xlim = c(-0.2, 7.2), ylim = ylim_gts) +
   base_theme +
-  ggtitle("B. Iterated imitations retain category information") +
+  ggtitle("B. Iterated imitations retained category information") +
   theme(
     legend.position = c(0.8, 0.85),
     legend.key.width = unit(5, "lines"),
@@ -117,7 +117,7 @@ gg_match_transcriptions <- ggplot(preds) +
             fontface = "italic") +
   coord_cartesian(ylim = c(0.18, 0.51)) +
   facet_wrap("message_label_2", strip.position = "bottom") +
-  ggtitle("C. Transcriptions are accurately matched to seed categories") +
+  ggtitle("C. Transcriptions were accurately matched to sound categories") +
   base_theme +
   theme(legend.position = "none",
         panel.grid.major.x = element_blank(),

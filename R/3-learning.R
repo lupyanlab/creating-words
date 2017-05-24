@@ -43,7 +43,7 @@ rt_plot <- ggplot(first_last_gen) +
   scale_linetype_message_label_2 +
   coord_cartesian(ylim = c(600, 1200)) +
   base_theme +
-  ggtitle("A. Iterated imitations were learned faster") +
+  ggtitle("A. Transcriptions of later imitations were easier to learn") +
   theme(legend.position = c(0.7, 0.75),
         legend.key.width = unit(5, "lines"))
 rt_plot
@@ -81,7 +81,7 @@ gg_transition <- ggplot(lsn_transition) +
   scale_color_message_label_2 +
   scale_linetype_message_label_2 +
   coord_cartesian(ylim = c(600, 1000)) +
-  ggtitle("B. Iterated imitations were easier to generalize") +
+  ggtitle("B. Transcriptions of later imitations were easier to generalize") +
   base_theme +
   theme(
     legend.position = "none",

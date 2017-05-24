@@ -37,7 +37,7 @@ gg_similarity_judgments <- ggplot(similarity_judgments_means) +
   scale_color_brewer("", palette = "Set2") +
   scale_shape_discrete("") +
   coord_cartesian(ylim = c(-0.6, 0.8)) +
-  ggtitle("A. Iterated imitations become more repeatable") +
+  ggtitle("A. Iterated imitations became more repeatable") +
   base_theme +
   theme(legend.position = c(0.1, 0.85))
 
@@ -173,7 +173,7 @@ gg_distance <- ggplot(transcription_distances) +
   scale_color_manual(values = imitation_gen_colors) +
   scale_fill_manual(values = imitation_gen_colors) +
   coord_cartesian(ylim = c(0.0, 0.8)) +
-  ggtitle("B. Iterated imitations were easier to spell") +
+  ggtitle("B. Later imitations were transcribed more consistently") +
   base_theme +
   theme(legend.position = "none")
 

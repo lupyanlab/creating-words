@@ -95,7 +95,7 @@ kable(transcription_examples, caption = table_caption,
 
 To measure the transcription similarity of a given imitation, we calculated the orthographic distance between the most frequent transcription and all other transcriptions based on all longest contiguous matching subsequences (see Methods). A hierarchical linear model predicting orthographic distance from the generation of the imitation (First generation, Last generation) with random effects for transmission chains nested within categories of environmental sounds revealed that transcriptions of last generation imitations were more similar to one another than transcriptions from first generation imitations, `r lmer_mod_results(orthographic_distance_lmertest_mod, "message_c")` (Fig. 2B). The same result is reached through alternative measures of orthographic distance such as exact string matching and length of longest substring match, and when excluding imitations for which all transcriptions were unique (Fig. S9; see Supporting Information for details). This result supports our hypothesis that unguided repetition drives imitations to stabilize on particular words.
 
-## Iterated imitations make for better category labels
+## Iterated imitations made for better category labels
 
 ```{r learning, include=FALSE}
 ```
@@ -110,7 +110,7 @@ Next, we examined whether transcriptions from last generation imitations were ea
 grid.arrange(rt_plot, gg_transition, ncol = 1)
 ```
 
-## Iterated imitations retained resemblance to the sounds that motivated them
+## Iterated imitations retained resemblance to original sounds
 
 ```{r matching, include=FALSE}
 ```
