@@ -60,8 +60,8 @@ gg_seed_rt_plot <- ggplot(lsn_seed_quad_preds) +
               stat = "identity") +
   scale_x_block_ix +
   scale_y_rt +
-  scale_color_brewer("", palette = "Set2") +
-  scale_linetype_manual("", values = c("longdash", "dotdash", "solid")) +
+  scale_color_manual("", values = RColorBrewer::brewer.pal(3, "Set2")[c(2, 3, 1)]) +
+  scale_linetype_manual("", values = c("dotdash", "solid", "longdash")) +
   coord_cartesian(ylim = c(600, 1200)) +
   base_theme +
   ggtitle("B. Learning categories of sounds") +

@@ -17,4 +17,4 @@ gg_lsn_performance_ceiling <- ggplot(n_errors) +
   scale_linetype_message_label_2 +
   base_theme +
   theme(legend.position = c(0.8, 0.8)) +
-  ggtitle("Accuracy performance ceiling in category learning task")
+  ggtitle("Performance ceiling in category learning task")
