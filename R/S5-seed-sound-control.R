@@ -10,6 +10,9 @@ seed_distances <- transcription_distances %>%
   recode_message_type() %>%
   filter(!is.na(message_type))
 
+unloadNamespace("lmerTest")
+library(lme4)
+
 seed_distance_mod <- lmer(distance ~ message_type + (message_type|seed_id),
                           data = seed_distances)
 seed_distance_preds <- data_frame(message_type = c("sound_effect", "first_gen_imitation", "last_gen_imitation")) %>%

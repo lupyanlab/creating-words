@@ -1,6 +1,9 @@
 source("R/0-setup.R")
 
 # ---- s4-learning-sounds
+first_last_gen <- filter(learning_sound_names, message_type != "sound_effect") %>%
+  mutate(block_ix_sqr = block_ix^2)
+
 n_errors <- first_last_gen %>%
   group_by(message_type, subj_id, block_ix) %>%
   summarize(n_errors = sum(1 - is_correct))

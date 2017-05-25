@@ -72,16 +72,6 @@ transcription_catch_trials <- transcriptions %>%
   filter(is_catch_trial == 1) %>%
   select(subj_id, chain_name, text)
 
-unique(transcription_catch_trials[,c("chain_name")]) %>%
-  arrange(chain_name) %>%
-  mutate(answer = c("alligator", "camel", "elephant")) %>%
-  left_join(transcription_catch_trials, .) %>%
-  mutate(
-    text = str_to_lower(text),
-    is_correct = str_detect(text, answer)
-  ) %>%
-  filter(is_correct == FALSE)
-
 n_all_transcribers <- count_subjects(transcriptions)
 transcription_bad_subjs <- c("A3A8P4UR9A0DWQ", "AAMLJUUYM484")
 transcriptions %<>% filter(!(subj_id %in% transcription_bad_subjs))
@@ -103,7 +93,11 @@ n_transcriptions_per_imitation <- transcriptions %>%
 
 data("transcription_frequencies")
 n_created_words <- transcription_frequencies %>%
-  filter(is_english == 0) %>%
+  filter(
+    is_english == 0,
+    # Exclude transcriptions of seed sounds
+    seed_id != message_id
+  ) %>%
   .$text %>%
   unique() %>%
   length()

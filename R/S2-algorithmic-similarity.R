@@ -1,23 +1,34 @@
 source("R/0-setup.R")
 
 # ---- 2-measuring-acoustic-similarity
-data("acoustic_similarity_judgments")
 
-acoustic_similarity_judgments %<>%
-  mutate(similarity = ifelse(similarity == -1, NA, similarity)) %>%
-  z_score_by_subj() %>%
-  recode_edge_generations() %>%
-  determine_trial_id()
+# Correlation between subjective and objective measures
 
-data("algo_linear")
-data("algo_within_chain")
-data("algo_within_seed")
-data("algo_within_category")
-data("algo_between_fixed")
-data("algo_between_consecutive")
+similarity_cor <- left_join(
+  select(acoustic_similarity_judgments, sound_x, sound_y, similarity_z),
+  select(algo_linear, sound_x, sound_y, similarity)
+)
 
-algo_linear %<>%
-  recode_edge_generations()
+similarity_cor_test <- cor.test(
+  similarity_cor$similarity_z, similarity_cor$similarity,
+  use = "pairwise.complete.obs")
+
+report_cor_test <- function(cor_test) {
+  results <- broom::tidy(cor_test) %>% as.list()
+  sprintf("_r_ = %.2f, 95%% CI [%.2f, %.2f]",
+          results$estimate, results$conf.low, results$conf.high)
+}
+
+# Automated analyses of acoustic similarity
+similarity_algo_mod <- lmer(
+  similarity_z ~ edge_generation_n + (edge_generation_n|sound_x_category),
+  data = algo_linear
+)
+
+similarity_algo_lmertest_mod <- lmerTest::lmer(
+  formula(similarity_algo_mod), data = similarity_algo_mod@frame
+)
+
 
 algo_between_consecutive %<>%
   recode_edge_generations()
@@ -95,3 +106,4 @@ gg_comparing_similarities <- ggplot(edge_similarities) +
   scale_y_continuous("Algorithmic similarity") +
   base_theme +
   ggtitle("C. Correlation between similarity measures")
+
