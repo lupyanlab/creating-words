@@ -58,9 +58,7 @@ $endif$
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
 
-$if(geometry)$
-\usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
-$endif$
+\usepackage[margin=1in]{geometry}
 
 \usepackage{hyperref}
 $if(colorlinks)$
@@ -223,7 +221,7 @@ $if(subtitle)$
 $endif$
 $if(author)$
   \author{$for(author)$$author$$sep$ \\ $endfor$}
-  \preauthor{\centering\large\emph}
+  \preauthor{\centering\large}
   \postauthor{\par}
 $else$
   \author{}
@@ -248,7 +246,7 @@ $if(title)$
 $endif$
 $if(abstract)$
 \begin{abstract}
-$abstract$
+\noindent $abstract$
 \end{abstract}
 $endif$
 

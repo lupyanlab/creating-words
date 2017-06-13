@@ -1,9 +1,9 @@
 ---
 title: The emergence of words from vocal imitations
 author:
-  - Pierce Edmiston
-  - Marcus Perlman
-  - Gary Lupyan
+  - Pierce Edmiston (pedmiston@wisc.edu)
+  - Marcus Perlman (mperlman@gmail.com)
+  - Gary Lupyan (lupyan@wisc.edu)
 bibliography: telephone.bib
 csl: apa.csl
 output:
