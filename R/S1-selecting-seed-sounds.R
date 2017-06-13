@@ -61,7 +61,7 @@ odd_one_out <- ggplot(mapping = aes(x = filename_f, y = n)) +
   scale_fill_manual("", labels = c("kept", "dropped"),
                     values = RColorBrewer::brewer.pal(3, "Set2")[c(1, 2)]) +
   facet_wrap("category", scales = "free_x", ncol = 2) +
-  theme_minimal() +
+  base_theme +
   theme(
     axis.ticks = element_blank(),
     axis.text.x = element_text(angle = 45, hjust = 1),

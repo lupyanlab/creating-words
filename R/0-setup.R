@@ -7,7 +7,7 @@ library(grid)
 library(gridExtra)
 library(png)
 
-library(lme4)
+library(lme4)  # lmerTest is also required
 library(AICcmodavg)
 library(broom)
 
