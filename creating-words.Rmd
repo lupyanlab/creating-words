@@ -9,7 +9,6 @@ csl: apa.csl
 output:
   pdf_document:
     template: templates/preprint.tex
-    keep_tex: true
 abstract: |
   We investigated how conventional spoken words might emerge from imitations of environmental sounds. Participants played a version of the children’s game “Telephone”. The first generation of participants imitated recognizable environmental sounds (e.g., glass breaking, water splashing). Subsequent generations imitated the imitations of the prior generation for a maximum of 8 generations. The results showed that the imitations became more stable and word-like, and more easily learnable as category labels. At the same time, even after 8 generations, both spoken imitations and their written transcriptions could be matched above chance to the category of environmental sound that motivated them. These results show how repeated imitation can create progressively more word-like forms that continue to retain a resemblance to the original sound that motivated them. The results speak to the possible role of human vocal imitation in explaining the origins of spoken words.
 ---
