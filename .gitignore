@@ -1,15 +1,18 @@
 # reproducible
+*.md
 *.pdf
 *.docx
-!submissions/**/*.pdf
-!submissions/**/*.docx
 *figs/
 *cache/
+
+# submissions
+!submissions/**/*.pdf
+!submissions/**/*.docx
+!submissions/**/*.md
 
 # latex
 *.tex
 !templates/*.tex
-*.md
 *.bbl
 *.dvi
 *.xwm
