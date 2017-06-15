@@ -67,7 +67,7 @@ Participants played a version of the children's game of Telephone via a web-base
 > Unlike the children's game of Telephone, the sounds you will hear will not be recognizable English words, but will be various nonspeech sounds. Your task is the same, however: to recreate the sound you heard as accurately as you can. [...]
 
 ```{r fig7, fig.cap="The interface for collecting vocal imitations. Participants clicked the top sound icon to hear the message and the bottom sound icon to record their response. After ending their recording a new message was presented."}
-img("collect-imitations-gui")
+crotchet::draw_image("collect-imitations-gui", "wordsintransision")
 ```
 
 ## Monitoring incoming imitations
@@ -75,7 +75,7 @@ img("collect-imitations-gui")
 Since the imitations were collected online, it was likely that at least some of the imitations would be invalid, either due to low recording quality or due to a violation of the instructions of the experiment (e.g., saying something in English). We monitored the imitations as they were received to verify the integrity of the recordings and exclude ones where necessary. The monitoring helped catch gross errors in the timing of the recording, the most common of which was recordings that were too long relative to the imitation. Via this interface (Fig. 8), recordings were heard, trimmed, and, in some cases, rejected. Due to random assignment and the irregular nature of the rejections, all transmissions chains did not reach to the full 8 generations.
 
 ```{r fig8, fig.width=4, fig.height=4, fig.cap="The interface for monitoring incoming imitations. All imitations were listened to by an experimenter and trimmed to remove extraneous noise. Imitations eligible for the next generation appear in green. Bad quality imitations were rejected (in gray)."}
-img("monitor-imitations")
+crotchet::draw_image("monitor-imitations", "wordsintransition")
 ```
 
 # Measuring acoustic similarity
@@ -122,7 +122,7 @@ grid.arrange(
 To collect transcriptions of vocal imitations, participants were instructed to turn the sound they heard into a word that, when read, would sound much like the imitation. The interface for collecting transcriptions as well as the exact wording of the instructions is shown in Fig. 10.
 
 ```{r fig10, fig.cap="Interface for collecting transcriptions. Participants listened to an imitation and were instructed to create novel words corresponding to the sound they heard."}
-img("transcribe-imitations-gui")
+crotchet::draw_image("transcribe-imitations-gui", "wordsintransition")
 ```
 
 We only obtained transcriptions of a sample of the imitations collected in the Telephone game. Specifically, we obtained transcriptions of the first generation of imitations as well as the last 3 generations. The proportion of imitations that were transcribed is shown in Fig. 11.
@@ -153,11 +153,11 @@ grid.arrange(
 To measure the extent to which imitations resembled their seed sound source, we tasked participants with matching the imitation (Fig. 13) or a transcription of an imitation (Fig. 14) to its source relative to other seed sounds used in the experiment. Participants were assigned 4 seed sounds (between-subject) to serve as options in the 4AFC task. Mousing over the options played the sounds, which became active after the participant listened to the imitation one time completely. For imitations, they were allowed to listen to the imitation as many times as they wanted. On each trial they were presented a different imitation and asked to match it to the seed sound they thought the imitator was trying to imitate. For transcriptions, they were instructed the that word was "invented" to correspond to one of the sounds in their options.
 
 ```{r fig13, fig.cap="Interface for matching imitations back to original seed sounds."}
-img("match-imitations-gui")
+crotchet::draw_image("match-imitations-gui", "wordsintransition")
 ```
 
 ```{r fig14, fig.cap="Interface for matching transcriptions back to original seed sounds."}
-img("match-transcriptions-gui")
+crotchet::draw_image("match-transcriptions-gui", "wordsintransition")
 ```
 
 # Learning transcriptions as category labels
