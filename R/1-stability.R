@@ -2,6 +2,55 @@ source("R/0-setup.R")
 
 # ---- stability
 
+## Dendrogram ##
+
+library(ggraph)
+library(igraph)
+
+data("edges")
+
+# Create a data frame of unique nodes from all edges
+# and add node attributes as columns.
+categories <- c("glass", "tear", "water", "zipper")
+node_type_map <- data_frame(
+  node = c("root", categories),
+  node_type = c("root", rep("category", 4))
+)
+
+filler_edges <- edges %>%
+  filter(edge_type == "invis")
+filler_nodes <- data_frame(node = unique(filler_edges$y)) %>%
+  mutate(node_type = "filler", node_label = "")
+
+node_type_map %<>% bind_rows(filler_nodes)
+
+nodes <- data_frame(node = unique(c(edges$x, edges$y))) %>%
+  left_join(node_type_map) %>%
+  mutate(
+    node_type = ifelse(is.na(node_type), "message", node_type),
+    node_label = ifelse(node %in% categories, node, "")
+  )
+
+# Add edge attributes as columns.
+graph <- graph_from_data_frame(edges, vertices = nodes)
+layout <- create_layout(graph, "dendrogram")
+
+gg_dendrogram <- ggraph(layout) +
+  geom_edge_diagonal(aes(edge_linetype = node2.node_type), edge_width = 0.4) +
+  geom_node_point(aes(shape = node_type), size = 0.6) +
+  geom_node_text(aes(label = node_label), vjust = -0.5, size = 3) +
+  scale_x_continuous("", breaks = NULL) +
+  scale_y_continuous("Generation", breaks = 0:8, labels = c(8:1, "seeds")) +
+  scale_shape_manual(values = c(32, 32, 16, 32)) +
+  scale_edge_linetype_manual(values = c("blank", "blank", "solid", "blank")) +
+  ggtitle("a") +
+  base_theme +
+  theme(
+    legend.position = "none",
+    panel.grid.minor.y = element_blank(),
+    axis.title.y = element_text(hjust = 0.4, margin = margin(0, -6, 0, 0))
+  )
+
 ## Imitations ##
 
 similarity_judgments_mod <- lmer(
@@ -37,9 +86,12 @@ gg_similarity_judgments <- ggplot(similarity_judgments_means) +
   scale_color_brewer("", palette = "Set2") +
   scale_shape_discrete("") +
   coord_cartesian(ylim = c(-0.6, 0.8)) +
-  ggtitle("A. Acoustic similarity increased through repeated imitation") +
+  ggtitle("b") +
   base_theme +
-  theme(legend.position = c(0.1, 0.85))
+  theme(
+    legend.position = c(0.15, 0.91),
+    axis.title.y = element_text(margin = margin(0, -2, 0, 0))
+  )
 
 # Inter-rater reliability
 irr_ratings <- acoustic_similarity_judgments %>%
@@ -164,16 +216,16 @@ gg_distance <- ggplot(transcription_distances) +
   geom_point(aes(group = message_id),
              stat = "summary", fun.y = "mean",
              position = position_jitter(0.1, 0.01),
-             size = 2) +
+             size = 2, alpha = 0.6) +
   geom_errorbar(aes(ymin = distance - se, ymax = distance + se),
                 data = orthographic_distance_preds,
                 size = 1.4, width = 0.1) +
-  scale_x_discrete("", labels = c("First generation imitations", "Last generation imitations")) +
+  scale_x_discrete("Generation", labels = c("First", "Last")) +
   scale_y_continuous("Distance between transcriptions", breaks = seq(0, 1, by = 0.2)) +
   scale_color_manual(values = imitation_gen_colors) +
   scale_fill_manual(values = imitation_gen_colors) +
   coord_cartesian(ylim = c(0.0, 0.8)) +
-  ggtitle("B. Later imitations were transcribed more consistently") +
+  ggtitle("c") +
   base_theme +
   theme(legend.position = "none")
 

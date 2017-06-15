@@ -55,10 +55,9 @@ rt_plot <- ggplot(first_last_gen) +
   scale_linetype_message_label_2 +
   coord_cartesian(ylim = c(600, 1200)) +
   base_theme +
-  ggtitle("A. Transcriptions of later imitations were easier to learn") +
+  ggtitle("a") +
   theme(legend.position = c(0.7, 0.75),
         legend.key.width = unit(5, "lines"))
-rt_plot
 
 transition_mod <- lmer(
   rt ~ block_transition_c * message_c + block_ix + (block_transition_c + block_ix|subj_id),
@@ -84,16 +83,16 @@ gg_transition <- ggplot(lsn_transition) +
   geom_linerange(aes(ymin = rt - se, ymax = rt + se),
                  data = transition_preds,
                  position = dodger, show.legend = FALSE,
-                 size = 2) +
+                 size = 1) +
   geom_line(aes(group = message_type, linetype = message_type),
             data = transition_preds,
-            position = dodger, size = 2) +
+            position = dodger, size = 1) +
   scale_x_discrete("Introduction of new category members (±6 trials)", labels = c("Before", "After")) +
   scale_y_rt +
   scale_color_message_label_2 +
   scale_linetype_message_label_2 +
   coord_cartesian(ylim = c(600, 1000)) +
-  ggtitle("B. Transcriptions of later imitations were easier to generalize") +
+  ggtitle("b") +
   base_theme +
   theme(
     legend.position = "none",
