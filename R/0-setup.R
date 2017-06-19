@@ -92,6 +92,14 @@ n_transcriptions_per_imitation <- transcriptions %>%
   round(0)
 
 data("transcription_frequencies")
+
+gen_labels <- imitations %>%
+  select(message_id, generation)
+
+transcription_frequencies %<>%
+  left_join(gen_labels) %>%
+  recode_message_type()
+
 n_created_words <- transcription_frequencies %>%
   filter(
     is_english == 0,
@@ -243,6 +251,27 @@ lmer_mod_results <- function(lmertest_mod, param, p_value_only = FALSE) {
           results$estimate, results$std.error, results$df, results$statistic, results$p_value_str)
 }
 
+lm_mod_results <- function(lm_mod, param, p_value_only = FALSE) {
+  results <- broom::tidy(lm_mod) %>%
+    filter(term == param) %>%
+    as.list()
+  
+  lm_summary <- broom::glance(lm_mod) %>% as.list()
+  results$df <- lm_summary$df.residual
+
+  if (results$p.value < 0.001) {
+    results$p_value_str <- "_p_ < 0.001"
+  } else {
+    results$p_value_str <- paste("_p_ = ", round(results$p.value, 3))
+  }
+  
+  if (p_value_only == TRUE) {
+    return(results$p_value_str)
+  }
+  
+  sprintf("_b_ = %.2f (SE = %.2f), _t_(%.1f) = %.2f, %s",
+          results$estimate, results$std.error, results$df, results$statistic, results$p_value_str)
+}
 
 glmer_mod_results <- function(glmer_mod, param, odds = FALSE, p_value_only = FALSE) {
   results <- broom::tidy(glmer_mod, effects = "fixed") %>%

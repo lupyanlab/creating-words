@@ -253,3 +253,25 @@ transcription_examples <- transcription_matches %>%
     `First generation` = first_gen_imitation,
     `Last generation` = last_gen_imitation
   )
+
+transcription_uniqueness <- transcription_frequencies %>%
+  recode_message_type() %>%
+  filter(message_type != "sound_effect") %>%
+  group_by(message_type, message_label, message_c, message_id) %>%
+  summarize(
+    num_words = sum(n),
+    num_unique = n_distinct(text),
+    perct_unique = num_unique/num_words,
+    perct_agreement = 1 - perct_unique
+  ) %>%
+  ungroup %>%
+  mutate(
+    no_agreement = as.integer(perct_agreement == 0)
+  ) %>%
+  recode_transcription_frequency()
+
+exact_string_matches_mod <- lm(perct_agreement ~ message_c,
+                               data = transcription_uniqueness)
+
+substr_length_mod <- lmerTest::lmer(length ~ message_c + (message_c|seed_id),
+                                    data = transcription_distances)

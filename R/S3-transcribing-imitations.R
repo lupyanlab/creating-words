@@ -1,17 +1,11 @@
 source("R/0-setup.R")
 
 # ---- 4-transcribing-imitations
-gen_labels <- imitations %>%
-  select(message_id, generation)
-
 transcriptions %<>%
   filter(is_catch_trial == 0) %>%
   # label the generation of the imitations being transcribed
   left_join(gen_labels) %>%
   recode_message_type
-
-transcription_frequencies %<>%
-  left_join(gen_labels)
 
 base <- ggplot() +
   base_theme
@@ -71,12 +65,6 @@ gg_exact_matches <- ggplot(transcription_uniqueness) +
 
 
 message_id_map <- select(imitations, message_id, seed_id, generation)
-
-transcription_distances %<>%
-  left_join(message_id_map) %>%
-  recode_transcription_frequency %>%
-  recode_message_type %>%
-  filter(message_type != "sound_effect")
 
 distance_plot <- ggplot(transcription_distances) +
   aes(message_label, distance) +
