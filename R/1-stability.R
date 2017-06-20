@@ -53,8 +53,15 @@ gg_dendrogram <- ggraph(layout) +
 
 ## Imitations ##
 
+seed_id_map <- imitations %>%
+  select(message_id, seed_id)
+
+acoustic_similarity_judgments %<>%
+  left_join(seed_id_map, by = c("sound_x" = "message_id"))
+
 similarity_judgments_mod <- lmer(
-  similarity_z ~ edge_generation_n + (edge_generation_n|name) + (edge_generation_n|category),
+  similarity_z ~ edge_generation_n +
+    (edge_generation_n|name) + (edge_generation_n|category/seed_id),
   data = acoustic_similarity_judgments
 )
 
@@ -134,8 +141,12 @@ report_cor_test <- function(cor_test) {
 }
 
 # Automated analyses of acoustic similarity
+algo_linear %<>%
+  mutate(category = sound_x_category) %>%
+  left_join(seed_id_map, by = c("sound_x" = "message_id"))
+
 similarity_algo_mod <- lmer(
-  similarity_z ~ edge_generation_n + (edge_generation_n|sound_x_category),
+  similarity_z ~ edge_generation_n + (edge_generation_n|category/seed_id),
   data = algo_linear
 )
 
@@ -199,7 +210,10 @@ pct_of_messages_with_all_unique_transcriptions <- paste0(
   round(47/(64 + 47) * 100), "%"
 )
 
-orthographic_distance_mod <- lmer(distance ~ message_c + (message_c|seed_id),
+transcription_distances %<>%
+  mutate(category = chain_name)
+
+orthographic_distance_mod <- lmer(distance ~ message_c + (message_c|category/seed_id),
                                   data = transcription_distances)
 
 orthographic_distance_lmertest_mod <- lmerTest::lmer(
