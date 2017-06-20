@@ -36,13 +36,14 @@ graph <- graph_from_data_frame(edges, vertices = nodes)
 layout <- create_layout(graph, "dendrogram")
 
 gg_dendrogram <- ggraph(layout) +
-  geom_edge_diagonal(aes(edge_linetype = node2.node_type), edge_width = 0.4) +
-  geom_node_point(aes(shape = node_type), size = 0.6) +
-  geom_node_text(aes(label = node_label), vjust = -0.5, size = 3) +
+  geom_edge_diagonal(aes(edge_linetype = node2.node_type), edge_width = 0.2) +
+  geom_node_point(aes(shape = node_type), size = 0.4) +
+  geom_node_text(aes(label = node_label), vjust = -0.5, size = 2.5) +
   scale_x_continuous("", breaks = NULL) +
   scale_y_continuous("Generation", breaks = 0:8, labels = c(8:1, "seeds")) +
   scale_shape_manual(values = c(32, 32, 16, 32)) +
   scale_edge_linetype_manual(values = c("blank", "blank", "solid", "blank")) +
+  coord_cartesian(ylim = c(0, 9)) +
   ggtitle("a") +
   base_theme +
   theme(
@@ -96,7 +97,8 @@ gg_similarity_judgments <- ggplot(similarity_judgments_means) +
   ggtitle("b") +
   base_theme +
   theme(
-    legend.position = c(0.15, 0.91),
+    legend.position = c(0.2, 0.91),
+    legend.key.size = unit(0.7, "lines"),
     axis.title.y = element_text(margin = margin(0, -2, 0, 0))
   )
 
@@ -225,15 +227,16 @@ orthographic_distance_preds <- data_frame(message_c = c(-0.5, 0.5)) %>%
   rename(distance = fit, se = se.fit) %>%
   recode_message_type()
 
+set.seed(733)
 gg_distance <- ggplot(transcription_distances) +
   aes(message_label, distance, color = message_label) +
   geom_point(aes(group = message_id),
              stat = "summary", fun.y = "mean",
              position = position_jitter(0.1, 0.01),
-             size = 2, alpha = 0.6) +
+             size = 2, alpha = 0.6, shape = 1) +
   geom_errorbar(aes(ymin = distance - se, ymax = distance + se),
                 data = orthographic_distance_preds,
-                size = 1.4, width = 0.1) +
+                size = 1, width = 0.3) +
   scale_x_discrete("Generation", labels = c("First", "Last")) +
   scale_y_continuous("Distance between transcriptions", breaks = seq(0, 1, by = 0.2)) +
   scale_color_manual(values = imitation_gen_colors) +
@@ -241,7 +244,10 @@ gg_distance <- ggplot(transcription_distances) +
   coord_cartesian(ylim = c(0.0, 0.8)) +
   ggtitle("c") +
   base_theme +
-  theme(legend.position = "none")
+  theme(
+    legend.position = "none",
+    panel.grid.major.x = element_blank()
+  )
 
 transcription_examples <- transcription_matches %>%
   filter(!str_detect(word, "[\ *-]")) %>%
@@ -289,3 +295,14 @@ exact_string_matches_mod <- lm(perct_agreement ~ message_c,
 
 substr_length_mod <- lmerTest::lmer(length ~ message_c + (message_c|seed_id),
                                     data = transcription_distances)
+
+
+# pdf("~/Desktop/fig1.pdf", width=6, height=2.5)
+# grid.arrange(
+#   gg_dendrogram,
+#   gg_similarity_judgments,
+#   gg_distance,
+#   nrow = 1,
+#   widths = c(0.4, 0.3, 0.3)
+# )
+# dev.off()

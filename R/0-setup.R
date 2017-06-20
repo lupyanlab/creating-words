@@ -173,7 +173,7 @@ lsn_transition <- learning_sound_names %>%
   recode_block_transition()
 
 # ggplot theme, colors, and scales ---------------------------------------------
-base_theme <- theme_minimal(base_size = 10) +
+base_theme <- theme_minimal(base_size = 8) +
   theme(plot.title = element_text(face = "bold"))
 
 colors <- RColorBrewer::brewer.pal(4, "Set2")
@@ -215,7 +215,7 @@ scale_linetype_message_label_2 <- scale_linetype_manual(
   values = c("solid", "longdash")
 )
 
-chance_line <- geom_hline(yintercept = 0.25, lty = 2, alpha = 0.4, size = 1)
+chance_line <- geom_hline(yintercept = 0.25, lty = 2, alpha = 0.4, size = 0.6)
 ylim_gts <- c(0.11, 0.75)
 scale_y_gts_accuracy <- scale_y_continuous("Accuracy", breaks = seq(0, 1, by = 0.1),
                                            labels = scales::percent)

@@ -45,22 +45,21 @@ gg_match_to_seed <- ggplot(imitation_matches) +
   aes(x = generation_1, y = is_correct) +
   geom_smooth(aes(ymin = is_correct - se, ymax = is_correct + se,
                   color = survey_type, linetype = survey_type),
-              stat = "identity", data = transition_preds,
-              size = 1.0) +
+              stat = "identity", data = transition_preds) +
   scale_x_generation_1 +
   scale_y_gts_accuracy +
   scale_color_distractors +
   scale_linetype_distractors +
   chance_line +
   annotate("text", x = 0.5, y = 0.26, label = "chance",
-           size = 4, vjust = -0.1, fontface = "italic",
-           alpha = 0.6) +
+           size = 2, vjust = -0.1, fontface = "italic") +
   coord_cartesian(xlim = c(-0.2, 7.2), ylim = ylim_gts) +
   base_theme +
   ggtitle("b") +
   theme(
-    legend.position = c(0.8, 0.85),
-    legend.key.width = unit(5, "lines"),
+    legend.position = c(0.5, 0.95),
+    legend.key.width = unit(3.2, "lines"),
+    legend.key.size = unit(0.6, "lines"),
     panel.grid.minor.x = element_blank(),
     panel.grid.minor.y = element_blank()
   )
@@ -103,28 +102,6 @@ preds <- cbind(x_preds, y_preds) %>%
   recode_message_type() %>%
   left_join(message_labels)
 
-gg_match_transcriptions <- ggplot(preds) +
-  aes(question_c, is_correct) +
-  geom_bar(aes(fill = question_type), stat = "identity", width = 0.95, alpha = 0.6) +
-  geom_linerange(aes(group = question_type, ymin = is_correct - se, ymax = is_correct + se)) +
-  scale_x_continuous("", breaks = c(-0.5, 0.5), labels = c("True seed", "Category match")) +
-  scale_y_gts_accuracy +
-  scale_fill_manual("", values = unname(colors[c("blue", "green")])) +
-  chance_line +
-  geom_text(aes(label = label),
-            data = data.frame(message_label_2 = "First generation transcription",
-                              question_c = -0.7, is_correct = 0.265, label = "chance"),
-            fontface = "italic") +
-  coord_cartesian(ylim = c(0.18, 0.51)) +
-  facet_wrap("message_label_2", strip.position = "bottom") +
-  ggtitle("c") +
-  base_theme +
-  theme(legend.position = "none",
-        panel.grid.major.x = element_blank(),
-        panel.grid.minor.x = element_blank(),
-        panel.grid.minor.y = element_blank())
-
-
 # Overlay imitation match accuracy means
 imitation_accuracies <- imitation_matches %>%
   filter(
@@ -145,15 +122,48 @@ imitation_accuracies <- imitation_matches %>%
   recode_message_type() %>%
   left_join(message_labels)
 
-gg_match_transcriptions <- gg_match_transcriptions +
-  geom_point(aes(shape = "imitations"),
-             data = imitation_accuracies, size = 2) +
+dodger = position_dodge(width = -0.1)
+gg_match_transcriptions <- ggplot(preds) +
+  aes(message_c, is_correct) +
+  geom_line(aes(color = question_type, linetype = question_type), position = dodger) +
+  geom_errorbar(aes(color = question_type, ymin = is_correct - se, ymax = is_correct + se),
+                width = 0.2, position = dodger) +
+  geom_point(aes(shape = "imitations", color = question_type),
+             data = imitation_accuracies,
+             size = 1, position = dodger) +
   geom_linerange(
-    aes(ymin = is_correct - error, ymax = is_correct + error),
+    aes(ymin = is_correct - error, ymax = is_correct + error, color = question_type),
     data = imitation_accuracies,
-    size = 0.3
+    size = 0.3, position = dodger
   ) +
-  coord_cartesian(ylim = c(0.18, 0.62)) +
-  scale_shape_manual("", labels = "= Match accuracy of imitations", values = 1) +
-  guides(fill = "none") +
-  theme(legend.position = c(0.8, 0.99))
+  scale_x_continuous("Generation", breaks = c(-0.5, 0.5), labels = c("First", "Last")) +
+  scale_y_gts_accuracy +
+  scale_color_manual("", values = unname(colors[c("blue", "green")])) +
+  scale_linetype_manual("", values = c("dotdash", "longdash")) +
+  scale_shape_manual("", labels = "= Imitations", values = 1) +
+  guides(color = "none", linetype = "none") +
+  chance_line +
+  coord_cartesian(ylim = ylim_gts) +
+  ggtitle("c") +
+  base_theme +
+  theme(legend.position = c(0.7, 0.85),
+        legend.key.width = unit(0.1, "lines"),
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        panel.grid.minor.y = element_blank())
+
+
+q_true_seed <- read_graphviz("true-seed", "wordsintransition")
+q_category_match <- read_graphviz("category-match", "wordsintransition")
+q_specific_match <- read_graphviz("specific-match", "wordsintransition")
+
+# pdf("~/Desktop/fig3.pdf", width=6, height=2.5)
+# grid.arrange(
+#   arrangeGrob(q_true_seed, q_category_match, q_specific_match, ncol = 1,
+#               top = textGrob('a', hjust = 15, gp = gpar(fontsize = 8, fontface = "bold"))),
+#   gg_match_to_seed,
+#   gg_match_transcriptions + theme(axis.title.y = element_blank()),
+#   nrow = 1,
+#   widths = c(0.4, 0.35, 0.25)
+# )
+# dev.off()

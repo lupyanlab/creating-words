@@ -43,8 +43,15 @@ acoustic_similarity_comparison <- bind_rows(
   .id = "edge_type"
 ) %>%
   mutate(
-    edge_type_label = factor(edge_type, levels = c("linear", "within_chain", "within_seed", "within_category", "between_fixed", "between_consecutive"))
+    edge_type_label = factor(edge_type, levels = c("linear", "within_chain", "within_seed", "within_category", "between_fixed", "between_consecutive")),
+    edge_type_helmert = edge_type_label
   )
+
+contrasts(acoustic_similarity_comparison$edge_type_helmert) <- contr.helmert(n = 6)
+
+acoustic_similarity_comparison_mod <- lm(
+  similarity ~ edge_type_helmert, data = acoustic_similarity_comparison
+)
 
 gg_algo_compare <- ggplot(acoustic_similarity_comparison) +
   aes(edge_type_label, similarity) +

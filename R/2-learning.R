@@ -56,8 +56,9 @@ rt_plot <- ggplot(first_last_gen) +
   coord_cartesian(ylim = c(600, 1200)) +
   base_theme +
   ggtitle("a") +
-  theme(legend.position = c(0.7, 0.75),
-        legend.key.width = unit(5, "lines"))
+  theme(legend.position = c(0.55, 0.9),
+        legend.key.width = unit(4, "lines"),
+        legend.key.size = unit(0.5, 'lines'))
 
 transition_mod <- lmer(
   rt ~ block_transition_c * message_c + block_ix + (block_transition_c + block_ix|subj_id),
@@ -98,3 +99,7 @@ gg_transition <- ggplot(lsn_transition) +
     legend.position = "none",
     legend.key.width = unit(5, "lines")
   )
+
+pdf("~/Desktop/fig2.pdf", width=5.8, height=2.5)
+grid.arrange(rt_plot, gg_transition, nrow = 1)
+dev.off()
