@@ -245,6 +245,12 @@ $if(abstract)$
 \end{abstract}
 $endif$
 
+\begin{enumerate}
+$for(affilitation)$
+\item $affiliation.institution$
+$endfor$
+\end{enumerate}
+
 $for(include-before)$
 $include-before$
 
@@ -264,6 +270,8 @@ $endif$
 $if(lof)$
 \listoffigures
 $endif$
+
+
 $body$
 
 $if(natbib)$
