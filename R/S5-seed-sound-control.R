@@ -1,6 +1,7 @@
 source("R/0-setup.R")
 
-# ---- seed-sound-control
+# ---- s5-seed-sound-control
+
 data("transcription_distances")
 
 message_type_labels <- select(imitations, message_id, seed_id, generation)
@@ -31,7 +32,7 @@ gg_seed_distance <- ggplot(seed_distances) +
   base_theme +
   theme(legend.position = "none",
         panel.grid.major.x = element_blank()) +
-  ggtitle("A. Distance between transcriptions")
+  ggtitle("a.")
 
 ## Learning transcriptions of seed sounds
 learning_seed_sounds <- learning_sound_names %>%
@@ -64,7 +65,7 @@ gg_seed_rt_plot <- ggplot(lsn_seed_quad_preds) +
   scale_linetype_manual("", values = c("dotdash", "solid", "longdash")) +
   coord_cartesian(ylim = c(600, 1200)) +
   base_theme +
-  ggtitle("B. Learning categories of sounds") +
+  ggtitle("b.") +
   theme(legend.position = c(0.7, 0.75),
         legend.key.width = unit(5, "lines"))
 
@@ -114,4 +115,4 @@ gg_seed_matching <- ggplot(transcription_matches_preds) +
         panel.grid.minor.x = element_blank(),
         panel.grid.minor.y = element_blank(),
         axis.text.x = element_text(size = 8)) +
-  ggtitle("C. Transcription matching accuracy")
+  ggtitle("c.")

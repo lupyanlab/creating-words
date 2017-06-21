@@ -1,6 +1,6 @@
 source("R/0-setup.R")
 
-# ---- 2-measuring-acoustic-similarity
+# ---- s2-measuring-acoustic-similarity
 
 # Correlation between subjective and objective measures
 
@@ -66,7 +66,7 @@ gg_algo_compare <- ggplot(acoustic_similarity_comparison) +
     panel.grid.major.x = element_blank(),
     axis.text.x = element_text(size = 8)
   ) +
-  ggtitle("A. Types of algorithmic similarity comparisons")
+  ggtitle("a.")
 
 algo_similarity <- bind_rows(
   within = algo_linear,
@@ -87,7 +87,7 @@ gg_algo_similarity <- ggplot(algo_similarity %>% filter(edge_type == "within")) 
   scale_shape_discrete("") +
   base_theme +
   theme(legend.position = "top") +
-  ggtitle("B. Algorithmic similarity over generations")
+  ggtitle("b.")
 
 # Compare human and machine similarity
 edge_similarities <- 
@@ -112,5 +112,5 @@ gg_comparing_similarities <- ggplot(edge_similarities) +
   scale_x_continuous("Similarity judgments") +
   scale_y_continuous("Algorithmic similarity") +
   base_theme +
-  ggtitle("C. Correlation between similarity measures")
+  ggtitle("c.")
 
