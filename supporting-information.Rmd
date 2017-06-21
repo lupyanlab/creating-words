@@ -50,7 +50,7 @@ crotchet::draw_image("collect-imitations-gui", "wordsintransition")
 
 # Instructions for acoustic similarity ratings
 
-Five research assistants rated the similarity between 324 different pairs of imitations. These pairs comprised consecutive imitations in the transmission chain design, e.g., each message was compared to its response. Message order was randomized on each trial so that participants did not know which message was the original and which message was the imitation. Raters were also blind to the overall generation of the imitations by randomizing generation from trial to trial. To facilitate consistency in rating, pairs of sounds were blocked by category, e.g., all tearing sounds were rated before moving on to other categories of sounds. The instructions given to raters were as follows.
+Research assistants rated the similarity between 324 different pairs of imitations. These pairs comprised consecutive imitations in the transmission chain design, e.g., each message was compared to its response. Message order was randomized on each trial so that participants did not know which message was the original and which message was the imitation. Raters were also blind to the overall generation of the imitations by randomizing generation from trial to trial. To facilitate consistency in rating, pairs of sounds were blocked by category, e.g., all tearing sounds were rated before moving on to other categories of sounds. The instructions given to raters were as follows.
 
 > On each trial, you will hear two sounds played in succession. To help you distinguish them, during the first you will see the number 1, and during the second a number 2. After hearing the second sound, you will be asked to rate how similar the two sounds are on a 7-point scale.
 
@@ -70,9 +70,12 @@ In the category learning experiment, participants had to learn novel labels for 
 
 > If you have any questions, now is the time to ask the experimenter. When you feel you understand these instructions and are ready to begin, press the green button.
 
-# Selecting transcriptions to use in category learning experiment
+```{r s2-measuring-acoustic-similarity, include=FALSE}
+```
 
-To determine which transcriptions to test as category labels, we first selected only those transcriptions which had above chance matching performance when matching back to the original seeds. This was possible because the matching experiments (Fig. 3) were conducted chronologically prior to the category learning experiment. Then we excluded transcriptions that had less than two unique characters or were over 10 characters long, and used a bootstrapping procedure to sample from both first and last generation imitations to reach a final set that controlled for overall matching accuracy. The R script that performed the selection and bootstrapping procedure is available on GitHub at [github.com/lupyanlab/learning-sound-names/blob/master/R/select_messages.R](https://github.com/lupyanlab/learning-sound-names/blob/master/R/select_messages.R). The procedure involves selecting a desired mean matching accuracy from the last generation of transcriptions, and sampling transcriptions from first generation transcriptions until the sample falls within the desired variance.
+```{r helmert-contrasts, results="asis", fig.cap="\\textbf{Model results predicting algorithmic acoustic similarity from type of pairwise comparison.} The six types of pairwise comparisons depicted in Fig. S2 were contrast coded for the linear model with Helmert contrasts. The intercept term corresponds to the overall acoustic similarity along consecutive generations of imitations within individual transmission chains. The first Helmert contrast compares the acoustic similarities of consecutive generation imitations to all other comparisons within the same transmission chain. The second contrast compares the similarity among imitations from an individual transmission chains to the similarity of all imitations from a given seed sound (between chains). The third contrast compares the similarity among imitations of a given seed sound to imitations of the same category. The fourth contrast comparse within category similarity to between category similarity, with imitations sampled from the same generation. The fifth contrast compares all other contrast types to the least similar type of comparisons, where between category imitations from consecutive generations are compared."}
+tidy(acoustic_similarity_comparison_mod)
+```
 
 ```{r s1-selecting-seed-sounds, include=FALSE}
 ```
@@ -83,9 +86,6 @@ grid.arrange(
   gg_seed_selection_round_2,
   nrow = 1
 )
-```
-
-```{r s2-measuring-acoustic-similarity, include=FALSE}
 ```
 
 ```{r figS2, fig.width=5, out.width="5in", fig.height=8, out.height="8in", fig.cap="\\textbf{Algorithmic measures of acoustic distance using MFCCs.} \\textbf{a.} Average acoustic distance between pairs of sounds grouped by type of pairwise comparison. \\textbf{b.} Change in algorithmic acoustic distance over generations of imitations. \\textbf{c.} Correlation between similarity judgments and algorithmic measures."}

@@ -62,7 +62,7 @@ gg_exact_matches <- ggplot(transcription_uniqueness) +
   scale_color_brewer("", palette = "Set2") +
   base_theme +
   theme(legend.position = "top") +
-  ggtitle("a.")
+  ggtitle("a")
 
 
 message_id_map <- select(imitations, message_id, seed_id, generation)
@@ -82,7 +82,7 @@ gg_string_distance <- distance_plot +
   scale_fill_brewer(palette = "Set2") +
   facet_wrap("frequency_type") +
   guides(color = "none", fill = "none") +
-  ggtitle("b.")
+  ggtitle("b")
 
 gg_length_plot <- ggplot(transcription_distances) +
   aes(message_label, length) +
@@ -91,7 +91,7 @@ gg_length_plot <- ggplot(transcription_distances) +
   geom_line(aes(group = frequency_type, color = frequency_type), stat = "summary", fun.y = "mean") +
   scale_color_brewer("", palette = "Set2") +
   labs(x = "", y = "Longest substring match (characters)",
-       title = "c.") + 
+       title = "c") + 
   base_theme +
   theme(legend.position = "top")
 

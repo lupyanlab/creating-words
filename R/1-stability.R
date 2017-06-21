@@ -34,7 +34,7 @@ layout <- create_layout(graph, "dendrogram")
 
 gg_dendrogram <- ggraph(layout) +
   geom_edge_diagonal(aes(edge_linetype = node2.node_type), edge_width = 0.2) +
-  geom_node_point(aes(shape = node_type), size = 0.4) +
+  geom_node_point(aes(shape = node_type), size = 0.3) +
   geom_node_text(aes(label = node_label), vjust = -0.5, size = 2.5) +
   scale_x_continuous("", breaks = NULL) +
   scale_y_continuous("Generation", breaks = 0:8, labels = c(8:1, "seeds")) +
@@ -301,7 +301,7 @@ substr_length_mod <- lmerTest::lmer(length ~ message_c + (message_c|seed_id),
                                     data = transcription_distances)
 
 
-# pdf("~/Desktop/fig1.pdf", width=6, height=2.5)
+# pdf("~/Desktop/fig1.pdf", width=6.5, height=2.5)
 # grid.arrange(
 #   gg_dendrogram,
 #   gg_similarity_judgments,
@@ -310,4 +310,3 @@ substr_length_mod <- lmerTest::lmer(length ~ message_c + (message_c|seed_id),
 #   widths = c(0.4, 0.3, 0.3)
 # )
 # dev.off()
-

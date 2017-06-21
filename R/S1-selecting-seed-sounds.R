@@ -55,16 +55,18 @@ sound_similarity_4_counts <- sound_similarity_4 %>%
   mutate(odd_one_out = ifelse(category %in% final_categories, "normal", "odd"))
 
 odd_one_out <- ggplot(mapping = aes(x = filename_f, y = n)) +
-  geom_bar(aes(fill = odd_one_out), stat = "identity") +
+  geom_bar(aes(fill = odd_one_out, alpha = odd_one_out), stat = "identity") +
   scale_x_discrete("") +
   scale_y_continuous("Number of times selected as odd one out") +
   scale_fill_manual("", labels = c("kept", "dropped"),
                     values = RColorBrewer::brewer.pal(3, "Set2")[c(1, 2)]) +
+  scale_alpha_manual("", values = c(1.0, 0.4), labels = c("kept", "dropped")) +
   facet_wrap("category", scales = "free_x", ncol = 2) +
   base_theme +
   theme(
     axis.ticks = element_blank(),
     axis.text.x = element_text(angle = 45, hjust = 1),
+    panel.grid.major.x = element_blank(),
     legend.direction = "vertical",
     legend.position = c(0.06, 1.0)
   )
@@ -84,10 +86,10 @@ gg_seed_selection_round_2 <- (odd_one_out %+% sound_similarity_4_counts) +
   ) +
   ggtitle("b. Odd one out (4 per category)")
 
-pdf("~/Desktop/s1.pdf", width=6.5, height=10)
-grid.arrange(
-  gg_seed_selection_round_1,
-  gg_seed_selection_round_2,
-  nrow = 1
-)
-dev.off()
+# pdf("~/Desktop/s1.pdf", width=6.5, height=10)
+# grid.arrange(
+#   gg_seed_selection_round_1,
+#   gg_seed_selection_round_2,
+#   nrow = 1
+# )
+# dev.off()
