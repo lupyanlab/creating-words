@@ -4,9 +4,6 @@ source("R/0-setup.R")
 
 ## Dendrogram ##
 
-library(ggraph)
-library(igraph)
-
 data("edges")
 
 # Create a data frame of unique nodes from all edges
@@ -85,7 +82,7 @@ gg_similarity_judgments <- ggplot(similarity_judgments_means) +
   aes(x = edge_generations, y = similarity_z) +
   geom_point(aes(color = category, shape = category),
              position = position_jitter(0.1, 0.0),
-             size = 2.5) +
+             size = 1) +
   geom_smooth(aes(group = 1, ymin = similarity_z - se, ymax = similarity_z + se),
               data = similarity_judgments_preds, stat = "identity",
               alpha = 0.2, color = "gray") +
@@ -103,6 +100,12 @@ gg_similarity_judgments <- ggplot(similarity_judgments_means) +
   )
 
 # Inter-rater reliability
+acoustic_similarity_judgments %<>%
+  mutate(similarity = ifelse(similarity == -1, NA, similarity)) %>%
+  z_score_by_subj() %>%
+  recode_edge_generations() %>%
+  determine_trial_id()
+
 irr_ratings <- acoustic_similarity_judgments %>%
   group_by(name, trial_id) %>%
   summarize(similarity_z = mean(similarity_z)) %>%
@@ -110,7 +113,8 @@ irr_ratings <- acoustic_similarity_judgments %>%
   spread(name, similarity_z) %>%
   drop_na() %>%
   select(-trial_id)
-irr_results <- icc(irr_ratings, model = "twoway", type = "consistency")
+
+irr_results <- icc(irr_ratings, model = "twoway", type = "consistency", unit = "a")
 
 report_icc_results <- function(irr_results) {
   if (irr_results$p.value < 0.001) {
@@ -233,7 +237,7 @@ gg_distance <- ggplot(transcription_distances) +
   geom_point(aes(group = message_id),
              stat = "summary", fun.y = "mean",
              position = position_jitter(0.1, 0.01),
-             size = 2, alpha = 0.6, shape = 1) +
+             size = 1, alpha = 0.6, shape = 1) +
   geom_errorbar(aes(ymin = distance - se, ymax = distance + se),
                 data = orthographic_distance_preds,
                 size = 1, width = 0.3) +
@@ -306,3 +310,4 @@ substr_length_mod <- lmerTest::lmer(length ~ message_c + (message_c|seed_id),
 #   widths = c(0.4, 0.3, 0.3)
 # )
 # dev.off()
+

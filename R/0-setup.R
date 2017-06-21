@@ -13,6 +13,9 @@ library(broom)
 
 library(irr)
 
+library(ggraph)
+library(igraph)
+
 library(crotchet)
 library(wordsintransition)
 

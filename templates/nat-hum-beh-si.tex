@@ -127,6 +127,8 @@ $if(tables)$
 $endif$
 
 \usepackage[labelsep=period,labelfont=bf]{caption}
+\DeclareCaptionLabelFormat{si-fig}{#1#2}
+\captionsetup[figure]{labelformat=si-fig,name=Figure S}
 
 $if(graphics)$
 \usepackage{graphicx,grffile}

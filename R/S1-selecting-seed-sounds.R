@@ -1,8 +1,8 @@
 source("R/0-setup.R")
 
-# ---- 1-selecting-seed-sounds
-data("sound_similarity_6")
-data("sound_similarity_4")
+# ---- s1-selecting-seed-sounds
+
+## Selecting seed sounds ##
 
 drop_bad_trials <- . %>%
   filter(failed_catch_trial == 0, problem_with_audio == 0)
@@ -27,9 +27,9 @@ count_responses <- function(frame, filename_levels) {
 
 # Create a factor for ordered and missing filenames.
 filename_map <- expand.grid(
-    category = unique(sound_similarity_6$category),
-    ix = 1:6
-  ) %>%
+  category = unique(sound_similarity_6$category),
+  ix = 1:6
+) %>%
   mutate(filename = paste0(category, "_0", ix, ".mp3")) %>%
   arrange(category, ix) %>%
   select(category, filename)
@@ -70,7 +70,24 @@ odd_one_out <- ggplot(mapping = aes(x = filename_f, y = n)) +
   )
 
 gg_seed_selection_round_1 <- (odd_one_out %+% sound_similarity_6_counts) +
-  ggtitle("Odd one out (6 per category)")
+  theme(
+    legend.position = c(0.15, 0.98),
+    legend.key.size = unit(0.5, "lines"),
+    axis.title.y = element_text(margin = margin(0, 2, 0, 0, unit = "lines"))
+  ) +
+  ggtitle("a. Odd one out (6 per category)")
 
 gg_seed_selection_round_2 <- (odd_one_out %+% sound_similarity_4_counts) +
-  ggtitle("Odd one out (4 per category)")
+  theme(
+    legend.position = "none",
+    axis.title.y = element_blank()
+  ) +
+  ggtitle("b. Odd one out (4 per category)")
+
+pdf("~/Desktop/s1.pdf", width=6.5, height=10)
+grid.arrange(
+  gg_seed_selection_round_1,
+  gg_seed_selection_round_2,
+  nrow = 1
+)
+dev.off()
