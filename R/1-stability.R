@@ -87,7 +87,7 @@ gg_similarity_judgments <- ggplot(similarity_judgments_means) +
               data = similarity_judgments_preds, stat = "identity",
               alpha = 0.2, color = "gray") +
   scale_x_discrete("Generation") +
-  scale_y_continuous("Acoustic similarity (z-score)") +
+  scale_y_continuous("Perceived acoustic similarity (z-score)") +
   scale_color_brewer("", palette = "Set2") +
   scale_shape_discrete("") +
   coord_cartesian(ylim = c(-0.6, 0.8)) +
@@ -242,7 +242,7 @@ gg_distance <- ggplot(transcription_distances) +
                 data = orthographic_distance_preds,
                 size = 1, width = 0.3) +
   scale_x_discrete("Generation", labels = c("First", "Last")) +
-  scale_y_continuous("Distance between transcriptions", breaks = seq(0, 1, by = 0.2)) +
+  scale_y_continuous("Orthographic distance between transcriptions", breaks = seq(0, 1, by = 0.2)) +
   scale_color_manual(values = imitation_gen_colors) +
   scale_fill_manual(values = imitation_gen_colors) +
   coord_cartesian(ylim = c(0.0, 0.8)) +
