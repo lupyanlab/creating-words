@@ -100,6 +100,6 @@ gg_transition <- ggplot(lsn_transition) +
     legend.key.width = unit(5, "lines")
   )
 
-pdf("~/Desktop/fig2.pdf", width=5.8, height=2.5)
-grid.arrange(rt_plot, gg_transition, nrow = 1)
-dev.off()
+# pdf("~/Desktop/fig2.pdf", width=5.8, height=2.5)
+# grid.arrange(rt_plot, gg_transition, nrow = 1)
+# dev.off()

@@ -1,15 +1,47 @@
 ---
-title: The emergence of words from vocal imitations
-author: Pierce Edmiston, Marcus Perlman, and Gary Lupyan
-bibliography: telephone.bib
-csl: templates/nature.csl
-output:
-  pdf_document:
-    template: templates/nat-hum-beh.tex
-    keep_tex: true
----
+title             : "The emergence of words from vocal imitations"
+shorttitle        : "Words from imitations"
 
-**People have long pondered the origins of language, especially the words that compose them [@Plato:1999uk; @Locke:1948eu]. Here, we report a series of experiments investigating how conventional spoken words might emerge from imitations of environmental sounds. Does the repeated imitation of an environmental sound gradually give rise to novel word forms? In what ways do these words resemble the original sounds that motivated them? Participants played a version of the children’s game “Telephone”. The first generation of participants imitated recognizable environmental sounds (e.g., glass breaking, water splashing). Subsequent generations imitated the imitations for a maximum of 8 generations. The results showed that the imitations became more stable and word-like, and later imitations were easier to learn as category labels. At the same time, even after 8 generations, both spoken imitations and their written transcriptions could be matched above chance to the category of environmental sound that motivated them. These results show how repeated imitation can create progressively more word-like forms while continuing to retain a resemblance to the original sound that motivated them, and speak to the possible role of human vocal imitation in explaining the origins of at least some spoken words.**
+author: 
+  - name          : "Pierce Edmiston"
+    affiliation   : "1"
+    corresponding : yes
+    address       : "1202 W. Johnson St., Madison, WI, 53703"
+    email         : "pedmiston@wisc.edu"
+  - name          : "Marcus Perlman"
+    affiliation   : "2"
+  - name          : "Gary Lupyan"
+    affiliation   : "1"
+
+affiliation:
+  - id            : "1"
+    institution   : "University of Wisconsin-Madison"
+  - id            : "2"
+    institution   : "Max Planck Institute for Psycholinguistics"
+
+author_note: >
+  Complete departmental affiliations for each author (note the indentation, if you start a new paragraph).
+
+  Enter author note here.
+
+abstract: >
+  People have long pondered the origins of language, especially the words that compose them. Here, we report a series of experiments investigating how conventional spoken words might emerge from imitations of environmental sounds. Does the repeated imitation of an environmental sound gradually give rise to novel word forms? In what ways do these words resemble the original sounds that motivated them? Participants played a version of the children’s game “Telephone”. The first generation of participants imitated recognizable environmental sounds (e.g., glass breaking, water splashing). Subsequent generations imitated the imitations for a maximum of 8 generations. The results showed that the imitations became more stable and word-like, and later imitations were easier to learn as category labels. At the same time, even after 8 generations, both spoken imitations and their written transcriptions could be matched above chance to the category of environmental sound that motivated them. These results show how repeated imitation can create progressively more word-like forms while continuing to retain a resemblance to the original sound that motivated them, and speak to the possible role of human vocal imitation in explaining the origins of at least some spoken words.
+  
+keywords          : "language evolution, iconicity, vocal imitation, transmission chain"
+wordcount         : "X"
+
+bibliography      : ["telephone.bib"]
+
+figsintext        : yes
+figurelist        : no
+tablelist         : no
+footnotelist      : no
+lineno            : yes
+
+lang              : "english"
+class             : "man"
+output            : papaja::apa6_pdf
+---
 
 ```{r config, include=FALSE}
 library(knitr)
@@ -19,15 +51,7 @@ opts_chunk$set(
   message=FALSE,
   warning=FALSE,
   results="hide",
-  fig.path="figs/",
-  fig.width=6.5,
-  fig.height=2.5,
-  out.width="6.5in",
-  out.height="2.5in",
-  fig.align="center",
-  cache=TRUE,
-  cache.path=".cache/",
-  autodep=TRUE
+  cache=TRUE
 )
 
 sapply(list.files("R", "*.R", full.names = TRUE), read_chunk)
@@ -154,3 +178,6 @@ Question types (True seed, Category match, Specific match) were assigned between
 **Analyses.** Statistical analyses were conducted in R using linear mixed-effects models provided by the lme4 package [@lme4:2015]. Degrees of freedom and corresponding significance tests for linear mixed-effects models were estimated using the Satterthwaite approximation [@lmerTest:2016]. Random effects (intercepts and slopes) for subjects and for items were included wherever appropriate.
 
 # References
+
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}

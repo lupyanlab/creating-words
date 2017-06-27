@@ -2,8 +2,9 @@
 *.md
 *.pdf
 *.docx
-*figs/
-*cache/
+*_cache/
+*_files/
+
 
 # submissions
 !submissions/**/*.pdf
