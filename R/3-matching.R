@@ -4,9 +4,16 @@ source("R/0-setup.R")
 
 ## Imitations ##
 
-q_true_seed <- read_graphviz("true-seed", "wordsintransition")
-q_category_match <- read_graphviz("category-match", "wordsintransition")
-q_specific_match <- read_graphviz("specific-match", "wordsintransition")
+data("imitation_matches")
+n_all_matching_imitations <- count_subjects(imitation_matches)
+imitation_matches %<>%
+  filter(
+    question_type != "catch_trial"
+  ) %>%
+  recode_generation() %>%
+  recode_survey_type() %>%
+  add_chance()
+n_matching_imitations <- count_subjects(imitation_matches)
 
 imitation_matches_overall_mod <- glmer(
   is_correct ~ offset(chance_log) + generation_1 + (generation_1|chain_name/seed_id),
@@ -65,6 +72,27 @@ gg_match_to_seed <- ggplot(imitation_matches) +
   )
 
 ## Transcriptions ##
+
+data("transcription_matches")
+
+n_all_transcription_match_subjs <- count_subjects(transcription_matches)
+transcription_match_failed_catch_trial <- transcription_matches %>%
+  filter(question_type == "catch_trial", is_correct == 0) %>%
+  .$subj_id %>%
+  unique()
+n_transcription_match_subjs_failed_catch_trial <- length(transcription_match_failed_catch_trial)
+
+transcription_matches %<>%
+  recode_question_type() %>%
+  recode_message_type() %>%
+  recode_version() %>%
+  add_chance() %>%
+  filter(
+    message_type != "sound_effect",
+    !(subj_id %in% transcription_match_failed_catch_trial)
+  )
+
+n_transcription_match_subjs <- count_subjects(transcription_matches)
 
 transcription_matches_last_gen_mod <- glmer(
   is_correct ~ offset(chance_log) + (1|word_category/seed_id),
@@ -153,17 +181,50 @@ gg_match_transcriptions <- ggplot(preds) +
         panel.grid.minor.y = element_blank())
 
 
-q_true_seed <- read_graphviz("true-seed", "wordsintransition")
-q_category_match <- read_graphviz("category-match", "wordsintransition")
-q_specific_match <- read_graphviz("specific-match", "wordsintransition")
+## Matching accuracy of transcriptions of seed sounds
+data("transcription_matches")
 
-# pdf("~/Desktop/fig3.pdf", width=6, height=2.5)
-# grid.arrange(
-#   arrangeGrob(q_true_seed, q_category_match, q_specific_match, ncol = 1,
-#               top = textGrob('a', hjust = 15, gp = gpar(fontsize = 8, fontface = "bold"))),
-#   gg_match_to_seed,
-#   gg_match_transcriptions + theme(axis.title.y = element_blank()),
-#   nrow = 1,
-#   widths = c(0.4, 0.35, 0.25)
-# )
-# dev.off()
+transcription_matches %<>%
+  recode_question_type() %>%
+  recode_message_type() %>%
+  recode_version() %>%
+  add_chance() %>%
+  filter(!(subj_id %in% transcription_match_failed_catch_trial))
+
+transcription_matches_mod <- glmer(
+  is_correct ~ offset(chance_log) + question_c * message_type + (1|subj_id),
+  family = binomial, data = transcription_matches
+)
+
+transcription_matches_preds <- expand.grid(
+  question_c = c(-0.5, 0.5),
+  message_type = c("sound_effect", "first_gen_imitation", "last_gen_imitation"),
+  stringsAsFactors = FALSE
+) %>%
+  add_chance() %>%
+  cbind(., predictSE(transcription_matches_mod, newdata = .)) %>%
+  rename(is_correct = fit, se = se.fit) %>%
+  recode_message_type() %>%
+  recode_question_type()
+
+gg_seed_matching <- ggplot(transcription_matches_preds) +
+  aes(question_c, is_correct) +
+  geom_bar(aes(fill = question_type), stat = "identity",
+           width = 0.95, alpha = 0.6) +
+  geom_errorbar(aes(ymin = is_correct - se, ymax = is_correct + se),
+                data = transcription_matches_preds,
+                width = 0.2) +
+  facet_wrap("message_label", strip.position = "bottom") +
+  scale_x_continuous("", breaks = c(-0.5, 0.5), labels = c("True seed", "Category match")) +
+  scale_y_gts_accuracy +
+  scale_fill_manual("", values = unname(colors[c("blue", "green")])) +
+  coord_cartesian(ylim = c(0.18, 0.71)) +
+  chance_line +
+  base_theme +
+  theme(legend.position = "none",
+        strip.placement = "outside",
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        panel.grid.minor.y = element_blank(),
+        axis.text.x = element_text(size = 8)) +
+  ggtitle("c.")

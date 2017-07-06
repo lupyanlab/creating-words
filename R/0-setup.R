@@ -22,159 +22,6 @@ library(wordsintransition)
 count_subjects   <- . %>% count_unique("subj_id")
 count_imitations <- . %>% count_unique("message_id")
 
-# Selecting seed sounds
-data("sound_similarity_4")
-data("sound_similarity_6")
-n_norming_subjects <- count_unique(sound_similarity_4, "workerId") +
-  count_unique(sound_similarity_6, "workerId")
-
-
-data("imitations")
-n_all_imitations <- count_imitations(imitations)
-n_imitators <- count_subjects(imitations)
-n_removed <- imitations %>%
-  filter(rejected == "True") %>%
-  count_imitations()
-n_removed_pct <- round(n_removed/count_imitations(imitations) * 100)
-n_final_imitations <- imitations %>%
-  filter(rejected == "False") %>%
-  count_imitations()
-n_branches <- imitations$first_gen_id %>% unique() %>% na.omit() %>% length()
-
-
-data("acoustic_similarity_judgments")
-acoustic_similarity_judgments %<>%
-  mutate(similarity = ifelse(similarity == -1, NA, similarity)) %>%
-  z_score_by_subj() %>%
-  recode_edge_generations() %>%
-  determine_trial_id()
-
-data("algo_linear")
-
-z_score <- function(x) (x - mean(x, na.rm = TRUE))/sd(x, na.rm = TRUE)
-algo_linear %<>%
-  recode_edge_generations() %>%
-  group_by(sound_x_category) %>%
-  mutate(similarity_z = z_score(similarity)) %>%
-  ungroup()
-
-data("imitation_matches")
-n_all_matching_imitations <- count_subjects(imitation_matches)
-imitation_matches %<>%
-  filter(
-    question_type != "catch_trial"
-  ) %>%
-  recode_generation() %>%
-  recode_survey_type() %>%
-  add_chance()
-n_matching_imitations <- count_subjects(imitation_matches)
-
-
-data("transcriptions")
-transcription_catch_trials <- transcriptions %>%
-  filter(is_catch_trial == 1) %>%
-  select(subj_id, chain_name, text)
-
-n_all_transcribers <- count_subjects(transcriptions)
-transcription_bad_subjs <- c("A3A8P4UR9A0DWQ", "AAMLJUUYM484")
-transcriptions %<>% filter(!(subj_id %in% transcription_bad_subjs))
-n_bad_transcribers <- length(transcription_bad_subjs)
-n_transcribers <- count_subjects(transcriptions)
-n_transcriptions <- nrow(transcriptions)
-n_english_transcriptions <- transcription_frequencies %>%
-  filter(is_english == 1) %>%
-  select(text) %>%
-  nrow()
-
-
-n_imitations_transcribed <- count_imitations(transcriptions)
-n_transcriptions_per_imitation <- transcriptions %>%
-  count(message_id) %>%
-  .$n %>%
-  mean() %>%
-  round(0)
-
-data("transcription_frequencies")
-
-gen_labels <- imitations %>%
-  select(message_id, generation)
-
-transcription_frequencies %<>%
-  left_join(gen_labels) %>%
-  recode_message_type()
-
-n_created_words <- transcription_frequencies %>%
-  filter(
-    is_english == 0,
-    # Exclude transcriptions of seed sounds
-    seed_id != message_id
-  ) %>%
-  .$text %>%
-  unique() %>%
-  length()
-
-
-data("transcription_distances")
-message_id_map <- select(imitations, message_id, chain_name, seed_id, generation)
-transcription_distances %<>%
-  left_join(message_id_map) %>%
-  recode_transcription_frequency() %>%
-  recode_message_type() %>%
-  filter(message_type != "sound_effect")
-
-data("transcription_matches")
-n_all_transcription_match_subjs <- count_subjects(transcription_matches)
-transcription_match_failed_catch_trial <- transcription_matches %>%
-  filter(question_type == "catch_trial", is_correct == 0) %>%
-  .$subj_id %>%
-  unique()
-n_transcription_match_subjs_failed_catch_trial <- length(transcription_match_failed_catch_trial)
-
-transcription_matches %<>%
-  recode_question_type() %>%
-  recode_message_type() %>%
-  recode_version() %>%
-  add_chance() %>%
-  filter(
-    message_type != "sound_effect",
-    !(subj_id %in% transcription_match_failed_catch_trial)
-  )
-
-n_transcription_match_subjs <- count_subjects(transcription_matches)
-
-data("learning_sound_names")
-n_all_lsn_subjs <- count_subjects(learning_sound_names)
-n_lsn_words <- count_unique(learning_sound_names, "word")
-
-learning_sound_names %<>%
-  mutate(rt = ifelse(is_correct == 1, rt, NA),
-         is_error = 1 - is_correct) %>%
-  mutate(word_category_by_block_ix = paste(word_category, block_ix, sep = ":")) %>%
-  recode_lsn_word_type() %>%
-  mutate(
-    block_ix_sqr = block_ix^2
-  )
-
-lsn_outliers <- c("LSN102", "LSN148", "LSN104", "LSN147")
-n_lsn_outliers <- length(lsn_outliers)
-learning_sound_names %<>% filter(!(subj_id %in% lsn_outliers))
-n_lsn_subjs <- count_subjects(learning_sound_names)
-
-trials_per_block <- 24
-n_trials <- 6
-
-lsn_transition <- learning_sound_names %>%
-  label_trial_in_block() %>%
-  bin_trials("block_transition", "trial_in_block",
-             before = (trials_per_block-n_trials):trials_per_block,
-             after = 1:n_trials) %>%
-  filter(
-    !(block_ix == 1 & block_transition == "after"),
-    !is.na(block_transition),
-    message_type != "sound_effect"
-  ) %>%
-  recode_block_transition()
-
 # ggplot theme, colors, and scales ---------------------------------------------
 base_theme <- theme_minimal(base_size = 8) +
   theme(plot.title = element_text(face = "bold"))
@@ -196,7 +43,7 @@ scale_color_distractors <- scale_color_manual(
   values = distractor_colors,
   labels = distractor_labels
 )
-# scale_linetype_distractors <- 
+
 scale_x_trial_ix <- scale_x_continuous("Trial number (24 trials per block)",
                                        breaks = seq(1, 96, by = 24))
 scale_x_block_ix <- scale_x_continuous("Block number (24 trials per block)",
@@ -301,4 +148,23 @@ glmer_mod_results <- function(glmer_mod, param, odds = FALSE, p_value_only = FAL
   }
 
   formatted
+}
+
+report_icc_results <- function(irr_results) {
+  if (irr_results$p.value < 0.001) {
+    p_value_str = "_p_ < 0.001"
+  } else {
+    p_value_str = sprintf("_p_ = %.3f", irr_results$p.value)
+  }
+  sprintf("ICC = %.2f, 95%% CI [%.2f, %.2f], F(%d, %d) = %.2f, %s",
+          irr_results$value,
+          irr_results$lbound, irr_results$ubound,
+          irr_results$df1, irr_results$df2, irr_results$Fvalue,
+          p_value_str)
+}
+
+report_cor_test <- function(cor_test) {
+  results <- broom::tidy(cor_test) %>% as.list()
+  sprintf("_r_ = %.2f, 95%% CI [%.2f, %.2f]",
+          results$estimate, results$conf.low, results$conf.high)
 }
