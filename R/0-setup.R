@@ -19,11 +19,20 @@ library(igraph)
 library(crotchet)
 library(wordsintransition)
 
+# helper functions
+
 count_subjects   <- . %>% count_unique("subj_id")
 count_imitations <- . %>% count_unique("message_id")
 
+recode_filename <- function(frame, custom_levels) {
+  if (!missing(custom_levels)) filename_levels <- custom_levels
+  frame %>%
+    mutate(filename_f = factor(filename, levels = filename_levels))
+}
+
+
 # ggplot theme, colors, and scales ---------------------------------------------
-base_theme <- theme_minimal(base_size = 8) +
+base_theme <- theme_minimal(base_size = 10) +
   theme(plot.title = element_text(face = "bold"))
 
 colors <- RColorBrewer::brewer.pal(4, "Set2")

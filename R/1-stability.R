@@ -13,12 +13,6 @@ n_norming_subjects <- count_unique(sound_similarity_4, "workerId") +
 drop_bad_trials <- . %>%
   filter(failed_catch_trial == 0, problem_with_audio == 0)
 
-recode_filename <- function(frame, custom_levels) {
-  if (!missing(custom_levels)) filename_levels <- custom_levels
-  frame %>%
-    mutate(filename_f = factor(filename, levels = filename_levels))
-}
-
 count_responses <- function(frame, filename_levels) {
   frame %>%
     drop_bad_trials() %>%
@@ -33,14 +27,15 @@ count_responses <- function(frame, filename_levels) {
 
 # Create a factor for ordered and missing filenames.
 filename_map <- expand.grid(
-  category = unique(sound_similarity_6$category),
-  ix = 1:6
-) %>%
+    category = unique(sound_similarity_6$category),
+    ix = 1:6
+  ) %>%
   mutate(filename = paste0(category, "_0", ix, ".mp3")) %>%
   arrange(category, ix) %>%
   select(category, filename)
 
 filename_levels <- filename_map$filename
+
 sound_similarity_6_counts <- sound_similarity_6 %>%
   count_responses(filename_levels) %>%
   # label two most frequently selected messages as odd
@@ -92,6 +87,7 @@ gg_seed_selection_round_2 <- (odd_one_out %+% sound_similarity_4_counts) +
   ) +
   ggtitle("b. Odd one out (4 per category)")
 
+
 ## Dendrogram ##
 
 data("edges")
@@ -131,7 +127,6 @@ gg_dendrogram <- ggraph(layout) +
   scale_shape_manual(values = c(32, 32, 16, 32)) +
   scale_edge_linetype_manual(values = c("blank", "blank", "solid", "blank")) +
   coord_cartesian(ylim = c(0, 9)) +
-  ggtitle("a") +
   base_theme +
   theme(
     legend.position = "none",
