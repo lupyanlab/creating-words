@@ -77,15 +77,13 @@ gg_seed_selection_round_1 <- (odd_one_out %+% sound_similarity_6_counts) +
     legend.position = c(0.15, 0.98),
     legend.key.size = unit(0.5, "lines"),
     axis.title.y = element_text(margin = margin(0, 2, 0, 0, unit = "lines"))
-  ) +
-  ggtitle("a. Odd one out (6 per category)")
+  )
 
 gg_seed_selection_round_2 <- (odd_one_out %+% sound_similarity_4_counts) +
   theme(
     legend.position = "none",
     axis.title.y = element_blank()
-  ) +
-  ggtitle("b. Odd one out (4 per category)")
+  )
 
 
 ## Dendrogram ##
@@ -366,7 +364,6 @@ n_english_transcriptions <- transcription_frequencies %>%
   select(text) %>%
   nrow()
 
-
 n_imitations_transcribed <- count_imitations(transcriptions)
 n_transcriptions_per_imitation <- transcriptions %>%
   count(message_id) %>%
@@ -457,6 +454,7 @@ gg_distance <- ggplot(transcription_distances) +
   )
 
 transcription_examples <- transcription_matches %>%
+  recode_message_type() %>%
   filter(!str_detect(word, "[\ *-]")) %>%
   mutate(word = str_to_lower(word)) %>%
   group_by(word_category, seed_id, message_id, word, message_type) %>%

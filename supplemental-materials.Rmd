@@ -13,10 +13,8 @@ opts_chunk$set(
   message=FALSE,
   warning=FALSE,
   results="hide",
-  fig.path="figs/",
   fig.align="center",
   cache=TRUE,
-  cache.path=".cache/",
   autodep=TRUE
 )
 
@@ -35,7 +33,17 @@ sapply(list.files("R", "*.R", full.names = TRUE), read_chunk)
 ```{r matching, include=FALSE}
 ```
 
-# Instructions for the Telephone game
+# Seed selection norming procedure
+
+```{r figS1, fig.width=6.5, out.width="6.5in", fig.height=8, out.height="8in", fig.cap="Seed selection norming procedure. Results of the norming procedure designed to reduce the initial set of 36 seed sounds in six categories to a final set of 16 sounds in four categories. A. Results of the first round of odd-one-out norming. After collecting these responses, two sounds that were the most different from the others in each category were removed, and the norming procedure was conducted again. B. Results of the second round of odd-one-out norming. After collecting these responses, four categories of sounds were selected for use as seeds in the transmission chain experiment."}
+grid.arrange(
+  gg_seed_selection_round_1 + ggtitle("A."),
+  gg_seed_selection_round_2 + ggtitle("B."),
+  nrow = 1
+)
+```
+
+# Instructions for the collecting vocal imitations
 
 Participants played a version of the children's game of Telephone via a web-based interface. The instructions given to participants were as follows.
 
@@ -78,14 +86,6 @@ tidy(acoustic_similarity_comparison_mod) %>%
   kable(caption = "\\textbf{Model results predicting algorithmic acoustic similarity from type of pairwise comparison.} The six types of pairwise comparisons depicted in Fig. S2 were contrast coded for the linear model with Helmert contrasts. The intercept term corresponds to the overall acoustic similarity along consecutive generations of imitations within individual transmission chains. The first Helmert contrast compares the acoustic similarities of consecutive generation imitations to all other comparisons within the same transmission chain. The second contrast compares the similarity among imitations from an individual transmission chains to the similarity of all imitations from a given seed sound (between chains). The third contrast compares the similarity among imitations of a given seed sound to imitations of the same category. The fourth contrast comparse within category similarity to between category similarity, with imitations sampled from the same generation. The fifth contrast compares all other contrast types to the least similar type of comparisons, where between category imitations from consecutive generations are compared.")
 ```
 
-```{r figS1, fig.width=6.5, out.width="6.5in", fig.height=8, out.height="8in", fig.cap="\\textbf{Seed selection procedure.} Results of the norming procedure designed to reduce the initial set of 36 seed sounds in six categories to a final set of 16 sounds in four categories. \\textbf{a.} Results of the first round of odd-one-out norming. After collecting these responses, two sounds that were the most different from the others in each category were removed, and the norming procedure was conducted again. \\textbf{b.} Results of the second round of odd-one-out norming. After collecting these responses, four categories of sounds were selected for use as seeds in the transmission chain experiment."}
-grid.arrange(
-  gg_seed_selection_round_1,
-  gg_seed_selection_round_2,
-  nrow = 1
-)
-```
-
 ```{r figS2, fig.width=5, out.width="5in", fig.height=8, out.height="8in", fig.cap="\\textbf{Algorithmic measures of acoustic distance using MFCCs.} \\textbf{a.} Average acoustic distance between pairs of sounds grouped by type of pairwise comparison. \\textbf{b.} Change in algorithmic acoustic distance over generations of imitations. \\textbf{c.} Correlation between similarity judgments and algorithmic measures."}
 grid.arrange(
   gg_algo_compare,
@@ -103,11 +103,9 @@ grid.arrange(
 )
 ```
 
-
 ```{r figS4, fig.cap="\\textbf{Error rates for category learning experiment.} Mean number of errors per block of 24 trials, showing that accuracy performance was high even in the first block of trials, and quickly reached ceiling after the first block."}
 gg_lsn_performance_ceiling
 ```
-
 
 ```{r figS5, fig.width=5, out.width="5in", fig.height=8, out.height="8in", fig.cap="\\textbf{Results of transcriptions directly of seed sounds.} As a control, we also had participants generate ``transcriptions'' directly from the seed sounds. \\textbf{a.} Transcriptions of environmental sounds were the most variable in terms of orthographic distance. \\textbf{b.} The most frequent of the transcriptions were the easiest to match back to the original seeds. \\textbf{c.} When learning these transcriptions as category labels, participants were the fastest to learn them in the first block, but they did not generalize to new category members as fast as transcriptions taken from last generation imitations."}
 grid.arrange(
