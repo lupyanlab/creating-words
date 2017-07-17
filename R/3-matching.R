@@ -62,7 +62,6 @@ gg_match_to_seed <- ggplot(imitation_matches) +
            size = 2, vjust = -0.1, fontface = "italic") +
   coord_cartesian(xlim = c(-0.2, 7.2), ylim = ylim_gts) +
   base_theme +
-  ggtitle("b") +
   theme(
     legend.position = c(0.5, 0.95),
     legend.key.width = unit(3.2, "lines"),
@@ -172,7 +171,6 @@ gg_match_transcriptions <- ggplot(preds) +
   guides(color = "none", linetype = "none") +
   chance_line +
   coord_cartesian(ylim = ylim_gts) +
-  ggtitle("c") +
   base_theme +
   theme(legend.position = c(0.7, 0.85),
         legend.key.width = unit(0.1, "lines"),
@@ -226,5 +224,4 @@ gg_seed_matching <- ggplot(transcription_matches_preds) +
         panel.grid.major.x = element_blank(),
         panel.grid.minor.x = element_blank(),
         panel.grid.minor.y = element_blank(),
-        axis.text.x = element_text(size = 8)) +
-  ggtitle("c.")
+        axis.text.x = element_text(size = 8))

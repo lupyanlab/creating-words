@@ -51,8 +51,7 @@ gg_lsn_performance_ceiling <- ggplot(n_errors) +
   scale_color_message_label_2 +
   scale_linetype_message_label_2 +
   base_theme +
-  theme(legend.position = c(0.8, 0.8)) +
-  ggtitle("Performance ceiling in category learning task")
+  theme(legend.position = c(0.8, 0.8))
 
 first_block <- first_last_gen %>% filter(block_ix == 1)
 
@@ -105,7 +104,6 @@ rt_plot <- ggplot(first_last_gen) +
   scale_linetype_message_label_2 +
   coord_cartesian(ylim = c(600, 1200)) +
   base_theme +
-  ggtitle("a") +
   theme(legend.position = c(0.55, 0.9),
         legend.key.width = unit(4, "lines"),
         legend.key.size = unit(0.5, 'lines'))
@@ -138,12 +136,11 @@ gg_transition <- ggplot(lsn_transition) +
   geom_line(aes(group = message_type, linetype = message_type),
             data = transition_preds,
             position = dodger, size = 1) +
-  scale_x_discrete("Introduction of new category members (±6 trials)", labels = c("Before", "After")) +
+  scale_x_discrete("Introduction of new category members\n(±6 trials)", labels = c("Before", "After")) +
   scale_y_rt +
   scale_color_message_label_2 +
   scale_linetype_message_label_2 +
   coord_cartesian(ylim = c(600, 1000)) +
-  ggtitle("b") +
   base_theme +
   theme(
     legend.position = "none",
@@ -176,12 +173,12 @@ gg_seed_rt_plot <- ggplot(lsn_seed_quad_preds) +
                   linetype = message_label),
               fill = "gray", alpha = 0.4,
               stat = "identity") +
-  scale_x_block_ix +
+  scale_x_continuous("Block number\n(24 trials per block)",
+                     breaks = 1:4) +
   scale_y_rt +
   scale_color_manual("", values = RColorBrewer::brewer.pal(3, "Set2")[c(2, 3, 1)]) +
   scale_linetype_manual("", values = c("dotdash", "solid", "longdash")) +
   coord_cartesian(ylim = c(600, 1200)) +
   base_theme +
-  ggtitle("b.") +
   theme(legend.position = c(0.7, 0.75),
         legend.key.width = unit(5, "lines"))

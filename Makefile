@@ -1,4 +1,4 @@
-all: creating-words.pdf supplemental-materials.pdf
+all: creating-words.pdf creating-words.docx supplemental-materials.pdf
 creating-words.pdf: creating-words.Rmd
 	Rscript -e 'rmarkdown::render("$<")'
 creating-words.docx: creating-words.Rmd

@@ -115,3 +115,7 @@ grid.arrange(
   ncol = 1
 )
 ```
+
+```{r figS6}
+gg_algo_similarity
+```

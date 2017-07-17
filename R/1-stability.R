@@ -181,7 +181,7 @@ similarity_judgments_preds <- data_frame(edge_generation_n = 1:7) %>%
 similarity_judgments_means <- acoustic_similarity_judgments %>%
   group_by(edge_generations, category) %>%
   summarize(similarity_z = mean(similarity_z, na.rm = TRUE)) %>%
-  recode_edge_generations
+  recode_edge_generations()
 
 set.seed(949)
 gg_similarity_judgments <- ggplot(similarity_judgments_means) +
@@ -197,7 +197,6 @@ gg_similarity_judgments <- ggplot(similarity_judgments_means) +
   scale_color_brewer("", palette = "Set2") +
   scale_shape_discrete("") +
   coord_cartesian(ylim = c(-0.6, 0.8)) +
-  ggtitle("b") +
   base_theme +
   theme(
     legend.position = c(0.2, 0.91),
@@ -225,42 +224,59 @@ irr_results <- icc(irr_ratings, model = "twoway", type = "consistency", unit = "
 ## Algorithmic similarity ##
 
 data("algo_linear")
+data("algo_between_consecutive")
 data("algo_within_chain")
 data("algo_within_seed")
 data("algo_within_category")
 data("algo_between_fixed")
-data("algo_between_consecutive")
 
-z_score <- function(x) (x - mean(x, na.rm = TRUE))/sd(x, na.rm = TRUE)
+# Compare within and between similarity
+
+z_score <- function(x) (x - mean(x))/sd(x)
 
 algo_linear %<>%
   recode_edge_generations() %>%
-  group_by(sound_x_category) %>%
-  mutate(similarity_z = z_score(similarity)) %>%
-  ungroup()
-
-# Correlation between subjective and objective measures
-
-similarity_cor <- left_join(
-  select(acoustic_similarity_judgments, sound_x, sound_y, similarity_z),
-  select(algo_linear, sound_x, sound_y, similarity)
-)
-
-similarity_cor_test <- cor.test(
-  similarity_cor$similarity_z, similarity_cor$similarity,
-  use = "pairwise.complete.obs")
-
-similarity_algo_mod <- lmer(
-  similarity_z ~ edge_generation_n + (edge_generation_n|sound_x_category),
-  data = algo_linear
-)
-
-similarity_algo_lmertest_mod <- lmerTest::lmer(
-  formula(similarity_algo_mod), data = similarity_algo_mod@frame
-)
+  mutate(similarity_z = z_score(similarity))
 
 algo_between_consecutive %<>%
   recode_edge_generations()
+
+algo_similarity <- bind_rows(
+    within = algo_linear,
+    between = algo_between_consecutive,
+    .id = "type"
+  ) %>%
+  mutate(
+    type_c = ifelse(type == "within", -0.5, 0.5),
+    similarity_z = z_score(similarity)
+  )
+
+algo_similarity_mod <- lm(similarity_z ~ edge_generation_n * type_c,
+                          data = algo_similarity)
+
+algo_similarity_preds <- expand.grid(
+    edge_generation_n = unique(algo_similarity$edge_generation_n),
+    type_c = c(-0.5, 0.5)
+  ) %>%
+  cbind(., predict(algo_similarity_mod, newdata = ., se = TRUE)) %>%
+  rename(similarity_z = fit, se = se.fit) %>%
+  mutate(
+    type = factor(type_c, levels = c(-0.5, 0.5), labels = c("within", "between"))
+  ) %>%
+  recode_edge_generations()
+
+gg_algo_similarity <- ggplot(algo_similarity_preds) +
+  aes(edge_generations, similarity_z, color = type, group = type) +
+  geom_smooth(aes(ymin = similarity_z - se, ymax = similarity_z + se),
+              stat = "identity") +
+  geom_point(stat = "summary", fun.y = "mean", data = algo_similarity) +
+  scale_x_discrete("Generations") +
+  scale_y_continuous("Algorithmic similarity") +
+  scale_color_discrete("Type of pairwise comparison", labels = c("Within", "Between")) +
+  base_theme +
+  theme(legend.position = "top")
+
+# Comparison of all 6 edge types
 
 acoustic_similarity_comparison <- bind_rows(
   linear = algo_linear,
@@ -294,29 +310,29 @@ gg_algo_compare <- ggplot(acoustic_similarity_comparison) +
   theme(
     panel.grid.major.x = element_blank(),
     axis.text.x = element_text(size = 8)
-  ) +
-  ggtitle("a")
+  )
 
-algo_similarity <- bind_rows(
-  within = algo_linear,
-  between = algo_between_consecutive,
-  .id = "edge_type"
+# Correlation between subjective and objective measures
+
+similarity_cor <- left_join(
+  select(acoustic_similarity_judgments, sound_x, sound_y, similarity_z),
+  select(algo_linear, sound_x, sound_y, similarity)
 )
 
-set.seed(603)
-gg_algo_similarity <- ggplot(algo_similarity %>% filter(edge_type == "within")) +
-  aes(edge_generations, similarity) +
-  geom_point(aes(group = sound_x_category, shape = sound_x_category, color = sound_x_category),
-             position = position_jitter(0.2, 0.0),
-             stat = "summary", fun.y = "mean", size = 2.0) +
-  geom_smooth(aes(group = 1), method = "lm", se = FALSE, color = "gray") +
-  scale_x_discrete("Generation") +
-  scale_y_continuous("Algorithmic similarity") +
-  scale_color_brewer("", palette = "Set2") +
-  scale_shape_discrete("") +
-  base_theme +
-  theme(legend.position = "top") +
-  ggtitle("b")
+similarity_cor_test <- cor.test(
+  similarity_cor$similarity_z, similarity_cor$similarity,
+  use = "pairwise.complete.obs")
+
+similarity_algo_mod <- lmer(
+  similarity_z ~ edge_generation_n + (edge_generation_n|sound_x_category),
+  data = algo_linear
+)
+
+similarity_algo_lmertest_mod <- lmerTest::lmer(
+  formula(similarity_algo_mod), data = similarity_algo_mod@frame
+)
+
+
 
 # Compare human and machine similarity
 edge_similarities <- 
@@ -340,8 +356,9 @@ gg_comparing_similarities <- ggplot(edge_similarities) +
   geom_smooth(method = "lm", se = FALSE) +
   scale_x_continuous("Similarity judgments") +
   scale_y_continuous("Algorithmic similarity") +
-  base_theme +
-  ggtitle("c")
+  base_theme
+
+
 
 ## Transcriptions ##
 
@@ -446,7 +463,6 @@ gg_distance <- ggplot(transcription_distances) +
   scale_color_manual(values = imitation_gen_colors) +
   scale_fill_manual(values = imitation_gen_colors) +
   coord_cartesian(ylim = c(0.0, 0.8)) +
-  ggtitle("c") +
   base_theme +
   theme(
     legend.position = "none",
@@ -513,8 +529,7 @@ gg_exact_matches <- ggplot(transcription_uniqueness) +
   scale_y_continuous("Transcription agreement", labels = scales::percent) +
   scale_color_brewer("", palette = "Set2") +
   base_theme +
-  theme(legend.position = "top") +
-  ggtitle("a")
+  theme(legend.position = "top")
 
 
 message_id_map <- select(imitations, message_id, seed_id, generation)
@@ -533,8 +548,7 @@ gg_string_distance <- distance_plot +
   scale_color_brewer(palette = "Set2") +
   scale_fill_brewer(palette = "Set2") +
   facet_wrap("frequency_type") +
-  guides(color = "none", fill = "none") +
-  ggtitle("b")
+  guides(color = "none", fill = "none")
 
 gg_length_plot <- ggplot(transcription_distances) +
   aes(message_label, length) +
@@ -565,5 +579,4 @@ gg_seed_distance <- ggplot(seed_distances) +
   scale_fill_brewer(palette = "Set2") +
   base_theme +
   theme(legend.position = "none",
-        panel.grid.major.x = element_blank()) +
-  ggtitle("a.")
+        panel.grid.major.x = element_blank())
