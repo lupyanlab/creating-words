@@ -155,6 +155,8 @@ gg_match_transcriptions <- ggplot(preds) +
   geom_line(aes(color = question_type, linetype = question_type), position = dodger) +
   geom_errorbar(aes(color = question_type, ymin = is_correct - se, ymax = is_correct + se),
                 width = 0.2, position = dodger) +
+  geom_point(aes(shape = "transcriptions", color = question_type),
+             position = dodger) +
   geom_point(aes(shape = "imitations", color = question_type),
              data = imitation_accuracies,
              size = 1, position = dodger) +
@@ -167,17 +169,18 @@ gg_match_transcriptions <- ggplot(preds) +
   scale_y_gts_accuracy +
   scale_color_manual("", values = unname(colors[c("blue", "green")])) +
   scale_linetype_manual("", values = c("dotdash", "longdash")) +
-  scale_shape_manual("", labels = "= Imitations", values = 1) +
+  scale_shape_manual("", labels = c("Matching accuracy of vocal imitations to seed sounds",
+                                    "Matching accuracy of transcriptions to seed sounds"),
+                     values = c(1, 4)) +
   guides(color = "none", linetype = "none") +
   chance_line +
   coord_cartesian(ylim = ylim_gts) +
   base_theme +
-  theme(legend.position = c(0.7, 0.85),
+  theme(legend.position = c(0.5, 0.85),
         legend.key.width = unit(0.1, "lines"),
         panel.grid.major.x = element_blank(),
         panel.grid.minor.x = element_blank(),
         panel.grid.minor.y = element_blank())
-
 
 ## Matching accuracy of transcriptions of seed sounds
 data("transcription_matches")
