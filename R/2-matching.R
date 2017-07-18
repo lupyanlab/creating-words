@@ -169,8 +169,8 @@ gg_match_transcriptions <- ggplot(preds) +
   scale_y_gts_accuracy +
   scale_color_manual("", values = unname(colors[c("blue", "green")])) +
   scale_linetype_manual("", values = c("dotdash", "longdash")) +
-  scale_shape_manual("", labels = c("Matching accuracy of vocal imitations to seed sounds",
-                                    "Matching accuracy of transcriptions to seed sounds"),
+  scale_shape_manual("", labels = c("Imitations",
+                                    "Transcriptions"),
                      values = c(1, 4)) +
   guides(color = "none", linetype = "none") +
   chance_line +

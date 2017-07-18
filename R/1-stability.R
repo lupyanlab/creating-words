@@ -117,8 +117,8 @@ graph <- graph_from_data_frame(edges, vertices = nodes)
 layout <- create_layout(graph, "dendrogram")
 
 gg_dendrogram <- ggraph(layout) +
-  geom_edge_diagonal(aes(edge_linetype = node2.node_type), edge_width = 0.2) +
-  geom_node_point(aes(shape = node_type), size = 0.3) +
+  geom_edge_diagonal(aes(edge_linetype = node2.node_type), edge_width = 0.4) +
+  geom_node_point(aes(shape = node_type), size = 0.5) +
   geom_node_text(aes(label = node_label), vjust = -0.5, size = 2.5) +
   scale_x_continuous("", breaks = NULL) +
   scale_y_continuous("Generation", breaks = 0:8, labels = c(8:1, "seeds")) +
@@ -188,18 +188,18 @@ gg_similarity_judgments <- ggplot(similarity_judgments_means) +
   aes(x = edge_generations, y = similarity_z) +
   geom_point(aes(color = category, shape = category),
              position = position_jitter(0.1, 0.0),
-             size = 1) +
+             size = 2) +
   geom_smooth(aes(group = 1, ymin = similarity_z - se, ymax = similarity_z + se),
               data = similarity_judgments_preds, stat = "identity",
               alpha = 0.2, color = "gray") +
   scale_x_discrete("Generation") +
-  scale_y_continuous("Perceived acoustic similarity (z-score)") +
+  scale_y_continuous("Acoustic similarity judgment (z-score)") +
   scale_color_brewer("", palette = "Set2") +
   scale_shape_discrete("") +
   coord_cartesian(ylim = c(-0.6, 0.8)) +
   base_theme +
   theme(
-    legend.position = c(0.2, 0.91),
+    legend.position = c(0.2, 0.89),
     legend.key.size = unit(0.7, "lines"),
     axis.title.y = element_text(margin = margin(0, -2, 0, 0))
   )

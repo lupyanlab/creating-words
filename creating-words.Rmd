@@ -2,7 +2,7 @@
 title             : "The emergence of words from vocal imitations"
 shorttitle        : "Words from imitations"
 
-author: 
+author:
   - name          : "Pierce Edmiston"
     affiliation   : "1"
     corresponding : yes
@@ -23,21 +23,23 @@ author_note: >
   Pierce Edmiston and Gary Lupyan, Department of Psychology, University of Wisconsin-Madison, Madison, Wisconsin. Marcus Perlman, Max Planck Institute for Psycholinguistics, Nijmegen, Netherlands.
 abstract: >
   People have long pondered the origins of language, especially the words that compose them. Here, we report a series of experiments investigating how conventional spoken words might emerge from imitations of environmental sounds. Does the repeated imitation of an environmental sound gradually give rise to novel word forms? In what ways do these words resemble the original sounds that motivated them? Participants played a version of the children’s game “Telephone”. The first generation of participants imitated recognizable environmental sounds (e.g., glass breaking, water splashing). Subsequent generations imitated the imitations for a maximum of 8 generations. The results showed that the imitations became more stable and word-like, and later imitations were easier to learn as category labels. At the same time, even after 8 generations, both spoken imitations and their written transcriptions could be matched above chance to the category of environmental sound that motivated them. These results show how repeated imitation can create progressively more word-like forms while continuing to retain a resemblance to the original sound that motivated them, and speak to the possible role of human vocal imitation in explaining the origins of at least some spoken words.
-  
+
 keywords          : "language evolution, iconicity, vocal imitation, transmission chain"
-wordcount         : "X"
+wordcount         : "5552"
 
 bibliography      : ["telephone.bib"]
 
 figsintext        : yes
-figurelist        : no
-tablelist         : no
+figurelist        : yes
+tablelist         : yes
 footnotelist      : no
 lineno            : yes
 
 lang              : "english"
 class             : "man"
-output            : papaja::apa6_pdf
+output            :
+  papaja::apa6_pdf:
+    keep_tex: yes
 ---
 
 ```{r config, include=FALSE}
@@ -48,7 +50,9 @@ opts_chunk$set(
   message=FALSE,
   warning=FALSE,
   results="hide",
-  cache=TRUE
+  cache=TRUE,
+  fig.width=4,
+  fig.height=4
 )
 
 sapply(list.files("R", "*.R", full.names = TRUE), read_chunk)
@@ -76,7 +80,7 @@ In the first experiment, we collected the vocal imitations, and assessed the ext
 
 ### Selecting seed sounds
 
-To avoid sounds having lexicalized or conventionalized onomatopoeic forms in English, we used inanimate categories of environmental sounds. Using an odd-one-out norming procedure (_N_=`r n_norming_subjects` participants), an initial set of 36 sounds in 6 categories was reduced to a final set of 16 "seed" sounds: 4 sounds in each of 4 categories. The purpose of this norming procedure was to reach a set of approximately equally distinguishable sounds within each category by systematically removing the sounds that stood out in each category. The results of the norming procedure are shown in Fig. S1. The four final categories were: water, glass, tear, zipper. The final 16 seed sounds can be downloaded from [osf.io/n6g7d/download](https://osf.io/n6g7d/download).
+To avoid sounds having lexicalized or conventionalized onomatopoeic forms in English, we used inanimate categories of environmental sounds. Using an odd-one-out norming procedure (_N_=`r n_norming_subjects` participants), an initial set of 36 sounds in 6 categories was reduced to a final set of 16 "seed" sounds: 4 sounds in each of 4 categories. The purpose of this norming procedure was to reach a set of approximately equally distinguishable sounds within each category by systematically removing the sounds that stood out in each category. The results of the norming procedure are shown in Fig. S1. The four final categories were: water, glass, tear, zipper. The final 16 seed sounds can be downloaded from here: [osf.io/n6g7d/download](https://osf.io/n6g7d/download).
 
 ### Collecting vocal imitations
 
@@ -112,53 +116,53 @@ Statistical analyses were conducted in R using linear mixed-effects models provi
 
 ### Data availability
 
-Our data along with all methods, materials, and analysis scripts, are available in public repositories described on the Open Science Framework page for this research at [osf.io/3navm](https://osf.io/3navm).
+Our data along with all methods, materials, and analysis scripts, are available in public repositories described on the Open Science Framework page for this research here: [osf.io/3navm](https://osf.io/3navm).
 
 ## Results
 
-### Acoustic similarity increased over generations of repetition
+### Acoustic similarity increased through iteration
 
-Imitations of environmental sounds became more stable over the course of being repeated as revealed by increasing acoustic similarity along individual transmission chains. Acoustic similarity ratings were fit with a linear mixed-effects model predicting similarity from generation with random effects (intercepts and slopes) for raters and for seed sounds nested within categories. Imitations from later generations were rated as sounding more similar to one another than imitations from earlier generations, `r lmer_mod_results(similarity_judgments_lmertest_mod, "edge_generation_n")` (Fig. 2). This result suggests that imitations became more stable (i.e., easier to imitate with high fidelity) with each generation of repetition.
+Imitations of environmental sounds became more stable over the course of being repeated as revealed by increasing acoustic similarity judgments along individual transmission chains. Acoustic similarity ratings were fit with a linear mixed-effects model predicting perceived acoustic similarity from generation with random effects (intercepts and slopes) for raters. To test whether the hypothesized increase in acoustic simliarity was true across all seed sounds and categories, we added random effects (intercepts and slopes) for seed sounds nested within categories. The results showed that, across raters and seeds, imitations from later generations were rated as sounding more similar to one another than imitations from earlier generations, `r lmer_mod_results(similarity_judgments_lmertest_mod, "edge_generation_n")` (Fig. 2). This result suggests that imitations became more stable (i.e., easier to imitate with high fidelity) with each generation of repetition.
 
-```{r fig2, fig.width=4, fig.height=4, fig.cap="Change in perception of acoustic similarity over generations of repetition. Points depict mean acoustic similarity ratings for pairs of imitations in each category. The predictions of the linear mixed-effects model are shown with ±1 SE. Acoustic similarity increased over generations, indicating that repetition made the vocalizations easier to imitate with high fidelity."}
+```{r fig2, fig.cap="Change in perception of acoustic similarity over generations of iterated imitation. Points depict mean acoustic similarity ratings for pairs of imitations in each category. The predictions of the linear mixed-effects model are shown with ±1 SE. Acoustic similarity increased over generations, indicating that repetition made the vocalizations easier to imitate with high fidelity."}
 gg_similarity_judgments
 ```
 
 ### Acoustic similarity was highest within transmission chains
 
-Increasing similarity along transmission chains could also reflect the continuous degradation of the signal due to repeated imitation, in which case we would expect acoustic similarity to increase both within as well as between transmission chains as a function of generation of imitation. To rule out this alternative explanation, we calculated MFCCs for pairs of sounds sampled from within and between different transmission chains from consecutive generations across categories. To analyze the results, we fit a linear model predicting normalized acoustic similarity scores (z-scores) from the generation of sounds. A hierarchical model was not appropriate for this analysis because the between-chain pairs of sounds were sampled from different categories, preventing any random effects from being included in the model. We found that acoustic similarity increased within chains more than it increased between chains, `r lm_mod_results(algo_similarity_mod, "edge_generation_n:type_c")` (Fig. S2). This result supports the conclusion that transmission chains were stabilizing on divergent acoustic forms as opposed to all chains converging on similar forms through continuous degradation.
+Increasing similarity along transmission chains could also reflect the continuous degradation of the signal due to repeated imitation, in which case we would expect acoustic similarity to increase both within as well as between transmission chains as a function of generation of imitation. To rule out this alternative explanation, we calculated MFCCs for pairs of sounds sampled from within and between different transmission chains from consecutive generations across categories. To analyze the results, we fit a linear model predicting normalized acoustic similarity scores (z-scores) from the generation of sounds. A hierarchical model was not appropriate for this analysis because the between-chain pairs of sounds were sampled from different categories, preventing any random effects due to category or seed from being included in the model. We found that acoustic similarity increased within chains more than it increased between chains, `r lm_mod_results(algo_similarity_mod, "edge_generation_n:type_c")` (Fig. S2). This result supports the conclusion that transmission chains were stabilizing on divergent acoustic forms as opposed to all chains converging on similar forms through continuous degradation.
 
 ### Later generation imitations were transcribed more consistently
 
 An additional test of stabilization and word-likeness was to measure whether later generation imitations were transcribed more consistently than first generation imitations. We collected a total of `r n_transcriptions` transcriptions --- approximately `r n_transcriptions_per_imitation` transcriptions per sound. Of these, `r n_english_transcriptions` transcriptions (8%) were removed because they contained English words. Some examples of the final transcriptions are presented in Table 1.
 
 ```{r table1, results='asis'}
-table_caption <- "Examples of invented words."
+table_caption <- "Examples of words transcribed from imitations."
 kable(transcription_examples, caption = table_caption)
 ```
 
-To measure the similarity among transcriptions, we calculated the orthographic distance between the most frequent transcription and all other transcriptions of a given imitation. The orthographic distance measure was a ratio based on longest contiguous matching subsequences between pairs of transcriptions. We then fit a hierarchical linear model predicting orthographic distance from the generation of the imitation (First generation, Last generation) with random effects (intercepts and slopes) for seed sound nested within category[^df]. The results showed that transcriptions of last generation imitations were more similar to one another than transcriptions from first generation imitations, `r lmer_mod_results(orthographic_distance_lmertest_mod, "message_c")` (Fig. 3). The same result is reached through alternative measures of orthographic distance for each imitation, such as the percentage of exact string matches, `r lm_mod_results(exact_string_matches_mod, "message_c")`, and the length of longest substring match, `r lmer_mod_results(substr_length_mod, "message_c")` (Fig. S3). Differences between transcriptions of human vocalizations and "transcriptions" directly of environmental sounds are presented in the Supplementary Materials (Fig. S5).
+To measure the similarity among transcriptions, we calculated the orthographic distance between the most frequent transcription and all other transcriptions of a given imitation. The orthographic distance measure was a ratio based on longest contiguous matching subsequences between pairs of transcriptions. We then fit a hierarchical linear model predicting orthographic distance from the generation of the imitation (First generation, Last generation) with random effects (intercepts and slopes) for seed sound nested within category[^df]. The results showed that transcriptions of last generation imitations were more similar to one another than transcriptions of first generation imitations, `r lmer_mod_results(orthographic_distance_lmertest_mod, "message_c")` (Fig. 3). The same result is reached through alternative measures of orthographic distance, such as the percentage of exact transcription matches for each imitation, `r lm_mod_results(exact_string_matches_mod, "message_c")`, and the length of the longest matching substring, `r lmer_mod_results(substr_length_mod, "message_c")` (Fig. S3). Differences between transcriptions of human vocalizations and transcriptions directly of environmental sounds are presented in the Supplementary Materials (Fig. S5).
 
 [^df]: Random effects for subject were not appropriate because the distance measure was derived from pairwise comparisons of transcriptions generated by different transcribers. As a result, the degrees of freedom for the significance tests for the parameters of this model reflect the Satterthwaite approximation based on the number of seed sounds (16) nested within categories (4), not the number of unique transcribers (_N_=`r n_transcribers`).
 
-```{r fig3, fig.cap="Orthographic agreement among transcriptions of first and last generation imitations. Points depict the mean orthographic distance between the most frequent transcription and all other transcriptions of a given imitation, with error bars denoting ±1 SE of the hierarchical linear model predictions. Transcriptions of later generation imitations were more similar to one another than transcriptions of first generation imitations, indicating that repeating imitations made them easier to transcribe into English orthography than direct imitations of environmental sounds."}
+```{r fig3, fig.cap="Orthographic agreement among transcriptions of first and last generation imitations. Points depict the mean orthographic distance between the most frequent transcription and all other transcriptions of a given imitation, with error bars denoting ±1 SE of the hierarchical linear model predictions. Transcriptions of later generation imitations were more similar to one another than transcriptions of first generation imitations, suggesting that repeating imitations made them easier to transcribe into English orthography than direct imitations of environmental sounds."}
 gg_distance
 ```
 
 ## Discussion
 
-Repeating imitations of environmental sounds over generations of unique speakers was sufficient to create more wordlike forms even without any instruction to do so. We defined wordlike-ness in terms of acoustic stability and orthographic agreement. With additional repetitions, the acoustic forms of the imitations became more similar to one another, indicating they were easier to repeat with higher fidelity. The possibility that this similarity was due to uniform degradation across all transmission chains was ruled out by algorithmic analyses of acoustic similarity within and between chains demonstrating that acoustic similarity increased within chains but not between them. In addition, later generation imitations were transcribed more consistently into English orthography, further supporting our hypothesis that repeating imitations makes them more word-like.
+Repeating imitations of environmental sounds over generations of unique speakers was sufficient to create more wordlike forms even without any instruction to do so. We defined wordlike-ness in terms of acoustic stability and orthographic agreement. With additional repetitions, the acoustic forms of the imitations became more similar to one another, indicating they became easier to repeat with high fidelity. The possibility that this similarity was due to uniform degradation across all transmission chains was ruled out by algorithmic analyses of acoustic similarity within and between chains demonstrating that acoustic similarity increased within chains but not between them. Additionally, later generation imitations were transcribed more consistently into English orthography, further supporting our hypothesis that repeating imitations makes them more word-like.
 
-The results of Experiment 1 demonstrate the ease with which repeated imitations stabilize and give rise to unique word forms. However, the results do not address how these emergent words relate to the original sounds that were being imitated. As the imitations became more word-like, were they stabilizing on arbitrary acoustic and orthographic forms, or did they maintain some resemblance to the environmental sounds that motivated them? The purpose of Experiment 2 was to assess the extent to which repeated imitations and their transcriptions maintained a resemblance to the original set of seed sounds.
+The results of Experiment 1 demonstrate the ease with which iterated imitation gives rise to unique word forms. However, the results do not address how these emergent words relate to the original sounds that were being imitated. As the imitations became more word-like, were they stabilizing on arbitrary acoustic and orthographic forms, or did they maintain some resemblance to the environmental sounds that motivated them? The purpose of Experiment 2 was to assess the extent to which repeated imitations and their transcriptions maintained a resemblance to the original set of seed sounds.
 
-# Experiment 2: Resemblance of imitations to categories of sounds
+# Experiment 2: Resemblance of imitations to original seed sounds
 
 ```{r matching, include=FALSE}
 ```
 
-To assess the resemblance of repeated imitations to the original seed sounds, we measured the ability of participants naïve to the design of the experiment to match imitations and their transcriptions back to their original source relative to other seed sounds from either the same category or from different categories (Fig. 4). We used these match accuracies to answer two questions concerning the effect of repeated imitation on resemblance to the original seed sounds. First, we asked whether and for how many generations the imitations and their transcriptions could be matched back to the original sounds. Second, we asked whether repeated imitation resulted in a uniform degradation of the signal in each imitation, or if repeated imitation resulted in some kinds of information degrading more rapidly than others. Specifically, we hypothesized that if the imitations were becoming more word-like, then they should also be interpreted more categorically, and thus we predicted that the imitations should lose individuating information that identifies the actual seed sound that generated an imitation more rapidly than category information that identifies the category of environmental sound being imitated.
+To assess the resemblance of repeated imitations to the original seed sounds, we measured the ability of participants naïve to the design of the experiment to match imitations and their transcriptions back to their original sound source relative to other seed sounds from either the same category or from different categories (Fig. 4). We used match accuracies to answer two questions concerning the effect of iterated imitation on resemblance to the original seed sounds. First, we asked whether and for how many generations the imitations and their transcriptions could be matched back to the original sounds. Second, we asked whether repeated imitation resulted in a uniform degradation of the signal in each imitation, or if repeated imitation resulted in some kinds of information degrading more rapidly than others. Specifically, we tested the hypothesis that if imitations were becoming more word-like, then they should also be interpreted more categorically, and thus we predicted that the imitations might lose individuating information that identifies the specific source of an imitation more rapidly than category information that identifies the general category of environmental sound being imitated.
 
-```{r fig4, fig.width=5, fig.height=3.5, fig.cap="Three types of matching questions used to assess the resemblance between the imitation (and transcriptions of imitations) and the original seed sounds. For each question, participants listened to an imitation (dashed circles) and had to guess which of 4 sound choices (solid circles) they thought the person was trying to indicate. True seed questions contained the actual sound that generated the imitation as one of the choices (the correct response). The remaining sound choices were sampled from different categories. Category match questions replaced the original seed sound with another sound from the same category. Specific match questions pitted the actual seed against the other seeds within the same category."}
+```{r fig4, fig.width=4, fig.height=3.5, fig.cap="Three types of matching questions used to assess the resemblance between the imitation (and transcriptions of imitations) and the original seed sounds. For each question, participants listened an imitation (dashed circles) or read a transcription of one, and had to guess which of 4 sound choices (solid circles) they thought the person was trying to indicate. True seed questions contained the specific sound that generated the imitation as one of the choices (the correct response). The remaining sound choices were sampled from different categories. Category match questions replaced the original seed sound with another sound from the same category. Specific match questions pitted the actual seed against the other seeds within the same category."}
 grid.arrange(
   read_graphviz("true-seed", "wordsintransition"),
   read_graphviz("category-match", "wordsintransition"),
@@ -199,7 +203,7 @@ An alternative explanation for this result is that the within-category match que
 
 We next report the results of matching the written transcriptions of the auditory sounds back to the original environmental sounds. Remarkably, participants were able to guess the correct meaning of a word that was transcribed from an imitation that had been repeated up to 8 times, `r glmer_mod_results(transcription_matches_last_gen_mod, "(Intercept)", odds = TRUE)` (Fig. 5B). This was true for True seed questions containing the actual seed generating the transcribed imitation, `r glmer_mod_results(transcription_matches_last_gen_mod_category, "(Intercept)")`, and for Category match questions where participants had to associate transcriptions with a particular category of environmental sounds, `r glmer_mod_results(transcription_matches_last_gen_mod_exact, "(Intercept)")`. The effect of generation did not vary across these question types, `r glmer_mod_results(acc_mod, "question_c:message_c")`. The results of matching "transcriptions" directly of the environmental sounds are shown in Fig. S5.
 
-```{r fig5, fig.width=6, fig.height=3.5, fig.cap='Repeated imitations retained category resemblance. A. Accuracy of matching vocal imitations to original seed sounds as a function of the generation during which the imitation was produced. Curves show predictions of the generalized linear mixed effects models with ±1 SE of the model predictions. The "category advantage" (Category match vs. Specific match) increased over generations, while the "true seed advantage" (True seed v. Category match) decreased (see main text), suggesting that imitations lose within-category information more rapidly than between-category information. B. Accuracy of matching transcriptions of the imitations to original seed sounds (e.g., "boococucuwich" to a water splashing sound). Transcriptions of imitations could still be matched back to the category of sound that motivated the original imitation even after 8 generations. Circles show matching accuracy for the corresponding vocal imitations.'}
+```{r fig5, fig.width=6, fig.height=3.5, fig.cap='Repeated imitations retained category resemblance. A. Accuracy of matching vocal imitations to original seed sounds as a function of the generation during which the imitation was produced. Curves show predictions of the generalized linear mixed effects models with ±1 SE of the model predictions. The "category advantage" (Category match vs. Specific match) increased over generations, while the "true seed advantage" (True seed v. Category match) decreased (see main text), suggesting that imitations lose within-category information more rapidly than between-category information. B. Accuracy of matching transcriptions of the imitations to original seed sounds (e.g., "boococucuwich" to a water splashing sound). Transcriptions of imitations could still be matched back to the category of sound that motivated the original imitation even after 8 generations. Circles show mean matching accuracy for the corresponding vocal imitations for comparison.'}
 grid.arrange(
   gg_match_to_seed +
     ggtitle("A"),
@@ -246,12 +250,12 @@ Participants began by learning through trial-and-error to associate four written
 
 ### Later generation transcriptions were better generalized
 
-Next, we examined whether transcriptions from last generation imitations were easier to generalize to novel category exemplars. To test this hypothesis, we compared RTs on trials immediately prior to the introduction of novel sounds (new category members) and the first trials after the block transition (±6 trials). The results revealed a reliable interaction between the generation of the transcribed imitation and the block transition, `r lmer_mod_results(transition_lmertest_mod, "block_transition_c:message_c")` (Fig. 6B). This result suggests that transcriptions from later generation imitations were easier to generalize to new category members. 
+Next, we examined whether transcriptions from last generation imitations were easier to generalize to novel category exemplars. To test this hypothesis, we compared RTs on trials immediately prior to the introduction of novel sounds (new category members) and the first trials after the block transition (±6 trials). The results revealed a reliable interaction between the generation of the transcribed imitation and the block transition, `r lmer_mod_results(transition_lmertest_mod, "block_transition_c:message_c")` (Fig. 6B). This result suggests that transcriptions from later generation imitations were easier to generalize to new category members.
 
-```{r fig6, fig.width=5, fig.height=3.5, fig.cap="Repeated imitations made for better category labels. Participants learned novel labels (transcriptions of first or last generation imitations) for categories of environmental sounds. A. Mean RTs for correct responses in the category learning experiment with ±1 SE. Participants achieved faster RTs in matching transcribed labels to environmental sounds for labels transcribed from later compared to earlier generation imitations. B. Cost of generalizing to new category members with ±1 SE. After each block of trials, new environmental sounds were introduced, requiring participants to generalize the previously learned category labels to new category members. There was a generalization cost for the first generation labels, but not the last generation labels."}
+```{r fig6, fig.width=6, fig.height=3.5, fig.cap="Repeated imitations made for better category labels. Participants learned novel labels (transcriptions of first or last generation imitations) for categories of environmental sounds. A. Mean RTs for correct responses in the category learning experiment with ±1 SE. Participants achieved faster RTs in matching transcribed labels to environmental sounds for labels transcribed from later compared to earlier generation imitations. B. Cost of generalizing to new category members with ±1 SE. After each block of trials, new environmental sounds were introduced, requiring participants to generalize the previously learned category labels to new category members. There was a generalization cost for the first generation labels, but not the last generation labels."}
 grid.arrange(
   rt_plot +
-    ggtitle("A"),
+    ggtitle("B"),
   gg_transition +
     theme(axis.title.y = element_blank()) +
     ggtitle("B"),

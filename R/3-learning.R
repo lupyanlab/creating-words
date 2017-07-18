@@ -104,7 +104,7 @@ rt_plot <- ggplot(first_last_gen) +
   scale_linetype_message_label_2 +
   coord_cartesian(ylim = c(600, 1200)) +
   base_theme +
-  theme(legend.position = c(0.55, 0.9),
+  theme(legend.position = c(0.65, 0.9),
         legend.key.width = unit(4, "lines"),
         legend.key.size = unit(0.5, 'lines'))
 
@@ -136,7 +136,7 @@ gg_transition <- ggplot(lsn_transition) +
   geom_line(aes(group = message_type, linetype = message_type),
             data = transition_preds,
             position = dodger, size = 1) +
-  scale_x_discrete("Introduction of new category members\n(±6 trials)", labels = c("Before", "After")) +
+  scale_x_discrete("New category members\n(±6 trials)", labels = c("Before", "After")) +
   scale_y_rt +
   scale_color_message_label_2 +
   scale_linetype_message_label_2 +
@@ -180,5 +180,5 @@ gg_seed_rt_plot <- ggplot(lsn_seed_quad_preds) +
   scale_linetype_manual("", values = c("dotdash", "solid", "longdash")) +
   coord_cartesian(ylim = c(600, 1200)) +
   base_theme +
-  theme(legend.position = c(0.7, 0.75),
+  theme(legend.position = c(0.8, 0.75),
         legend.key.width = unit(5, "lines"))
