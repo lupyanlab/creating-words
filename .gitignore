@@ -5,12 +5,6 @@
 *_cache/
 *_files/
 
-
-# submissions
-!submissions/**/*.pdf
-!submissions/**/*.docx
-!submissions/**/*.md
-
 # latex
 *.tex
 !templates/*.tex
@@ -23,6 +17,12 @@
 *.fls
 *.log
 *.out
+
+# submissions
+!submissions/**/*.pdf
+!submissions/**/*.docx
+!submissions/**/*.md
+!submissions/**/*.tex
 
 # R/RStudio
 .Rhistory
