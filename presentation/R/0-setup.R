@@ -32,7 +32,7 @@ recode_filename <- function(frame, custom_levels) {
 
 
 # ggplot theme, colors, and scales ---------------------------------------------
-base_theme <- theme_minimal(base_size = 10) +
+base_theme <- theme_minimal(base_size = 10, base_family = "Helvetica") +
   theme(plot.title = element_text(face = "bold"))
 
 colors <- RColorBrewer::brewer.pal(4, "Set2")
@@ -55,7 +55,7 @@ scale_color_distractors <- scale_color_manual(
 
 scale_x_trial_ix <- scale_x_continuous("Trial number (24 trials per block)",
                                        breaks = seq(1, 96, by = 24))
-scale_x_block_ix <- scale_x_continuous("Block number (24 trials per block)",
+scale_x_block_ix <- scale_x_continuous("Block number\n(24 trials per block)",
                                        breaks = 1:4)
 scale_y_rt <- scale_y_continuous("Reaction time (msec)")
 scale_color_message_label <- scale_color_manual(
