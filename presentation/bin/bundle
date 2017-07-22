@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+zip -j -r for-cogsci-presentation.zip figs_files/figure-latex/*.pdf examples-of-invented-words.docx

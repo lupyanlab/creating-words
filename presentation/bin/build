@@ -1,0 +1,3 @@
+#!/usr/bin/env Rscript
+rmarkdown::render('figs.Rmd')
+rmarkdown::render('table.Rmd', output_file = 'examples-of-invented-words.docx')

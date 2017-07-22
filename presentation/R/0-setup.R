@@ -32,7 +32,7 @@ recode_filename <- function(frame, custom_levels) {
 
 
 # ggplot theme, colors, and scales ---------------------------------------------
-base_theme <- theme_minimal(base_size = 10, base_family = "Helvetica") +
+base_theme <- theme_minimal(base_size = 14, base_family = "Helvetica") +
   theme(plot.title = element_text(face = "bold"))
 
 colors <- RColorBrewer::brewer.pal(4, "Set2")

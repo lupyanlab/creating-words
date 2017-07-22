@@ -1,5 +1,6 @@
 ---
 output: word_document
+output_file: examples-of-invented-words.docx
 ---
 
 ```{r config, include=FALSE}

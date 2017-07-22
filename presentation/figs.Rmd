@@ -36,8 +36,25 @@ gg_dendrogram
 gg_similarity_judgments
 ```
 
-```{r transcription-distance}
+```{r algorithmic-similarity, fig.width=4, fig.height=4}
+gg_algo_similarity +
+  theme(legend.position = c(0.45, 0.9))
+```
+
+```{r algorithmic-similarity-types, fig.width=6, fig.height=4}
+gg_algo_compare
+```
+
+```{r comparing-similarities, fig.width=4, fig.height=4}
+gg_comparing_similarities
+```
+
+```{r transcription-distance, fig.width=4, fig.height=4}
 gg_distance
+```
+
+```{r transcription-of-seeds-distance, fig.width=6, fig.height=4}
+gg_seed_distance
 ```
 
 ```{r matching-questions, fig.width=6, fig.height=4}
@@ -57,22 +74,43 @@ grid.arrange(
 )
 ```
 
-```{r matching-imitations}
+```{r matching-imitations, fig.width=4, fig.height=4}
 gg_match_to_seed
 ```
 
-```{r matching-transcriptions}
+```{r matching-transcriptions, fig.width=4, fig.height=4}
 gg_match_transcriptions
 ```
 
+```{r matching-transcriptions-of-seeds, fig.width=6, fig.height=4}
+gg_seed_matching
+```
+
 ```{r learning-transcriptions, fig.width=6, fig.height=3.5}
-grid.arrange(rt_plot, gg_transition, nrow = 1)
+grid.arrange(
+  rt_plot,
+  gg_transition + theme(axis.title.y = element_blank()),
+  nrow = 1,
+  widths = c(0.6, 0.4)
+)
 ```
 
-```{r learning-rts}
-rt_plot
+```{r learning-rts, fig.width=4, fig.height=4}
+rt_plot +
+  theme(legend.position = c(0.55, 0.9))
 ```
 
-```{r learning-generalization}
-gg_transition
+```{r learning-generalization, fig.width=4, fig.height=4}
+gg_transition +
+  theme(legend.position = c(0.45, 0.9))
+```
+
+```{r learning-performance-ceiling, fig.width=4, fig.height=4}
+gg_lsn_performance_ceiling +
+  theme(legend.position = c(0.45, 0.9))
+```
+
+```{r learning-transcriptions-of-seeds, fig.width=4, fig.height=4}
+gg_seed_rt_plot +
+  theme(legend.position = c(0.55, 0.9))
 ```
