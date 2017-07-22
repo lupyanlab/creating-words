@@ -1,0 +1,78 @@
+---
+output: pdf_document
+---
+
+```{r config, include=FALSE}
+library(knitr)
+
+opts_chunk$set(
+  echo=FALSE,
+  message=FALSE,
+  warning=FALSE,
+  results="hide",
+  cache=TRUE
+)
+
+sapply(list.files("R", "*.R", full.names = TRUE), read_chunk)
+```
+
+```{r setup, include=FALSE}
+```
+
+```{r stability, include=FALSE}
+```
+
+```{r matching, include=FALSE}
+```
+
+```{r learning, include=FALSE}
+```
+
+```{r dendrogram, fig.width=4, fig.height=3.5}
+gg_dendrogram
+```
+
+```{r similarity-judgments, fig.width=4, fig.height=4}
+gg_similarity_judgments
+```
+
+```{r transcription-distance}
+gg_distance
+```
+
+```{r matching-questions, fig.width=6, fig.height=4}
+grid.arrange(
+  read_graphviz("true-seed", "wordsintransition"),
+  read_graphviz("category-match", "wordsintransition"),
+  read_graphviz("specific-match", "wordsintransition"),
+  ncol = 1
+)
+```
+
+```{r matching-accuracies, fig.width=6, fig.height=3.5}
+grid.arrange(
+  gg_match_to_seed,
+  gg_match_transcriptions + theme(axis.title.y = element_blank()),
+  nrow = 1
+)
+```
+
+```{r matching-imitations}
+gg_match_to_seed
+```
+
+```{r matching-transcriptions}
+gg_match_transcriptions
+```
+
+```{r learning-transcriptions, fig.width=6, fig.height=3.5}
+grid.arrange(rt_plot, gg_transition, nrow = 1)
+```
+
+```{r learning-rts}
+rt_plot
+```
+
+```{r learning-generalization}
+gg_transition
+```
