@@ -1,0 +1,23 @@
+---
+title: "Perceived and algorithmic acoustic similarity"
+output: word_document
+---
+
+```{r config, include=FALSE}
+library(knitr)
+sapply(list.files("../R", "*.R", full.names = TRUE), read_chunk)
+opts_chunk$set(echo=FALSE, message=FALSE)
+```
+
+```{r setup, include=FALSE}
+```
+
+```{r stability, include=FALSE}
+```
+
+Correlation between acoustic similarity judgments and algorithmic similarity: `r report_cor_test(cor.test(edge_similarities$similarity_judgments, edge_similarities$similarity_algorithmic))`.
+
+```{r}
+gg_comparing_similarities
+```
+
