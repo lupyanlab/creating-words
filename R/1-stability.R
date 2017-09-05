@@ -459,7 +459,7 @@ gg_distance <- ggplot(transcription_distances) +
                 data = orthographic_distance_preds,
                 size = 1, width = 0.3) +
   scale_x_discrete("Generation", labels = c("First", "Last")) +
-  scale_y_continuous("Orthographic distance between transcriptions", breaks = seq(0, 1, by = 0.2)) +
+  scale_y_continuous("Orthographic distance", breaks = seq(0, 1, by = 0.2)) +
   scale_color_manual(values = imitation_gen_colors) +
   scale_fill_manual(values = imitation_gen_colors) +
   coord_cartesian(ylim = c(0.0, 0.8)) +

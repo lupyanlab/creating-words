@@ -1,0 +1,135 @@
+---
+title: The emergence of words from iterated vocal imitation
+author: Pierce Edmiston, Marcus Perlman, and Gary Lupyan
+output:
+  beamer_presentation:
+    theme: metropolis
+---
+
+# How good are humans at vocal imitation?
+
+```{r config, include=FALSE}
+library(knitr)
+opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE, results="hide", cache=TRUE)
+sapply(list.files("R", "*.R", full.names = TRUE), read_chunk)
+```
+
+```{r setup}
+```
+
+```{r stability}
+```
+
+```{r matching}
+```
+
+```{r learning}
+```
+
+# The design of the transmission chain experiment
+
+```{r}
+gg_dendrogram
+```
+
+# Repeating imitations increases acoustic similarity
+
+```{r algorithmic-similarity}
+gg_algo_similarity +
+  theme(legend.position = c(0.45, 0.9))
+```
+
+# Similarity increases within, not between, chains
+
+```{r algorithmic-similarity-types}
+gg_algo_compare
+```
+
+# Repeated imitations are transcribed more consistently
+
+```{r transcription-distance}
+gg_distance
+```
+
+# Types of matching questions
+
+```{r matching-questions}
+grid.arrange(
+  read_graphviz("true-seed", "wordsintransition"),
+  read_graphviz("category-match", "wordsintransition"),
+  read_graphviz("specific-match", "wordsintransition"),
+  ncol = 1
+)
+```
+
+# Category information was the most resilient to decay
+
+```{r matching-imitations}
+gg_match_to_seed
+```
+
+# Transcriptions can retain category information
+
+```{r matching-transcriptions}
+gg_match_transcriptions
+```
+
+# Later generation labels yielded faster responses
+
+```{r learning-rts}
+rt_plot +
+  theme(legend.position = c(0.55, 0.9))
+```
+
+# No difference in accuracy for novel labels
+
+```{r learning-performance-ceiling}
+gg_lsn_performance_ceiling +
+  theme(legend.position = c(0.45, 0.9))
+```
+
+# Later generation labels were generalized more quickly
+
+```{r learning-generalization}
+gg_transition +
+  theme(legend.position = c(0.45, 0.9))
+```
+
+# The emergence of words from iterated vocal imitation
+
+<!----------------------------------------------------------------------------->
+
+# Correlation between subjective and objective similarity
+
+```{r comparing-similarities}
+gg_comparing_similarities
+```
+
+# Transcriptions of seeds were the least consistent
+
+```{r transcription-of-seeds-distance}
+gg_seed_distance
+```
+
+# Match accuracies for imitations and transcriptions
+
+```{r matching-accuracies}
+grid.arrange(
+  gg_match_to_seed,
+  gg_match_transcriptions + theme(axis.title.y = element_blank()),
+  nrow = 1
+)
+```
+
+# Transcriptions of seed sounds were matched very accurately
+
+```{r matching-transcriptions-of-seeds}
+gg_seed_matching
+```
+
+# Transcriptions of seed sounds ???
+
+```{r learning-transcriptions-of-seeds}
+gg_seed_rt_plot +
+  theme(legend.position = c(0.55, 0.9))
+```
