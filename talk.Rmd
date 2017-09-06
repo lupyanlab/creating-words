@@ -4,9 +4,8 @@ author: Pierce Edmiston, Marcus Perlman, and Gary Lupyan
 output:
   beamer_presentation:
     theme: metropolis
+    keep_tex: true
 ---
-
-# How good are humans at vocal imitation?
 
 ```{r config, include=FALSE}
 library(knitr)
@@ -25,6 +24,28 @@ sapply(list.files("R", "*.R", full.names = TRUE), read_chunk)
 
 ```{r learning}
 ```
+
+# Are names for things natural or conventional?
+
+```{r plato}
+crotchet::draw_image("img/plato.jpg")
+```
+
+# Onomatopoeic words are found across languages
+
+```{r onomatopoeia-comics}
+gridExtra::grid.arrange(
+  crotchet::read_image("img/chapman-clap.png"),
+  crotchet::read_image("img/chapman-sneeze.png"),
+  nrow = 1
+)
+```
+
+# Why is onomatopoeia important to language evolution?
+
+- Maybe languages began with words everyone could agree on.
+
+# Are humans poor vocal imitators?
 
 # The design of the transmission chain experiment
 

@@ -4,6 +4,7 @@
 *.docx
 *_cache/
 *_files/
+img/
 
 # latex
 *.tex
