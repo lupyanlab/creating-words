@@ -237,6 +237,36 @@ gg_comparing_similarities <- ggplot(edge_similarities) +
 
 ## Transcriptions ##
 
+data("transcription_matches")
+
+transcription_examples <- transcription_matches %>%
+  recode_message_type() %>%
+  filter(!str_detect(word, "[\ *-]")) %>%
+  mutate(word = str_to_lower(word)) %>%
+  group_by(word_category, seed_id, message_id, word, message_type) %>%
+  summarize(match_accuracy = mean(is_correct)) %>%
+  ungroup() %>%
+  group_by(word_category, seed_id, message_type) %>%
+  arrange(desc(match_accuracy), seed_id, message_type) %>%
+  mutate(rank = 1:n()) %>%
+  filter(rank == 1) %>%
+  arrange(word_category, message_type) %>%
+  select(-message_id, -match_accuracy) %>%
+  spread(message_type, word) %>%
+  ungroup() %>%
+  select(-rank) %>%
+  group_by(word_category) %>%
+  mutate(seed_id = 1:n()) %>%
+  ungroup() %>%
+  select(
+    Category = word_category,
+    Seed = seed_id,
+    `First generation` = first_gen_imitation,
+    `Last generation` = last_gen_imitation
+  )
+
+## Transcription distances ##
+
 data("transcription_distances")
 
 gen_labels <- select(imitations, message_id, generation)
@@ -310,7 +340,7 @@ gg_seed_distance <- ggplot(seed_distances) +
   theme(legend.position = "none",
         panel.grid.major.x = element_blank())
 
-## Imitations ##
+## Imitation matches ##
 
 data("imitation_matches")
 
@@ -365,7 +395,7 @@ gg_match_to_seed <- ggplot(imitation_matches) +
     panel.grid.minor.y = element_blank()
   )
 
-## Transcriptions ##
+## Transcription matches ##
 
 data("transcription_matches")
 
@@ -429,7 +459,8 @@ gg_match_transcriptions <- ggplot(transcription_matches_preds) +
         panel.grid.minor.x = element_blank(),
         panel.grid.minor.y = element_blank())
 
-## Matching accuracy of transcriptions of seed sounds
+## Seed transcription matches ##
+
 data("transcription_matches")
 
 transcription_matches %<>%
