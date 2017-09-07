@@ -42,18 +42,20 @@ are names for things natural or are they conventional?
 Are some names better than others, or
 are all names created equal and to some extent interchangeable?
 
-This is a question that Plato explored in his _Cratylus_ dialogue. The
-dialogue is an argument between Cratylus and Hermogenes.
+This is the question that Plato explored in his _Cratylus_ dialogue,
+which is an argument between Cratylus and Hermogenes.
 
-Cratylus argued that names are not arbitrarily decided because some names seem
-better or more natural than others.
+Cratylus argues that names for things are not arbitrarily decided
+because some names seem better or more natural than others.
 
-Hermogenes argued the exact opposite,
-that only convention could determine which names are used to designate
-which objects.
+Hermogenes argues the exact opposite,
+that only convention could determine which names are used
+to designate which objects.
 
-The dialogue goes on to argue that both views are wrong in the extremes,
-but lucky for us, they didn't solve it, and this question has been
+In the dialogue, Plato makes the point that both views
+are probably wrong in the extremes, but
+lucky for us,
+they didn't come to a firm conclusion, and this question has been
 the topic of much discussion for many hundreds of years.
 -->
 
@@ -69,9 +71,6 @@ digraph {
   pierce[label="Arbitrariness!" image="img/pierce.png" labelloc=b];
 }
 ```
-
-- Arbitrary names promote categorization (Edmiston & Lupyan, 2015).
-- Iconic names are easier to learn (Perry, Perlman, & Lupyan, 2016).
 
 <!--
 I bring this up because it's reminiscent of a similar dialogue I
@@ -89,24 +88,28 @@ In the past, I've argued for the arbitrariness side of this equation.
 What I've said is that
 the reason language is so advantageous
 is not because it allows us to refer to specific things,
-but that it allows us to form categories,
+but that it allows us to group together categories of things,
 irrespective of the individual members.
 
 Through arbitrariness, you get categorization and symbolic reasoning.
 
-Marcus believes something a little different. He thinks that the
-widespread belief that languages today are entirely arbitrary was bogus.
+In contrast, Marcus has argued for the role of iconicity in language evolution.
+He thinks that the
+widespread belief that languages today are entirely arbitrary is bogus.
 In fact, iconicity pervades languages, even ones like English and
-Spanish that are thought to be arbitrary.
+Spanish that are thought to be largely arbitrary.
 
-The reason widespreaad iconicity would be important for language evolution
+The reason widespreaad iconicity could be important for language evolution
 is that iconic names may be easier to learn.
 In a project with Lynn Perry,
-they found was that words that were rated
+they found that words that were rated
 as more iconic were also learned earlier in a child's life.
 
-So we needed a way to settle our debate, and we decided to do
-an experiment.
+So Marcus, Gary, and I got together to try to figure out these differences.
+Specifically what we were after is a way to see between
+this dichotomy, to see the advantages of iconicity when creating
+words, but also to observe the advantages of more symbolic
+mappings for things like categorization.
 -->
 
 # Onomatopoeic words are found across languages
@@ -119,28 +122,111 @@ gridExtra::grid.arrange(
 )
 ```
 
-```{r telephone-game}
-crotchet::draw_image("collect-imitations-gui", "wordsintransition")
-```
+<!--
+We decided to look specifically at the creation of onomatopoeic words,
+which are found across languages.
+
+What's interesting about these onomatopoeic words is that they are all very
+clearly imitating the same sound, clapping or sneezing, and yet
+they are all spelled differently, so they behave like conventional words in a language
+as well as imitations.
+
+We wanted to see what it took to create new onomatopoeic words.
+Do all words including onomatopoeic words need to be coined conventionally,
+or can onomatopoeic words actually emerge gradually from the imitations themselves?
+-->
+
+# Can words emerge from iterated imitation?
 
 ```{r telephone-chain, engine="dot"}
 digraph {
   rankdir=LR;
   node[fontname=Helvetica shape=circle];
-  1 -> 2 -> 3 -> 4 -> 5;
-  5[style=invis];
+  0 -> 1 -> 2 -> 3 -> 4 -> 5;
+  0[shape="none" label="imitation"];
+  5[shape="none" label="?"];
 }
 ```
 
-# The transmission chain experiment
+<!--
+Specifically what we asked was whether words can emerge from
+iterated imitations.
+
+We were interested in the minimal conditions for observing
+an emergence of words from imitations.
+Without any instruction or intention to create a word,
+does simply repeating it cause it to become more wordlike?
+
+To test this we had participants imitate various environmental sounds,
+sounds like glass breaking, and water splashing,
+and then we had new participants imitate the imitations,
+and so on for generation after generation.
+
+What we measured was how the imitation changed as a function of
+generation of repetition.
+
+Is repeating an imitation over and over across generations of different
+speakers sufficient to make it more wordlike?
+-->
+
+# Interface for collecting vocal imitations
+
+```{r telephone-game}
+crotchet::draw_image("collect-imitations-gui", "wordsintransition")
+```
+
+<!--
+Here's what the experiment looked like.
+
+Participants clicked on the top speaker to hear a sound,
+and the bottom speaker to make their imitation of it.
+-->
+
+# The results of the transmission chain experiment
 
 ```{r}
 gg_dendrogram
 ```
 
-<!----------------------------------------------------------------------------->
+<!--
+And here are our results -- the imitations we collected in this
+transmission chain experiment.
 
-# Repeating imitations increased acoustic similarity
+We had four different categories of environmental sounds:
+water, glass, tearing, and zipper,
+and four seed sounds within each category.
+
+The first generation of participants imitated the seed sound,
+and later generations imitated the previous generation,
+for a maximum of 8 generations.
+-->
+
+# Research questions
+
+1. Do imitations stabilize on particular words?
+2. Do the imitations retain their resemblance to the seed sound?
+3. Do the imitations become more suitable as category labels?
+
+<!--
+Once we collected these imitations, we sought to answer three questions
+about how the imitations changed as a function of repetition.
+
+First, do the imitations in each chain stabilize on particular words?
+
+Are later generation imitations more similar to one another than earlier
+generation imitations?
+
+Next we asked what the imitations were stabilizing on. Do the imitations
+retain a resemblance to the original seed sound, or does each chain
+careen off to create a total nonsence word.
+
+Finally, we asked whether repetition has any repurcussions for the
+language learner. We took words created at the beginning of the
+chains and at the end of the chains, and test them to see which served
+as better category labels in a category learning experiment.
+-->
+
+# Repeated imitations became more similar
 
 ```{r similarity-judgments}
 gg_similarity_judgments
@@ -152,31 +238,51 @@ gg_similarity_judgments
 gg_algo_similarity
 ```
 
+# Example transcriptions
+
+```{r example-transcriptions, results="asis"}
+table_caption <- "Examples of invented words."
+kable(transcription_examples, caption = table_caption)
+```
+
 # Repeated imitations were transcribed more consistently
 
 ```{r transcription-distance}
 gg_distance
 ```
 
-<!----------------------------------------------------------------------------->
+# 1. Do imitations stabilize on particular words?
 
-# Recap
+**Yes.** Repeating imitations makes them more similar to one another acoustically and orthographically.
+
+_But what are they stabilizing on?_
+
+# Interface for matching imitations to seed sounds
+
+```{r guess-the-seed}
+draw_image("match-imitations-gui", "wordsintransition")
+```
 
 # Types of matching questions
 
 ```{r matching-questions}
-grid.arrange(
+grob_question_types <- arrangeGrob(
   read_graphviz("true-seed", "wordsintransition"),
   read_graphviz("category-match", "wordsintransition"),
   read_graphviz("specific-match", "wordsintransition"),
   ncol = 1
 )
+grid::grid.draw(grob_question_types)
 ```
 
 # Category information was the most resilient to decay
 
 ```{r matching-imitations}
-gg_match_to_seed
+grid.arrange(
+  grob_question_types,
+  gg_match_to_seed,
+  nrow = 1
+)
 ```
 
 # Transcriptions can retain category information
@@ -185,9 +291,20 @@ gg_match_to_seed
 gg_match_transcriptions
 ```
 
-<!----------------------------------------------------------------------------->
+# 2. Do imitations retain a resemblance to the seed sound?
 
-# Recap
+**Yes** (at least for 8 generations with 4 categories).
+
+_What are the consequences of repeating imitations for learners?_
+
+# A simple category learning experiment
+
+```{r learning-sound-names-paradigm, engine="dot"}
+digraph {
+  node[fontname="Helvetica"];
+  sound -> label ->
+}
+```
 
 # Later generation labels yielded faster responses
 

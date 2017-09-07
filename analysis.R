@@ -208,7 +208,7 @@ gg_algo_similarity <- ggplot(algo_similarity_preds) +
   geom_point(stat = "summary", fun.y = "mean", data = algo_similarity,
              size = sizes$point) +
   scale_x_discrete("Generations") +
-  scale_y_continuous("Algorithmic similarity (z-score)") +
+  scale_y_continuous("Algorithmic similarity (MFCCs)") +
   scale_color_manual("", labels = c("Within chain", "Between chain"),
                      values = colors("blue", "green")) +
   base_theme +
@@ -354,7 +354,7 @@ gg_match_to_seed <- ggplot(imitation_matches) +
     values = c("longdash", "dotdash", "solid"),
     labels = question_types
   ) +
-  geom_hline(yintercept = 0.25, lty = 2, alpha = 0.4, size = size = sizes$line) +
+  geom_hline(yintercept = 0.25, lty = 2, alpha = 0.4, size = sizes$line) +
   coord_cartesian(xlim = c(-0.2, 7.2), ylim = c(0.11, 0.75)) +
   base_theme +
   theme(
