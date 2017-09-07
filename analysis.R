@@ -90,9 +90,9 @@ graph <- igraph::graph_from_data_frame(edges, vertices = nodes)
 
 # Plot the graph with ggraph
 gg_dendrogram <- ggraph(graph, "dendrogram") +
-  geom_edge_diagonal(aes(edge_linetype = node2.node_type), edge_width = 0.4) +
-  geom_node_point(aes(shape = node_type), size = 0.5) +
-  geom_node_text(aes(label = node_label), vjust = -0.5, size = 2.5) +
+  geom_edge_diagonal(aes(edge_linetype = node2.node_type), edge_width = 0.6) +
+  geom_node_point(aes(shape = node_type), size = 0.8) +
+  geom_node_text(aes(label = node_label), vjust = -0.7, size = 8) +
   scale_x_continuous("", breaks = NULL) +
   scale_y_continuous("Generation", breaks = 0:8, labels = c(8:1, "seeds")) +
   scale_shape_manual(values = c(32, 32, 16, 32)) +
@@ -159,7 +159,7 @@ gg_similarity_judgments <- ggplot(similarity_judgments_means) +
   base_theme +
   theme(
     legend.position = c(0.2, 0.89),
-    legend.key.size = unit(0.7, "lines"),
+    legend.key.size = unit(4, "lines"),
     axis.title.y = element_text(margin = margin(0, -2, 0, 0))
   )
 
@@ -204,12 +204,13 @@ algo_similarity_preds <- expand.grid(
 gg_algo_similarity <- ggplot(algo_similarity_preds) +
   aes(edge_generations, similarity_z, color = type, group = type) +
   geom_smooth(aes(ymin = similarity_z - se, ymax = similarity_z + se),
-              stat = "identity", size = sizes$line) +
+              stat = "identity", size = sizes$line, alpha = 0.2) +
   geom_point(stat = "summary", fun.y = "mean", data = algo_similarity,
              size = sizes$point) +
   scale_x_discrete("Generations") +
   scale_y_continuous("Algorithmic similarity (z-score)") +
-  scale_color_discrete("Type of pairwise comparison", labels = c("Within", "Between")) +
+  scale_color_manual("", labels = c("Within chain", "Between chain"),
+                     values = colors("blue", "green")) +
   base_theme +
   theme(legend.position = "top")
 
@@ -272,7 +273,7 @@ gg_distance <- ggplot(transcription_distances) +
   geom_point(aes(group = message_id),
              stat = "summary", fun.y = "mean",
              position = position_jitter(0.1, 0.01),
-             size = sizes$point, alpha = 0.6, shape = 1) +
+             size = sizes$point, alpha = 0.8) +
   geom_errorbar(aes(ymin = distance - se, ymax = distance + se),
                 data = orthographic_distance_preds,
                 size = sizes$line, width = 0.3) +
@@ -343,7 +344,8 @@ gg_match_to_seed <- ggplot(imitation_matches) +
   aes(x = generation_1, y = is_correct) +
   geom_smooth(aes(ymin = is_correct - se, ymax = is_correct + se,
                   color = survey_type, linetype = survey_type),
-              stat = "identity", data = imitation_matches_preds) +
+              stat = "identity", data = imitation_matches_preds,
+              size = sizes$line) +
   scale_x_continuous("Generation", breaks = 0:11, labels = 1:12) +
   scales$y$accuracy +
   scale_color_manual("", values = question_type_colors, labels = question_types) +
@@ -352,9 +354,7 @@ gg_match_to_seed <- ggplot(imitation_matches) +
     values = c("longdash", "dotdash", "solid"),
     labels = question_types
   ) +
-  geom_hline(yintercept = 0.25, lty = 2, alpha = 0.4, size = 0.6) +
-  annotate("text", x = 0.5, y = 0.26, label = "chance",
-           size = 2, vjust = -0.1, fontface = "italic") +
+  geom_hline(yintercept = 0.25, lty = 2, alpha = 0.4, size = size = sizes$line) +
   coord_cartesian(xlim = c(-0.2, 7.2), ylim = c(0.11, 0.75)) +
   base_theme +
   theme(
@@ -422,11 +422,10 @@ gg_match_transcriptions <- ggplot(transcription_matches_preds) +
                         labels = c("Category match", "True seed"),
                         guide = guide_legend(reverse = TRUE)) +
   geom_hline(yintercept = 0.25, lty = 2, alpha = 0.4, size = sizes$line) +
-  coord_cartesian(ylim = c(0.11, 0.75)) +
+  coord_cartesian(ylim = c(0.11, 0.75), xlim = c(-1, 1)) +
   base_theme +
   theme(legend.position = c(0.5, 0.75),
         legend.key.width = unit(2, "lines"),
-        panel.grid.major.x = element_blank(),
         panel.grid.minor.x = element_blank(),
         panel.grid.minor.y = element_blank())
 
@@ -504,7 +503,7 @@ n_errors <- first_last_gen %>%
 
 gg_lsn_performance_ceiling <- ggplot(n_errors) +
   aes(block_ix, n_errors, color = message_type, linetype = message_type) +
-  geom_line(stat = "summary", fun.y = "mean") +
+  geom_line(stat = "summary", fun.y = "mean", size = sizes$line) +
   scale_x_continuous("Block (24 trials)") +
   scale_y_continuous("Number of errors") +
   scales$color$message_type +
@@ -531,7 +530,8 @@ rt_plot <- ggplot(first_last_gen) +
   geom_smooth(aes(ymin = rt - se, ymax = rt + se, color = message_label,
                   linetype = message_label),
               fill = "gray", alpha = 0.4,
-              stat = "identity", data = lsn_quad_preds) +
+              stat = "identity", data = lsn_quad_preds,
+              size = sizes$line) +
   scale_x_continuous("Block number\n(24 trials per block)", breaks = 1:4) +
   scales$y$rt +
   scales$color$message_type +
@@ -579,10 +579,10 @@ gg_transition <- ggplot(lsn_transition) +
   geom_linerange(aes(ymin = rt - se, ymax = rt + se),
                  data = transition_preds,
                  position = dodger, show.legend = FALSE,
-                 size = 1) +
+                 size = sizes$line) +
   geom_line(aes(group = message_type, linetype = message_type),
             data = transition_preds,
-            position = dodger, size = 1) +
+            position = dodger, size = sizes$line) +
   scale_x_discrete("New category members\n(±6 trials)", labels = c("Before", "After")) +
   scales$y$rt +
   scales$color$message_type +

@@ -20,8 +20,18 @@ read_chunk("analysis.R", labels = "main")
 
 # Are names for things natural or conventional?
 
-```{r plato}
-draw_image("img/plato.jpg", height = 0.3)
+```{r cratylus-dialogue, engine="dot"}
+digraph {
+  rankdir=LR;
+  fontname=Helvetica;
+  label="Plato's Cratylus";
+  labelloc=t;
+  node[shape="none" fontname=Helvetica];
+  edge[arrowhead="vee" arrowtail="vee"];
+  Cratylus -> Hermogenes[dir=both minlen=2 shape=circle];
+  Cratylus[label="Cratylus\n'Natural!'"];
+  Hermogenes[label="Hermogenes\n'Conventional!'"];
+}
 ```
 
 <!--
@@ -29,36 +39,75 @@ I want to start with a very old question about language, and
 about where names come from, and that is,
 are names for things natural or are they conventional?
 
-Are some names better or more natural than others, or
-are all names created equal and interchangeable?
+Are some names better than others, or
+are all names created equal and to some extent interchangeable?
 
-This is the question that Plato explored in his _Cratylus_
-dialogue, and his answer was basically that both positions
-are wrong in the extremes.
+This is a question that Plato explored in his _Cratylus_ dialogue. The
+dialogue is an argument between Cratylus and Hermogenes.
 
-While some names seem better or more natural than others,
-there could not be just one ideal name for every thing,
-and so convention must play a role in naming.
+Cratylus argued that names are not arbitrarily decided because some names seem
+better or more natural than others.
+
+Hermogenes argued the exact opposite,
+that only convention could determine which names are used to designate
+which objects.
+
+The dialogue goes on to argue that both views are wrong in the extremes,
+but lucky for us, they didn't solve it, and this question has been
+the topic of much discussion for many hundreds of years.
 -->
 
-# Shakespeare on names
+# Which is more important to language evolution?
+
+```{r lupyanlab-dialogue, engine="dot"}
+digraph {
+  rankdir=LR;
+  node[shape="none" fontname=Helvetica fontcolor=white fontsize=20];
+  edge[arrowhead="vee" arrowtail="vee"];
+  marcus -> pierce[dir=both minlen=2 shape=none];
+  marcus[label="Iconicity!" image="img/marcus.png" labelloc=b];
+  pierce[label="Arbitrariness!" image="img/pierce.png" labelloc=b];
+}
+```
+
+- Arbitrary names promote categorization (Edmiston & Lupyan, 2015).
+- Iconic names are easier to learn (Perry, Perlman, & Lupyan, 2016).
 
 <!--
-This debate has carried on for many hundreds of years.
-Here's Shakespeare commenting on the naturalness of
-names in _Romeo and Juliet_, where he seems to side
-with the conventional side of the debate, that
-"a rose by any other name would still sound as sweet".
+I bring this up because it's reminiscent of a similar dialogue I
+had with Marcus Perlman, back when we started this project.
+
+The debate we had was this:
+
+Which is a more important contributor to language evolution?
+Iconicity,
+or what Plato might have called the "naturalness of some names",
+or arbitrariness,
+the idea that words do not have to resemble their meanings?
+
+In the past, I've argued for the arbitrariness side of this equation.
+What I've said is that
+the reason language is so advantageous
+is not because it allows us to refer to specific things,
+but that it allows us to form categories,
+irrespective of the individual members.
+
+Through arbitrariness, you get categorization and symbolic reasoning.
+
+Marcus believes something a little different. He thinks that the
+widespread belief that languages today are entirely arbitrary was bogus.
+In fact, iconicity pervades languages, even ones like English and
+Spanish that are thought to be arbitrary.
+
+The reason widespreaad iconicity would be important for language evolution
+is that iconic names may be easier to learn.
+In a project with Lynn Perry,
+they found was that words that were rated
+as more iconic were also learned earlier in a child's life.
+
+So we needed a way to settle our debate, and we decided to do
+an experiment.
 -->
-
-> What's in a name? that which we call a rose  
-> By any other word would smell as sweet;
-
-# Which aspect of language is more important?
-
-```{r marcus}
-draw_image("img/marcus.png", height = 0.3)
-```
 
 # Onomatopoeic words are found across languages
 
@@ -83,7 +132,7 @@ digraph {
 }
 ```
 
-# The design of the transmission chain experiment
+# The transmission chain experiment
 
 ```{r}
 gg_dendrogram
