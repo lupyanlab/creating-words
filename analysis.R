@@ -92,7 +92,7 @@ graph <- igraph::graph_from_data_frame(edges, vertices = nodes)
 gg_dendrogram <- ggraph(graph, "dendrogram") +
   geom_edge_diagonal(aes(edge_linetype = node2.node_type), edge_width = 0.6) +
   geom_node_point(aes(shape = node_type), size = 0.8) +
-  geom_node_text(aes(label = node_label), vjust = -0.7, size = 8) +
+  geom_node_text(aes(label = node_label), vjust = -0.5, size = 7) +
   scale_x_continuous("", breaks = NULL) +
   scale_y_continuous("Generation", breaks = 0:8, labels = c(8:1, "seeds")) +
   scale_shape_manual(values = c(32, 32, 16, 32)) +
@@ -159,7 +159,7 @@ gg_similarity_judgments <- ggplot(similarity_judgments_means) +
   base_theme +
   theme(
     legend.position = c(0.2, 0.89),
-    legend.key.size = unit(4, "lines"),
+    legend.key.size = unit(2, "lines"),
     axis.title.y = element_text(margin = margin(0, -2, 0, 0))
   )
 

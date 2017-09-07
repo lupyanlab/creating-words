@@ -11,7 +11,7 @@ output:
 
 ```{r config, include=FALSE}
 library(knitr)
-opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE, results="hide", cache=TRUE)
+opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE, results="hide", cache=TRUE, cache.path="talk_cache/")
 read_chunk("analysis.R", labels = "main")
 ```
 
@@ -178,8 +178,12 @@ crotchet::draw_image("collect-imitations-gui", "wordsintransition")
 <!--
 Here's what the experiment looked like.
 
+It was basically our version of the children's game of telephone.
+
 Participants clicked on the top speaker to hear a sound,
 and the bottom speaker to make their imitation of it.
+
+And participants were instructed to copy whatever they heard as accurately as possible.
 -->
 
 # The results of the transmission chain experiment
@@ -203,7 +207,7 @@ for a maximum of 8 generations.
 
 # Research questions
 
-1. Do imitations stabilize on particular words?
+1. Do repeated imitations stabilize on particular words?
 2. Do the imitations retain their resemblance to the seed sound?
 3. Do the imitations become more suitable as category labels?
 
@@ -220,7 +224,7 @@ Next we asked what the imitations were stabilizing on. Do the imitations
 retain a resemblance to the original seed sound, or does each chain
 careen off to create a total nonsence word.
 
-Finally, we asked whether repetition has any repurcussions for the
+Finally, we asked whether repetition has any reprecussions for the
 language learner. We took words created at the beginning of the
 chains and at the end of the chains, and test them to see which served
 as better category labels in a category learning experiment.
@@ -241,8 +245,7 @@ gg_algo_similarity
 # Example transcriptions
 
 ```{r example-transcriptions, results="asis"}
-table_caption <- "Examples of invented words."
-kable(transcription_examples, caption = table_caption)
+kable(transcription_examples)
 ```
 
 # Repeated imitations were transcribed more consistently
@@ -285,7 +288,7 @@ grid.arrange(
 )
 ```
 
-# Transcriptions can retain category information
+# Transcriptions can retain category informations
 
 ```{r matching-transcriptions}
 gg_match_transcriptions
@@ -301,21 +304,25 @@ _What are the consequences of repeating imitations for learners?_
 
 ```{r learning-sound-names-paradigm, engine="dot"}
 digraph {
-  node[fontname="Helvetica"];
-  sound -> label ->
+  rankdir=LR;
+  node[fontname="Helvetica" shape=none];
+  sound -> label -> prompt[minlen=2];
+  sound[label="sound\n<water>\n 1/16"];
+  label[label="word\n'eeverlusha'\n 1/4"];
+  prompt[label="?\nY/N"];
 }
-```
-
-# Later generation labels yielded faster responses
-
-```{r learning-rts}
-rt_plot
 ```
 
 # No difference in accuracy for novel labels
 
 ```{r learning-performance-ceiling}
 gg_lsn_performance_ceiling
+```
+
+# Later generation labels yielded faster responses
+
+```{r learning-rts}
+rt_plot
 ```
 
 # Later generation labels were generalized more quickly
@@ -326,7 +333,15 @@ gg_transition
 
 # The emergence of words from iterated vocal imitation
 
-<!----------------------------------------------------------------------------->
+1. Do repeated imitations stabilize on particular words?
+2. Do the imitations retain their resemblance to the seed sound?
+3. Do the imitations become more suitable as category labels?
+
+# Thanks!
+
+Pierce Edmiston, Marcus Perlman, and Gary Lupyan.
+[github.com/lupyanlab/creating-words](https://github.com/lupyanlab/creating-words/tree/cesc)  
+[osf.io/3navm](https://osf.io/3navm)  
 
 # Correlation between subjective and objective similarity
 
