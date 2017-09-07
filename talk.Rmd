@@ -1,6 +1,8 @@
 ---
 title: The emergence of words from iterated vocal imitation
-author: Pierce Edmiston, Marcus Perlman, and Gary Lupyan
+author: |
+  Pierce Edmiston, Marcus Perlman, and Gary Lupyan  
+  University of Wisconsin-Madison
 output:
   beamer_presentation:
     theme: metropolis
@@ -52,34 +54,10 @@ with the conventional side of the debate, that
 > What's in a name? that which we call a rose  
 > By any other word would smell as sweet;
 
-_Romeo & Juliet_
-
 # Which aspect of language is more important?
 
-```{r dimension, engine="dot"}
-digraph {
-  rankdir=LR;
-  node[fontname=Helvetica shape=none imagescale=true];
-  left -> gary -> right[style=invis];
-  left, right[style=invis]
-  
-  gary[label="" image="img/gary.jpg"];
-  gary -> {iconic, arbitrary}[constraint=false];
-  
-  iconic -> arbitrary[dir=both minlen=2];
-
-  { rank=same; iconic, easy_to_learn; }
-  iconic -> easy_to_learn[minlen=2];
-
-  { rank=same; arbitrary, easy_to_generalize; }
-  arbitrary -> easy_to_generalize[minlen=2];
-
-  iconic[label="" image="img/marcus.png"];
-  arbitrary[label="" image="img/pierce.jpg"];
-
-  easy_to_learn[label="easy to\nlearn" shape=none];
-  easy_to_generalize[label="easy to\ngeneralize" shape=none];
-}
+```{r marcus}
+draw_image("img/marcus.png", height = 0.3)
 ```
 
 # Onomatopoeic words are found across languages
