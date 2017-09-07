@@ -36,23 +36,47 @@ are wrong in the extremes.
 
 While some names seem better or more natural than others,
 there could not be just one ideal name for every thing,
-and so convention must also play a role in naming.
+and so convention must play a role in naming.
 -->
 
-# Language is both iconic and arbitrary
+# Shakespeare on names
 
-- Arbitrariness is built-in to language (Hockett, 1960).
-- But even arbitrary languages have iconicity (Perry, Perlman, & Lupyan, 2015).
+<!--
+This debate has carried on for many hundreds of years.
+Here's Shakespeare commenting on the naturalness of
+names in _Romeo and Juliet_, where he seems to side
+with the conventional side of the debate, that
+"a rose by any other name would still sound as sweet".
+-->
 
-```{r dimension, engine="dot", eval=FALSE}
+> What's in a name? that which we call a rose  
+> By any other word would smell as sweet;
+
+_Romeo & Juliet_
+
+# Which aspect of language is more important?
+
+```{r dimension, engine="dot"}
 digraph {
   rankdir=LR;
-  node[fontname=Helvetica shape=circle size=4];
+  node[fontname=Helvetica shape=none imagescale=true];
+  left -> gary -> right[style=invis];
+  left, right[style=invis]
+  
+  gary[label="" image="img/gary.jpg"];
+  gary -> {iconic, arbitrary}[constraint=false];
+  
   iconic -> arbitrary[dir=both minlen=2];
+
   { rank=same; iconic, easy_to_learn; }
   iconic -> easy_to_learn[minlen=2];
+
   { rank=same; arbitrary, easy_to_generalize; }
   arbitrary -> easy_to_generalize[minlen=2];
+
+  iconic[label="" image="img/marcus.png"];
+  arbitrary[label="" image="img/pierce.jpg"];
+
   easy_to_learn[label="easy to\nlearn" shape=none];
   easy_to_generalize[label="easy to\ngeneralize" shape=none];
 }
