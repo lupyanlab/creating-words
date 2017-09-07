@@ -10,30 +10,57 @@ output:
 ```{r config, include=FALSE}
 library(knitr)
 opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE, results="hide", cache=TRUE)
-sapply(list.files("R", "*.R", full.names = TRUE), read_chunk)
+read_chunk("analysis.R", labels = "main")
 ```
 
-```{r setup}
-```
-
-```{r stability}
-```
-
-```{r matching}
-```
-
-```{r learning}
+```{r main, include=FALSE}
 ```
 
 # Are names for things natural or conventional?
 
 ```{r plato}
-crotchet::draw_image("img/plato.jpg")
+draw_image("img/plato.jpg", height = 0.3)
+```
+
+<!--
+I want to start with a very old question about language, and
+about where names come from, and that is,
+are names for things natural or are they conventional?
+
+Are some names better or more natural than others, or
+are all names created equal and interchangeable?
+
+This is the question that Plato explored in his _Cratylus_
+dialogue, and his answer was basically that both positions
+are wrong in the extremes.
+
+While some names seem better or more natural than others,
+there could not be just one ideal name for every thing,
+and so convention must also play a role in naming.
+-->
+
+# Language is both iconic and arbitrary
+
+- Arbitrariness is built-in to language (Hockett, 1960).
+- But even arbitrary languages have iconicity (Perry, Perlman, & Lupyan, 2015).
+
+```{r dimension, engine="dot", eval=FALSE}
+digraph {
+  rankdir=LR;
+  node[fontname=Helvetica shape=circle size=4];
+  iconic -> arbitrary[dir=both minlen=2];
+  { rank=same; iconic, easy_to_learn; }
+  iconic -> easy_to_learn[minlen=2];
+  { rank=same; arbitrary, easy_to_generalize; }
+  arbitrary -> easy_to_generalize[minlen=2];
+  easy_to_learn[label="easy to\nlearn" shape=none];
+  easy_to_generalize[label="easy to\ngeneralize" shape=none];
+}
 ```
 
 # Onomatopoeic words are found across languages
 
-```{r onomatopoeia-comics}
+```{r onomatopoeia-comics, fig.cap="By James Chapman."}
 gridExtra::grid.arrange(
   crotchet::read_image("img/chapman-clap.png"),
   crotchet::read_image("img/chapman-sneeze.png"),
@@ -41,11 +68,18 @@ gridExtra::grid.arrange(
 )
 ```
 
-# Why is onomatopoeia important to language evolution?
+```{r telephone-game}
+crotchet::draw_image("collect-imitations-gui", "wordsintransition")
+```
 
-- Maybe languages began with words everyone could agree on.
-
-# Are humans poor vocal imitators?
+```{r telephone-chain, engine="dot"}
+digraph {
+  rankdir=LR;
+  node[fontname=Helvetica shape=circle];
+  1 -> 2 -> 3 -> 4 -> 5;
+  5[style=invis];
+}
+```
 
 # The design of the transmission chain experiment
 
@@ -53,24 +87,29 @@ gridExtra::grid.arrange(
 gg_dendrogram
 ```
 
-# Repeating imitations increases acoustic similarity
+<!----------------------------------------------------------------------------->
+
+# Repeating imitations increased acoustic similarity
+
+```{r similarity-judgments}
+gg_similarity_judgments
+```
+
+# Similarity increased within, not between, chains
 
 ```{r algorithmic-similarity}
-gg_algo_similarity +
-  theme(legend.position = c(0.45, 0.9))
+gg_algo_similarity
 ```
 
-# Similarity increases within, not between, chains
-
-```{r algorithmic-similarity-types}
-gg_algo_compare
-```
-
-# Repeated imitations are transcribed more consistently
+# Repeated imitations were transcribed more consistently
 
 ```{r transcription-distance}
 gg_distance
 ```
+
+<!----------------------------------------------------------------------------->
+
+# Recap
 
 # Types of matching questions
 
@@ -95,25 +134,26 @@ gg_match_to_seed
 gg_match_transcriptions
 ```
 
+<!----------------------------------------------------------------------------->
+
+# Recap
+
 # Later generation labels yielded faster responses
 
 ```{r learning-rts}
-rt_plot +
-  theme(legend.position = c(0.55, 0.9))
+rt_plot
 ```
 
 # No difference in accuracy for novel labels
 
 ```{r learning-performance-ceiling}
-gg_lsn_performance_ceiling +
-  theme(legend.position = c(0.45, 0.9))
+gg_lsn_performance_ceiling
 ```
 
 # Later generation labels were generalized more quickly
 
 ```{r learning-generalization}
-gg_transition +
-  theme(legend.position = c(0.45, 0.9))
+gg_transition
 ```
 
 # The emergence of words from iterated vocal imitation
@@ -151,6 +191,5 @@ gg_seed_matching
 # Transcriptions of seed sounds ???
 
 ```{r learning-transcriptions-of-seeds}
-gg_seed_rt_plot +
-  theme(legend.position = c(0.55, 0.9))
+gg_seed_rt_plot
 ```

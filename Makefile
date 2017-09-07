@@ -1,4 +1,4 @@
-slides.pdf: talk.Rmd R/*.R img/plato.jpg img/shakespeare.jpg img/chapman-sneeze.png img/chapman-clap.png
+slides.pdf: talk.Rmd analysis.R img/plato.jpg img/shakespeare.jpg img/chapman-sneeze.png img/chapman-clap.png
 	Rscript -e "rmarkdown::render('$<', output_file = '$@')"
 img/plato.jpg:
 	curl -o $@ https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Plato_Silanion_Musei_Capitolini_MC1377.jpg/320px-Plato_Silanion_Musei_Capitolini_MC1377.jpg?download
