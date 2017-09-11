@@ -5,6 +5,8 @@ notes.pdf: talk.Rmd analysis.R
 	sed -e 's/<!--//' -e 's/-->//' talk.Rmd > notes.Rmd
 	Rscript -e "rmarkdown::render('notes.Rmd', output_format = 'pdf_document', output_file = '$@')"
 	rm notes.Rmd
+img/plato.jpg:
+	curl -o $@ https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Plato_Silanion_Musei_Capitolini_MC1377.jpg/320px-Plato_Silanion_Musei_Capitolini_MC1377.jpg?download
 img/marcus.png:
 	curl -o $@.tmp http://mperlman.org/images/marcus.png
 	magick $@.tmp -resize 200x200 $@

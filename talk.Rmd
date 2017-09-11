@@ -20,43 +20,73 @@ read_chunk("analysis.R", labels = "main")
 
 # Are names for things natural or conventional?
 
-```{r cratylus-dialogue, engine="dot"}
-digraph {
-  rankdir=LR;
-  fontname=Helvetica;
-  label="Plato's Cratylus";
-  labelloc=t;
-  node[shape="none" fontname=Helvetica];
-  edge[arrowhead="vee" arrowtail="vee"];
-  Cratylus -> Hermogenes[dir=both minlen=2 shape=circle];
-  Cratylus[label="Cratylus\n'Natural!'"];
-  Hermogenes[label="Hermogenes\n'Conventional!'"];
-}
+**Hermogenes**: Conventional!  
+Names like "man" and "horse" are interchangeable.  
+**Cratylus**: Natural!  
+_anthrôpos_ = "man" ~ _anathrôn ha opôpe_ = "one who reflects on what he has seen".  (Some horse!)
+
+```{r plato}
+draw_image("img/plato.jpg", height = 0.2)
 ```
 
 <!--
-I want to start with a very old question about language, and
-about where names come from, and that is,
-are names for things natural or are they conventional?
+Are names for things natural or conventional?
 
-Are some names better than others, or
-are all names created equal and to some extent interchangeable?
+Are some names more true or correct than others,
+or are all names to some extent interchangeable?
 
-This is the question that Plato explored in his _Cratylus_ dialogue,
-which is an argument between Cratylus and Hermogenes.
+This was the question that Plato explored in his _Cratylus_ dialogue.
+The dialogue is a debate between two characters, Cratylus and Hermogenes.
 
-Cratylus argues that names for things are not arbitrarily decided
-because some names seem better or more natural than others.
+Hermogenes argues that names are conventional. We could just as
+easily call "man" "horse", and "horse" "man".
 
-Hermogenes argues the exact opposite,
-that only convention could determine which names are used
-to designate which objects.
+Cratylus argues that names are natural;
+they can be either correct or incorrect.
 
-In the dialogue, Plato makes the point that both views
-are probably wrong in the extremes, but
-lucky for us,
-they didn't come to a firm conclusion, and this question has been
-the topic of much discussion for many hundreds of years.
+As an example, the Greek word for man can be traced to its
+roots to mean "one who reflects on what he has seen", and
+so to Cratylus it seems ridiculous to think that the word
+for man could just as easily mean "horse".
+-->
+
+# What about the first names?
+
+> **Socrates**: If we wished to designate that which is above and is light, we should raise our hands towards heaven in imitation; but if the things to be designated were below or heavy, we should extend our hands towards the ground...
+
+> A name, then, it appears, is a vocal imitation of that which is imitated, and he who imitates with his voice names that which he imitates.
+
+> **Hermogenes**: But Socrates, what sort of an imitation is a name?
+
+<!--
+Putting aside etymologies,
+where new names are derived from old names,
+we can also consider the correctness of names without any precedents:
+the first names.
+
+So what were the first names, were they natural or conventional?
+
+Here, Socrates, who's mediating this debate,
+sides with Cratylus. First he points out that imitation 
+is a natural way to designate something without prior convention.
+
+[read first quote]
+
+He goes on to say that the same is true not just for bodily imitations,
+but for vocal imitations as well.
+
+[read second quote]
+
+But then Hermogenes pushes back a little.
+
+[read third quote]
+
+How do you get from an imitation _of_ something to a name _for_ something?
+
+Then they go back and forth for awhile, ultimately conceding that some
+names seem more natural than others, but for the most part, the debate
+isn't fully settled, which is why I'm still talking about it a couple
+thousand years laters.
 -->
 
 # Which is more important to language evolution?
@@ -66,11 +96,14 @@ digraph {
   rankdir=LR;
   node[shape="none" fontname=Helvetica fontcolor=white fontsize=20];
   edge[arrowhead="vee" arrowtail="vee"];
-  marcus -> pierce[dir=both minlen=2 shape=none];
+  marcus -> pierce[dir=both minlen=1.5 style=invis];
   marcus[label="Iconicity!" image="img/marcus.png" labelloc=b];
   pierce[label="Arbitrariness!" image="img/pierce.png" labelloc=b];
 }
 ```
+
+**Arbitrariness**: facilitates categorization, but difficult to learn.  
+**Iconicity**: easy to learn, but doesn't facilitate categorization.
 
 <!--
 I bring this up because it's reminiscent of a similar dialogue I
@@ -80,30 +113,23 @@ The debate we had was this:
 
 Which is a more important contributor to language evolution?
 Iconicity,
-or what Plato might have called the "naturalness of some names",
+or what Plato would have called the "naturalness of some names",
 or arbitrariness,
 the idea that words do not have to resemble their meanings?
 
 In the past, I've argued for the arbitrariness side of this equation.
 What I've said is that
-the reason language is so advantageous
+one of the reason language is so advantageous
 is not because it allows us to refer to specific things,
 but that it allows us to group together categories of things,
 irrespective of the individual members.
 
 Through arbitrariness, you get categorization and symbolic reasoning.
 
-In contrast, Marcus has argued for the role of iconicity in language evolution.
-He thinks that the
-widespread belief that languages today are entirely arbitrary is bogus.
-In fact, iconicity pervades languages, even ones like English and
-Spanish that are thought to be largely arbitrary.
-
-The reason widespreaad iconicity could be important for language evolution
-is that iconic names may be easier to learn.
-In a project with Lynn Perry,
-they found that words that were rated
-as more iconic were also learned earlier in a child's life.
+In contrast, Marcus has argued for the role of iconicity and vocal imitation
+in language evolution, and he's pointed out that language isn't
+perfectly arbitrary, also that people are very good at both generating
+and interpreting vocal imitations without prior convention.
 
 So Marcus, Gary, and I got together to try to figure out these differences.
 Specifically what we were after is a way to see between
@@ -112,31 +138,7 @@ words, but also to observe the advantages of more symbolic
 mappings for things like categorization.
 -->
 
-# Onomatopoeic words are found across languages
-
-```{r onomatopoeia-comics, fig.cap="By James Chapman."}
-gridExtra::grid.arrange(
-  crotchet::read_image("img/chapman-clap.png"),
-  crotchet::read_image("img/chapman-sneeze.png"),
-  nrow = 1
-)
-```
-
-<!--
-We decided to look specifically at the creation of onomatopoeic words,
-which are found across languages.
-
-What's interesting about these onomatopoeic words is that they are all very
-clearly imitating the same sound, clapping or sneezing, and yet
-they are all spelled differently, so they behave like conventional words in a language
-as well as imitations.
-
-We wanted to see what it took to create new onomatopoeic words.
-Do all words including onomatopoeic words need to be coined conventionally,
-or can onomatopoeic words actually emerge gradually from the imitations themselves?
--->
-
-# Can words emerge from iterated imitation?
+# Does repeating imitations make them more wordlike?
 
 ```{r telephone-chain, engine="dot"}
 digraph {
@@ -144,7 +146,7 @@ digraph {
   node[fontname=Helvetica shape=circle];
   0 -> 1 -> 2 -> 3 -> 4 -> 5;
   0[shape="none" label="imitation"];
-  5[shape="none" label="?"];
+  5[shape="none" label="word?"];
 }
 ```
 
@@ -168,6 +170,12 @@ generation of repetition.
 Is repeating an imitation over and over across generations of different
 speakers sufficient to make it more wordlike?
 -->
+
+# Measuring wordlike-ness
+
+1. Stable
+2. Learned
+3. Categorical
 
 # Interface for collecting vocal imitations
 
@@ -343,6 +351,11 @@ Pierce Edmiston, Marcus Perlman, and Gary Lupyan.
 [github.com/lupyanlab/creating-words](https://github.com/lupyanlab/creating-words/tree/cesc)  
 [osf.io/3navm](https://osf.io/3navm)  
 
+# References
+
+- http://www.hermes-press.com/cratylus2.htm
+- https://plato.stanford.edu/entries/plato-cratylus/
+
 # Correlation between subjective and objective similarity
 
 ```{r comparing-similarities}
@@ -376,3 +389,14 @@ gg_seed_matching
 ```{r learning-transcriptions-of-seeds}
 gg_seed_rt_plot
 ```
+
+# Onomatopoeic words are found across languages
+
+```{r onomatopoeia-comics, fig.cap="By James Chapman."}
+gridExtra::grid.arrange(
+  crotchet::read_image("img/chapman-clap.png"),
+  crotchet::read_image("img/chapman-sneeze.png"),
+  nrow = 1
+)
+```
+
