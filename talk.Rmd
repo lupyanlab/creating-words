@@ -2,7 +2,8 @@
 title: The emergence of words from iterated vocal imitation
 author: |
   Pierce Edmiston, Marcus Perlman, and Gary Lupyan  
-  University of Wisconsin-Madison
+  University of Wisconsin-Madison  
+  pedmiston@wisc.edu
 output:
   beamer_presentation:
     theme: metropolis
@@ -20,162 +21,152 @@ read_chunk("analysis.R", labels = "main")
 
 # Are names for things natural or conventional?
 
-**Hermogenes**: Conventional!  
-Names like "man" and "horse" are interchangeable.  
-**Cratylus**: Natural!  
-_anthrôpos_ = "man" ~ _anathrôn ha opôpe_ = "one who reflects on what he has seen".  (Some horse!)
+Plato's _Cratylus_
 
 ```{r plato}
 draw_image("img/plato.jpg", height = 0.2)
 ```
 
-<!--
-Are names for things natural or conventional?
+**Hermogenes**: Conventional! Names like "man" and "horse" are arbitrary.  
+**Cratylus**: Natural! _anthrôpos_ = "man" ~ _anathrôn ha opôpe_ = "one who reflects on what he has seen". (Some horse!)
 
-Are some names more true or correct than others,
+<!--
+Are names for everyday things natural or conventional?
+
+Are some names better or more correct than others,
 or are all names to some extent interchangeable?
 
-This was the question that Plato explored in his _Cratylus_ dialogue.
-The dialogue is a debate between two characters, Cratylus and Hermogenes.
+This was the question that Plato explored in his _Cratylus_ dialogue,
+which features a debate between Cratylus and Hermogenes.
 
-Hermogenes argues that names are conventional. We could just as
-easily call "man" "horse", and "horse" "man".
+Hermogenes argues that names are conventional and arbitrary.
+We could just as easily call "man" "horse" as "horse" "man".
 
-Cratylus argues that names are natural;
-they can be either correct or incorrect.
+Cratylus argues the opposite, that names are natural;
+some names are correct, and others are incorrect.
+"Man" is the correct name for "man",
+and "horse" is the correct name for horses.
 
-As an example, the Greek word for man can be traced to its
-roots to mean "one who reflects on what he has seen", and
-so to Cratylus it seems ridiculous to think that the word
-for man could just as easily mean "horse".
+Socrates, who's mediating this debate,
+backs up Cratylus by giving examples like this:
+he traces the Greek word for "man"
+to mean "one who reflects on what he has seen",
+and concludes, well, if we called a horse that,
+it would have to be one hell of a horse!
 -->
 
-# What about the first names?
+# What were the first words?
 
 > **Socrates**: If we wished to designate that which is above and is light, we should raise our hands towards heaven in imitation; but if the things to be designated were below or heavy, we should extend our hands towards the ground...
 
-> A name, then, it appears, is a vocal imitation of that which is imitated, and he who imitates with his voice names that which he imitates.
+> A name, then, it appears, is a vocal imitation of that which is imitated, and **he who imitates with his voice names that which he imitates.**
 
-> **Hermogenes**: But Socrates, what sort of an imitation is a name?
+> **Hermogenes**: But Socrates, **what sort of an imitation is a name?**
 
 <!--
-Putting aside etymologies,
-where new names are derived from old names,
-we can also consider the correctness of names without any precedents:
-the first names.
+Creating new words out of existing words is one way names can be natural,
+but Plato also explored whether words can be formed naturally,
+without any prior convention,
+and this is the part that I'm going to focus on today.
 
-So what were the first names, were they natural or conventional?
+The question is whether the first words had to be conventional,
+or whether they might have been natural as well.
 
-Here, Socrates, who's mediating this debate,
-sides with Cratylus. First he points out that imitation 
-is a natural way to designate something without prior convention.
+Here, Socrates is siding with Cratylus.
+First he points out that
+imitation is a natural way to designate something
+without prior convention.
 
-[read first quote]
+> If we wished to designate that which is above and is light, we should raise our hands towards heaven in imitation; but if the things to be designated were below or heavy, we should extend our hands towards the ground.
 
-He goes on to say that the same is true not just for bodily imitations,
-but for vocal imitations as well.
+He goes on to say that this applies to vocal imitations as well.
 
-[read second quote]
+> A name, then, it appears, is a vocal imitation of that which is imitated, and **he who imitates with his voice names that which he imitates.**
 
-But then Hermogenes pushes back a little.
+But then Hermogenes pushes back a little,
 
-[read third quote]
+> But Socrates, what sort of an imitation is a name?
+
+He accepts that imitations can be used as names,
+but given a name, he doesn't see the imitation.
+-->
+
+# Central question
 
 How do you get from an imitation _of_ something to a name _for_ something?
 
-Then they go back and forth for awhile, ultimately conceding that some
-names seem more natural than others, but for the most part, the debate
-isn't fully settled, which is why I'm still talking about it a couple
-thousand years laters.
+<!--
+That brings us to the central question of this research:
+
+How do you get from an imitation _of_ something
+to a name _for_ something?
+
+Does it require a conscious decision to invent or assign a new name?
+Or might imitations lead naturally to new names?
 -->
 
-# Which is more important to language evolution?
+# Vocal imitations are not words
 
-```{r lupyanlab-dialogue, engine="dot"}
-digraph {
-  rankdir=LR;
-  node[shape="none" fontname=Helvetica fontcolor=white fontsize=20];
-  edge[arrowhead="vee" arrowtail="vee"];
-  marcus -> pierce[dir=both minlen=1.5 style=invis];
-  marcus[label="Iconicity!" image="img/marcus.png" labelloc=b];
-  pierce[label="Arbitrariness!" image="img/pierce.png" labelloc=b];
-}
-```
-
-**Arbitrariness**: facilitates categorization, but difficult to learn.  
-**Iconicity**: easy to learn, but doesn't facilitate categorization.
+- Imitations are idiosyncratic, words are **stable**.
+- Imitations are specific, words are **categorical**.
 
 <!--
-I bring this up because it's reminiscent of a similar dialogue I
-had with Marcus Perlman, back when we started this project.
+By asking this question,
+I want to make clear the differences between vocal imitations
+and conventional words.
 
-The debate we had was this:
+There are two dimensions along which imitations are different from words.
 
-Which is a more important contributor to language evolution?
-Iconicity,
-or what Plato would have called the "naturalness of some names",
-or arbitrariness,
-the idea that words do not have to resemble their meanings?
+The first is that imitations are idiosyncratic.
+If I asked everyone here to imitate a dog,
+it's likely that each person's imitation of a bark
+will be more different from all the others
+than each person's pronunciation of the word "dog",
+which is much more stable across individuals.
 
-In the past, I've argued for the arbitrariness side of this equation.
-What I've said is that
-one of the reason language is so advantageous
-is not because it allows us to refer to specific things,
-but that it allows us to group together categories of things,
-irrespective of the individual members.
+The second is that imitations are specific.
+An imitation of a dog bark is an imitation of a specific dog,
+at a specific time, and in a specific emotional state;
+whether the dog is being aggressive or submissive.
+Imitations are recreations of specific environmental events.
 
-Through arbitrariness, you get categorization and symbolic reasoning.
+Words, on the other hand, leave all of that unspecified.
+The word "dog" doesn't tell you anything about how big the dog is,
+or whether the dog is playing or fighting,
+only that it is a dog.
 
-In contrast, Marcus has argued for the role of iconicity and vocal imitation
-in language evolution, and he's pointed out that language isn't
-perfectly arbitrary, also that people are very good at both generating
-and interpreting vocal imitations without prior convention.
-
-So Marcus, Gary, and I got together to try to figure out these differences.
-Specifically what we were after is a way to see between
-this dichotomy, to see the advantages of iconicity when creating
-words, but also to observe the advantages of more symbolic
-mappings for things like categorization.
+Words are categorical.
+They refer to all members of the category equally.
 -->
 
-# Does repeating imitations make them more wordlike?
+# How do you turn an imitation into a word?
 
 ```{r telephone-chain, engine="dot"}
 digraph {
   rankdir=LR;
   node[fontname=Helvetica shape=circle];
-  0 -> 1 -> 2 -> 3 -> 4 -> 5;
-  0[shape="none" label="imitation"];
-  5[shape="none" label="word?"];
+  0 -> 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8;
+  0[shape="none" label="sound"];
+  8[shape="none" label="word?"];
 }
 ```
 
 <!--
-Specifically what we asked was whether words can emerge from
-iterated imitations.
+Now that we know the two dimensions along which imitations differ from words,
+we can ask how you might get from an imitation to a word.
 
-We were interested in the minimal conditions for observing
-an emergence of words from imitations.
-Without any instruction or intention to create a word,
-does simply repeating it cause it to become more wordlike?
-
-To test this we had participants imitate various environmental sounds,
-sounds like glass breaking, and water splashing,
-and then we had new participants imitate the imitations,
-and so on for generation after generation.
-
-What we measured was how the imitation changed as a function of
-generation of repetition.
-
-Is repeating an imitation over and over across generations of different
-speakers sufficient to make it more wordlike?
+Our idea,
+which is not an original idea by any means,
+but we seem to be the first to try to test it formally,
+was that simply repeating an imitation
+across unique individuals
+might be sufficient
+to make imitations
+more stable,
+more categorical,
+and therefore more wordlike,
+even without explicit intention to conventionalize.
 -->
-
-# Measuring wordlike-ness
-
-1. Stable
-2. Learned
-3. Categorical
 
 # Interface for collecting vocal imitations
 
@@ -184,14 +175,28 @@ crotchet::draw_image("collect-imitations-gui", "wordsintransition")
 ```
 
 <!--
-Here's what the experiment looked like.
+To test this,
+we ran an online version of the children's game of Telephone,
+where a message is passed from person to person with the goal of staying unchanged.
 
-It was basically our version of the children's game of telephone.
+Participants logged in to the experiment,
+and were instructed they would be playing something like Telephone,
+but instead of a normal sentence or phrase,
+they would hear some sound,
+like glass breaking or water splashing,
+or someone imitating of one of these sounds.
 
-Participants clicked on the top speaker to hear a sound,
-and the bottom speaker to make their imitation of it.
+We told them that no matter how weird the sound was,
+their task was exactly the same as in the children's game:
+to repeat whatever they heard as accurately as possible.
 
-And participants were instructed to copy whatever they heard as accurately as possible.
+Let me play you some examples just so you get a sense of what this sounded like.
+
+<seed, gen1>
+<seed, gen1>
+<seed, gen1-gen8>
+<seed, gen1-gen8>
+<seed, gen1-gen8>
 -->
 
 # The results of the transmission chain experiment
@@ -201,41 +206,42 @@ gg_dendrogram
 ```
 
 <!--
-And here are our results -- the imitations we collected in this
-transmission chain experiment.
+Overall we collected about 500 imitations
+but from these,
+we had to remove about a quarter,
+because they were too quiet,
+or there was too much background noise,
+or they violated our instructions by saying something in English,
+as in the "a lobster" case.
 
-We had four different categories of environmental sounds:
-water, glass, tearing, and zipper,
-and four seed sounds within each category.
-
-The first generation of participants imitated the seed sound,
-and later generations imitated the previous generation,
-for a maximum of 8 generations.
+The final imitations are shown here:
+365 imitations along 105 contiguous transmission chains.
 -->
 
 # Research questions
 
-1. Do repeated imitations stabilize on particular words?
-2. Do the imitations retain their resemblance to the seed sound?
-3. Do the imitations become more suitable as category labels?
+Do repeated imitations:
+
+1. Stabilize on particular words?
+2. Retain their resemblance to the seed sound?
+3. Become more suitable as category labels?
 
 <!--
 Once we collected these imitations, we sought to answer three questions
-about how the imitations changed as a function of repetition.
+about how the imitations changed as a function of being repeated.
 
 First, do the imitations in each chain stabilize on particular words?
+Are later generation imitations
+more similar to one another
+than earlier generation imitations?
 
-Are later generation imitations more similar to one another than earlier
-generation imitations?
+Next we asked what the imitations were stabilizing on.
+Do the imitations retain a resemblance to the original seed sound,
+or does each chain careen off to create a total nonsense word.
 
-Next we asked what the imitations were stabilizing on. Do the imitations
-retain a resemblance to the original seed sound, or does each chain
-careen off to create a total nonsence word.
-
-Finally, we asked whether repetition has any reprecussions for the
-language learner. We took words created at the beginning of the
-chains and at the end of the chains, and test them to see which served
-as better category labels in a category learning experiment.
+Finally, we asked whether repetition has any consequences for the language learner.
+We took words from the beginning and the end of the chains,
+and tested whether repetition made the words easier to learn as category labels and easier to generalize to new category members.
 -->
 
 # Repeated imitations became more similar
@@ -244,11 +250,48 @@ as better category labels in a category learning experiment.
 gg_similarity_judgments
 ```
 
+<!--
+First up is whether the imitations
+became more stable as they were repeated.
+
+To test this,
+we had people rate the similarity between adjacent sounds
+within each transmission chain.
+
+We found that later generation imitations
+were rated as more similar to one another
+than earlier generation imitations,
+supporting our idea that repetition
+might make the imitations
+more stable and repeatable.
+-->
+
 # Similarity increased within, not between, chains
 
 ```{r algorithmic-similarity}
 gg_algo_similarity
 ```
+
+<!--
+An alternative possibility
+is that the imitations were becoming more similar
+not because they were stabilizing,
+but because any acoustic signal
+that's repeated from person to person
+might degrade to the point
+that they all sound the same.
+
+To test this,
+we compared the change in acoustic similarity within chains
+to an analogous comparison between chains,
+the idea being
+that if continuous degradation of the signal
+was what was causing the increase in similarity,
+that similarity might increase between chains as well as within.
+
+Instead we found that similarity only increased within chains,
+and not between them.
+-->
 
 # Example transcriptions
 
@@ -256,11 +299,34 @@ gg_algo_similarity
 kable(transcription_examples)
 ```
 
+<!--
+As a final measure of stability,
+we looked at how people's transcriptions of the imitations
+changed as a function of generation.
+
+We had people listen to imitations
+sampled from the first and last generation of every chain
+and transcribe it into a word.
+
+We instructed them to write down what they heard as a word
+that sounded as much like the sound as possible.
+
+Here are some examples:
+-->
+
 # Repeated imitations were transcribed more consistently
 
 ```{r transcription-distance}
 gg_distance
 ```
+
+<!--
+Next we measured the agreement among the transcriptions
+using a string distance measure
+and found that later generation imitations
+were transcribed more consistently
+than earlier generation imitations.
+-->
 
 # 1. Do imitations stabilize on particular words?
 
@@ -268,11 +334,30 @@ gg_distance
 
 _But what are they stabilizing on?_
 
+<!--
+So, does repeating an imitation cause it to stabilize on particular words?
+
+Yes. We found that repeated imitations were more similar to one another
+acoustically as well as orthographically.
+
+However, we don't know what the imitations are stabilizing on,
+and whether and for how long the imitations retain a resemblance
+to the original seed sound.
+-->
+
 # Interface for matching imitations to seed sounds
 
 ```{r guess-the-seed}
 draw_image("match-imitations-gui", "wordsintransition")
 ```
+
+<!--
+To test this,
+we had people listen to each of the imitations,
+and four of the different seed sounds,
+and they had to guess
+which sound they thought the person was trying to imitate.
+-->
 
 # Types of matching questions
 
@@ -308,29 +393,39 @@ gg_match_transcriptions
 
 _What are the consequences of repeating imitations for learners?_
 
+# Selecting words to use as category labels
+
+- Filtered for length and number of unique characters.
+- Equated based on overall matching accuracy.
+- Selected **a subset** (56) for testing.
+
 # A simple category learning experiment
+
+- Learned to associate 4 novel labels with 4 categories of sounds.
+- Categorized 16 sounds total, 4 per block of trials.
+- Trial-and-error learning procedure.
 
 ```{r learning-sound-names-paradigm, engine="dot"}
 digraph {
   rankdir=LR;
   node[fontname="Helvetica" shape=none];
   sound -> label -> prompt[minlen=2];
-  sound[label="sound\n<water>\n 1/16"];
-  label[label="word\n'eeverlusha'\n 1/4"];
+  sound[label="sound\n<water 2>"];
+  label[label="word\n'eeverlusha'"];
   prompt[label="?\nY/N"];
 }
-```
-
-# No difference in accuracy for novel labels
-
-```{r learning-performance-ceiling}
-gg_lsn_performance_ceiling
 ```
 
 # Later generation labels yielded faster responses
 
 ```{r learning-rts}
 rt_plot
+```
+
+# No difference in accuracy for novel labels
+
+```{r learning-performance-ceiling}
+gg_lsn_performance_ceiling
 ```
 
 # Later generation labels were generalized more quickly
@@ -399,4 +494,3 @@ gridExtra::grid.arrange(
   nrow = 1
 )
 ```
-
