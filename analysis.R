@@ -92,7 +92,7 @@ graph <- igraph::graph_from_data_frame(edges, vertices = nodes)
 gg_dendrogram <- ggraph(graph, "dendrogram") +
   geom_edge_diagonal(aes(edge_linetype = node2.node_type), edge_width = 0.6) +
   geom_node_point(aes(shape = node_type), size = 0.8) +
-  geom_node_text(aes(label = node_label), vjust = -0.5, size = 7) +
+  geom_node_text(aes(label = node_label), vjust = -0.2, size = 7) +
   scale_x_continuous("", breaks = NULL) +
   scale_y_continuous("Generation", breaks = 0:8, labels = c(8:1, "seeds")) +
   scale_shape_manual(values = c(32, 32, 16, 32)) +

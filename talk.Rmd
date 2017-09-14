@@ -21,14 +21,13 @@ read_chunk("analysis.R", labels = "main")
 
 # Are names for things natural or conventional?
 
-Plato's _Cratylus_
+Plato's _Cratylus_  
+**Hermogenes**: Conventional! Names like "man" and "horse" are arbitrary.  
+**Cratylus**: Natural! _anthrôpos_ = "man" ~ _anathrôn ha opôpe_ = "one who reflects on what he has seen". (Some horse!)
 
 ```{r plato}
 draw_image("img/plato.jpg", height = 0.2)
 ```
-
-**Hermogenes**: Conventional! Names like "man" and "horse" are arbitrary.  
-**Cratylus**: Natural! _anthrôpos_ = "man" ~ _anathrôn ha opôpe_ = "one who reflects on what he has seen". (Some horse!)
 
 <!--
 Are names for everyday things natural or conventional?
@@ -48,7 +47,7 @@ some names are correct, and others are incorrect.
 and "horse" is the correct name for horses.
 
 Socrates, who's mediating this debate,
-backs up Cratylus by giving examples like this:
+backs up Cratylus by giving funny examples like this:
 he traces the Greek word for "man"
 to mean "one who reflects on what he has seen",
 and concludes, well, if we called a horse that,
@@ -59,13 +58,17 @@ it would have to be one hell of a horse!
 
 > **Socrates**: If we wished to designate that which is above and is light, we should raise our hands towards heaven in imitation; but if the things to be designated were below or heavy, we should extend our hands towards the ground...
 
-> A name, then, it appears, is a vocal imitation of that which is imitated, and **he who imitates with his voice names that which he imitates.**
+> A name, then, it appears, is a vocal imitation of that which is imitated, and he who imitates with his voice names that which he imitates.
 
 > **Hermogenes**: But Socrates, **what sort of an imitation is a name?**
 
 <!--
-Creating new words out of existing words is one way names can be natural,
-but Plato also explored whether words can be formed naturally,
+Creating new words out of existing words
+is one way,
+at least in Plato's time,
+they thought names can be natural,
+but they also explored
+whether words can be formed naturally,
 without any prior convention,
 and this is the part that I'm going to focus on today.
 
@@ -77,23 +80,27 @@ First he points out that
 imitation is a natural way to designate something
 without prior convention.
 
-> If we wished to designate that which is above and is light, we should raise our hands towards heaven in imitation; but if the things to be designated were below or heavy, we should extend our hands towards the ground.
+> If we wished to designate that which is above and is light,
+> we should raise our hands towards heaven in imitation;
+> but if the things to be designated were below or heavy,
+> we should extend our hands towards the ground.
 
 He goes on to say that this applies to vocal imitations as well.
 
-> A name, then, it appears, is a vocal imitation of that which is imitated, and **he who imitates with his voice names that which he imitates.**
+> A name, then, it appears, is a vocal imitation of that which is imitated,
+> and he who imitates with his voice names that which he imitates.
 
 But then Hermogenes pushes back a little,
 
 > But Socrates, what sort of an imitation is a name?
 
-He accepts that imitations can be used as names,
+He accepts that people can understand imitations as sort of names,
 but given a name, he doesn't see the imitation.
 -->
 
 # Central question
 
-How do you get from an imitation _of_ something to a name _for_ something?
+How do you get from an imitation **of** something to a name **for** something?
 
 <!--
 That brings us to the central question of this research:
@@ -112,23 +119,25 @@ Or might imitations lead naturally to new names?
 
 <!--
 By asking this question,
-I want to make clear the differences between vocal imitations
+I want to make clear what I think
+are the important differences
+between vocal imitations
 and conventional words.
 
-There are two dimensions along which imitations are different from words.
+There are two dimensions I want to talk about.
 
-The first is that imitations are idiosyncratic.
+The first is that imitations are idiosyncratic where words are stable.
 If I asked everyone here to imitate a dog,
-it's likely that each person's imitation of a bark
+it's likely that each person's imitation
 will be more different from all the others
 than each person's pronunciation of the word "dog",
 which is much more stable across individuals.
 
 The second is that imitations are specific.
-An imitation of a dog bark is an imitation of a specific dog,
-at a specific time, and in a specific emotional state;
+An imitation of a dog bark is an imitation of a single dog,
+at a specific time, and in a particular emotional state;
 whether the dog is being aggressive or submissive.
-Imitations are recreations of specific environmental events.
+In this way, imitations are recreations of specific environmental events.
 
 Words, on the other hand, leave all of that unspecified.
 The word "dog" doesn't tell you anything about how big the dog is,
@@ -189,12 +198,67 @@ or someone imitating of one of these sounds.
 We told them that no matter how weird the sound was,
 their task was exactly the same as in the children's game:
 to repeat whatever they heard as accurately as possible.
+-->
 
-Let me play you some examples just so you get a sense of what this sounded like.
+# Categories of sounds used as seeds
+
+```{r seeds, engine="dot"}
+digraph {
+  graph[fontname="helvetica", fontsize=30];
+  node[fontname="helvetica", fontsize=30];
+
+  glass[shape="none"];
+  tear[shape="none"];
+  water[shape="none"];
+  zipper[shape="none"];
+
+  glass -> {glass1, glass2, glass3, glass4};
+  tear -> {tear1, tear2, tear3, tear4};
+  water -> {water1, water2, water3, water4};
+  zipper -> {zipper1, zipper2, zipper3, zipper4};
+
+  glass1[label="1"];
+  glass2[label="2"];
+  glass3[label="3"];
+  glass4[label="4"];
+
+  tear1[label="1"];
+  tear2[label="2"];
+  tear3[label="3"];
+  tear4[label="4"];
+
+  water1[label="1"];
+  water2[label="2"];
+  water3[label="3"];
+  water4[label="4"];
+
+  zipper1[label="1"];
+  zipper2[label="2"];
+  zipper3[label="3"];
+  zipper4[label="4"];
+
+  glass1, glass2, glass3, glass4, tear1, tear2, tear3, tear4, water1, water2, water3, water4, zipper1, zipper2, zipper3, zipper4[style="filled", color="lightgray", fillcolor="lightgray"];
+
+  water2 -> gen1;
+  gen1[label="?", style="filled", fillcolor="#66C2A5"];
+}
+```
+
+<!--
+Let me give you some examples of this.
+
+Here's a depiction of all the seed sounds we used,
+and they were divided into 4 categories:
+glass, water, tearing, zipper
+
+Each category had four
+equally distinguishable
+seed sounds in it.
 
 <seed, gen1>
 <seed, gen1>
 <seed, gen1-gen8>
+<gen1, gen8>
 <seed, gen1-gen8>
 <seed, gen1-gen8>
 -->
@@ -436,20 +500,18 @@ gg_transition
 
 # The emergence of words from iterated vocal imitation
 
-1. Do repeated imitations stabilize on particular words?
-2. Do the imitations retain their resemblance to the seed sound?
-3. Do the imitations become more suitable as category labels?
+Repeating imitations makes them more wordlike.
+
+1. Later generation imitations were more similar to one another, and easier to transcribe.
+2. Some evidence that repeating imitations retains category information, and also makes them easier to learn.
+
+Who was right, Hermogenes or Cratylus? **Both**, naturally formed "names" can become more conventional through unguided processes.
 
 # Thanks!
 
 Pierce Edmiston, Marcus Perlman, and Gary Lupyan.
 [github.com/lupyanlab/creating-words](https://github.com/lupyanlab/creating-words/tree/cesc)  
 [osf.io/3navm](https://osf.io/3navm)  
-
-# References
-
-- http://www.hermes-press.com/cratylus2.htm
-- https://plato.stanford.edu/entries/plato-cratylus/
 
 # Correlation between subjective and objective similarity
 
