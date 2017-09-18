@@ -6,7 +6,8 @@
 
 # reproducible
 figs/
-.cache/
+*files/
+*cache/
 
 # latex
 *.tex
