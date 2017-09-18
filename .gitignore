@@ -23,6 +23,7 @@ figs/
 
 # R/RStudio
 .Rhistory
+.Rproj.user/
 
 # OS
 .DS_Store
