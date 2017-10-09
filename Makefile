@@ -9,4 +9,4 @@ creating-words.docx: creating-words.Rmd
 supplemental-materials.pdf: supplemental-materials.Rmd
 	Rscript -e 'rmarkdown::render("$<")'
 clean:
-	rm -rf *_cache/ *_files/ *.tex *.pdf *.docx
+	rm -rf *cache/ *files/ *.tex *.pdf *.docx
