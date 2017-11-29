@@ -70,9 +70,24 @@ gg_match_to_seed <- ggplot(imitation_matches) +
     panel.grid.minor.y = element_blank()
   )
 
+# Does removing the low accuracy within-category questions change
+# the interpretation of the decreasing true seed advantage?
+imitation_matches_mod_no_low_acc <- glmer(
+  is_correct ~ offset(chance_log) + generation_1 * same_v_between +
+    (generation_1|chain_name/seed_id) + (1|subj_id),
+  family = "binomial", data = filter(imitation_matches, survey_type != "within")
+)
+
 ## Transcriptions ##
 
 data("transcription_matches")
+
+transcription_matches %<>%
+  recode_question_type() %>%
+  recode_message_type() %>%
+  recode_version() %>%
+  add_chance() %>%
+  filter(message_type != "sound_effect")
 
 n_all_transcription_match_subjs <- count_subjects(transcription_matches)
 transcription_match_failed_catch_trial <- transcription_matches %>%
@@ -81,15 +96,7 @@ transcription_match_failed_catch_trial <- transcription_matches %>%
   unique()
 n_transcription_match_subjs_failed_catch_trial <- length(transcription_match_failed_catch_trial)
 
-transcription_matches %<>%
-  recode_question_type() %>%
-  recode_message_type() %>%
-  recode_version() %>%
-  add_chance() %>%
-  filter(
-    message_type != "sound_effect",
-    !(subj_id %in% transcription_match_failed_catch_trial)
-  )
+transcription_matches %<>% filter(!(subj_id %in% transcription_match_failed_catch_trial))
 
 n_transcription_match_subjs <- count_subjects(transcription_matches)
 
