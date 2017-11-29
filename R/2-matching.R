@@ -90,14 +90,22 @@ transcription_matches %<>%
   filter(message_type != "sound_effect")
 
 n_all_transcription_match_subjs <- count_subjects(transcription_matches)
+
+data("transcription_matches")
 transcription_match_failed_catch_trial <- transcription_matches %>%
   filter(question_type == "catch_trial", is_correct == 0) %>%
   .$subj_id %>%
   unique()
 n_transcription_match_subjs_failed_catch_trial <- length(transcription_match_failed_catch_trial)
 
-transcription_matches %<>% filter(!(subj_id %in% transcription_match_failed_catch_trial))
+transcription_matches %<>%
+  recode_question_type() %>%
+  recode_message_type() %>%
+  recode_version() %>%
+  add_chance() %>%
+  filter(message_type != "sound_effect")
 
+transcription_matches %<>% filter(!(subj_id %in% transcription_match_failed_catch_trial))
 n_transcription_match_subjs <- count_subjects(transcription_matches)
 
 transcription_matches_last_gen_mod <- glmer(
