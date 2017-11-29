@@ -17,12 +17,12 @@ affiliation:
   - id            : "1"
     institution   : "University of Wisconsin-Madison"
   - id            : "2"
-    institution   : "Max Planck Institute for Psycholinguistics"
+    institution   : "University of Birmingham"
 
 author_note: >
-  Pierce Edmiston and Gary Lupyan, Department of Psychology, University of Wisconsin-Madison, Madison, Wisconsin. Marcus Perlman, Max Planck Institute for Psycholinguistics, Nijmegen, Netherlands.
+  Pierce Edmiston and Gary Lupyan, Department of Psychology, University of Wisconsin-Madison, Madison, Wisconsin. Marcus Perlman, University of Birmingham, United Kingdom.
 abstract: >
-  People have long pondered the origins of language, especially the words that compose them. Here, we report a series of experiments investigating how conventional spoken words might emerge from imitations of environmental sounds. Does the repeated imitation of an environmental sound gradually give rise to novel word forms? In what ways do these words resemble the original sounds that motivated them? Participants played a version of the children’s game “Telephone”. The first generation of participants imitated recognizable environmental sounds (e.g., glass breaking, water splashing). Subsequent generations imitated the imitations for a maximum of 8 generations. The results showed that the imitations became more stable and word-like, and later imitations were easier to learn as category labels. At the same time, even after 8 generations, both spoken imitations and their written transcriptions could be matched above chance to the category of environmental sound that motivated them. These results show how repeated imitation can create progressively more word-like forms while continuing to retain a resemblance to the original sound that motivated them, and speak to the possible role of human vocal imitation in explaining the origins of at least some spoken words.
+  People have long pondered the origins of language, especially the words that compose them. Here, we report a series of experiments investigating how conventional spoken words might emerge from imitations of environmental sounds. Does the repeated imitation of an environmental sound gradually give rise to more wordlike forms? In what ways do these words resemble the original sounds that motivated them (i.e., iconicity)? Participants played a version of the children’s game “Telephone”. The first generation of participants imitated recognizable environmental sounds (e.g., glass breaking, water splashing). Subsequent generations imitated the previous generation of imitations for a maximum of 8 generations. The results showed that the imitations became more stable and word-like, and later imitations were easier to learn as category labels. At the same time, even after 8 generations, both spoken imitations and their written transcriptions could be matched above chance to the category of environmental sound that motivated them. These results show how repeated imitation can create progressively more word-like forms while continuing to retain a resemblance to the original sound that motivated them, and speak to the possible role of human vocal imitation in explaining the origins of at least some spoken words.
 
 keywords          : "language evolution, iconicity, vocal imitation, transmission chain"
 wordcount         : "5552"
@@ -63,7 +63,7 @@ sapply(list.files("R", "*.R", full.names = TRUE), read_chunk)
 
 The vocal communication of non-human primate species is based on a repertoire of
 species-typical calls that are highly similar across generations and between
-populations [e.g. @Seyfarth:1986tw; but see, e.g. @Crockford:2004cz]. In
+populations [e.g. @Seyfarth:1986tw] [but see, e.g. @Crockford:2004cz]. In
 contrast, human languages comprise a vast repertoire of learned meaningful
 elements (words and other morphemes) which can number in the tens of thousands
 [e.g., @Brysbaert:2016fg]. Aside from their number, the words of different
@@ -109,7 +109,7 @@ and meaning --- cannot be important to understanding the origin of spoken words.
 Although most words of contemporary spoken languages are not clearly imitative
 in origin, there has been a growing recognition of the importance of iconicity
 in spoken languages [@Dingemanse:2015cu; @Perniss:2010fb] and the common use of
-vocal imitation and depiction in spoken discourse [@Clark:1990cl; @Lewis:2009].
+vocal imitation and depiction in spoken discourse [@Clark:1990cl; @Lewis:2009wz].
 This has led some to argue for the importance of imitation for understanding the
 origin of spoken words [e.g., @Brown:1955wy; @Dingemanse:2014gj; @Donald:2016kd;
 @Imai:2014dea; @Perlman:2015ip]. In addition, counter to previous assumptions,
