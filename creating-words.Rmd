@@ -61,13 +61,109 @@ sapply(list.files("R", "*.R", full.names = TRUE), read_chunk)
 ```{r setup, include=FALSE, cache=FALSE}
 ```
 
-The importance of imitation and depiction in the origin of signs is clearly observable in signed languages [@Klima:1980si; @GoldinMeadow:2016bw; @Kendon:2014eg], but in considering the idea that imitation in the vocal modality may be key to understanding the origin of spoken words, many have argued that the human capacity for vocal imitation is far too limited to play a significant role [@Arbib:2012htb; @Tomasello:2010or; @Armstrong:2007go; @Corballis:2003ha; @Hockett:1978se; @Hewes:1973vr]. For example, @Pinker:2005cv argued that, “most humans lack the ability… to convincingly reproduce environmental sounds… Thus ‘capacity for vocal imitation’ in humans might be better described as a capacity to learn to produce speech” (p. 209). Consequently, it is still widely assumed that vocal imitation --- or more broadly, the use of any sort of resemblance between form and meaning --- cannot be important to understanding the origin of spoken words. We challenge this view by demonstrating that spoken words can emerge from vocal imitations even without the intention to communicate. We find that repeating vocal imitations of environmental sounds over generations of unique speakers is sufficient to create more word-like vocalizations both in form and function.
+The vocal communication of non-human primate species is based on a repertoire of
+species-typical calls that are highly similar across generations and between
+populations [e.g. @Seyfarth:1986tw; but see, e.g. @Crockford:2004cz]. In
+contrast, human languages comprise a vast repertoire of learned meaningful
+elements (words and other morphemes) which can number in the tens of thousands
+[e.g., @Brysbaert:2016fg]. Aside from their number, the words of different
+natural languages are characterized by their extreme variability
+[@Wierzbicka:1996sm; @Evans:2009dk; @Lupyan:2016uw]. The words used within a
+speech community change relatively quickly over generations [e.g.,
+@Pagel:2007br]. At least in part as a consequence of this divergence, most words
+appear to bear a largely arbitrary relationship between their form and their
+meaning --- seemingly, a product of their idiosyncratic etymological histories
+[@Sapir:1921; @Labov:1972]. The apparently arbitrary nature of spoken
+vocabularies presents a quandary for the study of language origins. If words of
+spoken languages are truly arbitrary, by what process were the first words ever
+coined?
 
-Although most words of contemporary spoken languages are not clearly imitative in origin, there has been a growing recognition of the importance of imitative words in spoken languages [@Dingemanse:2015cu; @Perniss:2010fb] and the frequent use of vocal imitation and depiction in spoken discourse [@Clark:1990cl; @Lewis:2009wz]. This has led some to argue for the importance of imitation for understanding the origin of spoken words [e.g., @Brown:1955wy; @Donald:2016kd; @Imai:2014dea; @Perlman:2015ip; @Dingemanse:2014gj]. In addition, counter to previous assumptions, people are highly effective at using vocal imitations to refer to environmental sounds such as coins dropping in a jar or mechanical events such as scraping --- in some cases, even more effective than when using conventional words [@Lemaitre:2014kr]. Recent work has also shown that people are able to create novel imitative vocalizations for more abstract meanings (e.g. ‘slow’, ‘rough’, ‘good’, ‘many’) that are understandable to naïve listeners [@Perlman:2015ip]. These imitations are effective not because people can mimic environmental sounds with high fidelity, but because people are able to produce imitations that capture the salient features of sounds in ways that are understandable to listeners [@Lemaitre:2016kz]. Similarly, the features of onomatopoeic words might highlight distinctive aspects of the sounds they represent. For example, the initial voiced, plosive `/b/` in “boom” represents an abrupt, loud onset, the back vowel `/u/` a low pitch, and the nasalized `/m/` a slow, muffled decay [@Rhodes:1994au].
+While the origin of spoken words is hard to discern, the situation is somewhat
+different for signed languages. In signed languages, the origins of many signs
+are relatively transparent. Although signed languages rely on the same type of
+referential symbolism as spoken languages, many individual signs have clear
+iconic roots, formed from gestures that resemble their meaning [@Frishberg:1975dh;
+@GoldinMeadow:2016bw; @Kendon:2014eg; @Klima:1980si]. For instance,
+@Frishberg:1975dh noted the iconic origins of the American Sign Language (ASL)
+sign for bird, which is formed with a beak-like handshape articulated in front
+of the nose. Another example is steal, derived from a grabbing motion to
+represent the act of stealing something. @Stokoe:1965 identified about 25% of
+American Sign Language signs to be iconic, and reviewing the remaining 75% of
+ASL signs, @Wescott:1971to determined that about two-thirds of these seemed
+plausibly derived from iconic origins.
 
-Thus, converging evidence suggests that people can use vocal imitation as an effective means of communication. But can vocal imitations ever give rise to words that can be integrated into the vocabulary of a language? And if so, by what means might this happen? To answer these questions, we recruited participants to play an online version of the children's game of "Telephone". In the children’s game, a spoken message is whispered from one person to the next. In our version, the original message or "seed sound" was a recording of an environmental sound. The initial group of participants (first generation) imitated these seed sounds, the next generation imitated the previous imitators, and so on for up to 8 generations.
+In contrast to the visual gestures of signed languages, many have argued that
+iconic vocalizations could not have played a significant role in the origin of
+spoken words because the vocal modality simply does not afford much resemblance
+between form and meaning [@Arbib:2012htb; @Armstrong:2007go; @Corballis:2003ha;
+@Hewes:1973vr; @Hockett:1978se; @Tomasello:2010or]. It has also been argued that
+the human capacity for vocal imitation is a domain-specific skill, geared
+towards learning to speak, rather than the iconic representation of
+environmental sounds. For example, @Pinker:2005cv suggested that, “most humans
+lack the ability… to convincingly reproduce environmental sounds… Thus ‘capacity
+for vocal imitation’ in humans might be better described as a capacity to learn
+to produce speech” (p. 209). Consequently, it is still widely assumed that vocal
+imitation --- or more broadly, the use of any sort of resemblance between form
+and meaning --- cannot be important to understanding the origin of spoken words.
 
-We then conducted a series of analyses and additional experiments to systematically answer the following questions: First, do imitations stabilize in form and become more word-like as they are repeated? Second, do the imitations retain a resemblance to the original environmental sound that inspired them? If so, it should be possible for naïve participants to match the emergent words back to the original seed sounds. Third, do the imitations become more suitable as labels for the category of sounds that motivated them? For example, does the imitation of a particular water-splashing sound become, over generations of repeated imitation, a better label for the more general category of water-splashing sounds?
+Although most words of contemporary spoken languages are not clearly imitative
+in origin, there has been a growing recognition of the importance of iconicity
+in spoken languages [@Dingemanse:2015cu; @Perniss:2010fb] and the common use of
+vocal imitation and depiction in spoken discourse [@Clark:1990cl; @Lewis:2009].
+This has led some to argue for the importance of imitation for understanding the
+origin of spoken words [e.g., @Brown:1955wy; @Dingemanse:2014gj; @Donald:2016kd;
+@Imai:2014dea; @Perlman:2015ip]. In addition, counter to previous assumptions,
+people are highly effective at using vocal imitations to refer to environmental
+sounds such as coins dropping in a jar or mechanical events such as scraping –
+in some cases, even more effective than when using conventional words
+[@Lemaitre:2014kr]. Recent work has also shown that people are able to create
+novel imitative vocalizations for more abstract meanings (e.g. ‘slow’, ‘rough’,
+‘good’, ‘many’) that are understandable to naïve listeners [@Perlman:2015ip].
+These imitations are effective not because people can mimic environmental sounds
+with high fidelity, but because people are able to produce imitations that
+capture the salient features of sounds in ways that are understandable to
+listeners [@Lemaitre:2016kz]. Similarly, the features of onomatopoeic words
+might highlight distinctive aspects of the sounds they represent. For example,
+the initial voiced, plosive /b/ in “boom” represents an abrupt, loud onset, the
+back vowel /u/ a low pitch, and the nasalized /m/ a slow, muffled decay
+[@Rhodes:1994au].
+
+Thus, converging evidence suggests that people can use vocal imitation as an
+effective means of communication. At the same time, vocal imitations are not
+words. If vocal imitation played a role in the origin of some spoken words, then
+it is necessary to identify the minimal conditions under which vocal imitations
+can give rise to more word-like vocalizations that can eventually be integrated
+into a vocabulary of a language. In the present set of studies we ask whether
+vocal imitations can transition to more word-like forms through sheer repetition
+--- without an explicit intent to communicate. To answer this question, we
+recruited participants to play an online version of the children's game of
+"Telephone". In the children’s game, a spoken message is whispered from one
+person to the next. In our version, the original message or "seed sound" was a
+recording of an environmental sound. The initial group of participants (first
+generation) imitated these seed sounds, the next generation imitated the
+previous imitators, and so on for up to 8 generations.
+
+Our approach resembles in some ways but ultimately diverges from other efforts
+to understand language evolution through the use of transmission chain designs.
+Iterated learning paradigms explain how constraints imposed by populations of
+language learners shape the structure of an evolving language [@Kirby:2008kja;
+@Tamariz:2017bd]. Here, the constraints that are hypothesized to drive
+vocalizations to become more wordlike are not related to any learning process,
+but instead are expected to emerge from constraints on reproducibility. That is,
+we sought to determine whether iterated reproduction, even without learning, was
+a sufficient enough constraint to allow for the emergence of more wordlike
+signals.
+
+After collecting the imitations, we conducted a series of analyses and
+additional experiments to systematically answer the following questions: First,
+do imitations stabilize in form and become more word-like as they are repeated?
+Second, do the imitations retain a resemblance to the original environmental
+sound that inspired them? If so, it should be possible for naïve participants to
+match the emergent words back to the original seed sounds. Third, do the
+imitations become more suitable as categorical labels for the sounds that
+motivated them? For example, does the imitation of a particular water-splashing
+sound become, over generations of repeated imitation, a better label for the
+more general category of water-splashing sounds?
 
 # Experiment 1: Stabilization of imitations through repetition
 
