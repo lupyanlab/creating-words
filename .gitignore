@@ -17,6 +17,7 @@
 *.fls
 *.log
 *.out
+*.ent
 
 # submissions
 !submissions/**/*.pdf

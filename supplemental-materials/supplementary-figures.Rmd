@@ -1,6 +1,7 @@
 ---
 output: pdf_document
 header-includes:
+  - \usepackage{caption}
   - \DeclareCaptionLabelFormat{si-fig}{#1#2}
   - \captionsetup[figure]{labelformat=si-fig,name=Figure S}
 ---

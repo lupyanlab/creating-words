@@ -360,7 +360,7 @@ gg_comparing_similarities <- ggplot(edge_similarities) +
 
 
 
-## Transcriptions ##
+# Transcriptions ----
 
 data("transcriptions")
 data("transcription_frequencies")
@@ -494,6 +494,12 @@ transcription_examples <- transcription_matches %>%
     `First generation` = first_gen_imitation,
     `Last generation` = last_gen_imitation
   )
+
+transcription_examples_small <- data_frame(
+  Category = c("glass", "tear", "water", "zipper"),
+  `First generation` = c("dirrng", "feeshefee", "boococucuwich", "bzzzzup"),
+  `Last generation` = c("wayew", "cheecheea", "galong", "izzip")
+)
 
 transcription_uniqueness <- transcription_frequencies %>%
   recode_message_type() %>%
