@@ -383,7 +383,7 @@ To assess the resemblance of repeated imitations to the original seed sounds,
 we measured the ability of participants naïve to the design of the experiment
 to match imitations and their transcriptions back to their original sound
 source relative to other seed sounds from either the same category or from
-different categories (Fig. 4). Using these match accuracies, we first asked
+different categories (Fig. 3). Using these match accuracies, we first asked
 whether and for how many generations the imitations and their transcriptions
 could be matched back to the original sounds. Second, we asked whether repeated
 imitation resulted in a uniform degradation of the signal in each imitation,
@@ -394,7 +394,7 @@ categorically, and thus we anticipated that imitations would lose information
 identifying the specific source of an imitation more rapidly than category
 information that identifies the category of environmental sound being imitated.
 
-```{r fig4, fig.width=4, fig.height=3.5, fig.cap="Three types of matching questions. Participants were presented an imitation or its transcription and selected one of four seed sounds. True seed and category match questions had choices from different sound categories. Specific match questions pitted the actual seed against the other seeds within the same category."}
+```{r fig3, fig.width=4, fig.height=3.5, fig.cap="Three types of matching questions. Participants were presented an imitation or its transcription and selected one of four seed sounds. True seed and category match questions had choices from different sound categories. Specific match questions pitted the actual seed against the other seeds within the same category."}
 grid.arrange(
   read_graphviz("true-seed", "wordsintransition"),
   read_graphviz("category-match", "wordsintransition"),
@@ -455,7 +455,7 @@ and decreased steadily over generations,
 `r glmer_mod_results(imitation_matches_overall_mod, "generation_1")`.
 We then tested whether this increase in difficulty was constant across
 the three types of questions or if some question types became more
-difficult than others. The results are shown in Fig. 5A. Performance
+difficult than others. The results are shown in Fig. 4A. Performance
 decreased over generations more rapidly for questions requiring a
 within-category distinction than for between-category questions,
 `r glmer_mod_results(imitation_matches_mod, "generation_1:same_v_within")`,
@@ -468,7 +468,7 @@ questions are simply more difficult because the sounds presented as choices
 are more acoustically similar to one another. However, performance also
 decreased relative to the category match questions for the easiest type
 of question where the correct answer was the actual seed generating the
-imitation (True seed questions; see Fig. 4). That is, the advantage of having the
+imitation (True seed questions; see Fig. 3). That is, the advantage of having the
 true seed among between-category distractors decreased over generations,
 `r glmer_mod_results(imitation_matches_mod, "generation_1:same_v_between")`.
 The observed decrease in the "true seed advantage" (the advantage of having
@@ -484,7 +484,7 @@ auditory sounds back to the original environmental sounds. Remarkably,
 participants were able to guess the correct meaning of a word that was
 transcribed from an imitation that had been repeated up to 8 times,
 `r glmer_mod_results(transcription_matches_last_gen_mod, "(Intercept)", odds = TRUE)`
-(Fig. 5B). This was true for True seed questions containing
+(Fig. 4B). This was true for True seed questions containing
 the actual seed generating the transcribed imitation,
 `r glmer_mod_results(transcription_matches_last_gen_mod_category, "(Intercept)")`,
 and for Category match questions where participants had to associate
@@ -494,7 +494,7 @@ The effect of generation did not vary across these question types,
 `r glmer_mod_results(acc_mod, "question_c:message_c")`. The results of matching
 "transcriptions" directly of the environmental sounds are shown in Fig. S6.
 
-```{r fig5, fig.width=6, fig.height=3.5, fig.cap='Repeated imitations retained category resemblance. A. Accuracy in matching vocal imitations to original seed sounds. Curves show predictions of the generalized linear mixed effects models with ±1 SE of the model predictions. B. Accuracy in matching transcriptions of the imitations to original seed sounds (e.g., "boococucuwich" to a water splashing sound). Circles show mean matching accuracy for the vocal imitations that were transcribed for comparison.'}
+```{r fig4, fig.width=6, fig.height=3.5, fig.cap='Repeated imitations retained category resemblance. A. Accuracy in matching vocal imitations to original seed sounds. Curves show predictions of the generalized linear mixed effects models with ±1 SE of the model predictions. B. Accuracy in matching transcriptions of the imitations to original seed sounds (e.g., "boococucuwich" to a water splashing sound). Circles show mean matching accuracy for the vocal imitations that were transcribed for comparison.'}
 grid.arrange(
   gg_match_to_seed +
     ggtitle("A"),
@@ -614,7 +614,7 @@ accuracy performance quickly reached ceiling and did not differ between groups
 However, the response times of participants learning last
 generation transcriptions declined more rapidly with practice
 than participants learning first generation transcriptions,
-`r lmer_mod_results(lsn_after_first_block_lmertest_mod, "message_c")` (Fig. 6A).
+`r lmer_mod_results(lsn_after_first_block_lmertest_mod, "message_c")` (Fig. 5A).
 These faster responses suggest that, in addition to becoming more stable both in
 terms of acoustic and orthographic properties, repeating imitations makes them
 easier to process as category labels. We predict that given a harder task (i.e.,
@@ -628,10 +628,10 @@ of novel sounds (new category members) and the first trials after the block
 transition (±6 trials). The results revealed a reliable interaction between
 the generation of the transcribed imitation and the block transition,
 `r lmer_mod_results(transition_lmertest_mod, "block_transition_c:message_c")`
-(Fig. 6B). This result suggests that transcriptions from later generation
+(Fig. 5B). This result suggests that transcriptions from later generation
 imitations were easier to generalize to new category members.
 
-```{r fig6, fig.width=6, fig.height=3.5, fig.cap="Repeated imitations made for better category labels. A. Mean RTs for correct responses in the category learning experiment with ±1 SE. B. Cost of generalizing to new category members with ±1 SE."}
+```{r fig5, fig.width=6, fig.height=3.5, fig.cap="Repeated imitations made for better category labels. A. Mean RTs for correct responses in the category learning experiment with ±1 SE. B. Cost of generalizing to new category members with ±1 SE."}
 grid.arrange(
   rt_plot +
     ggtitle("A"),
