@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+zip creating-words \
+  creating-words.pdf creating-words.docx creating-words-upload.tex \
+  supplemental-materials/*.docx supplemental-materials/*.pdf
+
+# Add figs without paths
+zip -j creating-words \
+  creating-words_files/figure-latex/*.pdf
