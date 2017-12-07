@@ -1,7 +1,7 @@
 ---
 title: Inter-rater reliability for acoustic similarity judgments
 output: word_document
-bibliography: ../telephone.bib
+bibliography: ../references.bib
 ---
 
 ```{r config, include=FALSE}
