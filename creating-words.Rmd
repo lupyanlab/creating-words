@@ -267,9 +267,9 @@ coefficients in order to obtain speaker-independent estimates.
 ### Collecting transcriptions of imitations
 
 Transcriptions were obtained for the first and last three generations of each
-transmission chain. Additional "transcriptions" directly of the original
-environmental seed sounds were also collected and are analyzed in the
-Supplementary Materials (Fig. S6).
+transmission chain. Additional “transcriptions” of the original sounds used as
+seeds were also collected and are analyzed in the Supplementary Materials (Fig.
+S6).
 
 Participants (_N_=`r n_transcribers`) recruited from Amazon Mechanical Turk
 were paid to listen to imitations and write down what they heard as a
@@ -310,9 +310,11 @@ forms as opposed to converging on similar forms through continuous degradation.
 
 An additional test of stabilization and word-likeness was to measure
 whether later generation imitations were transcribed more consistently
-than first generation imitations. We collected approximately
-`r n_transcriptions_per_imitation` transcriptions per sound. Some examples of
-the transcriptions are presented in Table 1.
+than first generation imitations. We collected a total of `r n_transcriptions`
+transcriptions --- approximately `r n_transcriptions_per_imitation`
+transcriptions per sound. Of these, `r n_english_transcriptions` transcriptions
+(8%) were removed because they contained English words. Some examples of the
+final transcriptions are presented in Table 1.
 
 ```{r table1, results='asis'}
 table_caption <- "Examples of words transcribed from imitations."
