@@ -120,8 +120,8 @@
 
   \author{Pierce Edmiston\textsuperscript{1}, Marcus Perlman\textsuperscript{2}, \& Gary Lupyan\textsuperscript{1}}
 
-  % \def\affdep{{"", "", ""}}%
-  % \def\affcity{{"", "", ""}}%
+  \def\affdep{{"", "", ""}}%
+  \def\affcity{{"", "", ""}}%
 
   \affiliation{
     \vspace{0.5cm}
@@ -129,15 +129,14 @@
           \textsuperscript{2} University of Birmingham  }
 
   \authornote{
+    \newcounter{author}
     Pierce Edmiston and Gary Lupyan, Department of Psychology, University of
     Wisconsin-Madison, Madison, Wisconsin. Marcus Perlman, Department of
     English Language and Applied Linguistics, University of Birmingham,
     United Kingdom.
-    
-    Correspondence concerning this article should be addressed to Pierce
-    Edmiston, 1202 W. Johnson St., Madison, WI, 53703. E-mail:
-    \href{mailto:pedmiston@wisc.edu}{\nolinkurl{pedmiston@wisc.edu}}
-  }
+
+                      Correspondence concerning this article should be addressed to Pierce Edmiston, 1202 W. Johnson St., Madison, WI, 53703. E-mail: \href{mailto:pedmiston@wisc.edu}{\nolinkurl{pedmiston@wisc.edu}}
+                                    }
 
 
   \abstract{People have long pondered the origins of language, especially the words
@@ -162,7 +161,7 @@ possible role of human vocal imitation in explaining the origins of at
 least some spoken words.}
   \keywords{language evolution, iconicity, vocal imitation, transmission chain \\
 
-    \indent Word count: 7510
+    \indent Word count: X
   }
 
 \usepackage[titles]{tocloft}
@@ -180,8 +179,6 @@ least some spoken words.}
 \setlength{\cftafterloftitleskip}{0pt}
 \settowidth{\cfttabnumwidth}{Table 10.\qquad}
 
-\usepackage{endnotes}
-\let\footnote\endnote
 
 
 \usepackage{amsthm}
@@ -208,91 +205,80 @@ least some spoken words.}
 
 Most vocal communication of non-human primate species is based on
 species-typical calls that are highly similar across generations and
-between populations (e.g. Seyfarth \& Cheney, 1986) (but see, e.g.
-Crockford, Herbinger, Vigilant, \& Boesch, 2004). In contrast, human
-languages comprise a vast repertoire of learned meaningful elements
-(words and other morphemes) which can number in the tens of thousands or
-more (e.g., Brysbaert, Stevens, Mandera, \& Keuleers, 2016). Aside from
-their number, the words of different natural languages are characterized
-by their extreme diversity (Evans \& Levinson, 2009; Lupyan \& Dale,
-2016; Wierzbicka, 1996). The words used within a speech community change
-relatively quickly over generations compared to the evolution of vocal
-signals (e.g., Pagel, Atkinson, \& Meade, 2007). At least in part as a
-consequence of this divergence, most words appear to bear a largely
-arbitrary relationship between their form and their meaning ---
+between populations {[}1{]} {[}2{]}. In contrast, human languages
+comprise a vast repertoire of learned meaningful elements (words and
+other morphemes) which can number in the tens of thousands or more
+{[}3{]}. Aside from their number, the words of different natural
+languages are characterized by their extreme diversity {[}4--6{]}. The
+words used within a speech community change relatively quickly over
+generations compared to the evolution of vocal signals {[}7{]}. At least
+in part as a consequence of this divergence, most words appear to bear a
+largely arbitrary relationship between their form and their meaning ---
 seemingly, a product of their idiosyncratic etymological histories
-(Labov, 1972; Sapir, 1921). The apparently arbitrary nature of spoken
-vocabularies presents a quandary for the study of language origins. If
-words of spoken languages are truly arbitrary, by what process were the
-first words ever coined?
+{[}8,9{]}. The apparently arbitrary nature of spoken vocabularies
+presents a quandary for the study of language origins. If words of
+spoken languages are truly arbitrary, by what process were the first
+words ever coined?
 
 While the origin of most spoken words is hard to discern, the situation
 is somewhat different for signed languages. In signed languages, the
 origins of many signs are relatively transparent. Although signed
 languages rely on the same type of referential symbolism as spoken
 languages, many individual signs have clear iconic roots, formed from
-gestures that resemble their meaning (Frishberg, 1975; Goldin-Meadow,
-2016; Kendon, 2014; Klima \& Bellugi, 1980). For instance, Frishberg
-(1975) noted the iconic origins of the American Sign Language (ASL) sign
-for bird, which is formed with a beak-like handshape articulated in
+gestures that resemble their meaning {[}10--12{]}. For instance,
+{[}13{]} noted the iconic origins of the American Sign Language (ASL)
+sign for bird, which is formed with a beak-like handshape articulated in
 front of the nose. Another example is steal, derived from a grabbing
-motion to represent the act of stealing something. Stokoe (1965)
-identified about 25\% of American Sign Language signs to be iconic, and
-reviewing the remaining 75\% of ASL signs, Wescott (1971) determined
-that about two-thirds of these seemed plausibly derived from iconic
-origins. Further support for iconic origins of signed languages comes
-from observations of deaf children raised without exposure to a signed
+motion to represent the act of stealing something. {[}14{]} identified
+about 25\% of American Sign Language signs to be iconic, and reviewing
+the remaining 75\% of ASL signs, {[}15{]} determined that about
+two-thirds of these seemed plausibly derived from iconic origins.
+Further support for iconic origins of signed languages comes from
+observations of deaf children raised without exposure to a signed
 language, who develop homesign systems to use with their family. These
 communication systems are generally built from a process in which the
 children establish conventional gestures through the use of pantomimes
-and various iconic and indexical gestures (e.g. Goldin-Meadow \&
-Feldman, 1977). Participants in laboratory experiments utilize a similar
-strategy when they communicate with gestures in iterated communication
-games (Fay, Lister, Mark Ellison, \& Goldin-Meadow, 2014).
+and various iconic and indexical gestures {[}16{]}. Participants in
+laboratory experiments utilize a similar strategy when they communicate
+with gestures in iterated communication games {[}17{]}.
 
 In contrast to the visual gestures of signed languages, many have argued
 that iconic vocalizations could not have played a significant role in
 the origin of spoken words because the vocal modality simply does not
-afford much resemblance between form and meaning (M. A. Arbib, 2012;
-Armstrong \& Wilcox, 2007; Corballis, 2003; Hewes, 1973; Hockett, 1978;
-Tomasello, 2010). It has also been argued that the human capacity for
-vocal imitation is a domain-specific skill, geared towards learning to
-speak, rather than the representation of environmental sounds. For
-example, Pinker and Jackendoff (2005) suggested that, \enquote{most
-humans lack the ability\ldots{} to convincingly reproduce environmental
-sounds\ldots{} Thus \enquote{capacity for vocal imitation} in humans
-might be better described as a capacity to learn to produce speech}
-(p.~209). Consequently, it is still widely assumed that vocal imitation
---- or more broadly, the use of any sort of resemblance between form and
-meaning --- cannot be important to understanding the origin of spoken
-words.
+afford much resemblance between form and meaning {[}18--23{]}. It has
+also been argued that the human capacity for vocal imitation is a
+domain-specific skill, geared towards learning to speak, rather than the
+representation of environmental sounds. For example, {[}24{]} suggested
+that, \enquote{most humans lack the ability\ldots{} to convincingly
+reproduce environmental sounds\ldots{} Thus \enquote{capacity for vocal
+imitation} in humans might be better described as a capacity to learn to
+produce speech} (p.~209). Consequently, it is still widely assumed that
+vocal imitation --- or more broadly, the use of any sort of resemblance
+between form and meaning --- cannot be important to understanding the
+origin of spoken words.
 
 Although most words of contemporary spoken languages are not clearly
 imitative in origin, there has been a growing recognition of the
-importance of iconicity in spoken languages (Dingemanse, Blasi, Lupyan,
-Christiansen, \& Monaghan, 2015; Perniss, Thompson, \& Vigliocco, 2010)
-and the common use of vocal imitation and depiction in spoken discourse
-(Clark \& Gerrig, 1990; Lewis, 2009). This has led some to argue for the
-importance of imitation for understanding the origin of spoken words
-(e.g., Brown, Black, \& Horowitz, 1955; Dingemanse, 2014; Donald, 2016;
-Imai \& Kita, 2014; Perlman, Dale, \& Lupyan, 2015). In addition,
+importance of iconicity in spoken languages {[}25,26{]} and the common
+use of vocal imitation and depiction in spoken discourse {[}27,28{]}.
+This has led some to argue for the importance of imitation for
+understanding the origin of spoken words {[}29--33{]}. In addition,
 counter to previous assumptions, people are highly effective at using
 vocal imitations to refer to environmental sounds such as coins dropping
 in a jar or mechanical events such as scraping --- in some cases, even
-more effective than when using conventional words (Lemaitre \&
-Rocchesso, 2014). Recent work has also shown that people are able to
-create novel imitative vocalizations for more abstract meanings (e.g.
-\enquote{slow}, \enquote{rough}, \enquote{good}, \enquote{many}) that
-are understandable to naïve listeners (Perlman et al., 2015). These
-imitations are effective not because people can mimic environmental
-sounds with high fidelity, but because people are able to produce
-imitations that capture the salient features of sounds in ways that are
-understandable to listeners (Lemaitre, Houix, Voisin, Misdariis, \&
-Susini, 2016). Similarly, the features of onomatopoeic words might
-highlight distinctive aspects of the sounds they represent. For example,
-the initial voiced, plosive /b/ in \enquote{boom} represents an abrupt,
-loud onset, the back vowel /u/ a low pitch, and the nasalized /m/ a
-slow, muffled decay (Rhodes, 1994).
+more effective than when using conventional words {[}34{]}. Recent work
+has also shown that people are able to create novel imitative
+vocalizations for more abstract meanings (e.g. \enquote{slow},
+\enquote{rough}, \enquote{good}, \enquote{many}) that are understandable
+to naïve listeners {[}33{]}. These imitations are effective not because
+people can mimic environmental sounds with high fidelity, but because
+people are able to produce imitations that capture the salient features
+of sounds in ways that are understandable to listeners {[}35{]}.
+Similarly, the features of onomatopoeic words might highlight
+distinctive aspects of the sounds they represent. For example, the
+initial voiced, plosive /b/ in \enquote{boom} represents an abrupt, loud
+onset, the back vowel /u/ a low pitch, and the nasalized /m/ a slow,
+muffled decay {[}36{]}.
 
 Thus, converging evidence suggests that people can use vocal imitation
 as an effective means of communication. At the same time, vocal
@@ -312,20 +298,19 @@ these seed sounds, the next generation imitated the previous imitators,
 and so on for up to 8 generations.
 
 Our approach uses a transmission chain methodology similar to that
-frequently used in experimental studies of language evolution (Tamariz,
-2017, for review). As with other transmission chain studies (and
-iterated learning studies more generally), we seek to discover how
-various biases and constraints of individuals change the nature of a
-linguistic signal. Importantly, while typical transmission chain studies
-focus on the impact of learning biases (e.g., Kirby, Cornish, \& Smith,
-2008), the present studies involve iterated reproduction that does not
-involve any learning. Participants simply attempt to imitate a sound as
-best as they can. The biases we hypothesize to drive vocalizations to
-become more word-like are therefore not related to any learning process,
-but instead are expected to emerge from constraints on the
-reproducibility of vocalizations. Our aim is thus to determine whether
-iterated reproduction, even without learning, is a sufficient enough
-constraint to enable the emergence of more word-like signals.
+frequently used in experimental studies of language evolution {[}37{]}.
+As with other transmission chain studies (and iterated learning studies
+more generally), we seek to discover how various biases and constraints
+of individuals change the nature of a linguistic signal. Importantly,
+while typical transmission chain studies focus on the impact of learning
+biases {[}38{]}, the present studies involve iterated reproduction that
+does not involve any learning. Participants simply attempt to imitate a
+sound as best as they can. The biases we hypothesize to drive
+vocalizations to become more word-like are therefore not related to any
+learning process, but instead are expected to emerge from constraints on
+the reproducibility of vocalizations. Our aim is thus to determine
+whether iterated reproduction, even without learning, is a sufficient
+enough constraint to enable the emergence of more word-like signals.
 
 After collecting the imitations, we conducted a series of analyses and
 additional experiments to systematically answer the following questions:
@@ -344,10 +329,8 @@ category of water-splashing sounds?
 repetition}\label{experiment-1-stabilization-of-imitations-through-repetition}}
 
 In the first experiment, we collected the vocal imitations, and assessed
-the extent to which repeating imitations of environmental sounds over
-generations of unique speakers results in progressive stabilization
-toward more word-like forms. After collecting the imitations, we
-measured changes in the stability of the imitations in three ways.
+the extent to which repeating imitations of environmental sounds results
+in progressive stabilization toward more word-like forms in three ways.
 First, we measured changes in the perception of acoustic similarity
 between subsequent generations of imitations. Second, we used
 algorithmic measures of acoustic similarity to assess the similarity of
@@ -368,8 +351,8 @@ To avoid sounds with lexicalized or conventionalized onomatopoeic forms
 in English, we used inanimate categories of environmental sounds. To
 select sounds that were equally distinguishable within each category, we
 used an odd-one-out norming procedure (\emph{N}=105 participants; see
-Fig. S1), resulting a final set of 16 sounds in each of 4 categories.
-The four categories were: glass, tear, water, zipper.
+Fig. S1), resulting in a final set of 16 sounds, 4 in each of 4
+categories: glass, tear, water, zipper.
 
 \hypertarget{collecting-vocal-imitations}{%
 \subsubsection{Collecting vocal
@@ -390,12 +373,11 @@ as many times as they wished, but were only allowed a single recording
 in response. Recordings that were too quiet (less than -30 dBFS) were
 not accepted.
 
-Imitations were monitored by an experimenter to remove background sounds
-and trim the imitations to the length of the utterance. The experimenter
-also removed recordings that violated the rules of the experiment, e.g.,
-an utterance in English. A total of 115 (24\%) imitations were removed
-prior to subsequent analysis. The final sample contained 365 imitations
-along 105 contiguous transmission chains (Fig. 1).
+Imitations were monitored by an experimenter to remove poor quality
+recordings (e.g., loud background sounds), and recordings that violated
+the rules of the experiment (e.g., an utterance in English). A total of
+115 (24\%) imitations were removed. The final sample contained 365
+imitations along 105 contiguous transmission chains (Fig. 1).
 
 \begin{figure}
 \centering
@@ -416,46 +398,33 @@ similarity}\label{measuring-acoustic-similarity}}
 Acoustic similarity judgments were obtained from five research
 assistants who listened to pairs of sounds (approx. 300) and rated their
 subjective similarity. On each trial, raters heard two sounds from
-subsequent generations played in random order. They then indicated the
+subsequent generations played in random order, and indicated the
 similarity between the sounds on a 7- point Likert scale from
 \emph{Entirely different and would never be confused} to \emph{Nearly
 identical}. Full instructions and inter-rater reliability measures are
-provided in the Supplemental Materials. Ratings were normalized for each
-rater (z-scored) prior to analysis.
+provided in the Supplemental Materials.
 
 To obtain algorithmic measures of acoustic similarity, we used the
-acoustic distance functions included in Phonological Corpus Tools (Hall,
-Allen, Fry, Mackie, \& McAuliffe, 2016). We computed Mel-frequency
-cepstral coefficients (MFCCs) between pairs of imitations using 12
-coefficients in order to obtain speaker-independent estimates.
+acoustic distance functions included in Phonological Corpus Tools
+{[}39{]}. We computed Mel-frequency cepstral coefficients (MFCCs)
+between pairs of imitations using 12 coefficients in order to obtain
+speaker-independent estimates.
 
 \hypertarget{collecting-transcriptions-of-imitations}{%
 \subsubsection{Collecting transcriptions of
 imitations}\label{collecting-transcriptions-of-imitations}}
 
+Transcriptions were obtained for the first and last three generations of
+each transmission chain. Additional \enquote{transcriptions} of the
+original sounds used as seeds were also collected and are analyzed in
+the Supplementary Materials (Fig. S6).
+
 Participants (\emph{N}=216) recruited from Amazon Mechanical Turk were
-paid to listen to the imitations and write down what they heard as a
-single \enquote{word} so that the written word would sound as much like
-the sound as possible. Participants were instructed to avoid
-transcribing the imitations into existing English words. Each
-participant completed 10 transcriptions.
-
-Transcriptions were gathered for the first and the last three
-generations of imitations. Additional \enquote{transcriptions} directly
-of the original environmental seed sounds are analyzed in the
-Supplementary Materials (Fig. S6).
-
-\hypertarget{analyses}{%
-\subsubsection{Analyses}\label{analyses}}
-
-Statistical analyses were conducted in R using linear mixed-effects
-models provided by the \texttt{lme4} package (Bates, Mächler, Bolker, \&
-Walker, 2015). Degrees of freedom and corresponding significance tests
-for linear mixed-effects models were estimated using the Satterthwaite
-approximation via the \texttt{lmerTest} package (Kuznetsova, Bruun
-Brockhoff, \& Haubo Bojesen Christensen, 2016). Random effects
-(intercepts and slopes) for subjects and for items were included
-wherever appropriate, as described below.
+paid to listen to imitations and write down what they heard as a single
+\enquote{word} so that the written word would sound as much like the
+sound as possible. Participants were instructed to avoid transcribing
+the imitations into existing English words. Each participant completed
+10 transcriptions.
 
 \hypertarget{results}{%
 \subsection{Results}\label{results}}
@@ -523,39 +492,27 @@ zipper & bzzzzup & izzip\\
 \end{tabular}
 \end{table}
 
-To measure the similarity among transcriptions, we calculated the
-orthographic distance between the most frequent transcription and all
-other transcriptions of a given imitation. The orthographic distance
-measure was a ratio based on longest contiguous matching subsequences
-between two transcriptions. We then fit a hierarchical linear model
-predicting orthographic distance from the generation of the imitation
-(First generation, Last generation) with random effects (intercepts and
-slopes) for seed sound nested within category\footnote{Random effects
-  for subject were not appropriate because the distance measure was
-  derived from pairwise comparisons of transcriptions generated by
-  different transcribers. As a result, the degrees of freedom for the
-  significance tests for the parameters of this model reflect the
-  Satterthwaite approximation based on the number of seed sounds (16)
-  nested within categories (4), not the number of unique transcribers
-  (\emph{N}=216).}. The results showed that transcriptions of last
-generation imitations were more similar to one another than
-transcriptions of first generation imitations, \emph{b} = -0.12 (SE =
-0.03), \emph{t}(3.0) = -3.62, \emph{p} = 0.035 (Fig. S3). The same
-result is reached through alternative measures of orthographic distance,
-such as the percentage of exact transcription matches for each
-imitation, \emph{b} = 0.10 (SE = 0.03), \emph{t}(90.0) = 2.84, \emph{p}
-= 0.006, and the length of the longest matching substring, \emph{b} =
-0.98 (SE = 0.24), \emph{t}(15.1) = 4.14, \emph{p} \textless{} 0.001
-(Fig. S4). Differences between transcriptions of human vocalizations and
-transcriptions directly of environmental sound cues are reported in the
-Supplementary Materials (Fig. S6).
+To measure the similarity among transcriptions for a given imitation, we
+calculated the average orthographic distance between the most frequent
+transcription and all other transcriptions of the same imitation. We
+then fit a hierarchical linear model predicting orthographic distance
+from the generation of the imitation (First generation, Last generation)
+with random effects (intercepts and slopes) for seed sound nested within
+category. The results showed that transcriptions of last generation
+imitations were more similar to one another than transcriptions of first
+generation imitations, \emph{b} = -0.12 (SE = 0.03), \emph{t}(3.0) =
+-3.62, \emph{p} = 0.035 (Fig. S3). The same result is reached through
+alternative measures of orthographic distance (Fig. S4). Differences
+between transcriptions of human vocalizations and transcriptions
+directly of environmental sound cues are reported in the Supplementary
+Materials (Fig. S6).
 
 \hypertarget{discussion}{%
 \subsection{Discussion}\label{discussion}}
 
-Repeating imitations of environmental sounds over generations of unique
-speakers was sufficient to create more word-like forms, even without any
-explicit intent to communicate. We defined word-likeness in terms of
+Repeating imitations of environmental sounds over generations of
+imitators was sufficient to create more word-like forms, even without
+any explicit intent to communicate. We defined word-likeness in terms of
 acoustic stability and orthographic agreement. With each repetition, the
 acoustic forms of the imitations became more similar to one another,
 indicating they became easier to repeat with high fidelity. The
@@ -565,10 +522,10 @@ acoustic similarity demonstrating that acoustic similarity increased
 within chains but not between them. Additionally, later generation
 imitations were transcribed more consistently into English orthography,
 further supporting our hypothesis that repeating imitations makes them
-more word-like.
+more stable and word-like.
 
 The results of Experiment 1 demonstrate the ease with which iterated
-imitation gives rise to new word forms. However, the results do not
+imitation gives rise to stable wordforms. However, the results do not
 address how these emergent words relate to the original sounds that were
 being imitated. As the imitations became more word-like, were they
 stabilizing on arbitrary acoustic and orthographic forms, or did they
@@ -585,7 +542,7 @@ To assess the resemblance of repeated imitations to the original seed
 sounds, we measured the ability of participants naïve to the design of
 the experiment to match imitations and their transcriptions back to
 their original sound source relative to other seed sounds from either
-the same category or from different categories (Fig. 3). Using these
+the same category or from different categories (Fig. 3A). Using these
 match accuracies, we first asked whether and for how many generations
 the imitations and their transcriptions could be matched back to the
 original sounds. Second, we asked whether repeated imitation resulted in
@@ -597,16 +554,6 @@ categorically, and thus we anticipated that imitations would lose
 information identifying the specific source of an imitation more rapidly
 than category information that identifies the category of environmental
 sound being imitated.
-
-\begin{figure}
-\centering
-\includegraphics{fig3-1.pdf}
-\caption{\label{fig:fig3}Three types of matching questions. Participants
-were presented an imitation or its transcription and selected one of
-four seed sounds. True seed and category match questions had choices
-from different sound categories. Specific match questions pitted the
-actual seed against the other seeds within the same category.}
-\end{figure}
 
 \hypertarget{methods-1}{%
 \subsection{Methods}\label{methods-1}}
@@ -622,7 +569,7 @@ imitate. The task was not speeded and no feedback was provided.
 Participants completed 10 questions at a time.
 
 All imitations were tested in each of the three question types depicted
-in Fig. 4. These questions differed in the relationship between the
+in Fig. 3A. These questions differed in the relationship between the
 imitation and the four seed sounds provided as the choices in the
 question. Question types (True seed, Category match, Specific match)
 were assigned between-subject.
@@ -631,19 +578,16 @@ were assigned between-subject.
 \subsubsection{Matching transcriptions to seed
 sounds}\label{matching-transcriptions-to-seed-sounds}}
 
-Participants (\emph{N}=467) recruited from Amazon Mechanical Turk
+Participants (\emph{N}=461) recruited from Amazon Mechanical Turk
 completed a modified version of the matching survey described above.
 Instead of listening to imitations, participants now read a word (a
 transcription of an imitation), which they were told was invented to
-describe one of the four presented sounds. The distractors for all
-questions were between-category, i.e.~true seed and category match.
-Specific match questions were omitted.
-
-Of the unique transcriptions that were generated for each sound
-(imitations and seed sounds), only the top four most frequent
-transcriptions were used in the matching experiment. Participants who
-failed a catch trial (\emph{N}=6) were excluded, leaving 461
-participants in the final sample.
+describe one of the four presented sounds. Of the unique transcriptions
+that were generated for each sound (imitations and seed sounds), only
+the top four most frequent transcriptions were used in the matching
+experiment. The distractors for all questions were between-category,
+i.e.~true seed and category match. Specific match questions were
+omitted.
 
 \hypertarget{results-1}{%
 \subsection{Results}\label{results-1}}
@@ -656,11 +600,8 @@ of the imitation. Question types were contrast coded using Category
 match questions as the baseline condition in comparison to the other two
 question types, each containing the actual seed that generated the
 imitation as one of the choices. The model included random intercepts
-for participant\footnote{Random slopes for generation were not
-  appropriate in the by-subject random effects because data collection
-  was batched by generation of imitation, and therefore each participant
-  did not sample across the range of generations.}, and random slopes
-and intercepts for seed sounds nested within categories.
+for participant, and random slopes and intercepts for seed sounds nested
+within categories.
 
 Accuracy in matching first generation imitations to seed sounds was
 above chance for all question types, \emph{b} = 1.65 (SE = 0.14)
@@ -669,7 +610,7 @@ decreased steadily over generations, \emph{b} = -0.16 (SE = 0.04)
 log-odds, \emph{z} = -3.72, \emph{p} \textless{} 0.001. We then tested
 whether this increase in difficulty was constant across the three types
 of questions or if some question types became more difficult than
-others. The results are shown in Fig. 4A. Performance decreased over
+others. The results are shown in Fig. 3B. Performance decreased over
 generations more rapidly for questions requiring a within-category
 distinction than for between-category questions, \emph{b} = -0.08 (SE =
 0.03) log-odds, \emph{z} = -2.68, \emph{p} = 0.007, suggesting that
@@ -683,7 +624,7 @@ presented as choices are more acoustically similar to one another.
 However, performance also decreased relative to the category match
 questions for the easiest type of question where the correct answer was
 the actual seed generating the imitation (True seed questions; see Fig.
-3). That is, the advantage of having the true seed among
+3A). That is, the advantage of having the true seed among
 between-category distractors decreased over generations, \emph{b} =
 -0.07 (SE = 0.02) log-odds, \emph{z} = -2.77, \emph{p} = 0.006. The
 observed decrease in the \enquote{true seed advantage} (the advantage of
@@ -699,7 +640,7 @@ auditory sounds back to the original environmental sounds. Remarkably,
 participants were able to guess the correct meaning of a word that was
 transcribed from an imitation that had been repeated up to 8 times,
 \emph{b} = 0.83 (SE = 0.13) log-odds, odds = -0.18, \emph{z} = 6.46,
-\emph{p} \textless{} 0.001 (Fig. 4B). This was true for True seed
+\emph{p} \textless{} 0.001 (Fig. 3C). This was true for True seed
 questions containing the actual seed generating the transcribed
 imitation, \emph{b} = 0.75 (SE = 0.15) log-odds, \emph{z} = 4.87,
 \emph{p} \textless{} 0.001, and for Category match questions where
@@ -713,14 +654,18 @@ in Fig. S6.
 
 \begin{figure}
 \centering
-\includegraphics{fig4-1.pdf}
-\caption{\label{fig:fig4}Repeated imitations retained category resemblance.
-A. Accuracy in matching vocal imitations to original seed sounds. Curves
-show predictions of the generalized linear mixed effects models with ±1
-SE of the model predictions. B. Accuracy in matching transcriptions of
-the imitations to original seed sounds (e.g., \enquote{boococucuwich} to
-a water splashing sound). Circles show mean matching accuracy for the
-vocal imitations that were transcribed for comparison.}
+\includegraphics{fig3-1.pdf}
+\caption{\label{fig:fig3}Repeated imitations retained category resemblance.
+A. Three types of matching questions. True seed and category match
+questions had choices from different sound categories. Specific match
+questions pitted the actual seed against the other seeds within the same
+category. B. Accuracy in matching vocal imitations to original seed
+sounds. Curves show predictions of the generalized linear mixed effects
+models with ±1 SE of the model predictions. C. Accuracy in matching
+transcriptions of the imitations to original seed sounds (e.g.,
+\enquote{boococucuwich} to a water splashing sound). Circles show mean
+matching accuracy for the vocal imitations that were transcribed for
+comparison.}
 \end{figure}
 
 \hypertarget{discussion-1}{%
@@ -730,16 +675,13 @@ Even after being repeated up to 8 times across 8 different individuals,
 vocalizations retained a resemblance to the environmental sound that
 motivated them. This resemblance remained even after the vocalizations
 were transcribed into orthographic forms. For vocal imitations, but not
-for transcriptions this resemblance was stronger for the category of
-environmental sound than the actual seed sound, suggesting that through
-repetition, the imitations were becoming more categorical. This result
-highlights another aspect of word-likeness achieved through repeated
-imitation: In addition to being stable in acoustic and orthographic
-forms, iterated imitation produces vocalizations that are interpreted by
-naïve listeners in a more categorical way. Iterated imitation appears to
-strip the vocalizations of some of the characteristics that individuate
-each particular sound while maintaining some category-based resemblance
-(even though participants were never informed about the meaning of the
+for transcriptions, this resemblance was stronger for the category of
+environmental sound than the actual seed sound, suggesting that iterated
+imitation produces vocalizations that are interpreted by naïve listeners
+in a more categorical way. Iterated imitation appears to strip the
+vocalizations of some of the characteristics that individuate each
+particular sound while maintaining some category-based resemblance (even
+though participants were never informed about the meaning of the
 vocalizations and were not trying to communicate).
 
 Transcriptions of the vocalizations, like the vocalizations themselves,
@@ -777,13 +719,12 @@ generation, by virtue of having a more word-like form, may be easier to
 learn as a label for the category of sounds that motivated it than an
 earlier imitation, which is more closely yoked to a particular
 environmental sound. To the extent that repeating imitations abstracts
-away the idiosyncrasies of a particular category member (Edmiston \&
-Lupyan, 2015; Lupyan \& Thompson-Schill, 2012), it may also be easier to
-generalize to new category members. We tested these predictions using a
-category learning task in which participants learned novel labels for
-the categories of environmental sounds. The novel labels were
-transcriptions of either first or last generation imitations gathered in
-Experiment 1.
+away the idiosyncrasies of a particular category member {[}40,41{]}, it
+may also be easier to generalize to new category members. We tested
+these predictions using a category learning task in which participants
+learned novel labels for the categories of environmental sounds. The
+novel labels were transcriptions of either first or last generation
+imitations gathered in Experiment 1.
 
 \hypertarget{methods-2}{%
 \subsection{Methods}\label{methods-2}}
@@ -795,8 +736,9 @@ labels}\label{selecting-words-to-learn-as-category-labels}}
 Of the 1814 unique words created through the transmission chain and
 transcription procedures, we sampled 56 words transcribed from first and
 last generation imitations that were equated in terms of length and
-match accuracy with the original sounds. Our procedure for sampling
-transcriptions is detailed in the Supplementary Materials.
+match accuracy with the original sounds. Our procedure for selecting
+otherwise-equal transcriptions is detailed in the Supplementary
+Materials.
 
 \hypertarget{procedure}{%
 \subsubsection{Procedure}\label{procedure}}
@@ -806,12 +748,11 @@ who received course credit for participation. Participants were randomly
 assigned four novel labels to learn for four categories of environmental
 sounds. Full instructions are provided in the Supplementary Materials.
 Participants were assigned between-subject to learn labels
-(transcriptions) of either first or last generation imitations. Some
-participants learned labels from transcriptions of seed sounds (Fig.
-S6). On each trial, participants heard one of the 16 seed sounds. After
-a 1s delay, participants saw a label (one of the transcribed imitations)
-and responded yes or no using a gamepad controller depending on whether
-the sound and the word went together. Participants received accuracy
+(transcriptions) of either first or last generation imitations. On each
+trial, participants heard one of the 16 seed sounds. After a 1s delay,
+participants saw a label (one of the transcribed imitations) and
+responded yes or no using a gamepad controller depending on whether the
+sound and the word went together. Participants received accuracy
 feedback (a bell sound and a green checkmark if correct; a buzzing sound
 and a red \enquote{X} if incorrect). Four outlier participants were
 excluded from the final sample due to high error rates and slow RTs.
@@ -841,7 +782,7 @@ between groups \emph{p} = 0.775. However, the response times of
 participants learning last generation transcriptions declined more
 rapidly with practice than participants learning first generation
 transcriptions, \emph{b} = -114.13 (SE = 52.06), \emph{t}(39.9) = -2.19,
-\emph{p} = 0.034 (Fig. 5A). These faster responses suggest that, in
+\emph{p} = 0.034 (Fig. 4A). These faster responses suggest that, in
 addition to becoming more stable both in terms of acoustic and
 orthographic properties, repeating imitations makes them easier to
 process as category labels. We predict that given a harder task (i.e.,
@@ -855,14 +796,14 @@ introduction of novel sounds (new category members) and the first trials
 after the block transition (±6 trials). The results revealed a reliable
 interaction between the generation of the transcribed imitation and the
 block transition, \emph{b} = -110.77 (SE = 52.84), \emph{t}(39.7) =
--2.10, \emph{p} = 0.042 (Fig. 5B). This result suggests that
+-2.10, \emph{p} = 0.042 (Fig. 4B). This result suggests that
 transcriptions from later generation imitations were easier to
 generalize to new category members.
 
 \begin{figure}
 \centering
-\includegraphics{fig5-1.pdf}
-\caption{\label{fig:fig5}Repeated imitations made for better category
+\includegraphics{fig4-1.pdf}
+\caption{\label{fig:fig4}Repeated imitations made for better category
 labels. A. Mean RTs for correct responses in the category learning
 experiment with ±1 SE. B. Cost of generalizing to new category members
 with ±1 SE.}
@@ -883,18 +824,17 @@ that they afford better category generalization.
 \section{General Discussion}\label{general-discussion}}
 
 Accumulating evidence shows that iconic words are prevalent across the
-spoken languages of the world (Dingemanse et al., 2015; Imai \& Kita,
-2014; Perniss et al., 2010). And counter to past assumptions about the
-limitations of human vocal imitation, people are surprisingly effective
-at using vocal imitation to represent and communicate about the sounds
-in their environment (Lemaitre et al., 2016) and more abstract meanings
-(Perlman et al., 2015). These findings raise the hypothesis that early
-spoken words originated from vocal imitations, perhaps comparable to the
-way that many of the signs of signed languages appear to be formed
-originally from pantomimes (Fay, Ellison, \& Garrod, 2014; Perlman et
-al., 2015). Here, we examined whether simply repeating an imitation of
-an environmental sound---with no intention to create a new word or even
-to communicate---produces more word-like forms.
+spoken languages of the world {[}25,26,32{]}. And counter to past
+assumptions about the limitations of human vocal imitation, people are
+surprisingly effective at using vocal imitation to represent and
+communicate about the sounds in their environment {[}35{]} and more
+abstract meanings {[}33{]}. These findings raise the hypothesis that
+early spoken words originated from vocal imitations, perhaps comparable
+to the way that many of the signs of signed languages appear to be
+formed originally from pantomimes {[}33,42{]}. Here, we examined whether
+simply repeating an imitation of an environmental sound --- with no
+intention to create a new word or even to communicate --- produces more
+word-like forms.
 
 Our results show that through unguided repetition, imitative
 vocalizations became more word-like both in form and function. In form,
@@ -927,8 +867,7 @@ to novel category members. This fits with previous research showing that
 the relatively arbitrary forms that are typical of words (e.g.
 \enquote{dog}) makes them better suited to function as category labels
 compared to direct auditory cues (e.g., the sound of a dog bark)
-(Boutonnet \& Lupyan, 2015; Edmiston \& Lupyan, 2015; Lupyan \&
-Thompson-Schill, 2012).
+{[}40,41,43{]}.
 
 Even as the vocalizations became more word-like, they nevertheless
 maintained an imitative quality. After eight generations they could no
@@ -944,44 +883,40 @@ continued to be more accurate at matching late generation transcriptions
 back to their particular source sound relative to other exemplars from
 the same category.
 
-Unlike the large number of iconic signs in signed languages (e.g.
-Goldin-Meadow, 2016), the number of iconic words in spoken languages may
-appear to be very small (Crystal, 1987; Newmeyer, 1992). However,
-increasing evidence from disparate language suggests that vocal
-imitation is, in fact, a widespread source of vocabulary.
-Cross-linguistic surveys indicate that onomatopoeia---iconic words used
-to represent sounds---are a universal lexical category found across the
-world's languages (Dingemanse, 2012). Even English, a language that has
-been characterized as relatively limited in iconic vocabulary
-(Vigliocco, Perniss, \& Vinson, 2014), is documented as having hundreds
-of onomatopoeic words not only for animal and human vocalizations
-(\enquote{meow}, \enquote{tweet}, \enquote{slurp}, \enquote{babble},
-murmur''), but also for a variety of environmental sounds (e.g.,
-\enquote{ping}, \enquote{click}, \enquote{plop}) (e.g., Rhodes, 1994;
-Sobkowiak, 1990). Besides words that directly resemble sounds --- the
-focus of the present study --- many languages contain semantically
-broader inventories of ideophones. These words comprise a grammatically
-and phonologically distinct class of words that are used to express
-various sensory-rich meanings, such as qualities related to manner of
-motion, visual properties, textures and touch, inner feelings and
-cognitive states (Dingemanse, 2012; Nuckolls, 1999; Voeltz \&
-Kilian-Hatz, 2001). As with onomatopoeia, ideophones are often
-recognized by naïve listeners as bearing a degree of resemblance to
-their meaning (Dingemanse, Schuerman, \& Reinisch, 2016).
+Unlike the large number of iconic signs in signed languages {[}10{]},
+the number of iconic words in spoken languages may appear to be very
+small {[}44,45{]}. However, increasing evidence from disparate language
+suggests that vocal imitation is, in fact, a widespread source of
+vocabulary. Cross-linguistic surveys indicate that onomatopoeia---iconic
+words used to represent sounds---are a universal lexical category found
+across the world's languages {[}46{]}. Even English, a language that has
+been characterized as relatively limited in iconic vocabulary {[}47{]},
+is documented as having hundreds of onomatopoeic words not only for
+animal and human vocalizations (\enquote{meow}, \enquote{tweet},
+\enquote{slurp}, \enquote{babble}, murmur''), but also for a variety of
+environmental sounds (e.g., \enquote{ping}, \enquote{click},
+\enquote{plop}) {[}36,48{]}. Besides words that directly resemble sounds
+--- the focus of the present study --- many languages contain
+semantically broader inventories of ideophones. These words comprise a
+grammatically and phonologically distinct class of words that are used
+to express various sensory-rich meanings, such as qualities related to
+manner of motion, visual properties, textures and touch, inner feelings
+and cognitive states {[}46,49,50{]}. As with onomatopoeia, ideophones
+are often recognized by naïve listeners as bearing a degree of
+resemblance to their meaning {[}51{]}.
 
 Our study focused on imitations of environmental sounds, and more work
 remains to be done to determine the extent to which vocal imitation can
-ground de novo vocabulary creation in other semantic domains (e.g.,
-Lupyan \& Perlman, 2015; Perlman et al., 2015). Notably, our hypothesis
-that vocal imitation may have played a role in the origin of some of the
-first spoken words does not preclude that gesture played an equal or
-more important role in establishing the first linguistic conventions
-(e.g. Fay, Arbib, \& Garrod, 2013; Goldin-Meadow, 2016; Kendon, 2014).
-What the present results make clear is that the transition from
-imitation to word can be a rapid and simple process: the mere act of
-repeated imitation can drive vocalizations to become more word-like in
-both form and function while still retaining some resemblance to the
-real world referents.
+ground de novo vocabulary creation in other semantic domains
+{[}33,52{]}. Notably, our hypothesis that vocal imitation may have
+played a role in the origin of some of the first spoken words does not
+preclude that gesture played an equal or more important role in
+establishing the first linguistic conventions {[}10,11,53{]}. What the
+present results make clear is that the transition from imitation to word
+can be a rapid and simple process: the mere act of repeated imitation
+can drive vocalizations to become more word-like in both form and
+function while still retaining some resemblance to the real world
+referents.
 
 \hypertarget{ethics}{%
 \section{Ethics}\label{ethics}}
@@ -1020,252 +955,237 @@ This research was supported by NSF 1344279 awarded to G.L.
 \setlength{\parindent}{-0.5in}\setlength{\leftskip}{0.5in}
 
 \hypertarget{refs}{}
-\leavevmode\hypertarget{ref-Arbib:2012htb}{}%
-Arbib, M. A. (2012). \emph{How the brain got language: The mirror system
-hypothesis} (Vol. 16). Oxford University Press.
-
-\leavevmode\hypertarget{ref-Armstrong:2007go}{}%
-Armstrong, D. F., \& Wilcox, S. (2007). \emph{The gestural origin of
-language}. Oxford University Press.
-
-\leavevmode\hypertarget{ref-lme4:2015}{}%
-Bates, D., Mächler, M., Bolker, B., \& Walker, S. (2015). Fitting Linear
-Mixed-Effects Models Using lme4. \emph{Journal of Statistical Software},
-\emph{67}(1), 1--48.
-
-\leavevmode\hypertarget{ref-Boutonnet:2015fz}{}%
-Boutonnet, B., \& Lupyan, G. (2015). Words Jump-Start Vision: A Label
-Advantage in Object Recognition. \emph{Journal of Neuroscience},
-\emph{35}(25), 9329--9335.
-
-\leavevmode\hypertarget{ref-Brown:1955wy}{}%
-Brown, R. W., Black, A. H., \& Horowitz, A. E. (1955). Phonetic
-symbolism in natural languages. \emph{Journal of Abnormal Psychology},
-\emph{50}(3), 388--393.
-
-\leavevmode\hypertarget{ref-Brysbaert:2016fg}{}%
-Brysbaert, M., Stevens, M., Mandera, P., \& Keuleers, E. (2016). How
-Many Words Do We Know? Practical Estimates of Vocabulary Size Dependent
-on Word Definition, the Degree of Language Input and the Participant's
-Age. \emph{Frontiers in Psychology}, \emph{7}(021006), 55--11.
-
-\leavevmode\hypertarget{ref-Clark:1990cl}{}%
-Clark, H. H., \& Gerrig, R. J. (1990). Quotations as demonstrations.
-\emph{Language}, \emph{66}, 764--805.
-
-\leavevmode\hypertarget{ref-Corballis:2003ha}{}%
-Corballis, M. C. (2003). \emph{From hand to mouth: The origins of
-language}. Princeton University Press.
+\leavevmode\hypertarget{ref-Seyfarth:1986tw}{}%
+1. Seyfarth RM, Cheney DL. 1986 Vocal development in vervet monkeys.
+\emph{Animal Behaviour} \textbf{34}, 1640--1658.
 
 \leavevmode\hypertarget{ref-Crockford:2004cz}{}%
-Crockford, C., Herbinger, I., Vigilant, L., \& Boesch, C. (2004). Wild
-chimpanzees produce group-specific calls: a case for vocal learning?
-\emph{Ethology}, \emph{110}(3), 221--243.
+2. Crockford C, Herbinger I, Vigilant L, Boesch C. 2004 Wild chimpanzees
+produce group-specific calls: a case for vocal learning? \emph{Ethology}
+\textbf{110}, 221--243.
 
-\leavevmode\hypertarget{ref-Crystal:1987en}{}%
-Crystal, D. (1987). \emph{The Cambridge Encyclopedia of Language} (Vol.
-2). Cambridge Univ Press.
-
-\leavevmode\hypertarget{ref-Dingemanse:2012fc}{}%
-Dingemanse, M. (2012). Advances in the Cross-Linguistic Study of
-Ideophones. \emph{Language and Linguistics Compass}, \emph{6}(10),
-654--672.
-
-\leavevmode\hypertarget{ref-Dingemanse:2014gj}{}%
-Dingemanse, M. (2014). Making new ideophones in Siwu: Creative depiction
-in conversation. \emph{Pragmatics and Society}.
-
-\leavevmode\hypertarget{ref-Dingemanse:2015cu}{}%
-Dingemanse, M., Blasi, D. E., Lupyan, G., Christiansen, M. H., \&
-Monaghan, P. (2015). Arbitrariness, Iconicity, and Systematicity in
-Language. \emph{Trends in Cognitive Sciences}, \emph{19}(10), 603--615.
-
-\leavevmode\hypertarget{ref-Dingemanse:2016vd}{}%
-Dingemanse, M., Schuerman, W., \& Reinisch, E. (2016). What sound
-symbolism can and cannot do: Testing the iconicity of ideophones from
-five languages. \emph{Language}, \emph{92}.
-
-\leavevmode\hypertarget{ref-Donald:2016kd}{}%
-Donald, M. (2016). Key cognitive preconditions for the evolution of
-language. \emph{Psychonomic Bulletin \& Review}, 1--5.
-
-\leavevmode\hypertarget{ref-Edmiston:2015he}{}%
-Edmiston, P., \& Lupyan, G. (2015). What makes words special? Words as
-unmotivated cues. \emph{Cognition}, \emph{143}(C), 93--100.
-
-\leavevmode\hypertarget{ref-Evans:2009dk}{}%
-Evans, N., \& Levinson, S. C. (2009). The myth of language universals:
-Language diversity and its importance for cognitive science. \emph{Brain
-and Behavioral Sciences}, \emph{32}, 429--492.
-
-\leavevmode\hypertarget{ref-Fay:2013jpa}{}%
-Fay, N., Arbib, M., \& Garrod, S. (2013). How to Bootstrap a Human
-Communication System. \emph{Cognitive Science}, \emph{37}(7),
-1356--1367.
-
-\leavevmode\hypertarget{ref-Fay:2014ih}{}%
-Fay, N., Ellison, T. M., \& Garrod, S. (2014). Iconicity: From sign to
-system in human communication and language. \emph{Pragmatics and
-Cognition}, \emph{22}(2), 244--263.
-
-\leavevmode\hypertarget{ref-Fay:2014cw}{}%
-Fay, N., Lister, C. J., Mark Ellison, T., \& Goldin-Meadow, S. (2014).
-Creating a communication system from scratch: Gesture beats vocalization
-hands down. \emph{Frontiers in Psychology}, \emph{5}(APR), 663.
-
-\leavevmode\hypertarget{ref-Frishberg:1975dh}{}%
-Frishberg, N. (1975). Arbitrariness and Iconicity: Historical Change in
-American Sign Language. \emph{Language}, \emph{51}(3), 696--719.
-
-\leavevmode\hypertarget{ref-GoldinMeadow:2016bw}{}%
-Goldin-Meadow, S. (2016). What the hands can tell us about language
-emergence. \emph{Psychonomic Bulletin \& Review}, \emph{24}(1), 1--6.
-
-\leavevmode\hypertarget{ref-GoldinMeadow:1977gz}{}%
-Goldin-Meadow, S., \& Feldman, H. (1977). The development of
-language-like communication without a language model. \emph{Science},
-\emph{197}(4301), 401--403.
-
-\leavevmode\hypertarget{ref-PCT:1.1}{}%
-Hall, K. C., Allen, B., Fry, M., Mackie, S., \& McAuliffe, M. (2016).
-Phonological CorpusTools. \emph{14th Conference for Laboratory
-Phonology}.
-
-\leavevmode\hypertarget{ref-Hewes:1973vr}{}%
-Hewes, G. W. (1973). Primate Communication and the Gestural Origin of
-Language. \emph{Current Anthropology}, \emph{14}(1/2), 5--24.
-
-\leavevmode\hypertarget{ref-Hockett:1978se}{}%
-Hockett, C. F. (1978). In search of Jove's brow. \emph{American Speech},
-\emph{53}(4), 243--313.
-
-\leavevmode\hypertarget{ref-Imai:2014dea}{}%
-Imai, M., \& Kita, S. (2014). The sound symbolism bootstrapping
-hypothesis for language acquisition and language evolution.
-\emph{Philosophical Transactions of the Royal Society B: Biological
-Sciences}, \emph{369}(1651).
-
-\leavevmode\hypertarget{ref-Kendon:2014eg}{}%
-Kendon, A. (2014). Semiotic diversity in utterance production and the
-concept of 'language'. \emph{Philosophical Transactions of the Royal
-Society B: Biological Sciences}, \emph{369}(1651), 20130293--20130293.
-
-\leavevmode\hypertarget{ref-Kirby:2008kja}{}%
-Kirby, S., Cornish, H., \& Smith, K. (2008). Cumulative cultural
-evolution in the laboratory: an experimental approach to the origins of
-structure in human language. \emph{Proceedings of the National Academy
-of Sciences}, \emph{105}(31), 10681--10686.
-
-\leavevmode\hypertarget{ref-Klima:1980si}{}%
-Klima, E. S., \& Bellugi, U. (1980). \emph{The signs of language}.
-Harvard University Press.
-
-\leavevmode\hypertarget{ref-lmerTest:2016}{}%
-Kuznetsova, A., Bruun Brockhoff, P., \& Haubo Bojesen Christensen, R.
-(2016). \emph{lmerTest: Tests in Linear Mixed Effects Models}.
-
-\leavevmode\hypertarget{ref-Labov:1972}{}%
-Labov, W. (1972). \emph{Sociolinguistic patterns}. University of
-Pennsylvania Press.
-
-\leavevmode\hypertarget{ref-Lemaitre:2014kr}{}%
-Lemaitre, G., \& Rocchesso, D. (2014). On the effectiveness of vocal
-imitations and verbal descriptions of sounds. \emph{The Journal of the
-Acoustical Society of America}, \emph{135}(2), 862--873.
-
-\leavevmode\hypertarget{ref-Lemaitre:2016kz}{}%
-Lemaitre, G., Houix, O., Voisin, F., Misdariis, N., \& Susini, P.
-(2016). Vocal Imitations of Non-Vocal Sounds. \emph{PloS One},
-\emph{11}(12), e0168167--28.
-
-\leavevmode\hypertarget{ref-Lewis:2009wz}{}%
-Lewis, J. (2009). As well as words: Congo Pygmy hunting, mimicry, and
-play. In \emph{The cradle of language}. The cradle of language.
-
-\leavevmode\hypertarget{ref-Lupyan:2016uw}{}%
-Lupyan, G., \& Dale, R. (2016). \emph{Why are there different languages?
-The role of adaptation in linguistic diversity}.
-
-\leavevmode\hypertarget{ref-Lupyan:2015vic}{}%
-Lupyan, G., \& Perlman, M. (2015). The vocal iconicity challenge! In
-\emph{The th biennial protolanguage conference}. Rome, Italy.
-
-\leavevmode\hypertarget{ref-Lupyan:2012cp}{}%
-Lupyan, G., \& Thompson-Schill, S. L. (2012). The evocative power of
-words: Activation of concepts by verbal and nonverbal means.
-\emph{Journal of Experimental Psychology: General}, \emph{141}(1),
-170--186.
-
-\leavevmode\hypertarget{ref-Newmeyer:1992we}{}%
-Newmeyer, F. J. (1992). Iconicity and generative grammar.
-\emph{Language}.
-
-\leavevmode\hypertarget{ref-Nuckolls:1999ca}{}%
-Nuckolls, J. B. (1999). The case for sound symbolism. \emph{Annual
-Review of Anthropology}, \emph{28}(1), 225--252.
-
-\leavevmode\hypertarget{ref-Pagel:2007br}{}%
-Pagel, M., Atkinson, Q. D., \& Meade, A. (2007). Frequency of word-use
-predicts rates of lexical evolution throughout Indo-European history.
-\emph{Nature}, \emph{449}(7163), 717--720.
-
-\leavevmode\hypertarget{ref-Perlman:2015ip}{}%
-Perlman, M., Dale, R., \& Lupyan, G. (2015). Iconicity can ground the
-creation of vocal symbols. \emph{Royal Society Open Science},
-\emph{2}(8), 150152--16.
-
-\leavevmode\hypertarget{ref-Perniss:2010fb}{}%
-Perniss, P., Thompson, R. L., \& Vigliocco, G. (2010). Iconicity as a
-General Property of Language: Evidence from Spoken and Signed Languages.
-\emph{Frontiers in Psychology}, \emph{1}.
-
-\leavevmode\hypertarget{ref-Pinker:2005cv}{}%
-Pinker, S., \& Jackendoff, R. (2005). The faculty of language: what's
-special about it? \emph{Cognition}, \emph{95}(2), 201--236.
-
-\leavevmode\hypertarget{ref-Rhodes:1994au}{}%
-Rhodes, R. (1994). Aural images. \emph{Sound Symbolism}, 276--292.
-
-\leavevmode\hypertarget{ref-Sapir:1921}{}%
-Sapir, E. (1921). \emph{Language: An introduction to the study of
-speech}. New York: Harcourt, Brace; Company.
-
-\leavevmode\hypertarget{ref-Seyfarth:1986tw}{}%
-Seyfarth, R. M., \& Cheney, D. L. (1986). Vocal development in vervet
-monkeys. \emph{Animal Behaviour}, \emph{34}, 1640--1658.
-
-\leavevmode\hypertarget{ref-Sobkowiak:1990ph}{}%
-Sobkowiak, W. (1990). On the phonostatistics of English onomatopoeia.
-\emph{Studia Anglica Posnaniensia}, \emph{23}, 15--30.
-
-\leavevmode\hypertarget{ref-Stokoe:1965}{}%
-Stokoe, W. (1965). \emph{Dictionary of the American Sign Language based
-on scientific principles}. Gallaudet College Press, Washington.
-
-\leavevmode\hypertarget{ref-Tamariz:2017bd}{}%
-Tamariz, M. (2017). Experimental Studies on the Cultural Evolution of
-Language. \emph{Annual Review of Linguistics}, \emph{3}(1), 389--407.
-
-\leavevmode\hypertarget{ref-Tomasello:2010or}{}%
-Tomasello, M. (2010). \emph{Origins of human communication}. MIT press.
-
-\leavevmode\hypertarget{ref-Vigliocco:2014fc}{}%
-Vigliocco, G., Perniss, P., \& Vinson, D. (2014). Language as a
-multimodal phenomenon: implications for language learning, processing
-and evolution. \emph{Philosophical Transactions of the Royal Society B:
-Biological Sciences}, \emph{369}(1651), 20130292--20130292.
-
-\leavevmode\hypertarget{ref-Voeltz:2001vv}{}%
-Voeltz, F. E., \& Kilian-Hatz, C. (2001). \emph{Ideophones} (Vol. 44).
-John Benjamins Publishing.
-
-\leavevmode\hypertarget{ref-Wescott:1971to}{}%
-Wescott, R. W. (1971). Linguistic iconism. \emph{Linguistic Society of
-America}, \emph{47}(2), 416--428.
+\leavevmode\hypertarget{ref-Brysbaert:2016fg}{}%
+3. Brysbaert M, Stevens M, Mandera P, Keuleers E. 2016 How Many Words Do
+We Know? Practical Estimates of Vocabulary Size Dependent on Word
+Definition, the Degree of Language Input and the Participant's Age.
+\emph{Frontiers in Psychology} \textbf{7}, 55--11.
 
 \leavevmode\hypertarget{ref-Wierzbicka:1996sm}{}%
-Wierzbicka, A. (1996). \emph{Semantics: Primes and universals: Primes
-and universals}. Oxford University Press, UK.
+4. Wierzbicka A. 1996 \emph{Semantics: Primes and universals: Primes and
+universals}. Oxford University Press, UK.
+
+\leavevmode\hypertarget{ref-Evans:2009dk}{}%
+5. Evans N, Levinson SC. 2009 The myth of language universals: Language
+diversity and its importance for cognitive science. \emph{Brain and
+Behavioral Sciences} \textbf{32}, 429--492.
+
+\leavevmode\hypertarget{ref-Lupyan:2016uw}{}%
+6. Lupyan G, Dale R. 2016 Why are there different languages? The role of
+adaptation in linguistic diversity.
+
+\leavevmode\hypertarget{ref-Pagel:2007br}{}%
+7. Pagel M, Atkinson QD, Meade A. 2007 Frequency of word-use predicts
+rates of lexical evolution throughout Indo-European history.
+\emph{Nature} \textbf{449}, 717--720.
+
+\leavevmode\hypertarget{ref-Sapir:1921}{}%
+8. Sapir E. 1921 \emph{Language: An introduction to the study of
+speech}. New York: Harcourt, Brace; Company.
+
+\leavevmode\hypertarget{ref-Labov:1972}{}%
+9. Labov W. 1972 \emph{Sociolinguistic patterns}. University of
+Pennsylvania Press.
+
+\leavevmode\hypertarget{ref-GoldinMeadow:2016bw}{}%
+10. Goldin-Meadow S. 2016 What the hands can tell us about language
+emergence. \emph{Psychonomic Bulletin \& Review} \textbf{24}, 1--6.
+
+\leavevmode\hypertarget{ref-Kendon:2014eg}{}%
+11. Kendon A. 2014 Semiotic diversity in utterance production and the
+concept of 'language'. \emph{Philosophical Transactions of the Royal
+Society B: Biological Sciences} \textbf{369}, 20130293--20130293.
+
+\leavevmode\hypertarget{ref-Klima:1980si}{}%
+12. Klima ES, Bellugi U. 1980 \emph{The signs of language}. Harvard
+University Press.
+
+\leavevmode\hypertarget{ref-Frishberg:1975dh}{}%
+13. Frishberg N. 1975 Arbitrariness and Iconicity: Historical Change in
+American Sign Language. \emph{Language} \textbf{51}, 696--719.
+
+\leavevmode\hypertarget{ref-Stokoe:1965}{}%
+14. Stokoe W. 1965 \emph{Dictionary of the American Sign Language based
+on scientific principles}. Gallaudet College Press, Washington.
+
+\leavevmode\hypertarget{ref-Wescott:1971to}{}%
+15. Wescott RW. 1971 Linguistic iconism. \emph{Linguistic Society of
+America} \textbf{47}, 416--428.
+
+\leavevmode\hypertarget{ref-GoldinMeadow:1977gz}{}%
+16. Goldin-Meadow S, Feldman H. 1977 The development of language-like
+communication without a language model. \emph{Science} \textbf{197},
+401--403.
+
+\leavevmode\hypertarget{ref-Fay:2014cw}{}%
+17. Fay N, Lister CJ, Ellison TM, Goldin-Meadow S. 2014 Creating a
+communication system from scratch: Gesture beats vocalization hands
+down. \emph{Frontiers in Psychology} \textbf{5}, 663.
+
+\leavevmode\hypertarget{ref-Arbib:2012htb}{}%
+18. Arbib MA. 2012 \emph{How the brain got language: The mirror system
+hypothesis}. Oxford University Press.
+
+\leavevmode\hypertarget{ref-Armstrong:2007go}{}%
+19. Armstrong DF, Wilcox S. 2007 \emph{The gestural origin of language}.
+Oxford University Press.
+
+\leavevmode\hypertarget{ref-Corballis:2003ha}{}%
+20. Corballis MC. 2003 \emph{From hand to mouth: The origins of
+language}. Princeton University Press.
+
+\leavevmode\hypertarget{ref-Hewes:1973vr}{}%
+21. Hewes GW. 1973 Primate Communication and the Gestural Origin of
+Language. \emph{Current Anthropology} \textbf{14}, 5--24.
+
+\leavevmode\hypertarget{ref-Hockett:1978se}{}%
+22. Hockett CF. 1978 In search of Jove's brow. \emph{American speech}
+\textbf{53}, 243--313.
+
+\leavevmode\hypertarget{ref-Tomasello:2010or}{}%
+23. Tomasello M. 2010 \emph{Origins of human communication}. MIT press.
+
+\leavevmode\hypertarget{ref-Pinker:2005cv}{}%
+24. Pinker S, Jackendoff R. 2005 The faculty of language: what's special
+about it? \emph{Cognition} \textbf{95}, 201--236.
+
+\leavevmode\hypertarget{ref-Dingemanse:2015cu}{}%
+25. Dingemanse M, Blasi DE, Lupyan G, Christiansen MH, Monaghan P. 2015
+Arbitrariness, Iconicity, and Systematicity in Language. \emph{Trends in
+Cognitive Sciences} \textbf{19}, 603--615.
+
+\leavevmode\hypertarget{ref-Perniss:2010fb}{}%
+26. Perniss P, Thompson RL, Vigliocco G. 2010 Iconicity as a General
+Property of Language: Evidence from Spoken and Signed Languages.
+\emph{Frontiers in Psychology} \textbf{1}.
+
+\leavevmode\hypertarget{ref-Clark:1990cl}{}%
+27. Clark HH, Gerrig RJ. 1990 Quotations as demonstrations.
+\emph{Language} \textbf{66}, 764--805.
+
+\leavevmode\hypertarget{ref-Lewis:2009wz}{}%
+28. Lewis J. 2009 As well as words: Congo Pygmy hunting, mimicry, and
+play. In \emph{The cradle of language}, The cradle of language.
+
+\leavevmode\hypertarget{ref-Brown:1955wy}{}%
+29. Brown RW, Black AH, Horowitz AE. 1955 Phonetic symbolism in natural
+languages. \emph{Journal of abnormal psychology} \textbf{50}, 388--393.
+
+\leavevmode\hypertarget{ref-Dingemanse:2014gj}{}%
+30. Dingemanse M. 2014 Making new ideophones in Siwu: Creative depiction
+in conversation. \emph{Pragmatics and Society}
+
+\leavevmode\hypertarget{ref-Donald:2016kd}{}%
+31. Donald M. 2016 Key cognitive preconditions for the evolution of
+language. \emph{Psychonomic Bulletin \& Review}, 1--5.
+
+\leavevmode\hypertarget{ref-Imai:2014dea}{}%
+32. Imai M, Kita S. 2014 The sound symbolism bootstrapping hypothesis
+for language acquisition and language evolution. \emph{Philosophical
+Transactions of the Royal Society B: Biological Sciences} \textbf{369}.
+
+\leavevmode\hypertarget{ref-Perlman:2015ip}{}%
+33. Perlman M, Dale R, Lupyan G. 2015 Iconicity can ground the creation
+of vocal symbols. \emph{Royal Society Open Science} \textbf{2},
+150152--16.
+
+\leavevmode\hypertarget{ref-Lemaitre:2014kr}{}%
+34. Lemaitre G, Rocchesso D. 2014 On the effectiveness of vocal
+imitations and verbal descriptions of sounds. \emph{The Journal of the
+Acoustical Society of America} \textbf{135}, 862--873.
+
+\leavevmode\hypertarget{ref-Lemaitre:2016kz}{}%
+35. Lemaitre G, Houix O, Voisin F, Misdariis N, Susini P. 2016 Vocal
+Imitations of Non-Vocal Sounds. \emph{PloS one} \textbf{11},
+e0168167--28.
+
+\leavevmode\hypertarget{ref-Rhodes:1994au}{}%
+36. Rhodes R. 1994 Aural images. \emph{Sound symbolism}, 276--292.
+
+\leavevmode\hypertarget{ref-Tamariz:2017bd}{}%
+37. Tamariz M. 2017 Experimental Studies on the Cultural Evolution of
+Language. \emph{Annual Review of Linguistics} \textbf{3}, 389--407.
+
+\leavevmode\hypertarget{ref-Kirby:2008kja}{}%
+38. Kirby S, Cornish H, Smith K. 2008 Cumulative cultural evolution in
+the laboratory: an experimental approach to the origins of structure in
+human language. \emph{Proceedings of the National Academy of Sciences}
+\textbf{105}, 10681--10686.
+
+\leavevmode\hypertarget{ref-PCT:1.1}{}%
+39. Hall KC, Allen B, Fry M, Mackie S, McAuliffe M. 2016 Phonological
+CorpusTools. \emph{14th Conference for Laboratory Phonology}
+
+\leavevmode\hypertarget{ref-Edmiston:2015he}{}%
+40. Edmiston P, Lupyan G. 2015 What makes words special? Words as
+unmotivated cues. \emph{Cognition} \textbf{143}, 93--100.
+
+\leavevmode\hypertarget{ref-Lupyan:2012cp}{}%
+41. Lupyan G, Thompson-Schill SL. 2012 The evocative power of words:
+Activation of concepts by verbal and nonverbal means. \emph{Journal of
+Experimental Psychology: General} \textbf{141}, 170--186.
+
+\leavevmode\hypertarget{ref-Fay:2014ih}{}%
+42. Fay N, Ellison TM, Garrod S. 2014 Iconicity: From sign to system in
+human communication and language. \emph{Pragmatics and Cognition}
+\textbf{22}, 244--263.
+
+\leavevmode\hypertarget{ref-Boutonnet:2015fz}{}%
+43. Boutonnet B, Lupyan G. 2015 Words Jump-Start Vision: A Label
+Advantage in Object Recognition. \emph{Journal of Neuroscience}
+\textbf{35}, 9329--9335.
+
+\leavevmode\hypertarget{ref-Crystal:1987en}{}%
+44. Crystal D. 1987 \emph{The Cambridge Encyclopedia of Language}.
+Cambridge Univ Press.
+
+\leavevmode\hypertarget{ref-Newmeyer:1992we}{}%
+45. Newmeyer FJ. 1992 Iconicity and generative grammar. \emph{Language}
+
+\leavevmode\hypertarget{ref-Dingemanse:2012fc}{}%
+46. Dingemanse M. 2012 Advances in the Cross-Linguistic Study of
+Ideophones. \emph{Language and Linguistics Compass} \textbf{6},
+654--672.
+
+\leavevmode\hypertarget{ref-Vigliocco:2014fc}{}%
+47. Vigliocco G, Perniss P, Vinson D. 2014 Language as a multimodal
+phenomenon: implications for language learning, processing and
+evolution. \emph{Philosophical Transactions of the Royal Society B:
+Biological Sciences} \textbf{369}, 20130292--20130292.
+
+\leavevmode\hypertarget{ref-Sobkowiak:1990ph}{}%
+48. Sobkowiak W. 1990 On the phonostatistics of English onomatopoeia.
+\emph{Studia Anglica Posnaniensia} \textbf{23}, 15--30.
+
+\leavevmode\hypertarget{ref-Nuckolls:1999ca}{}%
+49. Nuckolls JB. 1999 The case for sound symbolism. \emph{Annual Review
+of Anthropology} \textbf{28}, 225--252.
+
+\leavevmode\hypertarget{ref-Voeltz:2001vv}{}%
+50. Voeltz FE, Kilian-Hatz C. 2001 \emph{Ideophones}. John Benjamins
+Publishing.
+
+\leavevmode\hypertarget{ref-Dingemanse:2016vd}{}%
+51. Dingemanse M, Schuerman W, Reinisch E. 2016 What sound symbolism can
+and cannot do: Testing the iconicity of ideophones from five languages.
+\emph{Language} \textbf{92}.
+
+\leavevmode\hypertarget{ref-Lupyan:2015vic}{}%
+52. Lupyan G, Perlman M. 2015 The vocal iconicity challenge! In
+\emph{The th biennial protolanguage conference}, Rome, Italy.
+
+\leavevmode\hypertarget{ref-Fay:2013jpa}{}%
+53. Fay N, Arbib MA, Garrod S. 2013 How to Bootstrap a Human
+Communication System. \emph{Cognitive Science} \textbf{37}, 1356--1367.
 
 
 \clearpage
@@ -1276,7 +1196,6 @@ and universals}. Oxford University Press, UK.
 \renewcommand{\listfigurename}{Figure captions}
 \listoffigures
 
-\theendnotes
 
 
 \end{document}
