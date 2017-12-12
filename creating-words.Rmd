@@ -50,12 +50,12 @@ bibliography      : ["references.bib"]
 figsintext        : yes
 figurelist        : yes
 tablelist         : yes
-footnotelist      : yes
+footnotelist      : no
 lineno            : yes
 
 lang              : "english"
 class             : "man"
-csl:              : "proceedings-of-the-royal-society-b.csl"
+csl               : "proceedings-of-the-royal-society-b.csl"
 output            :
   papaja::apa6_pdf:
     keep_tex: yes
