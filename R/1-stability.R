@@ -169,6 +169,12 @@ similarity_judgments_mod <- lmer(
   data = acoustic_similarity_judgments
 )
 
+similarity_judgments_min_mod <- lmer(
+  similarity_z ~ edge_generation_n +
+    (edge_generation_n|name) + (edge_generation_n|category/seed_id),
+  data = filter(acoustic_similarity_judgments, sound_y_generation <= 5)
+)
+
 similarity_judgments_lmertest_mod <- lmerTest::lmer(
   formula(similarity_judgments_mod), data = similarity_judgments_mod@frame
 )
