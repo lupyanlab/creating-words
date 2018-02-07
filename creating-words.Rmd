@@ -297,15 +297,15 @@ to imitate with high fidelity) with each generation of repetition.
 gg_similarity_judgments
 ```
 
-Although in some chains imitations were repeated up to 8 times, we found
-evidence that increasing similarity could be detected after fewer repetitions,
-in as little as 5 generations. Imitations from chains that did not reach 5
-generations due to experimental constraints (see Fig. 1) were included in all
-analyses, which included appropriate random effects to assure that these shorter
-chains were not treated equally to longer chains. However, chains with fewer
-than 5 generations were excluded from analyses involving transcriptions of the
-first and last imitation in each chain because these analyses collapse across
-generation.
+Although in some chains, imitations were repeated up to 8 times, increasing
+similarity between generations _n_ and _n+1_ could be detected after fewer
+repetitions, in 5 generations or fewer. Imitations from chains that did not
+reach 5 generations due to experimental constraints (see Fig. 1) were included
+in all analyses, which included appropriate random effects to assure that these
+shorter chains were not treated equally to longer chains. However, chains with
+fewer than 5 generations were excluded from analyses involving transcriptions of
+the first and last imitation in each chain because these analyses collapse
+across generation.
 
 Increasing similarity along transmission chains could also reflect the
 uniform degradation of the signal due to repeated imitation, in which case
@@ -713,37 +713,39 @@ that gesture played an equal or more important role in establishing the first
 linguistic conventions [e.g. @Fay:2013jpa; @GoldinMeadow:2016bw;
 @Kendon:2014eg]. In addition, the present studies---like nearly all experimental
 investigations of the evolution of language---are limited in their inferential
-power due to the use of participants who already speak at least one language. It
-may turn out that the ability to repeat vocal imitations and converge on more
-word-like forms only arises in humans who already know and use a full linguistic
+power by the use of participants who already speak at least one language. It may
+turn out that the ability to repeat vocal imitations and converge on more
+word-like forms only arises in people who already know and use a full linguistic
 system, which would limit the relevance of our findings for the origins of
-language. Notably, however, our results also suggest an ongoing process by which
-new words may become incorporated into the vocabularies of modern languages.
+spoken words.
 
-Although our experiment demonstrates that constraints on vocal imitation drive
-vocalizations to increase in stability, there are additional factors that are
-required in order for vocalizations to be used as words, including experience
-with the referents that are being imitated. Here we used familiar sounds that
-participants were able to identify without any prior learning. Extending this
-research to other domains is likely to reveal the importance of experience with
-the referents being imitated in order to establish conventional signs.
+Although our results show that repeated imitations lead to increases in
+stability of spoken (as well as transcribed) forms, we recognize that there are
+additional requirements for the vocalizations to be incorporated into a
+linguistic system. One of these may be familiarity with the referents that are
+being imitated. The extent to which our results depend on prior familiarity with
+the referents can be measured by extending our procedure to less familiar
+referential domains. Another design limitation is the use of auditory referents
+that can be imitated (environmental sounds). But although vocal imitation may
+seem to be restricted to auditory referents, prior results indicate that people
+show considerable agreement on how to vocally "imitate" non-auditory and even
+somewhat abstract meanings [@Perlman:2015ip; @Perlman:2018cs].
 
 # Conclusion
 
-Human language is unique among animal communication systems in, among other
-qualities, the extreme diversity of signals in an individual's repertoires (e.g.
-words) and how rapidly these signals change over generations of speakers. As a
-consequence, the origins of most spoken words are opaque, making it difficult to
-investigate the process by which they were formed. Our experimental results show
-that the transition from vocal imitation to more word-like signals can, in some
-cases, be a rapid and simple process. The mere act of repeated imitation can
-drive vocalizations to become more like words in both form and function while
-still retaining some resemblance to their real-world referents. These findings
-suggest that new words might derive largely from a mechanical process of
-repetition, rather than from any deliberate effort to coin a new symbol. It
-remains for future work to determine the extent to which this process of word
-formation depends on the linguistic competence of modern humans, and whether a
-similar process would also characterize repeated imitations by non-linguistic
+Among the qualities that distinguish natural language from other communication
+systems is the extreme diversity of signals (e.g. words) that individuals learn
+and use, and the speed with which these signals change over generations of
+speakers. As a consequence, the origins of most spoken words are opaque, making
+it difficult to investigate the process by which they were formed. Our
+experimental results show that the transition from vocal imitation to more
+word-like signals can, in some cases, be a rapid and simple process. The mere
+act of repeated imitation can drive vocalizations to become more word-like in
+both form and function with the vocalizations nevertheless still retaining some
+resemblance to their real-world referents. These findings suggest that repeated
+vocal imitation may constitute a significant mechanism for the origin of new
+words. It remains for future work to determine the extent to which the
+functioning of this process depends on the linguistic competencies of modern
 humans.
 
 # Ethics
