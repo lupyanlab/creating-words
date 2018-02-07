@@ -43,7 +43,7 @@ abstract: >
   the possible role of human vocal imitation in explaining the origins of at
   least some spoken words.
 keywords          : "language evolution, iconicity, vocal imitation, transmission chain"
-wordcount         : "X"
+wordcount         : "7229"
 
 bibliography      : ["references.bib"]
 
@@ -82,7 +82,7 @@ sapply(list.files("R", "*.R", full.names = TRUE), read_chunk)
 
 Most vocal communication of non-human primate species is based on
 species-typical calls that are highly similar across generations and between
-populations [e.g. @Seyfarth:1986tw] [but see, e.g. @Crockford:2004cz]. In
+populations [@Seyfarth:1986tw; @Crockford:2004cz]. In
 contrast, human languages comprise a vast repertoire of learned meaningful
 elements (words and other morphemes) which can number in the tens of thousands
 or more [e.g., @Brysbaert:2016fg]. Aside from their number, the words of
