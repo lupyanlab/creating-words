@@ -20,6 +20,13 @@ imitation_matches_overall_mod <- glmer(
   family = "binomial", data = imitation_matches
 )
 
+# Center generation at 8 to see if imitations are still recognizable after 8 repetitions.
+imitation_matches$generation_8 <- imitation_matches$generation - 8
+imitation_matches_gen8_mod <- glmer(
+  is_correct ~ offset(chance_log) + generation_8 + (generation_8|chain_name/seed_id),
+  family = "binomial", data = imitation_matches
+)
+
 imitation_matches_mod <- glmer(
   is_correct ~ offset(chance_log) + generation_1 * (same_v_between + same_v_within) +
     (generation_1|chain_name/seed_id) + (1|subj_id),
