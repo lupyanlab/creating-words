@@ -5,6 +5,8 @@
 *_cache/
 *_files/
 
+example-chains.zip
+
 # latex
 *.tex
 !templates/*.tex
