@@ -13,12 +13,12 @@ supplemental-materials.pdf: supplemental-materials.Rmd
 clean:
 	rm -rf *cache/ *files/ *.tex *.pdf *.docx *.ent
 
-example-chains.zip:
-	zip -r example-chains example-chains
-
 submit: all example-chains
 	zip creating-words creating-words.pdf creating-words.docx creating-words-upload.tex supplemental-materials.pdf
 	# Add figs without paths
 	zip -j creating-words creating-words_files/figure-latex/*.pdf
-	# Add example-chains as a compressed file
-	zip creating-words example-chains.zip
+	# Add example chains
+	cp example-chains/5-full-chain-tear.wav example-chains/full-chain-tear.wav
+	cp example-chains/4-full-chain-glass.wav example-chains/full-chain-glass.wav
+	zip creating-words example-chains/full-chain*.wav
+	rm example-chains/full-chain*.wav
