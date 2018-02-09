@@ -707,7 +707,7 @@ degree of resemblance to their meaning [@Dingemanse:2016vd].
 Our study focused on imitations of environmental sounds as a source domain of
 meaning. Additional work is required to determine the extent to which vocal
 imitation can ground _de novo_ vocabulary in other semantic domains [e.g.,
-@Lupyan:2015vic; @Perlman:2015ip]. Our hypothesis that vocal imitation may have
+@Perlman:2015ip; @Perlman:2018cs]. Our hypothesis that vocal imitation may have
 played a role in the origin of some of the first spoken words does not preclude
 that gesture played an equal or more important role in establishing the first
 linguistic conventions [e.g. @Fay:2013jpa; @GoldinMeadow:2016bw;
