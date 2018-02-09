@@ -19,6 +19,6 @@ submit: all example-chains
 	zip -j creating-words creating-words_files/figure-latex/*.pdf
 	# Add example chains
 	cp example-chains/5-full-chain-tear.wav example-chains/full-chain-tear.wav
-	cp example-chains/4-full-chain-glass.wav example-chains/full-chain-glass.wav
+	cp example-chains/3-full-chain-glass.wav example-chains/full-chain-glass.wav
 	zip creating-words example-chains/full-chain*.wav
 	rm example-chains/full-chain*.wav

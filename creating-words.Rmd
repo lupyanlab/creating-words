@@ -25,23 +25,23 @@ author_note: >
   Language and Applied Linguistics, University of Birmingham, United Kingdom.
 abstract: >
   People have long pondered the evolution of language and the origin of words.
-  Here, we investigate how conventional spoken
-  words might emerge from imitations of environmental sounds. Does the repeated
-  imitation of an environmental sound gradually give rise to more word-like
-  forms? In what ways do these forms resemble the original sounds that motivated
-  them (i.e., exhibit iconicity)? Participants played a version of the
-  children’s game “Telephone”. The first generation of participants imitated
-  recognizable environmental sounds (e.g., glass breaking, water splashing).
-  Subsequent generations imitated the previous generation of imitations for a
-  maximum of 8 generations. The results showed that the imitations became more
-  stable and word-like, and later imitations were easier to learn as category
-  labels. At the same time, even after 8 generations, both spoken imitations and
-  their written transcriptions could be matched above chance to the category of
-  environmental sound that motivated them. These results show how repeated
-  imitation can create progressively more word-like forms while continuing to
-  retain a resemblance to the original sound that motivated them, and speak to
-  the possible role of human vocal imitation in explaining the origins of at
-  least some spoken words.
+  Here, we investigate how conventional spoken words might emerge from
+  imitations of environmental sounds. Does the repeated imitation of an
+  environmental sound gradually give rise to more word-like forms? In what ways
+  do these forms resemble the original sounds that motivated them (i.e., exhibit
+  iconicity)? Participants played a version of the children’s game “Telephone”.
+  The first generation of participants imitated recognizable environmental
+  sounds (e.g., glass breaking, water splashing). Subsequent generations
+  imitated the previous generation of imitations for a maximum of 8 generations.
+  The results showed that the imitations became more stable and word-like, and
+  later imitations were easier to learn as category labels. At the same time,
+  even after 8 generations, both spoken imitations and their written
+  transcriptions could be matched above chance to the category of environmental
+  sound that motivated them. These results show how repeated imitation can
+  create progressively more word-like forms while continuing to retain a
+  resemblance to the original sound that motivated them, and speak to the
+  possible role of human vocal imitation in explaining the origins of at least
+  some spoken words.
 keywords          : "language evolution, iconicity, vocal imitation, transmission chain"
 wordcount         : "7229"
 
@@ -82,20 +82,20 @@ sapply(list.files("R", "*.R", full.names = TRUE), read_chunk)
 
 Most vocal communication of non-human primate species is based on
 species-typical calls that are highly similar across generations and between
-populations [@Seyfarth:1986tw; @Crockford:2004cz]. In
-contrast, human languages comprise a vast repertoire of learned meaningful
-elements (words and other morphemes) which can number in the tens of thousands
-or more [e.g., @Brysbaert:2016fg]. Aside from their number, the words of
-different natural languages are characterized by their extreme diversity
-[@Wierzbicka:1996sm; @Evans:2009dk; @Lupyan:2016uw]. The words used within a
-speech community change relatively quickly over generations compared to the
-evolution of vocal signals [e.g., @Pagel:2007br]. At least in part as a
-consequence of this divergence, most words appear to bear a largely arbitrary
-relationship between their form and their meaning --- seemingly, a product of
-their idiosyncratic etymological histories [@Sapir:1921; @Labov:1972]. The
-apparently arbitrary nature of spoken vocabularies presents a quandary for the
-study of language origins. If words of spoken languages are truly arbitrary, by
-what process were the first words ever coined?
+populations [@Seyfarth:1986tw]. In contrast, human languages
+comprise a vast repertoire of learned meaningful elements (words and other
+morphemes) which can number in the tens of thousands or more [e.g.,
+@Brysbaert:2016fg]. Aside from their number, the words of different natural
+languages are characterized by their extreme diversity [@Wierzbicka:1996sm;
+@Evans:2009dk]. The words used within a speech community change
+relatively quickly over generations compared to the evolution of vocal signals
+[e.g., @Pagel:2007br]. At least in part as a consequence of this divergence,
+most words appear to bear a largely arbitrary relationship between their form
+and their meaning --- seemingly, a product of their idiosyncratic etymological
+histories [@Sapir:1921; @Labov:1972]. The apparently arbitrary nature of spoken
+vocabularies presents a quandary for the study of language origins. If words of
+spoken languages are truly arbitrary, by what process were the first words ever
+coined?
 
 While the origin of most spoken words is hard to discern, the situation is
 somewhat different for signed languages. In signed languages, the origins of
@@ -297,9 +297,9 @@ to imitate with high fidelity) with each generation of repetition.
 gg_similarity_judgments
 ```
 
-Although in some chains, imitations were repeated up to 8 times, increasing
-similarity between generations _n_ and _n+1_ could be detected after fewer
-repetitions, in 5 generations or fewer. Imitations from chains that did not
+Although in some chains, imitations were repeated up to 8 times, an increase
+in similarity between generations could be detected after fewer
+repetitions, in around 5 generations. Imitations from chains that did not
 reach 5 generations due to experimental constraints (see Fig. 1) were included
 in all analyses, which included appropriate random effects to assure that these
 shorter chains were not treated equally to longer chains. However, chains with
@@ -702,8 +702,6 @@ cognitive states [@Dingemanse:2012fc; @Nuckolls:1999ca; @Voeltz:2001vv]. As with
 onomatopoeia, ideophones are often recognized by naïve listeners as bearing a
 degree of resemblance to their meaning [@Dingemanse:2016vd].
 
-## Limitations
-
 Our study focused on imitations of environmental sounds as a source domain of
 meaning. Additional work is required to determine the extent to which vocal
 imitation can ground _de novo_ vocabulary in other semantic domains [e.g.,
@@ -730,8 +728,6 @@ that can be imitated (environmental sounds). But although vocal imitation may
 seem to be restricted to auditory referents, prior results indicate that people
 show considerable agreement on how to vocally "imitate" non-auditory and even
 somewhat abstract meanings [@Perlman:2015ip; @Perlman:2018cs].
-
-# Conclusion
 
 Among the qualities that distinguish natural language from other communication
 systems is the extreme diversity of signals (e.g. words) that individuals learn
