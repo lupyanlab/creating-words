@@ -43,7 +43,7 @@ abstract: >
   possible role of human vocal imitation in explaining the origins of at least
   some spoken words.
 keywords          : "language evolution, iconicity, vocal imitation, transmission chain"
-wordcount         : "7229"
+wordcount         : "6964"
 
 bibliography      : ["references.bib"]
 
@@ -80,7 +80,7 @@ sapply(list.files("R", "*.R", full.names = TRUE), read_chunk)
 ```{r setup, include=FALSE, cache=FALSE}
 ```
 
-Most vocal communication of non-human primate species is based on
+Most vocal communication of non-human primates is based on
 species-typical calls that are highly similar across generations and between
 populations [@Seyfarth:1986tw]. In contrast, human languages
 comprise a vast repertoire of learned meaningful elements (words and other
@@ -89,7 +89,7 @@ morphemes) which can number in the tens of thousands or more [e.g.,
 languages are characterized by their extreme diversity [@Wierzbicka:1996sm;
 @Evans:2009dk]. The words used within a speech community change
 relatively quickly over generations compared to the evolution of vocal signals
-[e.g., @Pagel:2007br]. At least in part as a consequence of this divergence,
+[e.g., @Pagel:2007br]. At least in part as a consequence of this rapid change,
 most words appear to bear a largely arbitrary relationship between their form
 and their meaning --- seemingly, a product of their idiosyncratic etymological
 histories [@Sapir:1921; @Labov:1972]. The apparently arbitrary nature of spoken
@@ -97,9 +97,9 @@ vocabularies presents a quandary for the study of language origins. If words of
 spoken languages are truly arbitrary, by what process were the first words ever
 coined?
 
-While the origin of most spoken words is hard to discern, the situation is
-somewhat different for signed languages. In signed languages, the origins of
-many signs are relatively transparent. Although signed languages rely on the
+While the origin of most spoken words remains opaque, the situation is
+somewhat different for signed languages for which much is known regarding the origins of
+many signs. Although signed languages rely on the
 same type of referential symbolism as spoken languages, many individual signs
 have clear iconic roots, formed from gestures that resemble their meaning
 [@GoldinMeadow:2016bw; @Kendon:2014eg; @Klima:1980si]. For instance,
@@ -107,21 +107,18 @@ have clear iconic roots, formed from gestures that resemble their meaning
 sign for 'bird', which is formed with a beak-like handshape articulated in front
 of the nose. Another example is 'steal', derived from a grabbing motion to
 represent the act of stealing something. @Stokoe:1965 identified about 25% of
-American Sign Language signs to be iconic, and reviewing the remaining 75% of
+ASL signs to be iconic, and reviewing the remaining 75% of
 ASL signs, @Wescott:1971to determined that about two-thirds of these seemed
 plausibly derived from iconic origins. Further support for iconic origins of
 signed languages comes from observations of deaf children raised without
 exposure to a signed language, who develop homesign systems to use with their
-family. These communication systems are generally built from a process in which
-the children establish conventional gestures through the use of pantomimes and
-various iconic and indexical gestures [e.g. @GoldinMeadow:1977gz]. Participants
-in laboratory experiments utilize a similar strategy when they communicate with
-gestures in iterated communication games [@Fay:2014cw].
+family. In these communication systems, children frequently use pantomimes and
+various iconic and indexical gestures some of which may become conventionalized [e.g. @GoldinMeadow:1977gz]. Participants
+in laboratory experiments utilize a similar strategy when they cannot rely on existing words [@Fay:2014cw].
 
 In contrast to the visual gestures of signed languages, many have argued that
 iconic vocalizations could not have played a significant role in the origin of
-spoken words because the vocal modality simply does not afford much resemblance
-between form and meaning [@Arbib:2012htb; @Armstrong:2007go; @Corballis:2003ha;
+spoken words because the vocal modality simply does not afford much form-meaning iconicity [@Arbib:2012htb; @Armstrong:2007go; @Corballis:2003ha;
 @Hewes:1973vr; @Hockett:1978se; @Tomasello:2010or]. It has also been argued that
 the human capacity for vocal imitation is a domain-specific skill, geared
 towards learning to speak, rather than the representation of environmental
@@ -140,49 +137,42 @@ vocal imitation and depiction in spoken discourse [@Clark:1990cl;
 understanding the origin of spoken words [e.g., @Brown:1955wy;
 @Dingemanse:2014gj; @Donald:2016kd; @Imai:2014dea; @Perlman:2015ip]. In
 addition, counter to previous assumptions, people are highly effective at using
-vocal imitations to refer to environmental sounds such as coins dropping in a
-jar or mechanical events such as scraping --- in some cases, even more effective
+vocal imitations to refer to events such as coins dropping in a
+jar or environmental sounds like scraping --- even more effective in some cases
 than when using conventional words [@Lemaitre:2014kr]. These imitations are
 effective not because people can mimic environmental sounds with high fidelity,
-but because people are able to produce imitations that capture the salient
+but because people can capture with their "imitations" salient
 features of the referent in ways that are understandable to listeners
 [@Lemaitre:2016kz]. Similarly, the features of onomatopoeic words might
 highlight distinctive aspects of the sounds they represent. For example, the
 initial voiced, plosive /b/ in “boom” represents an abrupt, loud onset, the back
 vowel /u/ a low pitch, and the nasalized /m/ a slow, muffled decay
-[@Rhodes:1994au]. Recent work has also shown that people are able to create
+[@Rhodes:1994au]. Such iconicity is not limited to imitations of sounds. People are able to create
 novel imitative vocalizations for more abstract meanings (e.g. ‘slow’, ‘rough’,
-‘good’, ‘many’) that are understandable to naïve listeners [@Perlman:2015ip].
+‘good’, ‘many’) such that the vocalizations are understandable to naïve listeners [@Perlman:2015ip].
 
 Thus, converging evidence suggests that people can use vocal imitation as an
 effective means of communication. At the same time, vocal imitations are not
 words. If vocal imitation played a role in the origin of some spoken words, then
-it is necessary to identify whether vocal imitation
-can give rise to more word-like vocalizations that can eventually be integrated
+it is necessary to identify circumstances in which vocal imitation
+may begin can give rise to more word-like vocalizations that can eventually be integrated
 into a vocabulary of a language. In the present set of studies we ask whether
 vocal imitations can transition to more word-like forms through sheer repetition
 --- without an explicit intent to communicate. To answer this question, we
 recruited participants to play an online version of the children's game of
-"Telephone". In the children’s game, a spoken message is whispered from one
-person to the next. In our version, the original message or "seed sound" was a
-recording of an environmental sound. The initial group of participants (first
-generation) imitated these seed sounds, the next generation imitated the
+"Telephone". In our version of the game the original message (the "seed") was a
+recording of an environmental sound. The initial group of participants imitated these seed sounds. The next generation imitated the
 previous imitators, and so on for up to 8 generations.
 
 Our approach uses a transmission chain methodology similar to that frequently
 used in experimental studies of language evolution [@Tamariz:2017bd, for
 review]. As with other transmission chain studies (and iterated learning studies
-more generally), we seek to discover how various biases and constraints of
-individuals change the nature of a linguistic signal. Importantly, while typical
+more generally), we sought to discover how various biases and constraints of
+individuals changed the nature of a linguistic signal. While typical
 transmission chain studies focus on the impact of learning biases [e.g.,
-@Kirby:2008kja], the present studies involve iterated reproduction that does not
+@Kirby:2008kja], here we use iterated reproduction which does not
 involve any learning. Participants simply attempt to imitate a sound as best as
-they can. The biases we hypothesize to drive vocalizations to become more
-word-like are therefore not related to any learning process, but instead are
-expected to emerge from constraints on the reproducibility of vocalizations. Our
-aim is thus to determine whether iterated reproduction, even without learning,
-is a sufficient enough constraint to enable the emergence of more word-like
-signals.
+they can. 
 
 After collecting the imitations, we conducted a series of analyses and
 additional experiments to systematically answer the following questions: First,
@@ -210,72 +200,63 @@ transmission chains. Third, we obtained transcriptions of imitations, and
 measured the extent to which later generation imitations were transcribed with
 greater consistency and agreement. The results show that repeated imitation
 results in vocalizations that are easier to repeat with high fidelity and more
-consistently transcribed into English orthography.
+consistently transcribed into English letters.
 
 ## Methods
 
 ### Selecting seed sounds
 
 To avoid sounds with lexicalized or conventionalized onomatopoeic forms in
-English, we used inanimate categories of environmental sounds. To select sounds
-that were equally distinguishable within each category, we used an odd-one-out
+English, we used inanimate categories of environmental sounds. We ensured that the sounds
+within each category were approximately equally distinguishable by using an odd-one-out
 norming procedure (_N_=`r n_norming_subjects` participants; see Fig. S1),
-resulting in a final set of 16 sounds, 4 in each of 4 categories: glass, tear,
-water, zipper.
+resulting in a final set of 16 sounds, 4 in each of 4 categories: glass (breaking), paper (tearing),
+water (splashing), zipper (moving).
 
 ### Collecting vocal imitations
 
-Participants (_N_=`r n_imitators`) recruited from Amazon Mechanical Turk were
-paid to participate in an online version of the children's game of "Telephone".
-Participants were instructed that they would hear some sound and their task was
+We recruited `r n_imitators` participants from Amazon Mechanical Turk. Participants were instructed that they would hear some sound and their task was
 to reproduce it as accurately as possible using their computer microphone. Full
 instructions are provided in the Supplemental Materials.
 
 Each participant listened to and imitated four sounds: one from each of the four
-categories of environmental sounds. Sounds were assigned at random such that
+categories. Sounds were assigned at random such that
 participants were unlikely to imitate the same person more than once.
 Participants were allowed to listen to each target sound as many times as they
 wished, but were only allowed a single recording in response. Recordings that
 were too quiet (less than -30 dBFS) were not accepted.
 
-Imitations were monitored by an experimenter to remove poor quality recordings
-(e.g., loud background sounds), and recordings that violated the rules of
-the experiment (e.g., an utterance in English). A total of `r n_removed`
-(`r n_removed_pct`%) imitations were removed. The final sample contained
-`r n_final_imitations` imitations along `r n_branches` contiguous transmission
-chains (Fig. 1).
+A total of `r n_removed` (`r n_removed_pct`%) imitations were removed for being poor quality (e.g., loud background sounds) or for violating the rules of the experiment (e.g., an utterance in English). The final sample contained
+`r n_final_imitations` imitations along `r n_branches` contiguous transmission chains (Fig. 1).
 
-```{r fig1, fig.width=4, fig.height=3.5, fig.cap="Vocal imitations collected in the transmission chain experiment. Seed sounds (16) were sampled from four categories of environmental sounds: glass, tear, water, zipper. Participants imitated each seed sound, and then the next generation of participants imitated the imitations, and so on, for up to 8 generations. Chains are unbalanced due to random assignment and the exclusion of some low quality recordings."}
+```{r fig1, fig.width=4, fig.height=3.5, fig.cap="Vocal imitations collected in the transmission chain experiment. Seed sounds (16) were sampled from four categories of environmental sounds: glass, tear, water, zipper. Participants imitated each seed sound, and then the next generation of participants imitated the imitations, and so on, for up to 8 generations. Chains are unbalanced due to random assignment and the above-mentioned exclusion criteria."}
 gg_dendrogram
 ```
 
 ### Measuring acoustic similarity
 
-Acoustic similarity judgments were obtained from five research assistants who
-listened to pairs of sounds (approx. 300) and rated their subjective similarity.
+We obtained acoustic similarity judgments from five research assistants who
+listened to pairs of sounds (approx. 300 each) and rated their subjective similarity.
 On each trial, raters heard two sounds from subsequent generations played in
 random order, and indicated the similarity between the sounds on a 7-
 point Likert scale from _Entirely different and would never be confused_ to
-_Nearly identical_. Full instructions and inter-rater reliability measures are
-provided in the Supplemental Materials.
+_Nearly identical_. See Supplemental Materials for full instructions and inter-rater reliability measures.
 
-To obtain algorithmic measures of acoustic similarity, we used the acoustic
-distance functions included in Phonological Corpus Tools [@PCT:1.1]. We computed
+We also obtained algorithmic measures of acoustic similarity using the acoustic
+distance functions from the Phonological Corpus Tools [@PCT:1.1]. We computed
 Mel-frequency cepstral coefficients (MFCCs) between pairs of imitations using 12
 coefficients in order to obtain speaker-independent estimates.
 
 ### Collecting transcriptions of imitations
 
 Transcriptions were obtained for the first and last three generations of each
-transmission chain. Additional “transcriptions” of the original sounds used as
-seeds were also collected and are analyzed in the Supplementary Materials (Fig.
+transmission chain. We also transcribed the original seed sounds(see Supplementary Materials, Fig.
 S6).
 
-Participants (_N_=`r n_transcribers`) recruited from Amazon Mechanical Turk
-were paid to listen to imitations and write down what they heard as a
+We recruited `r n_transcribers` additional participants from Amazon Mechanical Turk
+to listen to the vocal imitations and write down what they heard as a
 single "word" so that the written word would sound as much like the sound as
-possible. Participants were instructed to avoid transcribing the imitations
-into existing English words. Each participant completed 10 transcriptions.
+possible. Participants were instructed to avoid using English words in their transcriptions. Each participant completed 10 transcriptions.
 
 ## Results
 
@@ -298,11 +279,10 @@ gg_similarity_judgments
 ```
 
 Although in some chains, imitations were repeated up to 8 times, an increase
-in similarity between generations could be detected after fewer
-repetitions, in around 5 generations. Imitations from chains that did not
+in similarity between generations could be detected after about 5 generations. Imitations from chains that did not
 reach 5 generations due to experimental constraints (see Fig. 1) were included
-in all analyses, which included appropriate random effects to assure that these
-shorter chains were not treated equally to longer chains. However, chains with
+in all analyses, which included appropriate random effects to ensure that 
+shorter chains were weighed appropriately in the analyses. However, chains with
 fewer than 5 generations were excluded from analyses involving transcriptions of
 the first and last imitation in each chain because these analyses collapse
 across generation.
@@ -318,8 +298,7 @@ similarity increased within chains more than it increased between chains,
 indicating that imitations were stabilizing on divergent acoustic
 forms as opposed to converging on similar forms through continuous degradation.
 
-An additional test of stabilization and word-likeness was to measure
-whether later generation imitations were transcribed more consistently
+As an additional test of stabilization we measured whether later generation imitations were transcribed more consistently
 than first generation imitations. We collected a total of `r n_transcriptions`
 transcriptions --- approximately `r n_transcriptions_per_imitation`
 transcriptions per sound. Of these, `r n_english_transcriptions` transcriptions
@@ -348,21 +327,19 @@ Supplementary Materials (Fig. S6).
 ## Discussion
 
 Repeating imitations of environmental sounds over generations of imitators
-was sufficient to create more word-like forms, even without any explicit
-intent to communicate. We defined word-likeness in terms of acoustic stability
-and orthographic agreement. With each repetition, the acoustic forms of the
-imitations became more similar to one another, indicating they became easier
-to repeat with high fidelity. The possibility that this similarity was due to
+was sufficient to create more word-like forms (defined here in terms of acoustic stability
+and orthographic agreement), even without any explicit intent to communicate. With each repetition, the acoustic forms of the
+imitations became more similar to one another, indicating that it became easier
+to repeat them with greater consistency. The possibility that this similarity was due to
 uniform degradation across all transmission chains was ruled out by algorithmic
 analyses of acoustic similarity demonstrating that acoustic similarity increased
-within chains but not between them. Additionally, later generation imitations
-were transcribed more consistently into English orthography, further supporting
-our hypothesis that repeating imitations makes them more stable and word-like.
+within chains but not between them. Further support
+for our hypothesis that repeating imitations makes them more stable/word-like comes from the result showing that later generation imitations were transcribed more consistently into English letters.
 
 The results of Experiment 1 demonstrate the ease with which iterated imitation
-gives rise to stable word forms. However, the results do not address how these
+gives rise to more stable forms. However, the results do not address how these
 emergent words relate to the original sounds that were being imitated. As the
-imitations became more word-like, were they stabilizing on arbitrary acoustic
+imitations became more stable, were they stabilizing on arbitrary acoustic
 and orthographic forms, or did they maintain some resemblance to the
 environmental sounds that motivated them? The purpose of Experiment 2 was to
 assess the extent to which repeated imitations and their transcriptions
@@ -374,15 +351,11 @@ maintained a resemblance to the original set of seed sounds.
 ```
 
 To assess the resemblance of repeated imitations to the original seed sounds,
-we measured the ability of participants naïve to the design of the experiment
-to match imitations and their transcriptions back to their original sound
+we measured the ability of naïve participants to match imitations and their transcriptions back to their original sound
 source relative to other seed sounds from either the same category or from
 different categories (Fig. 3A). Using these match accuracies, we first asked
 whether and for how many generations the imitations and their transcriptions
-could be matched back to the original sounds. Second, we asked whether repeated
-imitation resulted in a uniform degradation of the signal in each imitation,
-or if repeated imitation resulted in some kinds of information degrading more
-rapidly than others. Specifically, we tested the hypothesis that if imitations
+could be matched back to the original sounds and whether certain types of information were lost fater than other types. Specifically, we tested the hypothesis that if imitations
 were becoming more word-like, then they should also be interpreted more
 categorically, and thus we anticipated that imitations would lose information
 identifying the specific source of an imitation more rapidly than category
@@ -398,17 +371,17 @@ one, choose one of four possible sounds they thought the person was trying to
 imitate. The task was not speeded and no feedback was provided. Participants
 completed 10 questions at a time.
 
-All imitations were tested in each of the three question types depicted in Fig.
-3A. These questions differed in the relationship between the imitation and the
-four seed sounds provided as the choices in the question. Question types (True
-seed, Category match, Specific match) were assigned between-subject.
+All imitations were tested in three question types (True
+seed, Category match, Specific match) which differed in the relationship between the imitation and the
+four seed sounds provided as the choices in the question (see Fig.
+3A). The Question types were assigned between-subject.
 
 ### Matching transcriptions to seed sounds
 
-Participants (_N_=`r n_transcription_match_subjs`) recruited from Amazon
-Mechanical Turk completed a modified version of the matching survey described
-above. Instead of listening to imitations, participants now read a word (a
-transcription of an imitation), which they were told was invented to describe
+We recruited _N_=`r n_transcription_match_subjs` participants from Amazon
+Mechanical Turk to complete a modified version of the matching survey described
+above. Instead of listening to imitations, participants now saw a
+transcription of an imitation and were told that it was invented to describe
 one of the four presented sounds. Of the unique transcriptions that were
 generated for each sound (imitations and seed sounds), only the top four most
 frequent transcriptions were used in the matching experiment. The distractors
@@ -435,26 +408,23 @@ and decreased steadily over generations,
 After 8 generations, imitations were still recognizable,
 `r glmer_mod_results(imitation_matches_gen8_mod, "(Intercept)", odds = TRUE)`.
 We then tested whether this increase in difficulty was constant across
-the three types of questions or if some question types became more
-difficult than others. The results are shown in Fig. 3B. Performance
+the three types of questions. The results are shown in Fig. 3B. Performance
 decreased over generations more rapidly for specific match questions
 that required a within-category distinction than for category match questions
 that required a between-category distinction,
-`r glmer_mod_results(imitation_matches_mod, "generation_1:same_v_within")`,
-suggesting that between-category information was more resistant to loss through
-repeated imitation.
+`r glmer_mod_results(imitation_matches_mod, "generation_1:same_v_within")`. This
+suggests that the iconicity in between-category information was more resistant to loss through repetition.
 
-An alternative explanation of the drop off in accuracy for specific match
-questions but not category match questions is that the within-category
-questions are simply more difficult because the sounds presented as choices
+An alternative explanation of the relatively greater decrease in accuracy for specific match
+questions is that they are simply more difficult than the category-match questions because the sounds presented as choices
 are more acoustically similar to one another. However, performance also
 decreased relative to the category match questions for the easiest type
 of question where the correct answer was the actual seed generating the
 imitation (True seed questions; see Fig. 3A). That is, the advantage of having the
 true seed among between-category distractors decreased over generations,
 `r glmer_mod_results(imitation_matches_mod, "generation_1:same_v_between")`.
-The observed decrease in the "true seed advantage" (the advantage of having
-the actual seed among the choices) combined with the increase in the "category
+Together, the observed decrease in the "true seed advantage" (the advantage of having
+the actual seed among the choices) and the increase in the "category
 advantage" (the advantage of having between-category distractors) shows
 that the changes induced by repeated imitation caused the imitations to lose
 some of properties that linked the earlier imitations to the specific sound that
@@ -466,7 +436,7 @@ auditory sounds back to the original environmental sounds. Remarkably,
 participants were able to guess the correct meaning of a word that was
 transcribed from an imitation that had been repeated up to 8 times,
 `r glmer_mod_results(transcription_matches_last_gen_mod, "(Intercept)", odds = TRUE)`
-(Fig. 3C). This was true for True seed questions containing
+(Fig. 3C) both for True seed questions containing
 the actual seed generating the transcribed imitation,
 `r glmer_mod_results(transcription_matches_last_gen_mod_category, "(Intercept)")`,
 and for Category match questions where participants had to associate
@@ -476,7 +446,7 @@ The effect of generation did not vary across these question types,
 `r glmer_mod_results(acc_mod, "question_c:message_c")`. The results of matching
 "transcriptions" directly of the environmental sounds are shown in Fig. S6.
 
-```{r fig3, fig.width=8, fig.height=3.5, fig.cap='Repeated imitations retained category resemblance. A. Three types of matching questions. True seed and category match questions had choices from different sound categories. Specific match questions pitted the actual seed against the other seeds within the same category. B. Accuracy in matching vocal imitations to original seed sounds. Curves show predictions of the generalized linear mixed effects models with ±1 SE of the model predictions. C. Accuracy in matching transcriptions of the imitations to original seed sounds (e.g., "boococucuwich" to a water splashing sound). Circles show mean matching accuracy for the vocal imitations that were transcribed for comparison.'}
+```{r fig3, fig.width=8, fig.height=3.5, fig.cap='Repeated imitations retained category resemblance. A. Three types of matching questions. True seed and category match questions contained choices from different sound categories. Specific match questions pitted the actual seed against the other seeds within the same category. B. Accuracy in matching vocal imitations to original seed sounds. Curves show predictions of the generalized linear mixed effects models with ±1 SE of the model predictions. C. Accuracy in matching transcriptions of the imitations to original seed sounds (e.g., "boococucuwich" to a water splashing sound). Circles show mean matching accuracy for the vocal imitations that were transcribed for comparison.'}
 grid.arrange(
   arrangeGrob(
     read_graphviz("true-seed", "wordsintransition"),
@@ -505,15 +475,13 @@ seed sound, suggesting that iterated imitation produces vocalizations that are
 interpreted by naïve listeners in a more categorical way. Iterated
 imitation appears to strip the vocalizations of some of the characteristics that
 individuate each particular sound while maintaining some category-based
-resemblance. This happens even though participants were never informed about the
+resemblance. This happenned even though participants were never informed about the
 meaning of the vocalizations and were not trying to communicate.
 
 Transcriptions of the vocalizations, like the vocalizations themselves, were
 able to be matched to the original environmental sounds at levels above chance.
 Unlike vocalizations, the transcriptions continued to be matched
-more accurately to the true seed compared to the general category. That is,
-transcription appears to impact specific and category-level information equally.
-One possible explanation of the difference between the acoustic and
+more accurately to the true seed compared to the general category; transcription appearred to impact specific and category-level information equally. One possible explanation of the difference between the acoustic and
 orthographic forms of this task is that the process of transcribing a
 non-linguistic vocalization into a written word encourages transcribers to
 emphasize individuating information about the vocalization. However, this
@@ -536,14 +504,13 @@ serving as category labels in a category learning task.
 ```{r learning, include=FALSE}
 ```
 
-One consequence of imitations becoming more word-like is that they may make
-for better category labels. For example, an imitation from a later generation,
-by virtue of having a more word-like form, may be easier to learn as a label
+If, as we claim, repeated imitation leads to more word-like forms, they should make for better category labels.
+For example, an imitation from a later generation may be easier to learn as a label
 for the category of sounds that motivated it than an earlier imitation, which
 is more closely yoked to a particular environmental sound. To the extent
-that repeating imitations abstracts away the idiosyncrasies of a particular
+that repeating imitations abstract away the idiosyncrasies of a particular
 category member [@Edmiston:2015he; @Lupyan:2012cp], it may also be easier to
-generalize to new category members. We tested these predictions using a category
+generalize later imitations to new category members. We tested these predictions using a category
 learning task in which participants learned novel labels for the categories of
 environmental sounds. The novel labels were transcriptions of either first or
 last generation imitations gathered in Experiment 1.
@@ -555,24 +522,20 @@ last generation imitations gathered in Experiment 1.
 Of the `r n_created_words` unique words created through the transmission chain
 and transcription procedures, we sampled `r n_lsn_words` words transcribed
 from first and last generation imitations that were equated in terms of
-length and match accuracy with the original sounds. Our procedure for selecting
-otherwise-equal transcriptions is detailed in the Supplementary Materials.
+length and match accuracy to the original sounds (see Supplementary Materials for additional details).
 
 ### Procedure
 
 Participants (_N_=`r n_all_lsn_subjs`) were University of Wisconsin
-undergraduates who received course credit for participation. Participants
-were randomly assigned four novel labels to learn for four categories of
-environmental sounds. Full instructions are provided in the Supplementary
+undergraduates. Participants were tasked with learning to associate novel labels (transcriptions of seed sounds) with the original seed sounds. Full instructions are provided in the Supplementary
 Materials. Participants were assigned between-subject to learn labels
-(transcriptions) of either first or last generation imitations. On
+of either first or last generation imitations. On
 each trial, participants heard one of the 16 seed sounds. After a 1s delay,
-participants saw a label (one of the transcribed imitations) and responded yes
-or no using a gamepad controller depending on whether the sound and the word
+participants saw a label (one of the transcribed imitations) and responded _yes_
+or _no_ using a gamepad controller depending on whether the sound and the word
 went together. Participants received accuracy feedback (a bell sound and a green
 checkmark if correct; a buzzing sound and a red "X" if incorrect). Four outlier
-participants were excluded from the final sample due to high error rates and
-slow RTs.
+participants were excluded due to high error rates and slow RTs.
 
 Participants categorized all 16 seed sounds over the course of the experiment,
 but they learned them in blocks of 4 sounds at a time. Within each block of 24
@@ -607,8 +570,7 @@ more than four categories and 16 exemplars) would yield differences in initial
 learning rates as well.
 
 Next, we examined specifically whether transcriptions from last generation imitations
-were easier to generalize to novel category exemplars. To test this
-hypothesis, we compared RTs on trials immediately prior to the introduction
+were easier to generalize to novel category exemplars by comparing RTs on trials immediately prior to the introduction
 of novel sounds (new category members) and the first trials after the block
 transition (±6 trials). The results revealed a reliable interaction between
 the generation of the transcribed imitation and the block transition,
@@ -630,21 +592,15 @@ grid.arrange(
 
 ## Discussion
 
-The results of a simple category learning experiment demonstrate a possible
-benefit to the way that repeated imitations are molded into more word-like forms.
-As a consequence of being more word-like, repeated imitations were responded
-to more quickly, and generalized to new category members more easily. These
-results suggest an advantage to repeating imitations from the perspective of the
-language learner in that they afford better category generalization.
+Transcriptions of vocal imitations that have undergone greater repetition were processed more quickly, and generalized to new category members more easily to new category members. These results point to a way that repeated imitation may lead to forms that become more word-like besides increase in stability.
 
 # General Discussion
 
 Accumulating evidence shows that iconic words are prevalent across the spoken
-languages of the world [@Dingemanse:2015cu; @Imai:2014dea; @Perniss:2010fb]. And
-counter to past assumptions about the limitations of human vocal imitation,
+languages of the world [@Dingemanse:2015cu; @Imai:2014dea; @Perniss:2010fb]. Counter to past assumptions about the limitations of human vocal imitation,
 people are surprisingly effective at using vocal imitation to represent and
 communicate about the sounds in their environment [@Lemaitre:2016kz] and more
-abstract meanings [@Perlman:2015ip]. These findings raise the hypothesis that
+abstract meanings [@Perlman:2015ip]. These findings raise the possibility that
 early spoken words originated from vocal imitations, perhaps comparable to the
 way that many of the signs of signed languages appear to be formed originally
 from pantomimes [@Fay:2014ih; @Perlman:2015ip]. Here, we examined whether simply
@@ -655,7 +611,7 @@ Our results show that through unguided repetition, imitative vocalizations
 became more word-like both in form and function. In form, the vocalizations
 gradually stabilized over generations, becoming more similar from imitation to
 imitation. The standardization was also found when the vocalizations were transcribed
-into English orthography. Even as the vocalizations became more word-like, they
+into English letters. Even as the vocalizations became more word-like, they
 maintained a resemblance to the original environmental sounds that motivated
 them. Notably, this resemblance appeared more resilient with respect to the
 category of sound (e.g., water-splashing sounds), rather than to the specific
@@ -747,15 +703,14 @@ humans.
 # Ethics
 
 This was approved by the University of Wisconsin-Madison's Educational
-and Social/Behavioral Sciences Institutional Review Board and conducted in
+and Social/Behavioral Sciences IRB and conducted in
 accordance with the principles expressed in the Declaration of Helsinki.
 Informed consent was obtained for all participants.
 
 # Data, code, and materials
 
-Our data along with all methods, materials, and analysis scripts, are available
-in public repositories described on the Open Science Framework page for this
-research here: [osf.io/3navm](https://osf.io/3navm).
+Our data, methods, materials, and analysis scripts, are available
+at [osf.io/3navm](https://osf.io/3navm).
 
 # Competing interests
 
