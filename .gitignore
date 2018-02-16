@@ -1,22 +1,11 @@
 # reproducible
 *.md
-*.pdf
-*.docx
-!submissions/**/*.pdf
-!submissions/**/*.docx
-!comments/*.docx
-
-# reproducible
-figs/
 *_cache/
 *_files/
-
-example-chains.zip
 
 # latex
 *.tex
 !templates/*.tex
-*.md
 *.aux
 *.bbl
 *.blg
@@ -25,30 +14,9 @@ example-chains.zip
 *.fdb_latexmk
 *.fls
 *.log
+*.out
+*.ent
 
 # R/RStudio
 .Rhistory
 .Rproj.user/
-*.aux
-*.blg
-*.fdb_latexmk
-*.fls
-*.log
-*.out
-*.ent
-
-# submissions
-!submissions/**/*.pdf
-!submissions/**/*.docx
-!submissions/**/*.md
-!submissions/**/*.tex
-
-# R/RStudio
-.Rhistory
-.Rproj.user
-# os
-.DS_Store
-
-# editor
-*.swp
-~$*

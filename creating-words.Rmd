@@ -55,7 +55,7 @@ lineno            : yes
 
 lang              : "english"
 class             : "man"
-csl               : "proceedings-of-the-royal-society-b.csl"
+csl               : "templates/proceedings-of-the-royal-society-b.csl"
 output            :
   papaja::apa6_pdf:
     keep_tex: yes
