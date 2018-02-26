@@ -1,4 +1,5 @@
 ---
+title: Supplementary materials
 output:
   pdf_document:
     toc: yes
@@ -7,7 +8,6 @@ header-includes:
   - \DeclareCaptionLabelFormat{si-fig}{#1#2}
   - \captionsetup[figure]{labelformat=si-fig,name=Figure S}
 ---
-
 ```{r config, include=FALSE}
 library(knitr)
 library(gridExtra)
@@ -25,6 +25,8 @@ opts_chunk$set(
 sapply(list.files("R", "*.R", full.names = TRUE), read_chunk)
 ```
 
+Edmiston P, Perlman M, Lupyan G. 2018 Repeated imitation makes human vocalizations more word-like. _Proc. R. Soc. B_ 20172709. http://dx.doi.org/10.1098/rspb.2017.2709
+
 ```{r setup, include=FALSE, cache=FALSE}
 ```
 
@@ -37,9 +39,8 @@ sapply(list.files("R", "*.R", full.names = TRUE), read_chunk)
 ```{r matching, include=FALSE}
 ```
 
-\newpage
 
-## Figures
+## List of supplementary figures
 
 ### Fig S1. Seed selection procedure.
 
