@@ -154,15 +154,16 @@ novel imitative vocalizations for more abstract meanings (e.g. ‘slow’, ‘ro
 Thus, converging evidence suggests that people can use vocal imitation as an
 effective means of communication. At the same time, vocal imitations are not
 words. If vocal imitation played a role in the origin of some spoken words, then
-it is necessary to identify circumstances in which vocal imitation
-may begin can give rise to more word-like vocalizations that can eventually be integrated
-into a vocabulary of a language. In the present set of studies we ask whether
-vocal imitations can transition to more word-like forms through sheer repetition
---- without an explicit intent to communicate. To answer this question, we
-recruited participants to play an online version of the children's game of
-"Telephone". In our version of the game the original message (the "seed") was a
-recording of an environmental sound. The initial group of participants imitated these seed sounds. The next generation imitated the
-previous imitators, and so on for up to 8 generations.
+it is necessary to identify circumstances in which vocal imitation may give rise
+to more word-like vocalizations that can eventually be integrated into a
+vocabulary of a language. In the present set of studies we ask whether vocal
+imitations can transition to more word-like forms through sheer repetition ---
+without an explicit intent to communicate. To answer this question, we recruited
+participants to play an online version of the children's game of "Telephone". In
+our version of the game the original message (the "seed") was a recording of an
+environmental sound. The initial group of participants imitated these seed
+sounds. The next generation imitated the previous imitators, and so on for up to
+8 generations.
 
 Our approach uses a transmission chain methodology similar to that frequently
 used in experimental studies of language evolution [@Tamariz:2017bd, for
@@ -185,7 +186,7 @@ motivated them? For example, does the imitation of a particular water-splashing
 sound become, over generations of repeated imitation, a better label for the
 more general category of water-splashing sounds?
 
-# Experiment 1: Stabilization of imitations through repetition
+# Stabilization of imitations through repetition
 
 ```{r stability, include=FALSE}
 ```
@@ -345,7 +346,7 @@ environmental sounds that motivated them? The purpose of Experiment 2 was to
 assess the extent to which repeated imitations and their transcriptions
 maintained a resemblance to the original set of seed sounds.
 
-# Experiment 2: Resemblance of imitations to original seed sounds
+# Resemblance of imitations to original seed sounds
 
 ```{r matching, include=FALSE}
 ```
@@ -480,18 +481,18 @@ meaning of the vocalizations and were not trying to communicate.
 
 Transcriptions of the vocalizations, like the vocalizations themselves, were
 able to be matched to the original environmental sounds at levels above chance.
-Unlike vocalizations, the transcriptions continued to be matched
-more accurately to the true seed compared to the general category; transcription appearred to impact specific and category-level information equally. One possible explanation of the difference between the acoustic and
-orthographic forms of this task is that the process of transcribing a
-non-linguistic vocalization into a written word encourages transcribers to
-emphasize individuating information about the vocalization. However, this
-does not provide a complete explanation of our results: the
-fact that transcriptions of imitations can be matched back to other category
-members (Category match questions) suggests that transcriptions still do carry
-some category information, so this is not a complete explanation of our
-results. Another possibility is that by selecting only the most frequent
-transcriptions, we unintentionally excluded less frequent transcriptions that
-were more diagnostic of category information.
+Unlike vocalizations, the transcriptions continued to be matched more accurately
+to the true seed compared to the general category; transcription appearred to
+impact specific and category-level information equally. One possible explanation
+of the difference between the acoustic and orthographic forms of this task is
+that the process of transcribing a non-linguistic vocalization into a written
+word encourages transcribers to emphasize individuating information about the
+vocalization. However, this does not provide a complete explanation of our
+results: the fact that transcriptions of imitations can be matched back to other
+category members (Category match questions) suggests that transcriptions still
+do carry some category information. Another possibility is that by selecting
+only the most frequent transcriptions, we unintentionally excluded less frequent
+transcriptions that were more diagnostic of category information.
 
 Experiments 1 and 2 document a process of gradual change from an imitation of an
 environmental sound to a more word-like form. But do these emergent words
@@ -499,7 +500,7 @@ function like other words in a language? In Experiment 3, we test the
 suitability of imitations taken from the beginning and end of transmission chains in
 serving as category labels in a category learning task.
 
-# Experiment 3: Suitability of created words as category labels
+# Suitability of created words as category labels
 
 ```{r learning, include=FALSE}
 ```
@@ -519,7 +520,7 @@ last generation imitations gathered in Experiment 1.
 
 ### Selecting words to learn as category labels
 
-Of the `r n_created_words` unique words created through the transmission chain
+Of the unique words created through the transmission chain
 and transcription procedures, we sampled `r n_lsn_words` words transcribed
 from first and last generation imitations that were equated in terms of
 length and match accuracy to the original sounds (see Supplementary Materials for additional details).
@@ -565,9 +566,9 @@ than participants learning first generation transcriptions,
 `r lmer_mod_results(lsn_after_first_block_lmertest_mod, "message_c")` (Fig. 4A).
 These faster responses suggest that, in addition to becoming more stable both in
 terms of acoustic and orthographic properties, repeated imitations become
-easier to process as category labels. We predict that given a harder task (i.e.,
-more than four categories and 16 exemplars) would yield differences in initial
-learning rates as well.
+easier to process as category labels. We predict that a harder task (i.e. more
+than four categories and 16 exemplars) would also yield differences in initial
+learning rates.
 
 Next, we examined specifically whether transcriptions from last generation imitations
 were easier to generalize to novel category exemplars by comparing RTs on trials immediately prior to the introduction
@@ -592,7 +593,10 @@ grid.arrange(
 
 ## Discussion
 
-Transcriptions of vocal imitations that have undergone greater repetition were processed more quickly, and generalized to new category members more easily to new category members. These results point to a way that repeated imitation may lead to forms that become more word-like besides increase in stability.
+Transcriptions of vocal imitations that have undergone more repetitions were
+processed more quickly, and easier to generalize to new category members. These
+results show how repeated imitation may lead to more stable forms that are in
+turn easier to integrate into the language as category labels.
 
 # General Discussion
 

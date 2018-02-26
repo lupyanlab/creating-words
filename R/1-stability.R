@@ -112,19 +112,37 @@ nodes <- data_frame(node = unique(c(edges$x, edges$y))) %>%
     node_label = ifelse(node %in% categories, node, "")
   )
 
+category_node_categories <- data_frame(
+  node = c("glass", "tear", "water", "zipper"),
+  category = c("glass", "tear", "water", "zipper")
+)
+
+# data("imitations")
+imitations <- read_csv("~/Research/Telephone/words-in-transition/wordsintransition/data-raw/imitations.csv")
+node_categories <- imitations %>%
+  mutate(node = as.character(message_id)) %>%
+  select(node, category = chain_name) %>%
+  bind_rows(
+    category_node_categories
+  )
+
+new_nodes <- left_join(nodes, node_categories)
+
 # Add edge attributes as columns.
-graph <- graph_from_data_frame(edges, vertices = nodes)
+graph <- graph_from_data_frame(edges, vertices = new_nodes)
 layout <- create_layout(graph, "dendrogram")
 
 gg_dendrogram <- ggraph(layout) +
-  geom_edge_diagonal(aes(edge_linetype = node2.node_type), edge_width = 0.4) +
-  geom_node_point(aes(shape = node_type), size = 0.5) +
+  geom_edge_diagonal(aes(edge_linetype = node2.node_type, color = node2.category), edge_width = 0.4) +
+  geom_node_point(aes(shape = node_type, color = category), size = 0.5) +
   geom_node_text(aes(label = node_label), vjust = -0.5, size = 2.5) +
   scale_x_continuous("", breaks = NULL) +
-  scale_y_continuous("Generation", breaks = 0:8, labels = c(8:1, "seeds")) +
+  scale_y_continuous("generation", breaks = 0:8, labels = c(8:1, "seeds")) +
   scale_shape_manual(values = c(32, 32, 16, 32)) +
   scale_edge_linetype_manual(values = c("blank", "blank", "solid", "blank")) +
   coord_cartesian(ylim = c(0, 9)) +
+  scale_edge_color_brewer(palette = "Set2") +
+  scale_color_brewer(palette = "Set2") +
   base_theme +
   theme(
     legend.position = "none",
